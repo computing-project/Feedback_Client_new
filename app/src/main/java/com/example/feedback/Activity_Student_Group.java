@@ -11,6 +11,7 @@ import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -24,6 +25,7 @@ public class Activity_Student_Group extends AppCompatActivity {
     MyAdapter myAdapter;
     ArrayList<StudentInfo> students;
     ListView listView;
+    int index = -999;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,15 @@ public class Activity_Student_Group extends AppCompatActivity {
 
         listView.setAdapter(myAdapter);
     }
+
+    public void deleteStudent(View view)
+    {
+        students.remove(index);
+        init();
+    }
+
+
+
 
 
     public class MyAdapter extends BaseAdapter {
@@ -91,6 +102,16 @@ public class Activity_Student_Group extends AppCompatActivity {
             TextView textView_studentEmail = convertView.findViewById(R.id.textView_email_instudentlist);
             textView_studentEmail.setText(studentList.get(position).getEmail());
 
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println("the "+position+" elem has been clicked!");
+                    for(int i=0; i<parent.getChildCount(); i++)
+                        parent.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+                    view.setBackgroundColor(Color.rgb(135,206,250));
+                    index = position;
+                }
+            });
 
             final View dragView = convertView;
             convertView.setOnLongClickListener(new View.OnLongClickListener() {
