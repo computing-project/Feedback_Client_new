@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +28,10 @@ public class Activity_Student_Group extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__student__group);
+
+        Button button_import = findViewById(R.id.button_import_instudentgroup);
+
+
         listView = (ListView) findViewById(R.id.listView_ingroupStudent);
         students = new ArrayList<>();
         students.add(new StudentInfo("1111","fist1","midd1", "last11","11@qq.com"));

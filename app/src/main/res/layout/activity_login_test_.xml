@@ -43,28 +43,47 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/editText_email_inlogin"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="email"
-            android:inputType="textEmailAddress" />
+            android:background="#0099FF">
 
-        <EditText
-            android:id="@+id/editText_password_inlogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="password"
-            android:inputType="textPassword" />
+            <Button
+                android:id="@+id/buttonLogin_inlogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editText_password_inlogin"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentTop="false"
+                android:layout_centerInParent="false"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:onClick="login"
+                android:text="Login" />
 
-        <Button
-            android:id="@+id/buttonLogin_inlogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="login"
-            android:text="Login" />
+            <EditText
+                android:id="@+id/editText_email_inlogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="email"
+                android:inputType="textEmailAddress"
+                android:paddingTop="50dp" />
+
+            <EditText
+                android:id="@+id/editText_password_inlogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editText_email_inlogin"
+                android:layout_centerInParent="false"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:ems="10"
+                android:hint="password"
+                android:inputType="textPassword" />
+        </RelativeLayout>
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
