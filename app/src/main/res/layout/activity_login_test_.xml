@@ -26,7 +26,8 @@
                 android:gravity="right"
                 android:text="Log In "
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="#090808" />
+                android:textColor="#DD000000"
+                android:textStyle="bold" />
 
             <View
                 android:id="@+id/divider"
@@ -39,8 +40,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="sans-serif"
                 android:text=" Sign Up"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="#9D000000"
+                android:textSize="26sp" />
         </LinearLayout>
 
         <RelativeLayout
