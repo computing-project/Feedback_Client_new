@@ -335,4 +335,15 @@ public class AllFunctions{
         }).start();
 
     }
+
+    public int getMaxGroupNumber(int indexOfProject)
+    {
+        int max = 0;
+        for(StudentInfo student : projectList.get(indexOfProject).getStudentInfo())
+        {
+            if(student.getGroup() > max)
+                max = student.getGroup();
+        }
+        return max;
+    }
 }
