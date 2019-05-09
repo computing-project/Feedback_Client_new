@@ -50,10 +50,17 @@ public class Activity_Student_Group extends AppCompatActivity {
         listView.setAdapter(myAdapter);
     }
 
+    //button delete click.
     public void deleteStudent(View view)
     {
         students.remove(index);
         init();
+    }
+
+    //button add click
+    public void addStudent(View view)
+    {
+
     }
 
 

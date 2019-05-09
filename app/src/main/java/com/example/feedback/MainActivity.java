@@ -18,8 +18,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(this, Activity_Student_Group.class);
+        Intent intent = new Intent(this, Assessment_Preparation_Activity.class);
         startActivity(intent);
+        finish();
 
         //test = AllFunctions.getObject();
       //  Intent intent = new Intent(this, TestLoginActivity.class);

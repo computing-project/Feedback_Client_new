@@ -1,5 +1,8 @@
 package com.example.feedback;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
@@ -13,14 +16,19 @@ public class AllFunctions{
 
     private CommunicationForClient communication;
     private ArrayList<ProjectInfo> projectList = new ArrayList<ProjectInfo>();
+    private static Handler handlerAllfunction;
 
     private AllFunctions(){
 
         communication = new CommunicationForClient(this);
+    }
 
+    public static void setHandler(Handler hander)
+    { handlerAllfunction = hander;
     }
 
     public void login(final String username, final String password){
+
 
         new Thread(new Runnable(){
             @Override
@@ -35,9 +43,7 @@ public class AllFunctions{
     public void loginSucc(ArrayList<ProjectInfo> projectList){
 
         this.projectList = projectList;
-        // need to call ui function to update the interface
-        //for test
-        System.out.println("loginSucc received in AllFunc.class:"+ JSON.toJSONString(projectList));
+        handlerAllfunction.sendEmptyMessage(101);
     }
 
     public ArrayList<ProjectInfo> getProjectList(){
@@ -146,6 +152,24 @@ public class AllFunctions{
         }).start();
 
     }
+
+
+
+    public void deleteProject(int index)
+    {
+        String projectName = projectList.get(index).getProjectName();
+        new Thread(new Runnable(){
+            @Override
+            public void run(){
+
+                communication.deleteProject(projectName);
+                Log.d("projectTimer","success");
+
+            }
+        }).start();
+        projectList.remove(index);
+    }
+
 
     public void projectTimer(ProjectInfo project,int durationMin, int durationSec,
                              int warningMin, int warningSec){
