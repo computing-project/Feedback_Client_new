@@ -44,9 +44,7 @@ public class Assessment_Preparation_Activity extends AppCompatActivity implement
                 switch (msg.what)
                 {
                     case 201: //创建新项目成功
-                        Intent intent = new Intent(Assessment_Preparation_Activity.this, Assessment_Preparation_Activity.class);
-                        startActivity(intent);
-                        finish();
+                        ;
                         break;
                     default:
                         break;

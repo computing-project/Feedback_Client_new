@@ -16,14 +16,14 @@ public class AllFunctions{
 
     private CommunicationForClient communication;
     private ArrayList<ProjectInfo> projectList = new ArrayList<ProjectInfo>();
-    private static Handler handlerAllfunction;
+    private Handler handlerAllfunction;
 
     private AllFunctions(){
 
         communication = new CommunicationForClient(this);
     }
 
-    public static void setHandler(Handler hander)
+    public void setHandler(Handler hander)
     { handlerAllfunction = hander;
     }
 

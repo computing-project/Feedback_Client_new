@@ -35,7 +35,7 @@ public class LoginTest_Activity extends AppCompatActivity {
                 }
             }
         };
-        AllFunctions.setHandler(handler);
+        AllFunctions.getObject().setHandler(handler);
 
     }
 
