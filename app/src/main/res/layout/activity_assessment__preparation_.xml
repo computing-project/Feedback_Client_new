@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Assessment_Preparation_Activity">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button_edit_inpreparation"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:gravity="left|center_vertical"
+                    android:onClick="edit"
+                    android:text=" Edit"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <View
+                    android:id="@+id/divider8"
+                    android:layout_width="84dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@android:color/transparent" />
+
+                <Button
+                    android:id="@+id/button_plus_inpreparation"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:gravity="right|center_vertical"
+                    android:onClick="plus"
+                    android:text="+   "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider7"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#050505" />
+
+            <ListView
+                android:id="@+id/listView_inpreparation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:choiceMode="singleChoice"
+                android:dividerHeight="1dp" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/project_name_inpreparation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Project Name"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+                <Button
+                    android:id="@+id/button_about_inpreparation"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="left|center_vertical"
+                    android:onClick="about"
+                    android:text="About"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:id="@+id/about_detail__inpreparation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="about details\n"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
+
+                <Button
+                    android:id="@+id/button_time_inpreparation"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="left|center_vertical"
+                    android:text="Time"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:id="@+id/time_detail__inpreparation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="time details\n"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
+
+                <Button
+                    android:id="@+id/button_criteria_inpreparation"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="left|center_vertical"
+                    android:text="Criteria"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:id="@+id/criteria_detail__inpreparation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="criteria details\n"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
+
+                <Button
+                    android:id="@+id/button_studentmanagement__inpreparation"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="left|center_vertical"
+                    android:text="Student Management"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <View
+                    android:id="@+id/divider5"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:id="@+id/student_detail__inpreparation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Click Subtitle to Manage Students\n"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
+
+                <Button
+                    android:id="@+id/button_asseccor__inpreparation"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="left|center_vertical"
+                    android:text="Asseccors"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <View
+                    android:id="@+id/divider6"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:id="@+id/asseccor_detail__inpreparation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="asseccor details"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

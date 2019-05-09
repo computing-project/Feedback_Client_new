@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity_About">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:text="About"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+
+        <View
+            android:id="@+id/divider9"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@id/textView2"
+            android:layout_marginTop="10dp"
+            android:background="?android:attr/listDivider" />
+
+        <EditText
+            android:id="@+id/editText_projectname_inabout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider9"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:hint="Project Name"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/editText_subjectname_inabout"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editText_projectname_inabout"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:hint="Subject Name"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editText_subjectcode_inabout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editText_projectname_inabout"
+            android:layout_marginLeft="90dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/editText_subjectname_inabout"
+            android:ems="10"
+            android:hint="Subject Code"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editText_projectdescription_inabout"
+            android:layout_width="522dp"
+            android:layout_height="76dp"
+            android:layout_below="@id/editText_subjectname_inabout"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Project Description"
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/button_next_inabout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="50dp"
+            android:text="Next" />
+
+        <Button
+            android:id="@+id/button_back_inabout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginBottom="50dp"
+            android:onClick="back"
+            android:text="Back" />
+
+        <Button
+            android:id="@+id/button_save_inabout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="50dp"
+            android:layout_toLeftOf="@id/button_next_inabout"
+            android:onClick="save"
+            android:text="Save" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
