@@ -35,7 +35,7 @@ public class Assessment_Preparation_Activity extends AppCompatActivity implement
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assessment__preparation_);
-        button_edit = findViewById(R.id.button_edit_inpreparation);
+
         init();
         System.out.println("Preparation: onCreate has been called!");
         handler = new Handler(){
@@ -55,10 +55,11 @@ public class Assessment_Preparation_Activity extends AppCompatActivity implement
 
     protected void onNewIntent(Intent intent) {
         init();
-        System.out.println("Preparation: onNewIntent has been called!");
+      //  System.out.println("Preparation: onNewIntent has been called!");
     }
 
     private void init() {
+        button_edit = findViewById(R.id.button_edit_inpreparation);
         resetDetailView();
         alist = new ArrayList<String>();
 

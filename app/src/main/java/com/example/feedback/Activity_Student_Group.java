@@ -242,13 +242,12 @@ public class Activity_Student_Group extends AppCompatActivity {
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         try {
             startActivityForResult(Intent.createChooser(intent, "Select a File to Upload"), FILE_SELECT_CODE);
-        } catch (android.content.ActivityNotFoundException ex) {
-            // Potentially direct the user to the Market with a Dialog
-            System.out.println("path in student Management: "+path);
-            AllFunctions.getObject().readExcel(project,path);
-            System.out.println("call the readExcel method: "+path);
-            init(indexOfProject);
         }
+        catch (android.content.ActivityNotFoundException ex)
+        {
+            // Potentially direct the user to the Market with a Dialog
+        }
+
     }
 
     private static final String TAG = "ChooseFile";
@@ -264,7 +263,9 @@ public class Activity_Student_Group extends AppCompatActivity {
                     // Get the path
 
                     path = FileUtils.getPath(this, uri);
-                    Log.d(TAG, "File Path: " + path);
+                    AllFunctions.getObject().readExcel(project,path);
+                    System.out.println("call the readExcel method: "+path);
+                    init(indexOfProject);
                     // Get the file instance
                     // File file = new File(path);
                     // Initiate the upload

@@ -8,8 +8,9 @@
 
     <TextView
         android:id="@+id/textView_groupnum_instudentlist"
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="7"
         android:clickable="false"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -18,7 +19,7 @@
         android:id="@+id/textView_studentID_instudentlist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="4"
+        android:layout_weight="6"
         android:clickable="false"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -27,7 +28,7 @@
         android:id="@+id/textView_fullname_instudentlist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="3"
+        android:layout_weight="6"
         android:clickable="false"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -36,7 +37,7 @@
         android:id="@+id/textView_email_instudentlist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="4"
+        android:layout_weight="5"
         android:clickable="false"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
