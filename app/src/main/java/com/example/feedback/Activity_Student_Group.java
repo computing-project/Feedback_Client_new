@@ -244,6 +244,7 @@ public class Activity_Student_Group extends AppCompatActivity {
             startActivityForResult(Intent.createChooser(intent, "Select a File to Upload"), FILE_SELECT_CODE);
         } catch (android.content.ActivityNotFoundException ex) {
             // Potentially direct the user to the Market with a Dialog
+            System.out.println("path: "+path);
             AllFunctions.getObject().readExcel(project,path);
             init(indexOfProject);
         }
