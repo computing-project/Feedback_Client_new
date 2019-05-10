@@ -8,6 +8,8 @@ import android.util.Log;
 import com.alibaba.fastjson.JSON;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class AllFunctions{
 
@@ -360,6 +362,22 @@ public class AllFunctions{
 
             }
         }).start();
+
+    }
+
+    public void sortStudent(){
+
+        for(int i = 0; i < projectList.size(); i++){
+
+            Collections.sort(projectList.get(i).getStudentInfo(), new SortByGroup);
+
+
+        }
+
+    }
+
+    public class SortByGroup implements Comparator{
+
 
     }
 }
