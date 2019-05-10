@@ -31,7 +31,6 @@
             android:id="@+id/logo"
             android:layout_width="250dp"
             android:layout_height="120dp"
-            android:layout_marginBottom="2dp"
             android:src="@drawable/unimelb_logo" />
 
         <TextView
@@ -121,7 +120,6 @@
                 android:layout_width="350dp"
                 android:layout_height="40dp"
                 android:layout_below="@+id/editText_email_inlogin"
-                android:layout_centerInParent="false"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="30dp"
@@ -137,7 +135,6 @@
 
             <Button
                 android:id="@+id/buttonLogin_inlogin"
-                style="@style/Widget.AppCompat.Button"
                 android:layout_width="350dp"
                 android:layout_height="40dp"
                 android:layout_below="@+id/editText_password_inlogin"
