@@ -13,6 +13,7 @@ public class AssesmentTime extends AppCompatActivity {
 
     ProjectInfo project;
     int indexOfProject;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
