@@ -369,8 +369,8 @@ public class CommunicationForClient {
 			} else {
 				//失败跳出
 			}
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (Exception e1) {
+			System.out.println("Exception in import student in communication!");
 		}
 	}
 
