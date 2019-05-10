@@ -8,7 +8,7 @@ public class StudentInfo {
     private String surname;
     private String email;
     private Double mark;
-    private int group;
+    private int group = -999;
 
 
     public StudentInfo(){}

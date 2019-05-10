@@ -3,6 +3,8 @@ package com.example.feedback;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -27,6 +29,7 @@ public class Assessment_Preparation_Activity extends AppCompatActivity implement
     MyAdapter_for_listView myAdapter;
     Button button_edit;
     int index_to_send = -999;
+    Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,19 @@ public class Assessment_Preparation_Activity extends AppCompatActivity implement
         button_edit = findViewById(R.id.button_edit_inpreparation);
         init();
         System.out.println("Preparation: onCreate has been called!");
+        handler = new Handler(){
+            public void handleMessage(Message msg)
+            {
+                switch (msg.what)
+                {
+                    case 201: //创建新项目成功
+                        ;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        };
     }
 
     protected void onNewIntent(Intent intent) {
@@ -170,6 +186,7 @@ public class Assessment_Preparation_Activity extends AppCompatActivity implement
                 public void onClick(View view) {
                     mProjectList.remove(position);
                     myAdapter.notifyDataSetChanged();
+                    allFunctions.deleteProject(position);
                 }
             });
             return convertView;

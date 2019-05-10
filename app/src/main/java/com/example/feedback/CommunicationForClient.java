@@ -1,5 +1,9 @@
 package com.example.feedback;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -65,6 +69,7 @@ public class CommunicationForClient {
 		jsonSend.put("password", password);
 		System.out.println("Send: " + jsonSend.toJSONString()); //just for test
 
+
 		RequestBody body = RequestBody.create(JSON, jsonSend.toJSONString());
 		Request request = new Request.Builder()
 				.url(host + "LoginServlet")
@@ -81,15 +86,8 @@ public class CommunicationForClient {
 				String projectListString = jsonReceive.get("projectList").toString();
 				List<ProjectInfo> projectList = JSONObject.parseArray(projectListString, ProjectInfo.class);
 				ArrayList<ProjectInfo> arrayList ;
-				if (projectList instanceof ArrayList)
-				{
-					arrayList = (ArrayList)projectList;
-				}
-				else
-				{
-					arrayList = new ArrayList();
-					arrayList.addAll(projectList);
-				}
+				arrayList = new ArrayList();
+				arrayList.addAll(projectList);
 
 				functions.loginSucc(arrayList);
 
@@ -126,10 +124,43 @@ public class CommunicationForClient {
 			if (updateProject_ACK.equals("true")) {
 				;
 			} else {
-				//失败跳出
+				;
 			}
 		} catch (IOException e1) {
 			System.out.println("updateProjectAbout: something wrong in receiving response from server.");
+		}
+	}
+
+	public void deleteProject(String projectName)
+	{
+		//construct JSONObject to send
+		JSONObject jsonSend = new JSONObject();
+		jsonSend.put("token", token);
+		jsonSend.put("projectName", projectName);
+
+		System.out.println("Send: " + jsonSend.toJSONString()); //just for test
+
+		RequestBody body = RequestBody.create(JSON, jsonSend.toJSONString());
+		Request request = new Request.Builder()
+				.url(host + "DeleteProjectServlet")
+				.post(body)
+				.build();
+
+		//get the JSONObject from response
+		try (Response response = client.newCall(request).execute()) {
+			String receive = response.body().string();
+
+			System.out.println("Receive: " + receive); //just for test
+
+			JSONObject jsonReceive = JSONObject.parseObject(receive);
+			String updateStudent_ACK = jsonReceive.get("updateProject_ACK").toString();
+			if (updateStudent_ACK.equals("true")) {
+				;
+			} else {
+				//失败跳出
+			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
 		}
 	}
 
