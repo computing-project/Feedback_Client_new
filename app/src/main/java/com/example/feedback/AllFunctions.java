@@ -45,6 +45,7 @@ public class AllFunctions{
     public void loginSucc(ArrayList<ProjectInfo> projectList){
 
         this.projectList = projectList;
+        sortStudent();
         handlerAllfunction.sendEmptyMessage(101);
     }
 
@@ -370,8 +371,7 @@ public class AllFunctions{
 
         for(int i = 0; i < projectList.size(); i++){
 
-            Collections.sort(projectList.get(i).getStudentInfo(), new SortByGroup);
-
+            Collections.sort(projectList.get(i).getStudentInfo(), new SortByGroup());
 
         }
 
@@ -379,6 +379,13 @@ public class AllFunctions{
 
     public class SortByGroup implements Comparator{
 
+        public int compare(Object o1, Object o2) {
+            StudentInfo s1 = (StudentInfo) o1;
+            StudentInfo s2 = (StudentInfo) o2;
+            if (s1.getGroup() > s2.getGroup())
+                return 1;
+            else return -1;
+        }
 
     }
 }
