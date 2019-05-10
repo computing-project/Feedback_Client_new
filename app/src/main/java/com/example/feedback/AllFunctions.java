@@ -319,16 +319,15 @@ public class AllFunctions{
         }).start();
     }
 
-    public void groupStudent(ProjectInfo project, ArrayList<StudentInfo> studentList){
+    public void groupStudent(ProjectInfo project, String studentID, int groupNumber){
 
-        project.addStudentList(studentList);
 
         new Thread(new Runnable(){
             @Override
             public void run(){
 
-                communication.importStudents(project.getProjectName(),
-                        project.getStudentInfo());
+                communication.groupStudents(project.getProjectName(),
+                        studentID, groupNumber);
 
                 Log.d("groupStudent","success");
 
