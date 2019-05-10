@@ -55,7 +55,7 @@ public class Assessment_Preparation_Activity extends AppCompatActivity implement
 
     protected void onNewIntent(Intent intent) {
         init();
-      //  System.out.println("Preparation: onNewIntent has been called!");
+        System.out.println("Preparation: onNewIntent has been called!");
     }
 
     private void init() {
@@ -148,6 +148,12 @@ public class Assessment_Preparation_Activity extends AppCompatActivity implement
         intent.putExtra("index", String.valueOf(index_to_send));
         startActivity(intent);
     }
+
+    public void timer(View view)
+    {
+        Intent intent = new Intent(this, Activity_Timer.class);
+        intent.putExtra("index", String.valueOf(index_to_send));
+        startActivity(intent);    }
 
     public void studentManagement(View view)
     {
