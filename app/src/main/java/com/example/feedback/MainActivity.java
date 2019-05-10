@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
 
-      //  test = AllFunctions.getObject();
+//        test = AllFunctions.getObject();
       //  Intent intent = new Intent(this, TestLoginActivity.class);
       //  startActivity(intent);
 
@@ -139,6 +139,12 @@ public class MainActivity extends AppCompatActivity {
         mark.setMarkList(markList);
 
         test.sendMark(project, "484567", mark);
+
+    }
+
+    public void sortStudentGroupTest(View view){
+
+        test.testSortGroup();
 
     }
 
