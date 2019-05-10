@@ -44,7 +44,8 @@
                 android:layout_height="45dp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/ic_delete_student" />
+                android:background="@drawable/ic_delete_student"
+                android:onClick="deleteStudent" />
 
             <Button
                 android:id="@+id/button_import_instudentgroup"

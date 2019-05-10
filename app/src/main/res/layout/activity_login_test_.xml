@@ -5,12 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginTest_Activity">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_x="0dp"
+        android:layout_y="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <ImageView
+
+            android:layout_width="289dp"
+            android:layout_height="166dp"
+            android:layout_marginBottom="50dp"
+            android:src="@drawable/unimelb_logo" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,45 +65,63 @@
         </LinearLayout>
 
         <RelativeLayout
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#0099FF">
+            android:layout_marginTop="-12dp"
+            android:background="#33014085">
 
-            <Button
-                android:id="@+id/buttonLogin_inlogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editText_password_inlogin"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentTop="false"
-                android:layout_centerInParent="false"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
-                android:onClick="login"
-                android:text="Login" />
 
             <EditText
                 android:id="@+id/editText_email_inlogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="350dp"
+                android:layout_height="40dp"
                 android:layout_centerHorizontal="true"
-                android:autofillHints=""
-                android:ems="10"
-                android:hint="email"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/rounded_white"
+                android:drawableLeft="@drawable/ic_user_email"
+                android:drawablePadding="5dp"
+                android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:paddingTop="50dp" />
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" />
 
             <EditText
+
                 android:id="@+id/editText_password_inlogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="350dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/editText_email_inlogin"
                 android:layout_centerInParent="false"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/rounded_white"
+                android:drawableLeft="@drawable/ic_user_password"
+                android:drawablePadding="5dp"
                 android:ems="10"
-                android:hint="password"
-                android:inputType="textPassword" />
+                android:hint="Password"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" />
+
+
+            <Button
+                android:id="@+id/buttonLogin_inlogin"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editText_password_inlogin"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/rounded_login"
+                android:fontFamily="sans-serif-black"
+                android:onClick="login"
+                android:text="Login"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:textColor="#ffffff" />
+
         </RelativeLayout>
 
     </LinearLayout>

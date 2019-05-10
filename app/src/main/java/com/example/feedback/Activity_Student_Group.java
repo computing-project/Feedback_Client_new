@@ -3,7 +3,9 @@ package com.example.feedback;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -24,29 +27,51 @@ public class Activity_Student_Group extends AppCompatActivity {
     MyAdapter myAdapter;
     ArrayList<StudentInfo> students;
     ListView listView;
+    int indexOfStudent = -999;
+    int indexOfProject;
+    ProjectInfo project;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__student__group);
 
+        Intent intent =getIntent();
+        indexOfProject = Integer.parseInt(intent.getStringExtra("index"));
+
+        init(indexOfProject);
+
         Button button_import = findViewById(R.id.button_import_instudentgroup);
 
 
         listView = (ListView) findViewById(R.id.listView_ingroupStudent);
-        students = new ArrayList<>();
-        students.add(new StudentInfo("1111","fist1","midd1", "last11","11@qq.com"));
-        students.add(new StudentInfo("2222","fist2","midd2", "last2","22@qq.com"));
-        students.add(new StudentInfo("3333","fist3","midd333", "last33","33@qq.com"));
-        init();
     }
 
-    public void init()
+    public void init(int i)
     {
+        project = AllFunctions.getObject().getProjectList().get(i);
+        students = project.getStudentInfo();
 
         myAdapter = new MyAdapter(students, this);
 
         listView.setAdapter(myAdapter);
     }
+
+    //button delete click.
+    public void deleteStudent(View view)
+    {
+        students.remove(indexOfStudent);
+        init(indexOfProject);
+    }
+
+    //button add click
+    public void addStudent(View view)
+    {
+
+    }
+
+
+
 
 
     public class MyAdapter extends BaseAdapter {
@@ -91,6 +116,16 @@ public class Activity_Student_Group extends AppCompatActivity {
             TextView textView_studentEmail = convertView.findViewById(R.id.textView_email_instudentlist);
             textView_studentEmail.setText(studentList.get(position).getEmail());
 
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println("the "+position+" elem has been clicked!");
+                    for(int i=0; i<parent.getChildCount(); i++)
+                        parent.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+                    view.setBackgroundColor(Color.rgb(135,206,250));
+                    indexOfStudent = position;
+                }
+            });
 
             final View dragView = convertView;
             convertView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -126,7 +161,6 @@ public class Activity_Student_Group extends AppCompatActivity {
                             if (event.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
                                 v.invalidate();
                                 return true;
-
                             }
                             return false;
 
@@ -153,8 +187,17 @@ public class Activity_Student_Group extends AppCompatActivity {
                             final int srcPosition = Integer.parseInt(item.getText().toString());
                             System.out.println("srcPosition is"+srcPosition);
                             System.out.println("position is"+position);
-                            students.get(srcPosition).setGroup(1);
-                            students.get(position).setGroup(1);
+
+                            //change group num
+                            if(students.get(position).getGroup()!= -999)
+                                students.get(srcPosition).setGroup(students.get(position).getGroup());
+                            else
+                            {
+                                int maxGroupNumNow = AllFunctions.getObject().getMaxGroupNumber(indexOfProject);
+                                students.get(srcPosition).setGroup(maxGroupNumNow+1);
+                                students.get(position).setGroup(maxGroupNumNow+1);
+                            }
+
                             StudentInfo studentTemporary = students.get(srcPosition);
                             students.remove(srcPosition);
                             if(position+1>students.size())
@@ -163,12 +206,7 @@ public class Activity_Student_Group extends AppCompatActivity {
                                 students.add(position+1,studentTemporary);
 
                             // myAdapter.notifyDataSetChanged();
-                            init();
-
-                            Toast.makeText(Activity_Student_Group.this, "Dragged data is " , Toast.LENGTH_LONG);
-
-                            // Turns off any color tints
-
+                            init(indexOfProject);
 
                             // Invalidates the view to force a redraw
                             v.invalidate();
@@ -182,14 +220,6 @@ public class Activity_Student_Group extends AppCompatActivity {
                             // Invalidates the view to force a redraw
                             v.invalidate();
 
-                            // Does a getResult(), and displays what happened.
-                            if (event.getResult()) {
-                                Toast.makeText(Activity_Student_Group.this, "The drop was handled.", Toast.LENGTH_LONG);
-
-                            } else {
-                                Toast.makeText(Activity_Student_Group.this, "The drop didn't work.", Toast.LENGTH_LONG);
-
-                            }
                             // returns true; the value is ignored.
                             return true;
                         // An unknown action type was received.
@@ -202,9 +232,47 @@ public class Activity_Student_Group extends AppCompatActivity {
 
             });
 
-
             return convertView;
         }
     }
 
+    private static final int FILE_SELECT_CODE = 0;
+
+    public void showFileChooser(View view) {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("*/*");
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        try {
+            startActivityForResult(Intent.createChooser(intent, "Select a File to Upload"), FILE_SELECT_CODE);
+        } catch (android.content.ActivityNotFoundException ex) {
+            // Potentially direct the user to the Market with a Dialog
+            Toast.makeText(this, "Please install a File Manager.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private static final String TAG = "ChooseFile";
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case FILE_SELECT_CODE:
+                if (resultCode == RESULT_OK) {
+                    // Get the Uri of the selected file
+                    Uri uri = data.getData();
+                    Log.d(TAG, "File Uri: " + uri.toString());
+                    // Get the path
+                    String path = null;
+                    path = FileUtils.getPath(this, uri);
+                    Log.d(TAG, "File Path: " + path);
+                    // Get the file instance
+                    // File file = new File(path);
+                    // Initiate the upload
+                }
+                break;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+
 }
+
