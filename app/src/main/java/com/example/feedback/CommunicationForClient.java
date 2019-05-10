@@ -29,7 +29,7 @@ public class CommunicationForClient {
 	AllFunctions functions;
 
 	public CommunicationForClient(AllFunctions functions) {
-		host = "http://10.13.101.237:8080/RapidFeedback/";
+		host = "http://10.13.101.120:8080/RapidFeedback/";
 		client = new OkHttpClient();
 		this.functions = functions;
 	}
