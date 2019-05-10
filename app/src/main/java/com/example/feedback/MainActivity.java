@@ -123,8 +123,6 @@ public class MainActivity extends AppCompatActivity {
         c.setName("lastkkkttt");
         c.setWeighting(20);
 
-
-
         ProjectInfo project = test.getProjectList().get(0);
         Mark mark = new Mark();
         ArrayList<Criteria> criteriaList = new ArrayList<Criteria>();
@@ -135,9 +133,6 @@ public class MainActivity extends AppCompatActivity {
         mark.setMarkList(markList);
 
         test.sendMark(project, "484567", mark);
-
-
-
 
     }
 
