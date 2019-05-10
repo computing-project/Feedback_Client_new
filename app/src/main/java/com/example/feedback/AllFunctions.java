@@ -326,8 +326,8 @@ public class AllFunctions{
             @Override
             public void run(){
 
-                communication.groupStudents(project.getProjectName(),
-                        studentID, groupNumber);
+//                communication.groupStudents(project.getProjectName(),
+//                        studentID, groupNumber);
 
                 Log.d("groupStudent","success");
 
@@ -345,5 +345,21 @@ public class AllFunctions{
                 max = student.getGroup();
         }
         return max;
+    }
+
+    public void sendMark(ProjectInfo project, String studentID, Mark mark){
+
+        new Thread(new Runnable(){
+            @Override
+            public void run(){
+
+//                communication.sendMark(project.getProjectName(),
+//                        studentID, mark);
+
+                Log.d("sendMark","success");
+
+            }
+        }).start();
+
     }
 }
