@@ -353,8 +353,8 @@ public class AllFunctions{
             @Override
             public void run(){
 
-//                communication.sendMark(project.getProjectName(),
-//                        studentID, mark);
+                communication.sendMark(project.getProjectName(),
+                      studentID, mark);
 
                 Log.d("sendMark","success");
 

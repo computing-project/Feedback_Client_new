@@ -339,6 +339,44 @@ public class CommunicationForClient {
 		}
 	}
 
+	public void sendMark(String projectName, String studentID, Mark mark)
+	{
+		//construct JSONObject to send
+		JSONObject jsonSend = new JSONObject();
+		jsonSend.put("token", token);
+		jsonSend.put("projectName", projectName);
+		jsonSend.put("studentID", studentID);
+		String markString = com.alibaba.fastjson.JSON.toJSONString(mark);
+		jsonSend.put("mark", markString);
+
+		System.out.println("Send in method sendMark: " + jsonSend.toJSONString()); //just for test
+
+		RequestBody body = RequestBody.create(JSON, jsonSend.toJSONString());
+		Request request = new Request.Builder()
+				.url(host + "MarkServlet")
+				.post(body)
+				.build();
+
+		//get the JSONObject from response
+		try (Response response = client.newCall(request).execute()) {
+			String receive = response.body().string();
+
+			System.out.println("Receive: " + receive); //just for test
+
+			JSONObject jsonReceive = JSONObject.parseObject(receive);
+			String mark_ACK = jsonReceive.get("mark_ACK").toString();
+			if (mark_ACK.equals("true")) {
+				;
+			} else {
+				//失败跳出
+			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+
+
 	public void importStudents(String projectName, ArrayList<StudentInfo> studentList)
 	{
 		//construct JSONObject to send
