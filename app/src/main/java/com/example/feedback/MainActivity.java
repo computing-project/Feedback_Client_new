@@ -93,5 +93,10 @@ public class MainActivity extends AppCompatActivity {
         test.projectCriteria(projectTest,criteriaList);
     }
 
+    public void sendMark(View view){
+
+
+    }
+
 
 }
