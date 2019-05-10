@@ -148,6 +148,13 @@ public class Assessment_Preparation_Activity extends AppCompatActivity implement
         startActivity(intent);
     }
 
+    public void studentManagement(View view)
+    {
+        Intent intent = new Intent(this, Activity_Student_Group.class);
+        intent.putExtra("index", String.valueOf(index_to_send));
+        startActivity(intent);
+    }
+
 
     public class MyAdapter_for_listView extends BaseAdapter {
 

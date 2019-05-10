@@ -30,6 +30,7 @@ public class Activity_Student_Group extends AppCompatActivity {
     int indexOfStudent = -999;
     int indexOfProject;
     ProjectInfo project;
+    String path;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +39,10 @@ public class Activity_Student_Group extends AppCompatActivity {
 
         Intent intent =getIntent();
         indexOfProject = Integer.parseInt(intent.getStringExtra("index"));
-
+        listView = (ListView) findViewById(R.id.listView_ingroupStudent);
         init(indexOfProject);
 
-        Button button_import = findViewById(R.id.button_import_instudentgroup);
 
-
-        listView = (ListView) findViewById(R.id.listView_ingroupStudent);
     }
 
     public void init(int i)
@@ -246,7 +244,8 @@ public class Activity_Student_Group extends AppCompatActivity {
             startActivityForResult(Intent.createChooser(intent, "Select a File to Upload"), FILE_SELECT_CODE);
         } catch (android.content.ActivityNotFoundException ex) {
             // Potentially direct the user to the Market with a Dialog
-            Toast.makeText(this, "Please install a File Manager.", Toast.LENGTH_SHORT).show();
+            AllFunctions.getObject().readExcel(project,path);
+            init(indexOfProject);
         }
     }
 
@@ -261,7 +260,7 @@ public class Activity_Student_Group extends AppCompatActivity {
                     Uri uri = data.getData();
                     Log.d(TAG, "File Uri: " + uri.toString());
                     // Get the path
-                    String path = null;
+
                     path = FileUtils.getPath(this, uri);
                     Log.d(TAG, "File Path: " + path);
                     // Get the file instance

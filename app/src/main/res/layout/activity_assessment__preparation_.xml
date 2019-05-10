@@ -170,6 +170,7 @@
                     android:layout_height="25dp"
                     android:background="@android:color/transparent"
                     android:gravity="left|center_vertical"
+                    android:onClick="studentManagement"
                     android:text="Student Management"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
