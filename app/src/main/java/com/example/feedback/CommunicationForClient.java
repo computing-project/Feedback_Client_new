@@ -55,8 +55,11 @@ public class CommunicationForClient {
 			System.out.println("Receive: " + receive); //just for test
 			JSONObject jsonReceive = JSONObject.parseObject(receive);
 
-			boolean register_ACK = Boolean.getBoolean(jsonReceive.get("register_ACK").toString());
-			functions.registerACK(register_ACK);
+			String register_ACK_String = jsonReceive.get("register_ACK").toString();
+			if(register_ACK_String.equals("ture"))
+				functions.registerACK(true);
+			else
+				functions.registerACK(false);
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -304,6 +307,44 @@ public class CommunicationForClient {
 			e1.printStackTrace();
 		}
 	}
+
+
+	public void groupStudent(String projectName, String studentID, int groupNumber)
+	{
+		//construct JSONObject to send
+		JSONObject jsonSend = new JSONObject();
+		jsonSend.put("token", token);
+		jsonSend.put("projectName", projectName);
+		jsonSend.put("studentID", studentID);
+		jsonSend.put("group", groupNumber);
+
+		System.out.println("Send in group student method: " + jsonSend.toJSONString()); //just for test
+
+		RequestBody body = RequestBody.create(JSON, jsonSend.toJSONString());
+		Request request = new Request.Builder()
+				.url(host + "GroupStudentServlet")
+				.post(body)
+				.build();
+
+		//get the JSONObject from response
+		try (Response response = client.newCall(request).execute()) {
+			String receive = response.body().string();
+
+			System.out.println("Receive: " + receive); //just for test
+
+			JSONObject jsonReceive = JSONObject.parseObject(receive);
+			String updateStudent_ACK = jsonReceive.get("updateStudent_ACK").toString();
+			if (updateStudent_ACK.equals("true")) {
+				;
+			} else {
+				//失败跳出
+			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+
 
 	public void deleteStudent(String projectName, String studentID)
 	{

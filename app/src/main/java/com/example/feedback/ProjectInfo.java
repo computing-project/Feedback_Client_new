@@ -96,14 +96,6 @@ public class ProjectInfo {
 //        commentList.add(criteria);
 //    }
 
-    public void setTimer(int durationMin, int durationSec, int warningMin, int warningSec){
-
-        this.durationMin = durationMin;
-        this.durationSec = durationSec;
-        this.warningMin = warningMin;
-        this.warningSec = warningSec;
-
-    }
 
     public void setDurationMin(int durationMin) {
         this.durationMin = durationMin;

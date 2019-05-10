@@ -235,6 +235,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="50dp"
             android:layout_marginBottom="50dp"
+            android:onClick="back_Timer"
             android:text="Back"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
@@ -246,6 +247,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="50dp"
             android:layout_toLeftOf="@+id/button_next_inTimer"
+            android:onClick="save_Timer"
             android:text="Save"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 

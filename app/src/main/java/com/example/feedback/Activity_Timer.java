@@ -51,6 +51,7 @@ public class Activity_Timer extends AppCompatActivity {
 
     public void addDurationMin(View view)
     {
+        durationMin = Integer.parseInt(editText_durationMin.getText().toString());
         durationMin++;
         if(durationMin>59)
             durationMin = durationMin - 60;
@@ -59,6 +60,7 @@ public class Activity_Timer extends AppCompatActivity {
 
     public void minusDurationMin(View view)
     {
+        durationMin = Integer.parseInt(editText_durationMin.getText().toString());
         durationMin--;
         if(durationMin<0)
             durationMin = durationMin + 60;
@@ -67,6 +69,7 @@ public class Activity_Timer extends AppCompatActivity {
 
     public void addDurationSec(View view)
     {
+        durationSec = Integer.parseInt(editText_durationSec.getText().toString());
         durationSec = durationSec + 5;
         if(durationSec>59)
             durationSec = durationSec - 60;
@@ -75,6 +78,7 @@ public class Activity_Timer extends AppCompatActivity {
 
     public void minusDurationSec(View view)
     {
+        durationSec = Integer.parseInt(editText_durationSec.getText().toString());
         durationSec = durationSec - 5;
         if(durationSec<0)
             durationSec = durationSec + 60;
@@ -83,6 +87,7 @@ public class Activity_Timer extends AppCompatActivity {
 
     public void addWarningMin(View view)
     {
+        warningMin = Integer.parseInt(editText_warningMin.getText().toString());
         warningMin++;
         if(warningMin>59)
             warningMin = warningMin - 60;
@@ -91,6 +96,7 @@ public class Activity_Timer extends AppCompatActivity {
 
     public void minusWarningMin(View view)
     {
+        warningMin = Integer.parseInt(editText_warningMin.getText().toString());
         warningMin--;
         if(warningMin<0)
             warningMin = warningMin + 60;
@@ -99,6 +105,7 @@ public class Activity_Timer extends AppCompatActivity {
 
     public void addWarningSec(View view)
     {
+        warningSec = Integer.parseInt(editText_warningSec.getText().toString());
         warningSec = warningSec + 5;
         if(warningSec>59)
             warningSec = warningSec - 60;
@@ -107,10 +114,31 @@ public class Activity_Timer extends AppCompatActivity {
 
     public void minusWarningSec(View view)
     {
+        warningSec = Integer.parseInt(editText_warningSec.getText().toString());
         warningSec = warningSec - 5;
         if(warningSec<0)
             warningSec = warningSec + 60;
         editText_warningSec.setText(String.valueOf(warningSec));
+    }
+
+    public void save_Timer(View view)
+    {
+        durationMin = Integer.parseInt(editText_durationMin.getText().toString());
+        durationSec = Integer.parseInt(editText_durationSec.getText().toString());
+        warningMin = Integer.parseInt(editText_warningMin.getText().toString());
+        warningSec = Integer.parseInt(editText_warningSec.getText().toString());
+        System.out.println("Time in Timer: "+durationMin+":"+durationSec+"   "+warningMin+":"+warningSec);
+        AllFunctions.getObject().projectTimer(project,durationMin,durationSec,warningMin,warningSec);
+        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+    }
+
+    public void back_Timer(View view)
+    {
+        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 
 }

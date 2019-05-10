@@ -37,7 +37,7 @@ public class Activity_About extends AppCompatActivity {
     }
 
     //save button click
-    public void save(View view)
+    public void save_About(View view)
     {
         EditText editText_projectName = findViewById(R.id.editText_projectname_inabout);
         EditText editText_subjectName = findViewById(R.id.editText_subjectname_inabout);
@@ -56,14 +56,14 @@ public class Activity_About extends AppCompatActivity {
         finish();
     }
 
-    public void back(View view)
+    public void back_About(View view)
     {
         Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
     }
 
-    public void next(View view)
+    public void next_About(View view)
     {
 
     }
