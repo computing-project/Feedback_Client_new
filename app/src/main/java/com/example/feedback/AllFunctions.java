@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -375,6 +376,8 @@ public class AllFunctions{
 
         }
 
+
+
     }
 
     public class SortByGroup implements Comparator{
@@ -382,9 +385,17 @@ public class AllFunctions{
         public int compare(Object o1, Object o2) {
             StudentInfo s1 = (StudentInfo) o1;
             StudentInfo s2 = (StudentInfo) o2;
-            if (s1.getGroup() > s2.getGroup())
+            if (s1.getGroup() > s2.getGroup() && s2.getGroup() == -999) {
+
+                return -1;
+
+            }else if(s1.getGroup() < s2.getGroup() && s1.getGroup() == -999){
                 return 1;
-            else return -1;
+            }else if(s1.getGroup() > s2.getGroup()){
+                return 1;
+            }else if(s1.getGroup() == s2.getGroup()){
+                return 1;
+            }else return -1;
         }
 
     }
@@ -392,6 +403,8 @@ public class AllFunctions{
 
     public void testSortGroup()
     {
+
+
         ArrayList<StudentInfo> studentListForTest = new ArrayList<>();
         StudentInfo student1 = new StudentInfo();
         student1.setGroup(-999);
@@ -416,6 +429,19 @@ public class AllFunctions{
         studentListForTest.add(student7);
 
         //call sort
+//        ArrayList<StudentInfo> studentTemp = new ArrayList<StudentInfo>();
+
+//        for(StudentInfo ss: studentListForTest){
+//            if(ss.getGroup() == -999){
+//
+//                studentTemp.add(ss);
+//                studentListForTest.remove(ss);
+//            }
+//        }
+
+
+        Collections.sort(studentListForTest, new SortByGroup());
+//        studentListForTest.addAll(studentTemp);
 
         System.out.println("接下来是排序时间：");
         for(StudentInfo s: studentListForTest)
