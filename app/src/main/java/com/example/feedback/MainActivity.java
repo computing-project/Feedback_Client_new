@@ -18,11 +18,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Intent intent = new Intent(this, Assessment_Preparation_Activity.class);
-//        startActivity(intent);
-//        finish();
+        Intent intent = new Intent(this, Activity_Timer.class);
+        startActivity(intent);
+        finish();
 
-        test = AllFunctions.getObject();
+      //  test = AllFunctions.getObject();
       //  Intent intent = new Intent(this, TestLoginActivity.class);
       //  startActivity(intent);
 

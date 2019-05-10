@@ -7,6 +7,10 @@ import android.widget.EditText;
 
 public class Activity_Timer extends AppCompatActivity {
     int durationMin, durationSec, warningMin, warningSec;
+    EditText editText_durationMin;
+    EditText editText_durationSec;
+    EditText editText_warningMin;
+    EditText editText_warningSec;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,19 +21,79 @@ public class Activity_Timer extends AppCompatActivity {
 
     private void init()
     {
-        EditText editText_durationMin = findViewById(R.id.editText_durationMin_Timer);
+        editText_durationMin = findViewById(R.id.editText_durationMin_Timer);
         editText_durationMin.setText(String.valueOf(durationMin));
-        EditText editText_durationSec = findViewById(R.id.editText_durationSec_Timer);
+        editText_durationSec = findViewById(R.id.editText_durationSec_Timer);
         editText_durationSec.setText(String.valueOf(durationSec));
-        EditText editText_warningMin = findViewById(R.id.editText_warningMin_Timer);
+        editText_warningMin = findViewById(R.id.editText_warningMin_Timer);
         editText_warningMin.setText(String.valueOf(warningMin));
-        EditText editText_warningSec = findViewById(R.id.editText_warningSec_Timer);
+        editText_warningSec = findViewById(R.id.editText_warningSec_Timer);
         editText_warningSec.setText(String.valueOf(warningSec));
 
     }
 
     public void addDurationMin(View view)
     {
-
+        durationMin++;
+        if(durationMin>59)
+            durationMin = durationMin - 60;
+        editText_durationMin.setText(String.valueOf(durationMin));
     }
+
+    public void minusDurationMin(View view)
+    {
+        durationMin--;
+        if(durationMin<0)
+            durationMin = durationMin + 60;
+        editText_durationMin.setText(String.valueOf(durationMin));
+    }
+
+    public void addDurationSec(View view)
+    {
+        durationSec = durationSec + 5;
+        if(durationSec>59)
+            durationSec = durationSec - 60;
+        editText_durationSec.setText(String.valueOf(durationSec));
+    }
+
+    public void minusDurationSec(View view)
+    {
+        durationSec = durationSec - 5;
+        if(durationSec<0)
+            durationSec = durationSec + 60;
+        editText_durationSec.setText(String.valueOf(durationSec));
+    }
+
+    public void addWarningMin(View view)
+    {
+        warningMin++;
+        if(warningMin>59)
+            warningMin = warningMin - 60;
+        editText_warningMin.setText(String.valueOf(warningMin));
+    }
+
+    public void minusWarningMin(View view)
+    {
+        warningMin--;
+        if(warningMin<0)
+            warningMin = warningMin + 60;
+        editText_warningMin.setText(String.valueOf(warningMin));
+    }
+
+    public void addWarningSec(View view)
+    {
+        warningSec = warningSec + 5;
+        if(warningSec>59)
+            warningSec = warningSec - 60;
+        editText_warningSec.setText(String.valueOf(warningSec));
+    }
+
+    public void minusWarningSec(View view)
+    {
+        warningSec = warningSec - 5;
+        if(warningSec<0)
+            warningSec = warningSec + 60;
+        editText_warningSec.setText(String.valueOf(warningSec));
+    }
+
 }

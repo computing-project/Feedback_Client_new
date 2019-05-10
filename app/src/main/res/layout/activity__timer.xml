@@ -47,6 +47,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/textView_duration_inTimer"
                 android:background="@android:color/transparent"
+                android:onClick="addDurationMin"
                 android:text="+"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
@@ -75,6 +76,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/textView_durationMin_Timer"
                 android:background="@android:color/transparent"
+                android:onClick="minusDurationMin"
                 android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
@@ -85,6 +87,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_toRightOf="@+id/button_durationMinMinus_Timer"
                 android:background="@android:color/transparent"
+                android:onClick="addDurationSec"
                 android:text="+"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
@@ -113,6 +116,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/textView_durationSec_Timer"
                 android:background="@android:color/transparent"
+                android:onClick="minusDurationSec"
                 android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
@@ -135,6 +139,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_toRightOf="@+id/textView_duration_inTimer"
                 android:background="@android:color/transparent"
+                android:onClick="addWarningMin"
                 android:text="+"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
@@ -169,6 +174,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_toRightOf="@+id/textView_durationMin_Timer"
                 android:background="@android:color/transparent"
+                android:onClick="minusWarningMin"
                 android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
@@ -181,6 +187,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_toRightOf="@+id/button_durationMinMinus_Timer"
                 android:background="@android:color/transparent"
+                android:onClick="addWarningSec"
                 android:text="+"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
@@ -215,6 +222,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_toRightOf="@+id/textView_durationSec_Timer"
                 android:background="@android:color/transparent"
+                android:onClick="minusWarningSec"
                 android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
         </RelativeLayout>
