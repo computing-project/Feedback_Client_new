@@ -43,7 +43,7 @@ public class AllFunctions{
     public void loginSucc(ArrayList<ProjectInfo> projectList){
 
         this.projectList = projectList;
-        handlerAllfunction.sendEmptyMessage(101);
+//        handlerAllfunction.sendEmptyMessage(101);
     }
 
     public ArrayList<ProjectInfo> getProjectList(){
@@ -224,6 +224,7 @@ public class AllFunctions{
 
     public void readExcel(ProjectInfo project, String path){
 
+        System.out.println("project name in allfunction for readExcel: "+project.getProjectName());
         ReadExcel read = new ReadExcel();
         read.setInputFile(path);
         project.addStudentList(read.read());
