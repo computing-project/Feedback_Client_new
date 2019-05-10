@@ -28,7 +28,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_toLeftOf="@+id/button_editStudent_instudentgroup"
-                android:background="@drawable/ic_add_student" />
+                android:background="@drawable/ic_add_student"
+                android:onClick="addStudent" />
 
             <Button
                 android:id="@+id/button_editStudent_instudentgroup"
@@ -36,7 +37,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_toLeftOf="@+id/button_deleteStudent_instudentgroup"
-                android:background="@drawable/ic_edit_student" />
+                android:background="@drawable/ic_edit_student"
+                android:onClick="editStudent_inStudentManagement" />
 
             <Button
                 android:id="@+id/button_deleteStudent_instudentgroup"

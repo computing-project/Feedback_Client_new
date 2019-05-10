@@ -72,14 +72,6 @@ public class Activity_Student_Group extends AppCompatActivity {
         init(indexOfProject);
     }
 
-    //button add click
-    public void addStudent(View view)
-    {
-
-    }
-
-
-
 
 
     public class MyAdapter extends BaseAdapter {
@@ -285,10 +277,9 @@ public class Activity_Student_Group extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private class OnClickListenerImpl implements View.OnClickListener {
 
-        @Override
-        public void onClick(View v) {
+        //button addStudent click.
+        public void addStudent(View v) {
 
             LayoutInflater layoutInflater = LayoutInflater.from(Activity_Student_Group.this);//获得layoutInflater对象
             final View view = layoutInflater.from(Activity_Student_Group.this).inflate(R.layout.dialog_add_student, null);//获得view对象
@@ -309,12 +300,9 @@ public class Activity_Student_Group extends AppCompatActivity {
                     surname = editText_surname_addStudent.getText().toString();
                     email = editText_email_addStudent.getText().toString();
 
+                    AllFunctions.getObject().addStudent(project, studentID, firstName, middleName,surname,email);
+                    init(indexOfProject);
 
-                    if(studentID.equals("1")){
-                        Toast.makeText(Activity_Student_Group.this, "登录成功", Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(Activity_Student_Group.this, "登录失败", Toast.LENGTH_SHORT).show();
-                    }
 
                 }
             }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -327,7 +315,50 @@ public class Activity_Student_Group extends AppCompatActivity {
             }).create();
             dialog.show();
         }
+
+
+    public void editStudent_inStudentManagement(View v) {
+
+        LayoutInflater layoutInflater = LayoutInflater.from(Activity_Student_Group.this);//获得layoutInflater对象
+        View view = layoutInflater.from(Activity_Student_Group.this).inflate(R.layout.dialog_add_student, null);//获得view对象
+
+        EditText editText_studentID_addStudent = (EditText) view.findViewById(R.id.editText_studentID_addStudent);//获取控件
+        editText_studentID_addStudent.setEnabled(false);
+        editText_studentID_addStudent.setText(students.get(indexOfStudent).getNumber());
+        EditText editText_firstName_addStudent = (EditText) view.findViewById(R.id.editText_firstName_addStudent);//获取控件
+        editText_firstName_addStudent.setText(students.get(indexOfStudent).getFirstName());
+        EditText editText_middleName_addStudent = (EditText) view.findViewById(R.id.editText_middleName_addStudent);//获取控件
+        editText_middleName_addStudent.setText(students.get(indexOfStudent).getMiddleName());
+        EditText editText_surname_addStudent = (EditText) view.findViewById(R.id.editText_surname_addStudent);//获取控件
+        editText_surname_addStudent.setText(students.get(indexOfStudent).getSurname());
+        EditText editText_email_addStudent = (EditText) view.findViewById(R.id.editText_email_addStudent);//获取控件
+        editText_email_addStudent.setText(students.get(indexOfStudent).getEmail());
+
+        Dialog dialog = new AlertDialog.Builder(Activity_Student_Group.this).setTitle("Edit Student").setView(view).setPositiveButton("Done", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+                studentID = editText_studentID_addStudent.getText().toString();
+                firstName = editText_firstName_addStudent.getText().toString();
+                middleName = editText_middleName_addStudent.getText().toString();
+                surname = editText_surname_addStudent.getText().toString();
+                email = editText_email_addStudent.getText().toString();
+
+                AllFunctions.getObject().editStudent(project, studentID, firstName, middleName,surname,email);
+                init(indexOfProject);
+
+
+            }
+        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+
+            }
+        }).create();
+        dialog.show();
     }
+
 
 
 
