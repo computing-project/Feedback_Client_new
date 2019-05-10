@@ -18,11 +18,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(this, Activity_Timer.class);
-        startActivity(intent);
-        finish();
+//        Intent intent = new Intent(this, Activity_Timer.class);
+//        startActivity(intent);
+//        finish();
 
-      //  test = AllFunctions.getObject();
+        test = AllFunctions.getObject();
       //  Intent intent = new Intent(this, TestLoginActivity.class);
       //  startActivity(intent);
 
@@ -56,6 +56,12 @@ public class MainActivity extends AppCompatActivity {
         ProjectInfo projectTest = test.getProjectList().get(0);
         test.projectTimer(projectTest,5,0,
                 1,30);
+    }
+
+    public void deleteProjectTest(View view){
+        ProjectInfo projectTest = test.getProjectList().get(0);
+        test.deleteProject(0);
+
     }
 
     public void importStudentTest(View view)

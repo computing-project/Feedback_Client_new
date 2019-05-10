@@ -163,7 +163,7 @@ public class AllFunctions{
             public void run(){
 
                 communication.deleteProject(projectName);
-                Log.d("projectTimer","success");
+                Log.d("deleteProject","success");
 
             }
         }).start();
