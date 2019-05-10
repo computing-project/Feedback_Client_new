@@ -307,8 +307,6 @@ public class AllFunctions{
 
     public void deleteStudent(ProjectInfo project, String number){
 
-        int i = searchStudent(project, number);
-        project.getStudentInfo().remove(i);
 
         new Thread(new Runnable(){
             @Override

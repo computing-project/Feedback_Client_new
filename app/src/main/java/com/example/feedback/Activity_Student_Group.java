@@ -68,6 +68,7 @@ public class Activity_Student_Group extends AppCompatActivity {
     //button delete click.
     public void deleteStudent(View view)
     {
+        AllFunctions.getObject().deleteStudent(project,students.get(indexOfStudent).getNumber());
         students.remove(indexOfStudent);
         init(indexOfProject);
     }
@@ -238,7 +239,7 @@ public class Activity_Student_Group extends AppCompatActivity {
 
     private static final int FILE_SELECT_CODE = 0;
 
-    public void showFileChooser(View view) {
+    public void import_StudentManagement(View view) {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("*/*");
         intent.addCategory(Intent.CATEGORY_OPENABLE);
