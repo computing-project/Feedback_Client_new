@@ -124,6 +124,7 @@
                     android:layout_height="25dp"
                     android:background="@android:color/transparent"
                     android:gravity="left|center_vertical"
+                    android:onClick="timer"
                     android:text="Time"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 

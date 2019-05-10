@@ -1,5 +1,6 @@
 package com.example.feedback;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,8 @@ import android.widget.EditText;
 
 public class Activity_Timer extends AppCompatActivity {
     int durationMin, durationSec, warningMin, warningSec;
+    int indexOfProject;
+    ProjectInfo project;
     EditText editText_durationMin;
     EditText editText_durationSec;
     EditText editText_warningMin;
@@ -16,7 +19,21 @@ public class Activity_Timer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__timer);
+
+        Intent intent =getIntent();
+        indexOfProject = Integer.parseInt(intent.getStringExtra("index"));
+
+        project = AllFunctions.getObject().getProjectList().get(indexOfProject);
+        getTimeOfProject();
         init();
+    }
+
+    private void getTimeOfProject()
+    {
+        durationMin = project.getDurationMin();
+        durationSec = project.getDurationSec();
+        warningMin = project.getWarningMin();
+        warningSec = project.getWarningSec();
     }
 
     private void init()
