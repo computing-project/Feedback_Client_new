@@ -9,8 +9,6 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_x="0dp"
-        android:layout_y="0dp"
         android:scaleType="centerCrop"
         android:src="@drawable/back" />
 
@@ -33,13 +31,14 @@
                 android:text="Log In "
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="#9D000000"
-                android:textSize="26sp" />
+                android:textSize="26sp"/>
 
             <View
                 android:id="@+id/divider2"
                 android:layout_width="3dp"
                 android:layout_height="match_parent"
-                android:background="#FA030202" />
+                android:background="#FA030202"
+                android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/textView_signup_insignup"
@@ -48,7 +47,8 @@
                 android:text=" Sign Up"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="#DD000000"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_weight="1"/>
 
         </LinearLayout>
 
@@ -63,108 +63,121 @@
                 android:layout_width="350dp"
                 android:layout_height="40dp"
                 android:layout_centerHorizontal="true"
+                android:layout_marginLeft="55dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="25dp"
-                android:layout_marginLeft="55dp"
                 android:background="@drawable/rounded_white"
                 android:drawableLeft="@drawable/ic_user_email"
                 android:drawablePadding="5dp"
                 android:hint="First Name"
                 android:inputType="textPersonName"
                 android:paddingLeft="20dp"
-                android:paddingRight="20dp"/>
+                android:paddingRight="20dp"
+                android:layout_weight="1"/>
 
             <EditText
                 android:id="@+id/editText_middleName_insignup"
                 android:layout_width="350dp"
                 android:layout_height="40dp"
+                android:layout_below="@+id/editText_firstName_insignup"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="25dp"
+                android:background="@drawable/rounded_white"
                 android:drawableLeft="@drawable/ic_user_email"
-                android:layout_below="@+id/editText_firstName_insignup"
+                android:drawablePadding="5dp"
                 android:hint="Middle Name (optional)"
                 android:inputType="textPersonName"
-                android:background="@drawable/rounded_white"
-                android:drawablePadding="5dp"
                 android:paddingLeft="20dp"
-                android:paddingRight="20dp"/>
+                android:paddingRight="20dp"
+                android:layout_weight="1"/>
 
             <EditText
                 android:id="@+id/editText_lastname_insignup"
                 android:layout_width="350dp"
                 android:layout_height="40dp"
+                android:layout_below="@+id/editText_middleName_insignup"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="25dp"
+                android:background="@drawable/rounded_white"
                 android:drawableLeft="@drawable/ic_user_email"
-                android:layout_below="@+id/editText_middleName_insignup"
+                android:drawablePadding="5dp"
                 android:hint="Last Name"
                 android:inputType="textPersonName"
-                android:background="@drawable/rounded_white"
-                android:drawablePadding="5dp"
                 android:paddingLeft="20dp"
-                android:paddingRight="20dp" />
+                android:paddingRight="20dp"
+                android:layout_weight="1"/>
 
             <EditText
                 android:id="@+id/editText_email_insignup"
                 android:layout_width="350dp"
                 android:layout_height="40dp"
+                android:layout_below="@+id/editText_lastname_insignup"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="25dp"
+                android:background="@drawable/rounded_white"
                 android:drawableLeft="@drawable/ic_email"
-                android:layout_below="@+id/editText_lastname_insignup"
+                android:drawablePadding="5dp"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:background="@drawable/rounded_white"
-                android:drawablePadding="5dp"
                 android:paddingLeft="19dp"
-                android:paddingRight="20dp"/>
+                android:paddingRight="20dp"
+                android:layout_weight="1"/>
 
             <EditText
                 android:id="@+id/editText_password_insignup"
                 android:layout_width="350dp"
                 android:layout_height="40dp"
+                android:layout_below="@+id/editText_email_insignup"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="25dp"
+                android:background="@drawable/rounded_white"
                 android:drawableLeft="@drawable/ic_user_password"
-                android:layout_below="@+id/editText_email_insignup"
+                android:drawablePadding="5dp"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:background="@drawable/rounded_white"
-                android:drawablePadding="5dp"
                 android:paddingLeft="20dp"
-                android:paddingRight="20dp"/>
+                android:paddingRight="20dp"
+                android:layout_weight="1" />
 
             <EditText
                 android:id="@+id/editText_confirmPassword_insignup"
                 android:layout_width="350dp"
                 android:layout_height="40dp"
+                android:layout_below="@+id/editText_password_insignup"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="25dp"
+                android:background="@drawable/rounded_white"
                 android:drawableLeft="@drawable/ic_user_password"
-                android:layout_below="@+id/editText_password_insignup"
+                android:drawablePadding="5dp"
                 android:hint="Confirm Password"
                 android:inputType="textPassword"
-                android:background="@drawable/rounded_white"
-                android:drawablePadding="5dp"
                 android:paddingLeft="20dp"
-                android:paddingRight="20dp"/>
-
+                android:paddingRight="20dp"
+                android:layout_weight="1" />
 
 
             <Button
                 android:id="@+id/button_signup_insignup"
                 android:layout_width="350dp"
                 android:layout_height="40dp"
+                android:layout_below="@+id/editText_confirmPassword_insignup"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="25dp"
-                android:layout_below="@+id/editText_confirmPassword_insignup"
+                android:background="@drawable/rounded_login"
+                android:fontFamily="sans-serif-black"
                 android:onClick="signup"
                 android:text="Submit"
-                android:fontFamily="sans-serif-black"
-                android:background="@drawable/rounded_login"
                 android:textAppearance="@style/TextAppearance.AppCompat.Button"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff"
+                android:layout_weight="1" />
         </RelativeLayout>
 
     </LinearLayout>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 </android.support.constraint.ConstraintLayout>
