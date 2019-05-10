@@ -55,8 +55,11 @@ public class CommunicationForClient {
 			System.out.println("Receive: " + receive); //just for test
 			JSONObject jsonReceive = JSONObject.parseObject(receive);
 
-			boolean register_ACK = Boolean.getBoolean(jsonReceive.get("register_ACK").toString());
-			functions.registerACK(register_ACK);
+			String register_ACK_String = jsonReceive.get("register_ACK").toString();
+			if(register_ACK_String.equals("ture"))
+				functions.registerACK(true);
+			else
+				functions.registerACK(false);
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}

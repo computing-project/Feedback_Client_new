@@ -43,7 +43,7 @@ public class AllFunctions{
     public void loginSucc(ArrayList<ProjectInfo> projectList){
 
         this.projectList = projectList;
-//        handlerAllfunction.sendEmptyMessage(101);
+        handlerAllfunction.sendEmptyMessage(101);
     }
 
     public ArrayList<ProjectInfo> getProjectList(){
@@ -90,9 +90,6 @@ public class AllFunctions{
     }
 
     public void registerACK(boolean ack){
-
-        System.out.print("registerACK" + ack);
-
 
         //for test
         System.out.println("receive register_ACK in AllFunc: "+ack);
@@ -174,7 +171,13 @@ public class AllFunctions{
     public void projectTimer(ProjectInfo project,int durationMin, int durationSec,
                              int warningMin, int warningSec){
 
-        project.setTimer(durationMin, durationMin, warningMin, warningSec);
+        System.out.println("Time in allfunction: "+durationMin+":"+durationSec+"   "+warningMin+":"+warningSec);
+        project.setDurationMin(durationMin);
+        project.setDurationSec(durationSec);
+        project.setWarningMin(warningMin);
+        project.setWarningSec(warningSec);
+        System.out.println("Time in allfunction: "+project.getDurationMin()+":"+project.getDurationSec()
+                +"   "+project.getWarningMin()+":"+project.getWarningSec());
 
         new Thread(new Runnable(){
             @Override

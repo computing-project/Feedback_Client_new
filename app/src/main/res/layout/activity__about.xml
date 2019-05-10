@@ -83,6 +83,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="50dp"
             android:layout_marginBottom="50dp"
+            android:onClick="next_About"
             android:text="Next" />
 
         <Button
@@ -93,7 +94,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="50dp"
             android:layout_marginBottom="50dp"
-            android:onClick="back"
+            android:onClick="back_About"
             android:text="Back" />
 
         <Button
@@ -104,7 +105,7 @@
             android:layout_marginRight="40dp"
             android:layout_marginBottom="50dp"
             android:layout_toLeftOf="@id/button_next_inabout"
-            android:onClick="save"
+            android:onClick="save_About"
             android:text="Save" />
     </RelativeLayout>
 
