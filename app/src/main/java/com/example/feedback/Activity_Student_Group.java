@@ -1,8 +1,11 @@
 package com.example.feedback;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -16,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +35,12 @@ public class Activity_Student_Group extends AppCompatActivity {
     int indexOfProject;
     ProjectInfo project;
     String path;
+
+    String studentID;
+    String firstName;
+    String middleName;
+    String surname;
+    String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -274,6 +284,53 @@ public class Activity_Student_Group extends AppCompatActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+    private class OnClickListenerImpl implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+
+            LayoutInflater layoutInflater = LayoutInflater.from(Activity_Student_Group.this);//获得layoutInflater对象
+            final View view = layoutInflater.from(Activity_Student_Group.this).inflate(R.layout.dialog_add_student, null);//获得view对象
+
+            Dialog dialog = new AlertDialog.Builder(Activity_Student_Group.this).setTitle("Add Student").setView(view).setPositiveButton("Done", new DialogInterface.OnClickListener() {
+
+                public void onClick(DialogInterface dialog, int which) {
+
+                    EditText editText_studentID_addStudent = (EditText) view.findViewById(R.id.editText_studentID_addStudent);//获取控件
+                    EditText editText_firstName_addStudent = (EditText) view.findViewById(R.id.editText_firstName_addStudent);//获取控件
+                    EditText editText_middleName_addStudent = (EditText) view.findViewById(R.id.editText_middleName_addStudent);//获取控件
+                    EditText editText_surname_addStudent = (EditText) view.findViewById(R.id.editText_surname_addStudent);//获取控件
+                    EditText editText_email_addStudent = (EditText) view.findViewById(R.id.editText_email_addStudent);//获取控件
+
+                    studentID = editText_studentID_addStudent.getText().toString();
+                    firstName = editText_firstName_addStudent.getText().toString();
+                    middleName = editText_middleName_addStudent.getText().toString();
+                    surname = editText_surname_addStudent.getText().toString();
+                    email = editText_email_addStudent.getText().toString();
+
+
+                    if(studentID.equals("1")){
+                        Toast.makeText(Activity_Student_Group.this, "登录成功", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(Activity_Student_Group.this, "登录失败", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // TODO Auto-generated method stub
+
+                }
+            }).create();
+            dialog.show();
+        }
+    }
+
+
+
 
 
 }
