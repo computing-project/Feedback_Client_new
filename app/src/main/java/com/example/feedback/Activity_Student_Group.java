@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.DragEvent;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -129,6 +130,7 @@ public class Activity_Student_Group extends AppCompatActivity {
                 }
             });
 
+
             final View dragView = convertView;
             convertView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
@@ -162,6 +164,7 @@ public class Activity_Student_Group extends AppCompatActivity {
                             // Determines if this View can accept the dragged data
                             if (event.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
                                 v.invalidate();
+
                                 return true;
                             }
                             return false;
@@ -187,8 +190,6 @@ public class Activity_Student_Group extends AppCompatActivity {
                             // Gets the item containing the dragged data
                             ClipData.Item item = event.getClipData().getItemAt(0);
                             final int srcPosition = Integer.parseInt(item.getText().toString());
-                            System.out.println("srcPosition is"+srcPosition);
-                            System.out.println("position is"+position);
 
                             //change group num
                             if(students.get(position).getGroup()!= -999)
