@@ -6,260 +6,357 @@
     android:layout_height="match_parent"
     tools:context=".Activity_Timer">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/textView_Title_inTimer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="40dp"
-            android:text="Assessment Time"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        <View
-            android:id="@+id/divider12"
-            android:layout_width="match_parent"
-            android:layout_height="15dp"
-            android:layout_below="@+id/textView_Title_inTimer"
-            android:background="?android:attr/listDivider" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:clipToPadding="false">
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="false"
-            android:layout_centerInParent="true">
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="14"
+            android:background="@drawable/ic_header_background"
+            android:elevation="40dp">
 
             <TextView
-                android:id="@+id/textView_duration_inTimer"
+                android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="Duration:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                android:layout_centerInParent="true"
+                android:fontFamily="sans-serif-medium"
+                android:text="Projects "
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/button_addDurationMin_inTimer"
-                android:layout_width="40dp"
+            <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/textView_duration_inTimer"
-                android:background="@android:color/transparent"
-                android:onClick="addDurationMin"
-                android:text="+"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                android:layout_centerVertical="true">
 
-            <EditText
-                android:id="@+id/editText_durationMin_Timer"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/button_addDurationMin_inTimer"
-                android:ems="10"
-                android:inputType="number" />
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="100"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="right"
+                    android:text="Hello, Xxxxxx Xxxxxx"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/textView_durationMin_Timer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/editText_durationMin_Timer"
-                android:text="min"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                <View
+                    android:id="@+id/divider13"
+                    android:layout_width="1dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"/>
 
-            <Button
-                android:id="@+id/button_durationMinMinus_Timer"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/textView_durationMin_Timer"
-                android:background="@android:color/transparent"
-                android:onClick="minusDurationMin"
-                android:text="-"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="right"
+                    android:text="Help"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/button_addDurationSec_inTimer"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_toRightOf="@+id/button_durationMinMinus_Timer"
-                android:background="@android:color/transparent"
-                android:onClick="addDurationSec"
-                android:text="+"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                <View
+                    android:id="@+id/divider14"
+                    android:layout_width="1dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff" />
 
-            <EditText
-                android:id="@+id/editText_durationSec_Timer"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/button_addDurationSec_inTimer"
-                android:ems="10"
-                android:inputType="number" />
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Log Out"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/textView_durationSec_Timer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/editText_durationSec_Timer"
-                android:text="sec"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-            <Button
-                android:id="@+id/button_durationSecMinus_Timer"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/textView_durationSec_Timer"
-                android:background="@android:color/transparent"
-                android:onClick="minusDurationSec"
-                android:text="-"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-            <TextView
-                android:id="@+id/textView_warning_inTimer2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView_duration_inTimer"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="30dp"
-                android:text="Warning:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-            <Button
-                android:id="@+id/button_addWarningMin_inTimer"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/button_addDurationMin_inTimer"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="30dp"
-                android:layout_toRightOf="@+id/textView_duration_inTimer"
-                android:background="@android:color/transparent"
-                android:onClick="addWarningMin"
-                android:text="+"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-            <EditText
-                android:id="@+id/editText_warningMin_Timer"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editText_durationMin_Timer"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="30dp"
-                android:layout_toRightOf="@+id/button_addDurationMin_inTimer"
-                android:ems="10"
-                android:inputType="number" />
-
-            <TextView
-                android:id="@+id/textView_warningMin_Timer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView_durationMin_Timer"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="30dp"
-                android:layout_toRightOf="@+id/editText_durationMin_Timer"
-                android:text="min"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-            <Button
-                android:id="@+id/button_warningMinMinus_Timer"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/button_durationMinMinus_Timer"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="30dp"
-                android:layout_toRightOf="@+id/textView_durationMin_Timer"
-                android:background="@android:color/transparent"
-                android:onClick="minusWarningMin"
-                android:text="-"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-            <Button
-                android:id="@+id/button_addWarningSec_inTimer"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/button_addDurationSec_inTimer"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_toRightOf="@+id/button_durationMinMinus_Timer"
-                android:background="@android:color/transparent"
-                android:onClick="addWarningSec"
-                android:text="+"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-            <EditText
-                android:id="@+id/editText_warningSec_Timer"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView_durationSec_Timer"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="30dp"
-                android:layout_toRightOf="@+id/button_addDurationSec_inTimer"
-                android:ems="10"
-                android:inputType="number" />
-
-            <TextView
-                android:id="@+id/textView_warningSec_Timer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView_durationSec_Timer"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="30dp"
-                android:layout_toRightOf="@+id/editText_durationSec_Timer"
-                android:text="sec"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-            <Button
-                android:id="@+id/button_warningSecMinus_Timer"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/button_durationSecMinus_Timer"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="30dp"
-                android:layout_toRightOf="@+id/textView_durationSec_Timer"
-                android:background="@android:color/transparent"
-                android:onClick="minusWarningSec"
-                android:text="-"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+            </LinearLayout>
         </RelativeLayout>
 
-        <Button
-            android:id="@+id/button_back_inTimer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="50dp"
-            android:layout_marginBottom="50dp"
-            android:onClick="back_Timer"
-            android:text="Back"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
-        <Button
-            android:id="@+id/button_save_inTimer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="50dp"
-            android:layout_toLeftOf="@+id/button_next_inTimer"
-            android:onClick="save_Timer"
-            android:text="Save"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/back" />
 
-        <Button
-            android:id="@+id/button_next_inTimer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="50dp"
-            android:text="Next"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/textView_Title_inTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="25dp"
+                android:text="Assessment Time"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+
+            <View
+                android:id="@+id/divider9"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@id/textView_Title_inTimer"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="#E4E4E4" />
+            
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="false"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    android:id="@+id/textView_duration_inTimer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="Duration:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+                <Button
+                    android:id="@+id/button_addDurationMin_inTimer"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/textView_duration_inTimer"
+                    android:background="@android:color/transparent"
+                    android:onClick="addDurationMin"
+                    android:text="+"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+                <EditText
+                    android:id="@+id/editText_durationMin_Timer"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/button_addDurationMin_inTimer"
+                    android:ems="10"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/textView_durationMin_Timer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/editText_durationMin_Timer"
+                    android:text="min"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+                <Button
+                    android:id="@+id/button_durationMinMinus_Timer"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/textView_durationMin_Timer"
+                    android:background="@android:color/transparent"
+                    android:onClick="minusDurationMin"
+                    android:text="-"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+                <Button
+                    android:id="@+id/button_addDurationSec_inTimer"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_toRightOf="@+id/button_durationMinMinus_Timer"
+                    android:background="@android:color/transparent"
+                    android:onClick="addDurationSec"
+                    android:text="+"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+                <EditText
+                    android:id="@+id/editText_durationSec_Timer"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/button_addDurationSec_inTimer"
+                    android:ems="10"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/textView_durationSec_Timer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/editText_durationSec_Timer"
+                    android:text="sec"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+                <Button
+                    android:id="@+id/button_durationSecMinus_Timer"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/textView_durationSec_Timer"
+                    android:background="@android:color/transparent"
+                    android:onClick="minusDurationSec"
+                    android:text="-"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+                <TextView
+                    android:id="@+id/textView_warning_inTimer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView_duration_inTimer"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="30dp"
+                    android:text="Warning:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+                <Button
+                    android:id="@+id/button_addWarningMin_inTimer"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/button_addDurationMin_inTimer"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_toRightOf="@+id/textView_duration_inTimer"
+                    android:background="@android:color/transparent"
+                    android:onClick="addWarningMin"
+                    android:text="+"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+                <EditText
+                    android:id="@+id/editText_warningMin_Timer"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editText_durationMin_Timer"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_toRightOf="@+id/button_addDurationMin_inTimer"
+                    android:ems="10"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/textView_warningMin_Timer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView_durationMin_Timer"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_toRightOf="@+id/editText_durationMin_Timer"
+                    android:text="min"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+                <Button
+                    android:id="@+id/button_warningMinMinus_Timer"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/button_durationMinMinus_Timer"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_toRightOf="@+id/textView_durationMin_Timer"
+                    android:background="@android:color/transparent"
+                    android:onClick="minusWarningMin"
+                    android:text="-"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+                <Button
+                    android:id="@+id/button_addWarningSec_inTimer"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/button_addDurationSec_inTimer"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_toRightOf="@+id/button_durationMinMinus_Timer"
+                    android:background="@android:color/transparent"
+                    android:onClick="addWarningSec"
+                    android:text="+"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+                <EditText
+                    android:id="@+id/editText_warningSec_Timer"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView_durationSec_Timer"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_toRightOf="@+id/button_addDurationSec_inTimer"
+                    android:ems="10"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/textView_warningSec_Timer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView_durationSec_Timer"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_toRightOf="@+id/editText_durationSec_Timer"
+                    android:text="sec"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+                <Button
+                    android:id="@+id/button_warningSecMinus_Timer"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/button_durationSecMinus_Timer"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_toRightOf="@+id/textView_durationSec_Timer"
+                    android:background="@android:color/transparent"
+                    android:onClick="minusWarningSec"
+                    android:text="-"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/button_back_inTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="50dp"
+                android:layout_marginBottom="50dp"
+                android:onClick="back_Timer"
+                android:text="Back"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+            <Button
+                android:id="@+id/button_save_inTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="50dp"
+                android:layout_toLeftOf="@+id/button_next_inTimer"
+                android:onClick="save_Timer"
+                android:text="Save"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+            <Button
+                android:id="@+id/button_next_inTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="50dp"
+                android:text="Next"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+        </RelativeLayout>
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
