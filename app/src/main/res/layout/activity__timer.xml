@@ -109,6 +109,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="25dp"
                 android:text="Assessment Time"
+                android:textColor="#dd000000"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
 
             <View
@@ -119,8 +120,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                android:background="#E4E4E4" />
-            
+                android:background="#014085" />
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -133,7 +134,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:text="Duration:"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                    android:textSize="24sp"/>
 
                 <Button
                     android:id="@+id/button_addDurationMin_inTimer"
@@ -144,7 +145,7 @@
                     android:background="@android:color/transparent"
                     android:onClick="addDurationMin"
                     android:text="+"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                    android:textSize="36sp"/>
 
                 <EditText
                     android:id="@+id/editText_durationMin_Timer"
@@ -153,6 +154,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/button_addDurationMin_inTimer"
                     android:ems="10"
+                    android:background="@drawable/ic_textbox"
                     android:inputType="number" />
 
                 <TextView
@@ -162,7 +164,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/editText_durationMin_Timer"
                     android:text="min"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                    android:textSize="24sp"/>
 
                 <Button
                     android:id="@+id/button_durationMinMinus_Timer"
@@ -173,7 +175,7 @@
                     android:background="@android:color/transparent"
                     android:onClick="minusDurationMin"
                     android:text="-"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                    android:textSize="36sp" />
 
                 <Button
                     android:id="@+id/button_addDurationSec_inTimer"
@@ -193,6 +195,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/button_addDurationSec_inTimer"
                     android:ems="10"
+                    android:background="@drawable/ic_textbox"
                     android:inputType="number" />
 
                 <TextView
@@ -202,6 +205,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/editText_durationSec_Timer"
                     android:text="sec"
+                    android:textSize="24sp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
                 <Button
@@ -223,7 +227,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_marginTop="30dp"
                     android:text="Warning:"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                    android:textSize="24sp" />
 
                 <Button
                     android:id="@+id/button_addWarningMin_inTimer"
@@ -247,6 +251,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_toRightOf="@+id/button_addDurationMin_inTimer"
                     android:ems="10"
+                    android:background="@drawable/ic_textbox"
                     android:inputType="number" />
 
                 <TextView
@@ -258,6 +263,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_toRightOf="@+id/editText_durationMin_Timer"
                     android:text="min"
+                    android:textSize="24sp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
                 <Button
@@ -295,6 +301,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_toRightOf="@+id/button_addDurationSec_inTimer"
                     android:ems="10"
+                    android:background="@drawable/ic_textbox"
                     android:inputType="number" />
 
                 <TextView
@@ -306,6 +313,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_toRightOf="@+id/editText_durationSec_Timer"
                     android:text="sec"
+                    android:textSize="24sp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
                 <Button
@@ -328,23 +336,22 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginLeft="50dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginBottom="50dp"
                 android:onClick="back_Timer"
                 android:text="Back"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                android:background="@drawable/ic_buttom_background"
+                android:textColor="#ffffff"/>
 
             <Button
-                android:id="@+id/button_save_inTimer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_marginEnd="30dp"
+                android:layout_marginRight="40dp"
                 android:layout_marginBottom="50dp"
                 android:layout_toLeftOf="@+id/button_next_inTimer"
                 android:onClick="save_Timer"
-                android:text="Save"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                android:text="Save" />
 
             <Button
                 android:id="@+id/button_next_inTimer"
@@ -352,10 +359,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginEnd="50dp"
+                android:layout_marginEnd="30dp"
                 android:layout_marginBottom="50dp"
                 android:text="Next"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                android:background="@drawable/ic_buttom_background"
+                android:textColor="#ffffff"/>
         </RelativeLayout>
     </LinearLayout>
 
