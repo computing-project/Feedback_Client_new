@@ -7,6 +7,18 @@
     tools:context=".Assessment_Preparation_Activity">
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:baselineAligned="false"
