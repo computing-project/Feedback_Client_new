@@ -343,7 +343,8 @@
                 android:layout_marginBottom="50dp"
                 android:layout_toLeftOf="@+id/button_next_inTimer"
                 android:onClick="save_Timer"
-                android:text="Save" />
+                android:text="Save"
+                android:background="@drawable/ic_savebuttom"/>
 
             <Button
                 android:id="@+id/button_next_inTimer"

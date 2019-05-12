@@ -260,7 +260,8 @@
                 android:layout_marginBottom="50dp"
                 android:layout_toLeftOf="@id/button_next_inabout"
                 android:onClick="save_About"
-                android:text="Save" />
+                android:text="Save"
+                android:background="@drawable/ic_savebuttom"/>
         </RelativeLayout>
     </LinearLayout>
 
