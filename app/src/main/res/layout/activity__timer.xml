@@ -153,6 +153,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/button_addDurationMin_inTimer"
                     android:ems="10"
+                    android:paddingTop="6dp"
                     android:background="@drawable/ic_textbox"
                     android:inputType="number" />
 
@@ -192,6 +193,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/button_addDurationSec_inTimer"
                     android:ems="10"
+                    android:paddingTop="6dp"
                     android:background="@drawable/ic_textbox"
                     android:inputType="number" />
 
@@ -247,6 +249,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_toRightOf="@+id/button_addDurationMin_inTimer"
                     android:ems="10"
+                    android:paddingTop="6dp"
                     android:background="@drawable/ic_textbox"
                     android:inputType="number" />
 
@@ -294,6 +297,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_toRightOf="@+id/button_addDurationSec_inTimer"
                     android:ems="10"
+                    android:paddingTop="6dp"
                     android:background="@drawable/ic_textbox"
                     android:inputType="number" />
 
