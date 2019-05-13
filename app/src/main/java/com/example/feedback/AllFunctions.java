@@ -213,13 +213,14 @@ public class AllFunctions{
 
     }
 
-    public void projectCriteria(ProjectInfo project, ArrayList<Criteria> criteriaList){
+    public void projectCriteria(ProjectInfo project, ArrayList<Criteria> criteriaList,
+                                ArrayList<Criteria> commentList){
 
         new Thread(new Runnable(){
             @Override
             public void run(){
 
-                communication.criteriaListSend(project.getProjectName(), criteriaList);
+//                communication.criteriaListSend(project.getProjectName(), criteriaList, commentList);
 
                 Log.d("readExcel","success");
 

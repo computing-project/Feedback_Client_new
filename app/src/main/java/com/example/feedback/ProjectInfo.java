@@ -18,9 +18,20 @@ public class ProjectInfo {
 
     private ArrayList<String> assistantList = new ArrayList<String>();
     private ArrayList<Criteria> criteriaList= new ArrayList<Criteria>();
-    //private ArrayList<Criteria> commentList= new ArrayList<Criteria>();
+    private ArrayList<Criteria> commentList= new ArrayList<Criteria>();
     private ArrayList<StudentInfo> studentInfoList = new ArrayList<StudentInfo>();
 
+    public ArrayList<Criteria> getCommentList() {
+
+        return commentList;
+    
+    }
+
+    public void setCommentList(ArrayList<Criteria> commentList) {
+
+        this.commentList = commentList;
+
+    }
 
     public void setProjectName(String projectName){
 
@@ -69,11 +80,7 @@ public class ProjectInfo {
 
     }
 
-//    public void setComment(ArrayList<Criteria> commentList){
-//
-//        this.commentList = commentList;
-//
-//    }
+
 
     public void addStudentList(ArrayList<StudentInfo> studentInfoList){
 
@@ -90,11 +97,6 @@ public class ProjectInfo {
 
         this.criteriaList.add(criteria);
     }
-
-//    public void addSingleComment(Criteria criteria){
-//
-//        commentList.add(criteria);
-//    }
 
 
     public void setDurationMin(int durationMin) {
