@@ -67,18 +67,12 @@ public class Activity_CriteriaList extends Activity {
         finish();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
+    public void next_inCriteriaList(View view)
+    {
+        Intent intent = new Intent(this, Activity_MarkAllocation.class);
+        intent.putExtra("index", String.valueOf(indexOfProject));
+        startActivity(intent);
+    }
 
 
     public class MyAdapter_criteriaListDefault extends BaseAdapter {

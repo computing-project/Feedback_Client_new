@@ -133,6 +133,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="40dp"
+                android:onClick="next_inCriteriaList"
                 android:text="next" />
         </RelativeLayout>
     </LinearLayout>
