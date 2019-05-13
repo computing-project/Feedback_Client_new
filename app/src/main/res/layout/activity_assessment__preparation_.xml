@@ -178,13 +178,17 @@
                     <Button
                         android:id="@+id/button_about_inpreparation"
                         style="@style/Widget.AppCompat.Button.Borderless"
-                        android:layout_width="wrap_content"
+                        android:layout_width="68dp"
                         android:layout_height="25dp"
                         android:background="@android:color/transparent"
                         android:gravity="left|center_vertical"
                         android:onClick="about"
                         android:text="About"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                        android:drawableRight="@drawable/ic_pencil"
+                        android:fontFamily="sans-serif-medium"
+                        android:layout_marginLeft="15dp"
+                        android:textColor="#515151"
+                        android:textSize="16sp" />
 
                     <View
                         android:id="@+id/divider2"
@@ -201,18 +205,23 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="about details\n"
+                        android:layout_marginLeft="15dp"
                         android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
 
                     <Button
                         android:id="@+id/button_time_inpreparation"
                         style="@style/Widget.AppCompat.Button.Borderless"
-                        android:layout_width="wrap_content"
+                        android:layout_width="54dp"
                         android:layout_height="25dp"
+                        android:layout_marginLeft="15dp"
                         android:background="@android:color/transparent"
+                        android:drawableRight="@drawable/ic_pencil"
+                        android:fontFamily="sans-serif-medium"
                         android:gravity="left|center_vertical"
                         android:onClick="timer"
                         android:text="Time"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                        android:textColor="#515151"
+                        android:textSize="16sp" />
 
                     <View
                         android:id="@+id/divider3"
@@ -229,17 +238,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="time details\n"
-                        android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
+                        android:textAppearance="@android:style/TextAppearance.DeviceDefault"
+                        android:layout_marginLeft="15dp" />
 
                     <Button
                         android:id="@+id/button_criteria_inpreparation"
                         style="@style/Widget.AppCompat.Button.Borderless"
-                        android:layout_width="wrap_content"
+                        android:layout_width="86dp"
                         android:layout_height="25dp"
+                        android:layout_marginLeft="15dp"
                         android:background="@android:color/transparent"
+                        android:drawableRight="@drawable/ic_pencil"
+                        android:fontFamily="sans-serif-medium"
                         android:gravity="left|center_vertical"
                         android:text="Criteria"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                        android:textColor="#515151"
+                        android:textSize="16sp" />
 
                     <View
                         android:id="@+id/divider4"
@@ -256,18 +270,23 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="criteria details\n"
-                        android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
+                        android:textAppearance="@android:style/TextAppearance.DeviceDefault"
+                        android:layout_marginLeft="15dp"/>
 
                     <Button
                         android:id="@+id/button_studentmanagement__inpreparation"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
+                        android:layout_marginLeft="15dp"
                         android:background="@android:color/transparent"
+                        android:drawableRight="@drawable/ic_pencil"
+                        android:fontFamily="sans-serif-medium"
                         android:gravity="left|center_vertical"
                         android:onClick="studentManagement"
                         android:text="Student Management"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                        android:textColor="#515151"
+                        android:textSize="16sp" />
 
                     <View
                         android:id="@+id/divider5"
@@ -284,17 +303,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Click Subtitle to Manage Students\n"
-                        android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
+                        android:textAppearance="@android:style/TextAppearance.DeviceDefault"
+                        android:layout_marginLeft="15dp"/>
 
                     <Button
                         android:id="@+id/button_asseccor__inpreparation"
                         style="@style/Widget.AppCompat.Button.Borderless"
-                        android:layout_width="wrap_content"
+                        android:layout_width="106dp"
                         android:layout_height="25dp"
+                        android:layout_marginLeft="15dp"
                         android:background="@android:color/transparent"
+                        android:drawableRight="@drawable/ic_pencil"
+                        android:fontFamily="sans-serif-medium"
                         android:gravity="left|center_vertical"
                         android:text="Asseccors"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                        android:textColor="#515151"
+                        android:textSize="16sp" />
 
                     <View
                         android:id="@+id/divider6"
@@ -311,7 +335,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="asseccor details"
-                        android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
+                        android:textAppearance="@android:style/TextAppearance.DeviceDefault"
+                        android:layout_marginLeft="15dp" />
 
                 </LinearLayout>
             </ScrollView>
