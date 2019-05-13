@@ -68,7 +68,7 @@ public class Assessment_Preparation_Activity extends AppCompatActivity implement
             alist.add(p.getProjectName());
 
         ArrayAdapter<String> adpter = new ArrayAdapter<String>
-                (Assessment_Preparation_Activity.this, R.layout.list_item_string, alist);
+                (Assessment_Preparation_Activity.this, R.layout.list_item_projectlist_default, alist);
         listView = (ListView) findViewById(R.id.listView_inpreparation);
         listView.setAdapter(adpter);
         listView.setOnItemClickListener(this);
@@ -125,8 +125,8 @@ public class Assessment_Preparation_Activity extends AppCompatActivity implement
     //edit button click function
     public void edit(View view) {
         String button_text = button_edit.getText().toString();
-        if(button_text.equals(" Edit")) {
-            button_edit.setText(" Done");
+        if(button_text.equals("Edit")) {
+            button_edit.setText("Done");
             listView = (ListView) findViewById(R.id.listView_inpreparation);
            projectList = allFunctions.getProjectList();
             myAdapter = new MyAdapter_for_listView(projectList, this);
@@ -134,9 +134,9 @@ public class Assessment_Preparation_Activity extends AppCompatActivity implement
             listView.setAdapter(myAdapter);
             listView.setOnItemClickListener(this);
         }
-        if(button_text.equals(" Done"))
+        if(button_text.equals("Done"))
         {
-            button_edit.setText(" Edit");
+            button_edit.setText("Edit");
             init();
         }
     }
@@ -158,6 +158,13 @@ public class Assessment_Preparation_Activity extends AppCompatActivity implement
     public void studentManagement(View view)
     {
         Intent intent = new Intent(this, Activity_Student_Group.class);
+        intent.putExtra("index", String.valueOf(index_to_send));
+        startActivity(intent);
+    }
+
+    public void criteriaManagement(View view)
+    {
+        Intent intent = new Intent(this, Activity_CriteriaList.class);
         intent.putExtra("index", String.valueOf(index_to_send));
         startActivity(intent);
     }
@@ -191,7 +198,7 @@ public class Assessment_Preparation_Activity extends AppCompatActivity implement
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.list_item_with_delete, parent, false);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.list_item_projectlist_withdelete, parent, false);
             TextView textView_listItem = (TextView) convertView.findViewById(R.id.textView_inlistView);
             textView_listItem.setText(mProjectList.get(position).getProjectName());
             Button button = convertView.findViewById(R.id.Bt_delete_inlist);
