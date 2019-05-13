@@ -110,38 +110,42 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="match_parent"
+                    android:layout_weight="24">
 
                     <Button
                         android:id="@+id/button_edit_inpreparation"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:background="@android:color/transparent"
                         android:gravity="left|center_vertical"
                         android:onClick="edit"
-                        android:text="   Edit"
+                        android:text="Edit"
+                        android:layout_marginLeft="20dp"
+                        android:textColor="#dd000000"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
                     <Button
                         android:id="@+id/button_plus_inpreparation"
                         style="@style/Widget.AppCompat.Button.Borderless"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
                         android:layout_alignParentRight="true"
-                        android:background="@android:color/transparent"
+                        android:background="@drawable/ic_add2"
                         android:gravity="right|center_vertical"
                         android:onClick="plus"
-                        android:text="+     "
+                        android:layout_marginRight="20dp"
+                        android:layout_centerVertical="true"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
                 </RelativeLayout>
 
                 <View
                     android:id="@+id/divider7"
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#050505" />
+                    android:layout_height="1dp"
+                    android:background="#999999" />
 
                 <ListView
                     android:id="@+id/listView_inpreparation"
@@ -151,6 +155,12 @@
                     android:choiceMode="singleChoice"
                     android:dividerHeight="1dp" />
             </LinearLayout>
+
+            <View
+                android:id="@+id/divider18"
+                android:layout_width="1dp"
+                android:background="#999999"
+                android:layout_height="match_parent" />
 
             <ScrollView
                 android:layout_width="match_parent"
