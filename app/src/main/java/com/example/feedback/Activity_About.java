@@ -1,12 +1,13 @@
 package com.example.feedback;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-public class Activity_About extends AppCompatActivity {
+public class Activity_About extends Activity {
 
     String index;
     ProjectInfo project;

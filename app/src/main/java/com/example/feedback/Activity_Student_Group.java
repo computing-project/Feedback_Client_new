@@ -1,5 +1,6 @@
 package com.example.feedback;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ClipData;
@@ -28,7 +29,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Activity_Student_Group extends AppCompatActivity {
+public class Activity_Student_Group extends Activity {
 
     MyAdapter myAdapter;
     ArrayList<StudentInfo> students;

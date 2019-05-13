@@ -1,5 +1,6 @@
 package com.example.feedback;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
@@ -10,7 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class LoginTest_Activity extends AppCompatActivity {
+public class LoginTest_Activity extends Activity {
 
     AllFunctions allFunctions;
     Handler handler;

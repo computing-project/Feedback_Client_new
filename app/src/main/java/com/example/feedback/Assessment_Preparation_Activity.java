@@ -1,5 +1,6 @@
 package com.example.feedback;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
@@ -20,7 +22,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Assessment_Preparation_Activity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class Assessment_Preparation_Activity extends Activity implements AdapterView.OnItemClickListener {
 
     ListView listView;
     ArrayList<String> alist;
@@ -34,6 +36,7 @@ public class Assessment_Preparation_Activity extends AppCompatActivity implement
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_assessment__preparation_);
 
         init();
@@ -205,7 +208,6 @@ public class Assessment_Preparation_Activity extends AppCompatActivity implement
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mProjectList.remove(position);
                     myAdapter.notifyDataSetChanged();
                     allFunctions.deleteProject(position);
                 }

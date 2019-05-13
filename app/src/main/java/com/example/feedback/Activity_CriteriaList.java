@@ -1,5 +1,6 @@
 package com.example.feedback;
 
+import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Context;
@@ -19,7 +20,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class Activity_CriteriaList extends AppCompatActivity {
+public class Activity_CriteriaList extends Activity {
 
     ProjectInfo project;
     int indexOfProject;
@@ -54,9 +55,16 @@ public class Activity_CriteriaList extends AppCompatActivity {
         listView_criteriaDefault.setAdapter(myAdapter1);
         listView_marketCriteria.setAdapter(myAdapter2);
         listView_commentOnly.setAdapter(myAdapter3);
-        setListViewListener();
+        listView_criteriaDefault.setOnDragListener(dragListenerForDefaultListview);
+        listView_marketCriteria.setOnDragListener(dragListenerForMarketCriteriaList);
+        listView_commentOnly.setOnDragListener(dragListenerForCommentOnlyCriteria);
 
+    }
 
+    //button back.
+    public void back_inCriteriaList(View view)
+    {
+        finish();
     }
 
 
@@ -126,11 +134,9 @@ public class Activity_CriteriaList extends AppCompatActivity {
         }
     }
 
-    public void setListViewListener()
-    {
 
-        listView_criteriaDefault.setOnDragListener(new View.OnDragListener() {
-
+        View.OnDragListener dragListenerForDefaultListview = new View.OnDragListener()
+        {
                 @Override
                 public boolean onDrag(View v, DragEvent event) {
 
@@ -214,10 +220,9 @@ public class Activity_CriteriaList extends AppCompatActivity {
                     }
                     return false;
                 }
+            };
 
-            });
-
-        listView_marketCriteria.setOnDragListener(new View.OnDragListener() {
+        View.OnDragListener dragListenerForMarketCriteriaList =  new View.OnDragListener() {
 
             @Override
             public boolean onDrag(View v, DragEvent event) {
@@ -301,9 +306,9 @@ public class Activity_CriteriaList extends AppCompatActivity {
                 }
                 return false;
             }
-        });
+        };
 
-        listView_commentOnly.setOnDragListener(new View.OnDragListener() {
+        View.OnDragListener dragListenerForCommentOnlyCriteria = new View.OnDragListener() {
 
             @Override
             public boolean onDrag(View v, DragEvent event) {
@@ -387,11 +392,8 @@ public class Activity_CriteriaList extends AppCompatActivity {
                 }
                 return false;
             }
-        });
+        };
 
-
-
-    }
 
     //0 means defaultCriteriaList, 1 means market criteriaList, 2 means commentOnly criteriaList
     private int findWhichCriteriaList_itbelongs(String criteriaName)
