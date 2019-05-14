@@ -61,7 +61,11 @@ public class Activity_MarkAllocation extends Activity {
 
     //button 'back'.
     public void back_markAllocation(View view)
+
     {
+        Intent intent = new Intent(this, Activity_CriteriaList.class);
+        intent.putExtra("index", String.valueOf(indexOfProject));
+        startActivity(intent);
         finish();
     }
 

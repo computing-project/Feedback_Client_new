@@ -44,6 +44,7 @@ public class Activity_CriteriaList extends Activity {
 
     }
 
+
     private void init()
     {
         listView_criteriaDefault = findViewById(R.id.listView_CriteriaList_inCriteriaList);
@@ -72,6 +73,7 @@ public class Activity_CriteriaList extends Activity {
         Intent intent = new Intent(this, Activity_MarkAllocation.class);
         intent.putExtra("index", String.valueOf(indexOfProject));
         startActivity(intent);
+        finish();
     }
 
 

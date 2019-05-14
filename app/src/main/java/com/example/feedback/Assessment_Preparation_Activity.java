@@ -80,6 +80,7 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
     public void onItemClick(AdapterView<?> parent, View view, int position,
                             long id) {
         // TODO Auto-generated method stub
+        index_to_send = position;
         String text = listView.getItemAtPosition(position).toString();
         for(int i=0; i<parent.getChildCount(); i++)
             parent.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
@@ -90,7 +91,6 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
     }
 
     public void showOtherInfo(int index) {
-        index_to_send = index;
         ProjectInfo projectInfo = allFunctions.getProjectList().get(index);
         TextView textView_projectName = findViewById(R.id.project_name_inpreparation);
         textView_projectName.setText(projectInfo.getProjectName());
