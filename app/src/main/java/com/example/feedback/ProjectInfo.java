@@ -24,7 +24,7 @@ public class ProjectInfo {
     public ArrayList<Criteria> getCommentList() {
 
         return commentList;
-    
+
     }
 
     public void setCommentList(ArrayList<Criteria> commentList) {
