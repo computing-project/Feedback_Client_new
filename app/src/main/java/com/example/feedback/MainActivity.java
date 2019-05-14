@@ -18,13 +18,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Intent intent = new Intent(this, Assessment_Preparation_Activity.class);
-//        startActivity(intent);
-//        finish();
+        Intent intent = new Intent(this, Assessment_Preparation_Activity.class);
+        startActivity(intent);
+        finish();
 
         test = AllFunctions.getObject();
-        Intent intent = new Intent(this, LoginTest_Activity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, LoginTest_Activity.class);
+//        startActivity(intent);
 
     }
 
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         DefaultCriteriaList defaultL = new DefaultCriteriaList();
         ArrayList<Criteria> criteriaList =  defaultL.getDefaultCriteriaList();
         ProjectInfo projectTest = test.getProjectList().get(0);
-        test.projectCriteria(projectTest,criteriaList);
+       // test.projectCriteria(projectTest,criteriaList);
     }
 
     public void sendMarkTest(View view){

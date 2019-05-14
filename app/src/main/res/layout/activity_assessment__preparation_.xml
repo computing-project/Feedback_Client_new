@@ -116,16 +116,16 @@
                     <Button
                         android:id="@+id/button_edit_inpreparation"
                         style="@style/Widget.AppCompat.Button.Borderless"
-                        android:layout_width="wrap_content"
+                        android:layout_width="45dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="20dp"
                         android:background="@android:color/transparent"
                         android:gravity="left|center_vertical"
                         android:onClick="edit"
                         android:text="Edit"
-                        android:layout_marginLeft="20dp"
-                        android:textColor="#dd000000"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="#dd000000" />
 
                     <Button
                         android:id="@+id/button_plus_inpreparation"
@@ -262,6 +262,7 @@
                         android:drawableRight="@drawable/ic_pencil"
                         android:fontFamily="sans-serif-medium"
                         android:gravity="left|center_vertical"
+                        android:onClick="criteriaManagement"
                         android:text="Criteria"
                         android:textColor="#515151"
                         android:textSize="16sp" />

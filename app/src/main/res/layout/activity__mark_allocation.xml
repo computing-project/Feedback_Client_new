@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity_MarkAllocation">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView_title_markAllocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="Customised Grading Criteria"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+        <View
+            android:id="@+id/divider8"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@id/textView_title_markAllocation"
+            android:background="?android:attr/listDivider" />
+
+        <GridView
+            android:id="@+id/gridView_CriteriaList_markAllocation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/relativeLayout_buttons_markAllocation"
+            android:layout_below="@id/divider8"
+            android:horizontalSpacing="50dp"
+            android:numColumns="2"
+            android:verticalSpacing="50dp" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout_buttons_markAllocation"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp">
+
+            <Button
+                android:id="@+id/button_back_markAllocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="40dp"
+                android:onClick="back_markAllocation"
+                android:text="back" />
+
+            <Button
+                android:id="@+id/button_save_markAllocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40dp"
+                android:layout_toLeftOf="@id/button_next_markAllocation"
+                android:onClick="save_markAllocation"
+                android:text="save" />
+
+            <Button
+                android:id="@+id/button_next_markAllocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="40dp"
+                android:onClick="next_markAllocation"
+                android:text="next" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
