@@ -88,6 +88,16 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
         Toast.makeText(this, "position=" + position + "; text=" + text,
                 Toast.LENGTH_SHORT).show();
         showOtherInfo(position);
+        Button button_about = findViewById(R.id.button_about_inpreparation);
+        button_about.setEnabled(true);
+        Button button_timer = findViewById(R.id.button_time_inpreparation);
+        button_timer.setEnabled(true);
+        Button button_criteria = findViewById(R.id.button_criteria_inpreparation);
+        button_criteria.setEnabled(true);
+        Button button_student = findViewById(R.id.button_studentmanagement__inpreparation);
+        button_student.setEnabled(true);
+        Button button_assessor = findViewById(R.id.button_asseccor__inpreparation);
+        button_assessor.setEnabled(true);
     }
 
     public void showOtherInfo(int index) {
@@ -116,6 +126,16 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
         textView_criteriaDetail.setText("\n");
         TextView textView_asseccorDetail = findViewById(R.id.asseccor_detail__inpreparation);
         textView_asseccorDetail.setText("\n");
+        Button button_about = findViewById(R.id.button_about_inpreparation);
+        button_about.setEnabled(false);
+        Button button_timer = findViewById(R.id.button_time_inpreparation);
+        button_timer.setEnabled(false);
+        Button button_criteria = findViewById(R.id.button_criteria_inpreparation);
+        button_criteria.setEnabled(false);
+        Button button_student = findViewById(R.id.button_studentmanagement__inpreparation);
+        button_student.setEnabled(false);
+        Button button_assessor = findViewById(R.id.button_asseccor__inpreparation);
+        button_assessor.setEnabled(false);
     }
 
     //plus button click function
