@@ -1,60 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
-    <RelativeLayout
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="135dp">
+        android:scaleType="centerCrop"
+        android:src="@drawable/back" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/back" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_below="@+id/textView5"
+            android:layout_marginRight="5dp"
+            android:layout_weight="100"
+            android:fontFamily="sans-serif-light"
+            android:gravity="right"
+            android:text="Help"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textSize="14sp" />
 
+        <View
+            android:id="@+id/divider11"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#9D000000" />
 
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView5"
-                android:layout_marginRight="5dp"
-                android:layout_weight="100"
-                android:fontFamily="sans-serif-light"
-                android:gravity="right"
-                android:text="Help"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:textSize="14sp" />
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-light"
+            android:text="Log Out"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textSize="14sp" />
+    </LinearLayout>
 
-            <View
-                android:id="@+id/divider11"
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="#9D000000" />
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-light"
-                android:text="Log Out"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:textSize="14sp" />
-        </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/textView6"
