@@ -54,50 +54,22 @@ public class Activity_Student_Group extends Activity {
 
         Intent intent =getIntent();
         indexOfProject = Integer.parseInt(intent.getStringExtra("index"));
+        project = AllFunctions.getObject().getProjectList().get(indexOfProject);
         listView = (ListView) findViewById(R.id.listView_ingroupStudent);
-        init(indexOfProject);
+        init();
 
 
     }
 
-    public void init(int i)
+    public void init()
     {
-        project = AllFunctions.getObject().getProjectList().get(i);
+
         students = project.getStudentInfo();
 
         myAdapter = new MyAdapter(students, this);
 
         listView.setAdapter(myAdapter);
 
-        listView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                int action = event.getAction();
-                switch (action)
-                {
-                    case MotionEvent.ACTION_DOWN:
-                        rawX = event.getX();
-                        rawY = event.getY();
-//                        System.out.println("横坐标: "+rawX+"  纵坐标: "+rawY);
-//                        System.out.println("第几个开始:"+listView.pointToPosition((int)rawX, (int)event.getRawY()));
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-//                            double moveX = event.getX() - rawX;
-//                            double moveY = event.getY() - rawY;
-//                            System.out.println("移动过程中坐标: "+moveX+" "+moveY);
-//                            if(moveX > 400)
-//                                v.setBackgroundColor(Color.GRAY);
-                        break;
-                    case MotionEvent.ACTION_UP:
-//                        System.out.println("第几个:"+listView.pointToPosition((int)event.getX(), (int)event.getY()));
-                        break;
-
-                    default:
-                        break;
-                }
-                return true;
-            }
-        });
     }
 
     //button delete click.
@@ -105,7 +77,7 @@ public class Activity_Student_Group extends Activity {
     {
         AllFunctions.getObject().deleteStudent(project,students.get(indexOfStudent).getNumber());
         students.remove(indexOfStudent);
-        init(indexOfProject);
+        init();
     }
 
 
@@ -276,8 +248,8 @@ public class Activity_Student_Group extends Activity {
                     switch (action)
                     {
                         case MotionEvent.ACTION_DOWN:
-                            int rawX1 = (int) event.getRawX();
-                            int rawY2 = (int) event.getRawY();
+                            int rawX1 = (int) event.getRawX() - (int) listView.getX();
+                            int rawY2 = (int) event.getRawY() - (int) listView.getY();
                             System.out.println("横坐标: "+rawX1+"  纵坐标: "+rawY2);
                             System.out.println("第几个开始:"+l.pointToPosition(rawX1, rawY2));
                             break;
@@ -334,7 +306,7 @@ public class Activity_Student_Group extends Activity {
                     path = FileUtils.getPath(this, uri);
                     AllFunctions.getObject().readExcel(project,path);
                     System.out.println("call the readExcel method: "+path);
-                    init(indexOfProject);
+                    init();
                     // Get the file instance
                     // File file = new File(path);
                     // Initiate the upload
@@ -368,7 +340,7 @@ public class Activity_Student_Group extends Activity {
                     email = editText_email_addStudent.getText().toString();
 
                     AllFunctions.getObject().addStudent(project, studentID, firstName, middleName,surname,email);
-                    init(indexOfProject);
+                    init();
 
 
                 }
@@ -411,7 +383,7 @@ public class Activity_Student_Group extends Activity {
                 email = editText_email_addStudent.getText().toString();
 
                 AllFunctions.getObject().editStudent(project, studentID, firstName, middleName,surname,email);
-                init(indexOfProject);
+                init();
 
 
             }
@@ -424,6 +396,11 @@ public class Activity_Student_Group extends Activity {
             }
         }).create();
         dialog.show();
+    }
+
+    public void importStudent_StudentManagement(View view)
+    {
+        init();
     }
 
 
