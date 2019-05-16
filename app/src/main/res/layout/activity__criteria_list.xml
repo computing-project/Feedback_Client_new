@@ -141,7 +141,10 @@
                         <ListView
                             android:id="@+id/listView_CriteriaList_inCriteriaList"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
+                            android:layout_height="match_parent"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="5dp"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -200,7 +203,10 @@
                         <ListView
                             android:id="@+id/listView_marketCriteria_inCriteriaList"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
+                            android:layout_height="match_parent"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="5dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -257,7 +263,10 @@
                         <ListView
                             android:id="@+id/listView_commentOnly_inCriteriaList"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
+                            android:layout_height="match_parent"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="5dp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -274,6 +283,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_marginStart="30dp"
                         android:layout_marginBottom="50dp"
+                        android:layout_marginTop="10dp"
                         android:onClick="back_inCriteriaList"
                         android:text="Back"
                         android:background="@drawable/ic_buttom_background"
@@ -288,6 +298,7 @@
                         android:layout_marginEnd="30dp"
                         android:layout_marginBottom="50dp"
                         android:text="Next"
+                        android:layout_marginTop="10dp"
                         android:onClick="next_inCriteriaList"
                         android:background="@drawable/ic_buttom_background"
                         android:textColor="#ffffff" />
