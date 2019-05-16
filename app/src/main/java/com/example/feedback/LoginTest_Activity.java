@@ -31,7 +31,7 @@ public class LoginTest_Activity extends Activity {
                         Toast.makeText(LoginTest_Activity.this, "The email and password are not correct. Please check and try again.", Toast.LENGTH_SHORT).show();
                         break;
                     case 101: //means login successfully and go to next page
-                        Intent intent = new Intent(LoginTest_Activity.this, Assessment_Preparation_Activity.class);
+                        Intent intent = new Intent(LoginTest_Activity.this, Homepage.class);
                         startActivity(intent);
                         finish();
                         break;

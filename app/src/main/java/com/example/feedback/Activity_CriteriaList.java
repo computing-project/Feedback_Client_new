@@ -91,6 +91,10 @@ public class Activity_CriteriaList extends Activity {
         listView_criteriaDefault.setOnDragListener(dragListenerForDefaultListview);
         listView_marketCriteria.setOnDragListener(dragListenerForMarketCriteriaList);
         listView_commentOnly.setOnDragListener(dragListenerForCommentOnlyCriteria);
+        TextView textView_projectName = findViewById(R.id.textView_projectName_CriteriaList);
+        textView_projectName.setText(project.getProjectName());
+        TextView textView_helloUser = findViewById(R.id.textView_helloUser_criteriaList);
+        textView_helloUser.setText("Hello, "+AllFunctions.getObject().getUsername());
 
     }
 

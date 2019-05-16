@@ -20,6 +20,7 @@ public class AllFunctions{
     private CommunicationForClient communication;
     private ArrayList<ProjectInfo> projectList = new ArrayList<ProjectInfo>();
     private Handler handlerAllfunction;
+    private String username;
 
     private AllFunctions(){
 
@@ -42,6 +43,12 @@ public class AllFunctions{
             }
         }).start();
     }
+
+    public void setUsername(String username)
+    {this.username = username;}
+
+    public String getUsername()
+    {return this.username;}
 
     public void loginSucc(ArrayList<ProjectInfo> projectList){
 

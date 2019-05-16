@@ -91,6 +91,7 @@ public class CommunicationForClient {
 				ArrayList<ProjectInfo> arrayList ;
 				arrayList = new ArrayList();
 				arrayList.addAll(projectList);
+				functions.setUsername(username);
 
 				functions.loginSucc(arrayList);
 

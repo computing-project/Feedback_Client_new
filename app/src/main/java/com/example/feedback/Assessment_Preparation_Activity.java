@@ -75,6 +75,8 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
         listView = (ListView) findViewById(R.id.listView_inpreparation);
         listView.setAdapter(adpter);
         listView.setOnItemClickListener(this);
+        TextView textView_helloUser = findViewById(R.id.textView_helloUser_assessmentPreparation);
+        textView_helloUser.setText("Hello, "+AllFunctions.getObject().getUsername());
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position,

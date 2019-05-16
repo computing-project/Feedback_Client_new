@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class Activity_Timer extends Activity {
     int durationMin, durationSec, warningMin, warningSec;
@@ -47,6 +48,10 @@ public class Activity_Timer extends Activity {
         editText_warningMin.setText(String.valueOf(warningMin));
         editText_warningSec = findViewById(R.id.editText_warningSec_Timer);
         editText_warningSec.setText(String.valueOf(warningSec));
+        TextView textView_projectName = findViewById(R.id.textView_projectName_Timer);
+        textView_projectName.setText(project.getProjectName());
+        TextView textView_helloUser = findViewById(R.id.textView_helloUser_Timer);
+        textView_helloUser.setText("Hello, "+AllFunctions.getObject().getUsername());
 
     }
 

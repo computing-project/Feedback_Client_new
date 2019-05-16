@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class Activity_About extends Activity {
 
@@ -21,6 +23,7 @@ public class Activity_About extends Activity {
             ;
         else
             init(Integer.parseInt(index));
+
     }
 
     private void init(int i)
@@ -35,6 +38,10 @@ public class Activity_About extends Activity {
         editText_subjectCode.setText(project.getSubjectCode());
         EditText editText_projectDes = findViewById(R.id.editText_projectdescription_inabout);
         editText_projectDes.setText(project.getDescription());
+        TextView textView_projectName = findViewById(R.id.textView_projectName_about);
+        textView_projectName.setText(project.getProjectName());
+        TextView textView_helloUser = findViewById(R.id.textView_helloUser_about);
+        textView_helloUser.setText("Hello, "+AllFunctions.getObject().getUsername());
     }
 
     //save button click
