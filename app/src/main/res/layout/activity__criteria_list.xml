@@ -102,13 +102,13 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1">
 
                     <LinearLayout
                         android:id="@+id/linearlayout_defaultCriteriaList_criteriaList"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_alignParentStart="false"
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="20dp"
@@ -122,13 +122,13 @@
                             android:id="@+id/textView_CriteriaList_inCriteriaList"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Criteria List"
                             android:fontFamily="sans-serif-medium"
-                            android:textSize="24sp"
+                            android:gravity="center"
                             android:paddingTop="10dp"
                             android:paddingBottom="5dp"
+                            android:text="Criteria List"
                             android:textColor="#DD000000"
-                            android:gravity="center"/>
+                            android:textSize="24sp" />
 
                         <View
                             android:id="@+id/divider15"
@@ -141,13 +141,13 @@
                         <ListView
                             android:id="@+id/listView_CriteriaList_inCriteriaList"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"/>
+                            android:layout_height="match_parent" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/linearlayout_marketCriteria_criterialist"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_alignParentStart="false"
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="20dp"
@@ -163,10 +163,11 @@
 
                             <TextView
                                 android:id="@+id/textView_marketCriteria_inCriteriaList"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-medium"
                                 android:layout_alignParentLeft="true"
+                                android:layout_alignParentTop="true"
+                                android:fontFamily="sans-serif-medium"
                                 android:paddingLeft="20dp"
                                 android:paddingBottom="5dp"
                                 android:text="Marking Criteria"
@@ -174,14 +175,16 @@
                                 android:textSize="24sp" />
 
                             <Button
-                                android:id="@+id/button1"
+                                android:id="@+id/button_addMarkedCriteria_criteriaList"
                                 android:layout_width="28dp"
                                 android:layout_height="28dp"
+                                android:layout_alignParentTop="true"
                                 android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="20dp"
                                 android:background="@drawable/ic_add"
                                 android:gravity="right|center_vertical"
-                                android:layout_marginRight="20dp"
-                                android:layout_centerVertical="true"
+                                android:onClick="addMarkedCriteria"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
                         </RelativeLayout>
 
@@ -202,7 +205,7 @@
                     <LinearLayout
                         android:id="@+id/linearlayout_commentOnlyList_criteriaList"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_alignParentRight="true"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="40dp"
@@ -217,10 +220,10 @@
 
                             <TextView
                                 android:id="@+id/textView_CommentOnly_inCriteriaList"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-medium"
                                 android:layout_alignParentLeft="true"
+                                android:fontFamily="sans-serif-medium"
                                 android:paddingLeft="20dp"
                                 android:paddingBottom="5dp"
                                 android:text="Comment Only"
@@ -231,11 +234,13 @@
                                 android:id="@+id/button3"
                                 android:layout_width="28dp"
                                 android:layout_height="28dp"
+                                android:layout_alignParentTop="true"
                                 android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="20dp"
                                 android:background="@drawable/ic_add"
                                 android:gravity="right|center_vertical"
-                                android:layout_marginRight="20dp"
-                                android:layout_centerVertical="true"
+                                android:onClick="addCommentCriteria"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
                         </RelativeLayout>
 

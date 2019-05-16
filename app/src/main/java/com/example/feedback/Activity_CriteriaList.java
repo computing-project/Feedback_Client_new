@@ -1,13 +1,16 @@
 package com.example.feedback;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -104,6 +108,73 @@ public class Activity_CriteriaList extends Activity {
         startActivity(intent);
         finish();
     }
+
+
+    public void addMarkedCriteria(View view)
+    {
+        LayoutInflater layoutInflater = LayoutInflater.from(this);//获得layoutInflater对象
+        final View view2 = layoutInflater.from(this).inflate(R.layout.dialog_add_criteria, null);//获得view对象
+
+        Dialog dialog = new android.app.AlertDialog.Builder(this).setTitle("Add Criteria").setView(view2).setPositiveButton("Done", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                EditText editText_newCriteriaName = view2.findViewById(R.id.editText_criteriaName_dialogAddCriteria);//获取控件
+                String newCriteriaName = editText_newCriteriaName.getText().toString();
+
+                if(findWhichCriteriaList_itbelongs(newCriteriaName) == -999)
+                {
+                    Criteria criteria = new Criteria();
+                    criteria.setName(newCriteriaName);
+                    project.getCriteria().add(criteria);
+                    init();
+                }
+                else
+                {
+                    Toast.makeText(Activity_CriteriaList.this, "Criteria "+newCriteriaName+" has been existed.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+            }
+        }).create();
+        dialog.show();
+    }
+
+    public void addCommentCriteria(View view)
+    {
+        LayoutInflater layoutInflater = LayoutInflater.from(this);//获得layoutInflater对象
+        final View view2 = layoutInflater.from(this).inflate(R.layout.dialog_add_criteria, null);//获得view对象
+
+        Dialog dialog = new android.app.AlertDialog.Builder(this).setTitle("Add Criteria").setView(view2).setPositiveButton("Done", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                EditText editText_newCriteriaName = view2.findViewById(R.id.editText_criteriaName_dialogAddCriteria);//获取控件
+                String newCriteriaName = editText_newCriteriaName.getText().toString();
+
+                if(findWhichCriteriaList_itbelongs(newCriteriaName) == -999)
+                {
+                    Criteria criteria = new Criteria();
+                    criteria.setName(newCriteriaName);
+                    project.getCommentList().add(criteria);
+                    init();
+                }
+                else
+                {
+                    Toast.makeText(Activity_CriteriaList.this, "Criteria "+newCriteriaName+" has been existed.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+            }
+        }).create();
+        dialog.show();
+    }
+
+
 
 
     public class MyAdapter_criteriaListDefault extends BaseAdapter {
