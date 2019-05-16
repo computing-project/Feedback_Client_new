@@ -5,33 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout_top_showCommentShortTextLayer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true">
-
-        <Button
-            android:id="@+id/button_expand_showCommentShortTextLayer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:text="+"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-        <TextView
-            android:id="@+id/textView_shortTextName_showCommentShortTextLayer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/button_expand_showCommentShortTextLayer"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-    </RelativeLayout>
-
-    <ListView
-        android:id="@+id/listView_LongText_showCommentShortTextLayer"
+    <ExpandableListView
+        android:id="@+id/expandableListView_shortText_showCommentMarkAllocation"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/relativeLayout_top_showCommentShortTextLayer"
-        android:layout_marginLeft="40dp" />
+        android:layout_marginLeft="30dp" />
 </RelativeLayout>

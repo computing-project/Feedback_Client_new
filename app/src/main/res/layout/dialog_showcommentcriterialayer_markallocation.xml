@@ -32,8 +32,8 @@
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-    <ListView
-        android:id="@+id/listView_subSection_dialogShowCommentCriteriaLayer"
+    <ExpandableListView
+        android:id="@+id/expandablelistView_dialogShowCommentCriteriaLayer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/textView_criteriaName_showComment" />
