@@ -9,8 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ExpandableListView;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -26,6 +28,7 @@ public class Activity_MarkAllocation extends Activity {
     //private ListView listView;
     private ProjectInfo project;
     private ArrayList<Criteria> markedCriteriaList;
+    private ExpandableListView expandableListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -193,13 +196,14 @@ public class Activity_MarkAllocation extends Activity {
 
                     LayoutInflater layoutInflater = LayoutInflater.from(Activity_MarkAllocation.this);//获得layoutInflater对象
                     final View view2 = layoutInflater.from(Activity_MarkAllocation.this).inflate(R.layout.dialog_showcommentcriterialayer_markallocation, null);//获得view对象
-                    ListView listView_subSection = view2.findViewById(R.id.listView_subSection_dialogShowCommentCriteriaLayer);
                     TextView textView_CriteriaName = view2.findViewById(R.id.textView_criteriaName_showComment);
                     textView_CriteriaName.setText(markedCriteriaList.get(position).getName());
                     ArrayList<SubSection> subSectionsList = markedCriteriaList.get(position).getSubsectionList();
-                   MyAdapter_ForShowSubSection_CriteriaLayer showSubsection = new MyAdapter_ForShowSubSection_CriteriaLayer(subSectionsList,view2.getContext());
+                    expandableListView = view2.findViewById(R.id.expandablelistView_dialogShowCommentCriteriaLayer);
 
-                    listView_subSection.setAdapter(showSubsection);
+
+                   MyBaseExpandableListAdapter myBaseExpandableListAdapter = new MyBaseExpandableListAdapter(subSectionsList, view2.getContext());
+                    expandableListView.setAdapter(myBaseExpandableListAdapter);
                     Dialog dialog = new android.app.AlertDialog.Builder(Activity_MarkAllocation.this).setView(view2).create();
 
                     dialog.show();
@@ -211,82 +215,202 @@ public class Activity_MarkAllocation extends Activity {
     }
 
 
-    public class MyAdapter_ForShowSubSection_CriteriaLayer extends BaseAdapter
-    {
-        private Context mContext;
-        private ArrayList<SubSection> subSections;
 
-        public MyAdapter_ForShowSubSection_CriteriaLayer(ArrayList<SubSection> subSections, Context context) {
+
+
+
+    public class MyBaseExpandableListAdapter extends BaseExpandableListAdapter {
+
+        private ArrayList<SubSection> subSections;
+        private Context mContext;
+
+        public MyBaseExpandableListAdapter(ArrayList<SubSection> subSections, Context mContext) {
             this.subSections = subSections;
-            this.mContext = context;
+            this.mContext = mContext;
         }
 
-
         @Override
-        public int getCount() {
+        public int getGroupCount() {
             return subSections.size();
         }
 
         @Override
-        public Object getItem(int i) {
-            return i;
+        public int getChildrenCount(int groupPosition) {
+            return subSections.get(groupPosition).getShortTextList().size();
         }
 
         @Override
-        public long getItemId(int i) {
-            return i;
+        public SubSection getGroup(int groupPosition) {
+            return subSections.get(groupPosition);
         }
 
         @Override
-        public View getView(int position, View view, ViewGroup viewGroup) {
-            view = LayoutInflater.from(mContext).inflate(R.layout.dialog_showcomment_subsectionlayer_markallocation, viewGroup, false);
-            TextView textView_subsectionName = view.findViewById(R.id.textView_SubsectionName_showCommentSubsectionLayer);
-            textView_subsectionName.setText(subSections.get(position).getName());
-
-            ArrayList<ShortText> shortTextList = subSections.get(position).getShortTextList();
-            MyAdapter_ForShowShortText_SubsectionLayer showShortText = new MyAdapter_ForShowShortText_SubsectionLayer(shortTextList,viewGroup.getContext());
-            ListView listView_shortText = view.findViewById(R.id.listView_ShortText_showCommentSubsectionLayer);
-            listView_shortText.setAdapter(showShortText);
-
-            return view;
+        public ShortText getChild(int groupPosition, int childPosition) {
+            return subSections.get(groupPosition).getShortTextList().get(childPosition);
         }
+
+        @Override
+        public long getGroupId(int groupPosition) {
+            return groupPosition;
+        }
+
+        @Override
+        public long getChildId(int groupPosition, int childPosition) {
+            return childPosition;
+        }
+
+        @Override
+        public boolean hasStableIds() {
+            return false;
+        }
+
+        @Override
+        public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+
+            ViewHolderGroup groupHolder;
+            if(convertView == null){
+                convertView = LayoutInflater.from(mContext).inflate(
+                        R.layout.dialog_showcomment_subsectionlayer_markallocation, parent, false);
+                groupHolder = new ViewHolderGroup();
+                groupHolder.tv_group_name = (TextView) convertView.findViewById(R.id.textView_subsectionName_showCommentSubsectionLayer);
+                convertView.setTag(groupHolder);
+            }else{
+                groupHolder = (ViewHolderGroup) convertView.getTag();
+            }
+            groupHolder.tv_group_name.setText(subSections.get(groupPosition).getName());
+            return convertView;
+        }
+
+        //取得显示给定分组给定子位置的数据用的视图
+        @Override
+        public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+            ViewHolderItem itemHolder;
+            if(convertView == null){
+                convertView = LayoutInflater.from(mContext).inflate(
+                        R.layout.dialog_showcomment_longtextlayer_markallocation, parent, false);
+                itemHolder = new ViewHolderItem();
+                itemHolder.tv_name = (TextView) convertView.findViewById(R.id.textView_longText_showCommentLongtextLayer);
+                convertView.setTag(itemHolder);
+            }else{
+                itemHolder = (ViewHolderItem) convertView.getTag();
+            }
+            itemHolder.tv_name.setText(subSections.get(groupPosition).getShortTextList().get(childPosition).getName());
+            return convertView;
+        }
+
+        //设置子列表是否可选中
+        @Override
+        public boolean isChildSelectable(int groupPosition, int childPosition) {
+            return true;
+        }
+
+
+        private class ViewHolderGroup{
+            private TextView tv_group_name;
+        }
+
+        private class ViewHolderItem{
+            private TextView tv_name;
+        }
+
     }
 
 
 
-    public class MyAdapter_ForShowShortText_SubsectionLayer extends BaseAdapter
-    {
-        private Context mContext;
-        private ArrayList<ShortText> shortTexts;
+//    public class MyExpandableListAdapter2 extends BaseExpandableListAdapter {
+//
+//        private ArrayList<ShortText> shortTexts;
+//        private Context mContext;
+//
+//        public MyExpandableListAdapter2(ArrayList<ShortText> shortTexts, Context mContext) {
+//            this.shortTexts = shortTexts;
+//            this.mContext = mContext;
+//        }
+//
+//        @Override
+//        public int getGroupCount() {
+//            return shortTexts.size();
+//        }
+//
+//        @Override
+//        public int getChildrenCount(int groupPosition) {
+//            return shortTexts.get(groupPosition).getLongtext().size();
+//        }
+//
+//        @Override
+//        public ShortText getGroup(int groupPosition) {
+//            return shortTexts.get(groupPosition);
+//        }
+//
+//        @Override
+//        public String getChild(int groupPosition, int childPosition) {
+//            return shortTexts.get(groupPosition).getLongtext().get(childPosition);
+//        }
+//
+//        @Override
+//        public long getGroupId(int groupPosition) {
+//            return groupPosition;
+//        }
+//
+//        @Override
+//        public long getChildId(int groupPosition, int childPosition) {
+//            return childPosition;
+//        }
+//
+//        @Override
+//        public boolean hasStableIds() {
+//            return false;
+//        }
+//
+//        @Override
+//        public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+//
+//            ViewHolderGroup groupHolder;
+//            if(convertView == null){
+//                convertView = LayoutInflater.from(mContext).inflate(
+//                        R.layout.dialog_showcomment_subsectionlayer_markallocation, parent, false);
+//                groupHolder = new ViewHolderGroup();
+//                groupHolder.tv_group_name = (TextView) convertView.findViewById(R.id.textView_subsectionName_showCommentSubsectionLayer);
+//                convertView.setTag(groupHolder);
+//            }else{
+//                groupHolder = (ViewHolderGroup) convertView.getTag();
+//            }
+//            groupHolder.tv_group_name.setText("子类第"+groupPosition);
+//            return convertView;
+//        }
+//
+//        //取得显示给定分组给定子位置的数据用的视图
+//        @Override
+//        public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+//            ViewHolderItem itemHolder;
+//            if(convertView == null){
+//                convertView = LayoutInflater.from(mContext).inflate(
+//                        R.layout.dialog_showcomment_longtextlayer_markallocation, parent, false);
+//                itemHolder = new ViewHolderItem();
+//                itemHolder.tv_name = (TextView) convertView.findViewById(R.id.textView_longText_showCommentLongtextLayer);
+//                convertView.setTag(itemHolder);
+//            }else{
+//                itemHolder = (ViewHolderItem) convertView.getTag();
+//            }
+//            itemHolder.tv_name.setText(shortTexts.get(groupPosition).getLongtext().get(childPosition));
+//            return convertView;
+//        }
+//
+//        //设置子列表是否可选中
+//        @Override
+//        public boolean isChildSelectable(int groupPosition, int childPosition) {
+//            return true;
+//        }
+//
+//
+//        private class ViewHolderGroup{
+//            private TextView tv_group_name;
+//        }
+//
+//        private class ViewHolderItem{
+//            private TextView tv_name;
+//        }
 
-        public MyAdapter_ForShowShortText_SubsectionLayer(ArrayList<ShortText> shortTexts, Context context) {
-            this.shortTexts = shortTexts;
-            this.mContext = context;
-        }
-
-
-        @Override
-        public int getCount() {
-            return shortTexts.size();
-        }
-
-        @Override
-        public Object getItem(int i) {
-            return i;
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return i;
-        }
-
-        @Override
-        public View getView(int position, View view, ViewGroup viewGroup) {
-            view = LayoutInflater.from(mContext).inflate(R.layout.dialog_showcomment_shorttextlayer_markallocation, viewGroup, false);
-            TextView textView_shortTextName = view.findViewById(R.id.textView_shortTextName_showCommentShortTextLayer);
-            textView_shortTextName.setText(shortTexts.get(position).getName());
-            return view;
-        }
     }
 
 
@@ -296,4 +420,97 @@ public class Activity_MarkAllocation extends Activity {
 
 
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    public class MyAdapter_ForShowSubSection_CriteriaLayer extends BaseAdapter
+//    {
+//        private Context mContext;
+//        private ArrayList<SubSection> subSections;
+//
+//        public MyAdapter_ForShowSubSection_CriteriaLayer(ArrayList<SubSection> subSections, Context context) {
+//            this.subSections = subSections;
+//            this.mContext = context;
+//        }
+//
+//
+//        @Override
+//        public int getCount() {
+//            return subSections.size();
+//        }
+//
+//        @Override
+//        public Object getItem(int i) {
+//            return i;
+//        }
+//
+//        @Override
+//        public long getItemId(int i) {
+//            return i;
+//        }
+//
+//        @Override
+//        public View getView(int position, View view, ViewGroup viewGroup) {
+//            view = LayoutInflater.from(mContext).inflate(R.layout.dialog_showcomment_subsectionlayer_markallocation, viewGroup, false);
+//            TextView textView_subsectionName = view.findViewById(R.id.textView_SubsectionName_showCommentSubsectionLayer);
+//            textView_subsectionName.setText(subSections.get(position).getName());
+//
+//            ArrayList<ShortText> shortTextList = subSections.get(position).getShortTextList();
+//            MyAdapter_ForShowShortText_SubsectionLayer showShortText = new MyAdapter_ForShowShortText_SubsectionLayer(shortTextList,viewGroup.getContext());
+//            ListView listView_shortText = view.findViewById(R.id.listView_ShortText_showCommentSubsectionLayer);
+//            listView_shortText.setAdapter(showShortText);
+//
+//            return view;
+//        }
+//    }
+//
+//
+//
+//    public class MyAdapter_ForShowShortText_SubsectionLayer extends BaseAdapter
+//    {
+//        private Context mContext;
+//        private ArrayList<ShortText> shortTexts;
+//
+//        public MyAdapter_ForShowShortText_SubsectionLayer(ArrayList<ShortText> shortTexts, Context context) {
+//            this.shortTexts = shortTexts;
+//            this.mContext = context;
+//        }
+//
+//
+//        @Override
+//        public int getCount() {
+//            return shortTexts.size();
+//        }
+//
+//        @Override
+//        public Object getItem(int i) {
+//            return i;
+//        }
+//
+//        @Override
+//        public long getItemId(int i) {
+//            return i;
+//        }
+//
+//        @Override
+//        public View getView(int position, View view, ViewGroup viewGroup) {
+//            view = LayoutInflater.from(mContext).inflate(R.layout.dialog_showcomment_shorttextlayer_markallocation, viewGroup, false);
+//            TextView textView_shortTextName = view.findViewById(R.id.textView_shortTextName_showCommentShortTextLayer);
+//            textView_shortTextName.setText(shortTexts.get(position).getName());
+//            return view;
+//        }
+//    }
+//
+//
+//
+
