@@ -250,7 +250,7 @@ public class Activity_CriteriaList extends Activity {
                             return false;
                         case DragEvent.ACTION_DRAG_ENTERED:
 
-                            v.setBackgroundColor(Color.GREEN);
+                            v.setBackgroundColor(Color.parseColor("#dbdbdb"));
                             v.invalidate();
 
                             return true;
@@ -337,7 +337,7 @@ public class Activity_CriteriaList extends Activity {
                         return false;
                     case DragEvent.ACTION_DRAG_ENTERED:
 
-                        v.setBackgroundColor(Color.GREEN);
+                        v.setBackgroundColor(Color.parseColor("#dbdbdb"));
                         v.invalidate();
                         return true;
 
@@ -423,7 +423,7 @@ public class Activity_CriteriaList extends Activity {
                         return false;
                     case DragEvent.ACTION_DRAG_ENTERED:
 
-                        v.setBackgroundColor(Color.GREEN);
+                        v.setBackgroundColor(Color.parseColor("#dbdbdb"));
                         v.invalidate();
                         return true;
 
