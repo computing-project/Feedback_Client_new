@@ -59,7 +59,7 @@ public class Activity_MarkAllocation extends Activity {
     public void save_markAllocation(View view)
     {
         AllFunctions.getObject().projectCriteria(project, project.getCriteria(), project.getCommentList());
-        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
     }
