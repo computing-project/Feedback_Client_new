@@ -115,7 +115,7 @@ public class Activity_CriteriaList extends Activity {
         LayoutInflater layoutInflater = LayoutInflater.from(this);//获得layoutInflater对象
         final View view2 = layoutInflater.from(this).inflate(R.layout.dialog_add_criteria, null);//获得view对象
 
-        Dialog dialog = new android.app.AlertDialog.Builder(this).setTitle("Add Criteria").setView(view2).setPositiveButton("Done", new DialogInterface.OnClickListener() {
+        Dialog dialog = new android.app.AlertDialog.Builder(this).setView(view2).setPositiveButton("Done", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 EditText editText_newCriteriaName = view2.findViewById(R.id.editText_criteriaName_dialogAddCriteria);//获取控件
                 String newCriteriaName = editText_newCriteriaName.getText().toString();
@@ -147,7 +147,7 @@ public class Activity_CriteriaList extends Activity {
         LayoutInflater layoutInflater = LayoutInflater.from(this);//获得layoutInflater对象
         final View view2 = layoutInflater.from(this).inflate(R.layout.dialog_add_criteria, null);//获得view对象
 
-        Dialog dialog = new android.app.AlertDialog.Builder(this).setTitle("Add Criteria").setView(view2).setPositiveButton("Done", new DialogInterface.OnClickListener() {
+        Dialog dialog = new android.app.AlertDialog.Builder(this).setView(view2).setPositiveButton("Done", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 EditText editText_newCriteriaName = view2.findViewById(R.id.editText_criteriaName_dialogAddCriteria);//获取控件
                 String newCriteriaName = editText_newCriteriaName.getText().toString();
