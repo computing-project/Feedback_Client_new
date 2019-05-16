@@ -77,6 +77,15 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
         listView.setOnItemClickListener(this);
         TextView textView_helloUser = findViewById(R.id.textView_helloUser_assessmentPreparation);
         textView_helloUser.setText("Hello, "+AllFunctions.getObject().getUsername());
+        TextView textView_logout = findViewById(R.id.textView_logout_assessmentPreparation);
+        textView_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Assessment_Preparation_Activity.this, LoginTest_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position,

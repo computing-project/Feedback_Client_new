@@ -33,7 +33,6 @@ public class LoginTest_Activity extends Activity {
                     case 101: //means login successfully and go to next page
                         Intent intent = new Intent(LoginTest_Activity.this, Homepage.class);
                         startActivity(intent);
-                        finish();
                         break;
                     default:
                         break;

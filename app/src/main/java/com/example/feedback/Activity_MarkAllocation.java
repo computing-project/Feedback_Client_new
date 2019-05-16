@@ -27,7 +27,8 @@ public class Activity_MarkAllocation extends Activity {
     private GridView gridView;
     //private ListView listView;
     private ProjectInfo project;
-    private ArrayList<Criteria> allCriteriaList;
+    private ArrayList<Criteria> markedCriteriaList;
+    ArrayList<Criteria> allCriteriaList;
     private int markedCriteriaNum;
     private ExpandableListView expandableListView;
 
@@ -46,8 +47,10 @@ public class Activity_MarkAllocation extends Activity {
     public void init()
     {
         project = AllFunctions.getObject().getProjectList().get(indexOfProject);
-        allCriteriaList = project.getCriteria();
+        markedCriteriaList = project.getCriteria();
         markedCriteriaNum = project.getCriteria().size();
+        allCriteriaList = new ArrayList<>();
+        allCriteriaList.addAll(markedCriteriaList);
         allCriteriaList.addAll(project.getCommentList());
 
         MyAdapter myAdapter = new MyAdapter(allCriteriaList, this);
@@ -59,6 +62,15 @@ public class Activity_MarkAllocation extends Activity {
         textView_projectName.setText(project.getProjectName());
         TextView textView_helloUser = findViewById(R.id.textView_helloUser_markAllocation);
         textView_helloUser.setText("Hello, "+AllFunctions.getObject().getUsername());
+        TextView textView_logout = findViewById(R.id.textView_logout_markAllocation);
+        textView_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_MarkAllocation.this, LoginTest_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     //button 'save'.
@@ -126,7 +138,7 @@ public class Activity_MarkAllocation extends Activity {
                 convertView = LayoutInflater.from(mContext).inflate(R.layout.grid_item_markallocation, parent, false);
 
                 TextView textView_criteriaName = convertView.findViewById(R.id.textView_criteriaName_gridItem);
-                textView_criteriaName.setText(allCriteriaList.get(position).getName());
+                textView_criteriaName.setText(criteriaList.get(position).getName());
                 EditText editText_maxMark = convertView.findViewById(R.id.editText_maxMark_gridItem);
                 editText_maxMark.setText(String.valueOf(criteriaList.get(position).getMaximunMark()));
                 String markIncrement = criteriaList.get(position).getMarkIncrement();
@@ -159,15 +171,15 @@ public class Activity_MarkAllocation extends Activity {
                         switch (checkID) {
                             case R.id.radioButton_quarter_gridItem:
 //                            criteriaList.get(position).setMarkIncrement("quarter");
-                                criteriaList.get(position).setMarkIncrement("1/4");
+                                markedCriteriaList.get(position).setMarkIncrement("1/4");
                                 break;
                             case R.id.radioButton_half_gridItem:
 //                            criteriaList.get(position).setMarkIncrement("half");
-                                criteriaList.get(position).setMarkIncrement("1/2");
+                                markedCriteriaList.get(position).setMarkIncrement("1/2");
                                 break;
                             case R.id.radioButton_full_gridItem:
 //                            criteriaList.get(position).setMarkIncrement("full");
-                                criteriaList.get(position).setMarkIncrement("1");
+                                markedCriteriaList.get(position).setMarkIncrement("1");
                                 break;
                             default:
                                 break;
@@ -180,7 +192,7 @@ public class Activity_MarkAllocation extends Activity {
                     @Override
                     public void onClick(View view) {
                         int mark = Integer.parseInt(editText_maxMark.getText().toString());
-                        allCriteriaList.get(position).setMaximunMark(mark + 1);
+                        markedCriteriaList.get(position).setMaximunMark(mark + 1);
                         editText_maxMark.setText(String.valueOf(mark + 1));
                     }
                 });
@@ -190,7 +202,7 @@ public class Activity_MarkAllocation extends Activity {
                     @Override
                     public void onClick(View view) {
                         int mark = Integer.parseInt(editText_maxMark.getText().toString());
-                        allCriteriaList.get(position).setMaximunMark(mark - 1);
+                        markedCriteriaList.get(position).setMaximunMark(mark - 1);
                         editText_maxMark.setText(String.valueOf(mark - 1));
                     }
                 });

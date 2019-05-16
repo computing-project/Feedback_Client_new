@@ -95,6 +95,15 @@ public class Activity_CriteriaList extends Activity {
         textView_projectName.setText(project.getProjectName());
         TextView textView_helloUser = findViewById(R.id.textView_helloUser_criteriaList);
         textView_helloUser.setText("Hello, "+AllFunctions.getObject().getUsername());
+        TextView textView_logout = findViewById(R.id.textView_logout_criteriaList);
+        textView_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_CriteriaList.this, LoginTest_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 

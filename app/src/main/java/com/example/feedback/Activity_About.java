@@ -42,6 +42,15 @@ public class Activity_About extends Activity {
         textView_projectName.setText(project.getProjectName());
         TextView textView_helloUser = findViewById(R.id.textView_helloUser_about);
         textView_helloUser.setText("Hello, "+AllFunctions.getObject().getUsername());
+        TextView textView_logout = findViewById(R.id.textView_logout_about);
+        textView_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_About.this, LoginTest_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     //save button click
