@@ -1,6 +1,7 @@
 package com.example.feedback;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -190,10 +191,61 @@ public class Activity_MarkAllocation extends Activity {
                 @Override
                 public void onClick(View view) {
 
+                    LayoutInflater layoutInflater = LayoutInflater.from(Activity_MarkAllocation.this);//获得layoutInflater对象
+                    final View view2 = layoutInflater.from(Activity_MarkAllocation.this).inflate(R.layout.dialog_showcommentcriterialayer_markallocation, null);//获得view对象
+                    TextView textView_CriteriaName = view2.findViewById(R.id.textView_criteriaName_showComment);
+                    textView_CriteriaName.setText(markedCriteriaList.get(position).getName());
+                    ArrayList<SubSection> subSectionsList = markedCriteriaList.get(position).getSubsectionList();
+                   MyAdapter_ForShowSubSection_CriteriaLayer showSubsection = new MyAdapter_ForShowSubSection_CriteriaLayer(subSectionsList,Activity_MarkAllocation.this);
+                    ListView listView_subSection = view2.findViewById(R.id.listView_subSection_dialogShowCommentCriteriaLayer);
+                    listView_subSection.setAdapter(showSubsection);
+
+
+                    Dialog dialog = new android.app.AlertDialog.Builder(Activity_MarkAllocation.this).setView(view2).create();
+
+                    dialog.show();
                 }
             });
 
             return convertView;
+        }
+    }
+
+
+    public class MyAdapter_ForShowSubSection_CriteriaLayer extends BaseAdapter
+    {
+        private Context mContext;
+        private ArrayList<SubSection> subSections;
+
+        public MyAdapter_ForShowSubSection_CriteriaLayer(ArrayList<SubSection> subSections, Context context) {
+            this.subSections = subSections;
+            this.mContext = context;
+        }
+
+
+        @Override
+        public int getCount() {
+            return subSections.size();
+        }
+
+        @Override
+        public Object getItem(int i) {
+            return i;
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return i;
+        }
+
+        @Override
+        public View getView(int position, View view, ViewGroup viewGroup) {
+            view = LayoutInflater.from(mContext).inflate(R.layout.dialog_showcomment_subsectionlayer_markallocation, viewGroup, false);
+            TextView textView_subsectionName = view.findViewById(R.id.textView_subtitleName_showCommentSubtitleLayer);
+            textView_subsectionName.setText(subSections.get(position).getName());
+
+
+            return view;
         }
     }
 }
