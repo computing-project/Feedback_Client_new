@@ -18,6 +18,7 @@
             android:launchMode="singleInstance"/>
         <activity android:name=".Activity_Timer" />
         <activity android:name=".Activity_About" />
+        <activity android:name=".Activity_Assessment" />
         <activity
             android:name=".Assessment_Preparation_Activity"
             android:launchMode="singleInstance" />
