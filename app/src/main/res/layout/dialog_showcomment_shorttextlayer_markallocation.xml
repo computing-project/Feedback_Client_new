@@ -6,13 +6,13 @@
     android:layout_height="wrap_content">
 
     <RelativeLayout
-        android:id="@+id/relativeLayout_top_showCommentSubsectionLayer"
+        android:id="@+id/relativeLayout_top_showCommentShortTextLayer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true">
 
         <Button
-            android:id="@+id/button_expand_showCommentSubsectionLayer"
+            android:id="@+id/button_expand_showCommentShortTextLayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -20,18 +20,18 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <TextView
-            android:id="@+id/textView_SubsectionName_showCommentSubsectionLayer"
+            android:id="@+id/textView_shortTextName_showCommentShortTextLayer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/button_expand_showCommentSubsectionLayer"
+            android:layout_toRightOf="@id/button_expand_showCommentShortTextLayer"
             android:text="TextView"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
     </RelativeLayout>
 
     <ListView
-        android:id="@+id/listView_ShortText_showCommentSubsectionLayer"
+        android:id="@+id/listView_LongText_showCommentShortTextLayer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/relativeLayout_top_showCommentSubsectionLayer"
-        android:layout_marginLeft="50dp" />
+        android:layout_below="@id/relativeLayout_top_showCommentShortTextLayer"
+        android:layout_marginLeft="40dp" />
 </RelativeLayout>

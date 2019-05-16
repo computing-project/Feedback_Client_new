@@ -193,14 +193,13 @@ public class Activity_MarkAllocation extends Activity {
 
                     LayoutInflater layoutInflater = LayoutInflater.from(Activity_MarkAllocation.this);//获得layoutInflater对象
                     final View view2 = layoutInflater.from(Activity_MarkAllocation.this).inflate(R.layout.dialog_showcommentcriterialayer_markallocation, null);//获得view对象
+                    ListView listView_subSection = view2.findViewById(R.id.listView_subSection_dialogShowCommentCriteriaLayer);
                     TextView textView_CriteriaName = view2.findViewById(R.id.textView_criteriaName_showComment);
                     textView_CriteriaName.setText(markedCriteriaList.get(position).getName());
                     ArrayList<SubSection> subSectionsList = markedCriteriaList.get(position).getSubsectionList();
-                   MyAdapter_ForShowSubSection_CriteriaLayer showSubsection = new MyAdapter_ForShowSubSection_CriteriaLayer(subSectionsList,Activity_MarkAllocation.this);
-                    ListView listView_subSection = view2.findViewById(R.id.listView_subSection_dialogShowCommentCriteriaLayer);
+                   MyAdapter_ForShowSubSection_CriteriaLayer showSubsection = new MyAdapter_ForShowSubSection_CriteriaLayer(subSectionsList,view2.getContext());
+
                     listView_subSection.setAdapter(showSubsection);
-
-
                     Dialog dialog = new android.app.AlertDialog.Builder(Activity_MarkAllocation.this).setView(view2).create();
 
                     dialog.show();
@@ -241,11 +240,60 @@ public class Activity_MarkAllocation extends Activity {
         @Override
         public View getView(int position, View view, ViewGroup viewGroup) {
             view = LayoutInflater.from(mContext).inflate(R.layout.dialog_showcomment_subsectionlayer_markallocation, viewGroup, false);
-            TextView textView_subsectionName = view.findViewById(R.id.textView_subtitleName_showCommentSubtitleLayer);
+            TextView textView_subsectionName = view.findViewById(R.id.textView_SubsectionName_showCommentSubsectionLayer);
             textView_subsectionName.setText(subSections.get(position).getName());
 
+            ArrayList<ShortText> shortTextList = subSections.get(position).getShortTextList();
+            MyAdapter_ForShowShortText_SubsectionLayer showShortText = new MyAdapter_ForShowShortText_SubsectionLayer(shortTextList,viewGroup.getContext());
+            ListView listView_shortText = view.findViewById(R.id.listView_ShortText_showCommentSubsectionLayer);
+            listView_shortText.setAdapter(showShortText);
 
             return view;
         }
     }
+
+
+
+    public class MyAdapter_ForShowShortText_SubsectionLayer extends BaseAdapter
+    {
+        private Context mContext;
+        private ArrayList<ShortText> shortTexts;
+
+        public MyAdapter_ForShowShortText_SubsectionLayer(ArrayList<ShortText> shortTexts, Context context) {
+            this.shortTexts = shortTexts;
+            this.mContext = context;
+        }
+
+
+        @Override
+        public int getCount() {
+            return shortTexts.size();
+        }
+
+        @Override
+        public Object getItem(int i) {
+            return i;
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return i;
+        }
+
+        @Override
+        public View getView(int position, View view, ViewGroup viewGroup) {
+            view = LayoutInflater.from(mContext).inflate(R.layout.dialog_showcomment_shorttextlayer_markallocation, viewGroup, false);
+            TextView textView_shortTextName = view.findViewById(R.id.textView_shortTextName_showCommentShortTextLayer);
+            textView_shortTextName.setText(shortTexts.get(position).getName());
+            return view;
+        }
+    }
+
+
+
+
+
+
+
+
 }
