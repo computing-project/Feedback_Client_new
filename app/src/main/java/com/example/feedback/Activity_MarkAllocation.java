@@ -8,19 +8,23 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Activity_MarkAllocation extends Activity {
     private int indexOfProject;
@@ -220,8 +224,8 @@ public class Activity_MarkAllocation extends Activity {
                         expandableListView = view2.findViewById(R.id.expandablelistView_dialogShowCommentCriteriaLayer);
 
 
-                        MyBaseExpandableListAdapter myBaseExpandableListAdapter = new MyBaseExpandableListAdapter(subSectionsList, view2.getContext());
-                        expandableListView.setAdapter(myBaseExpandableListAdapter);
+                        ParentExpandAdapter parentExpandAdapter = new ParentExpandAdapter(Activity_MarkAllocation.this,subSectionsList);
+                        expandableListView.setAdapter(parentExpandAdapter);
                         Dialog dialog = new android.app.AlertDialog.Builder(Activity_MarkAllocation.this).setView(view2).create();
 
                         dialog.show();
@@ -249,8 +253,8 @@ public class Activity_MarkAllocation extends Activity {
                         expandableListView = view2.findViewById(R.id.expandablelistView_dialogShowCommentCriteriaLayer);
 
 
-                        MyBaseExpandableListAdapter myBaseExpandableListAdapter = new MyBaseExpandableListAdapter(subSectionsList, view2.getContext());
-                        expandableListView.setAdapter(myBaseExpandableListAdapter);
+                        ParentExpandAdapter parentExpandAdapter = new ParentExpandAdapter(Activity_MarkAllocation.this,subSectionsList);
+                        expandableListView.setAdapter(parentExpandAdapter);
                         Dialog dialog = new android.app.AlertDialog.Builder(Activity_MarkAllocation.this).setView(view2).create();
 
                         dialog.show();
@@ -263,17 +267,14 @@ public class Activity_MarkAllocation extends Activity {
 
 
 
+    public class ParentExpandAdapter extends BaseExpandableListAdapter {
 
+        private Context context;
+        private List<SubSection> subSections;
 
-
-    public class MyBaseExpandableListAdapter extends BaseExpandableListAdapter {
-
-        private ArrayList<SubSection> subSections;
-        private Context mContext;
-
-        public MyBaseExpandableListAdapter(ArrayList<SubSection> subSections, Context mContext) {
+        public ParentExpandAdapter(Context context, List<SubSection> subSections) {
+            this.context = context;
             this.subSections = subSections;
-            this.mContext = mContext;
         }
 
         @Override
@@ -287,12 +288,12 @@ public class Activity_MarkAllocation extends Activity {
         }
 
         @Override
-        public SubSection getGroup(int groupPosition) {
+        public Object getGroup(int groupPosition) {
             return subSections.get(groupPosition);
         }
 
         @Override
-        public ShortText getChild(int groupPosition, int childPosition) {
+        public Object getChild(int groupPosition, int childPosition) {
             return subSections.get(groupPosition).getShortTextList().get(childPosition);
         }
 
@@ -313,54 +314,287 @@ public class Activity_MarkAllocation extends Activity {
 
         @Override
         public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-
-            ViewHolderGroup groupHolder;
-            if(convertView == null){
-                convertView = LayoutInflater.from(mContext).inflate(
-                        R.layout.dialog_showcomment_subsectionlayer_markallocation, parent, false);
-                groupHolder = new ViewHolderGroup();
-                groupHolder.tv_group_name = (TextView) convertView.findViewById(R.id.textView_subsectionName_showCommentSubsectionLayer);
-                convertView.setTag(groupHolder);
-            }else{
-                groupHolder = (ViewHolderGroup) convertView.getTag();
+            ParentViewHolder parentHolder;
+            if (null == convertView) {
+                parentHolder = new ParentViewHolder();
+                convertView = View.inflate(context, R.layout.fire_tab_parent_group_item, null);
+                parentHolder.parentTv = (TextView) convertView.findViewById(R.id.parentGroupTV);
+                parentHolder.parentIv = (ImageView) convertView.findViewById(R.id.iv_parent_group_indicator);
+                convertView.setTag(parentHolder);
+            } else {
+                parentHolder = (ParentViewHolder) convertView.getTag();
             }
-            groupHolder.tv_group_name.setText(subSections.get(groupPosition).getName());
+            parentHolder.parentTv.setText(subSections.get(groupPosition).getName());
+            if (isExpanded) {
+                parentHolder.parentIv.setImageResource(R.drawable.icon_arrow_up);
+            } else {
+                parentHolder.parentIv.setImageResource(R.drawable.icon_arrow_down);
+            }
             return convertView;
         }
 
-        //取得显示给定分组给定子位置的数据用的视图
         @Override
         public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-            ViewHolderItem itemHolder;
-            if(convertView == null){
-                convertView = LayoutInflater.from(mContext).inflate(
-                        R.layout.dialog_showcomment_longtextlayer_markallocation, parent, false);
-                itemHolder = new ViewHolderItem();
-                itemHolder.tv_name = (TextView) convertView.findViewById(R.id.textView_longText_showCommentLongtextLayer);
-                convertView.setTag(itemHolder);
-            }else{
-                itemHolder = (ViewHolderItem) convertView.getTag();
+            final ChildViewHolder childHolder;
+            if (null == convertView) {
+                childHolder = new ChildViewHolder();
+                convertView = View.inflate(context, R.layout.item_expand_group_child, null);
+                childHolder.childExpandLv =  convertView.findViewById(R.id.expandableListView_childGroup);
+                convertView.setTag(childHolder);
+            } else {
+                childHolder = (ChildViewHolder) convertView.getTag();
             }
-            itemHolder.tv_name.setText(subSections.get(groupPosition).getShortTextList().get(childPosition).getName());
+
+            final ChildExpandAdapter childExpandAdapter = new ChildExpandAdapter(context, subSections.get(groupPosition).getShortTextList());
+            childHolder.childExpandLv.setAdapter(childExpandAdapter);
+            childHolder.childExpandLv.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+                @Override
+                public void onGroupExpand(int groupPosition) {
+                    // 保证每次只有一个组是展开状态
+                    for (int i = 0; i < childExpandAdapter.getGroupCount(); i++) {
+                        if (i != groupPosition) {
+                            childHolder.childExpandLv.collapseGroup(i);
+                        }
+                    }
+                }
+            });
             return convertView;
         }
 
-        //设置子列表是否可选中
         @Override
         public boolean isChildSelectable(int groupPosition, int childPosition) {
             return true;
         }
 
-
-        private class ViewHolderGroup{
-            private TextView tv_group_name;
+        class ParentViewHolder {
+            TextView parentTv;
+            ImageView parentIv;
         }
 
-        private class ViewHolderItem{
-            private TextView tv_name;
+        class ChildViewHolder {
+            // 二级视图又是一个ExpandableListView
+            ExpandableListView childExpandLv;
         }
 
     }
+
+
+
+
+
+    public class ChildExpandAdapter extends BaseExpandableListAdapter {
+
+        private Context context;
+        private List<ShortText> shortTexts;
+
+        public ChildExpandAdapter(Context context, List<ShortText> shortTexts) {
+            this.context = context;
+            this.shortTexts = shortTexts;
+        }
+
+        @Override
+        public int getGroupCount() {
+            return shortTexts.size();
+        }
+
+        @Override
+        public int getChildrenCount(int groupPosition) {
+            return shortTexts.get(groupPosition).getLongtext().size();
+        }
+
+        @Override
+        public Object getGroup(int groupPosition) {
+            return shortTexts.get(groupPosition);
+        }
+
+        @Override
+        public Object getChild(int groupPosition, int childPosition) {
+            return shortTexts.get(groupPosition).getLongtext().get(childPosition);
+        }
+
+        @Override
+        public long getGroupId(int groupPosition) {
+            return groupPosition;
+        }
+
+        @Override
+        public long getChildId(int groupPosition, int childPosition) {
+            return childPosition;
+        }
+
+        @Override
+        public boolean hasStableIds() {
+            return false;
+        }
+
+        @Override
+        public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+            ParentViewHolder parentHolder;
+            if (null == convertView) {
+                parentHolder = new ParentViewHolder();
+                convertView = View.inflate(context, R.layout.fire_tab_child_group_item, null);
+                parentHolder.parentTv = (TextView) convertView.findViewById(R.id.childGroupTV);
+                parentHolder.parentIv = (ImageView) convertView.findViewById(R.id.iv_fire_tab_child_indicator);
+                convertView.setTag(parentHolder);
+            } else {
+                parentHolder = (ParentViewHolder) convertView.getTag();
+            }
+            parentHolder.parentTv.setText(shortTexts.get(groupPosition).getName());
+            if (isExpanded) {
+                parentHolder.parentIv.setImageResource(R.drawable.icon_arrow_up);
+            } else {
+                parentHolder.parentIv.setImageResource(R.drawable.icon_arrow_down);
+            }
+            return convertView;
+        }
+
+        @Override
+        public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+            ChildViewHolder childHolder;
+            if (null == convertView) {
+                childHolder = new ChildViewHolder();
+                convertView = View.inflate(context, R.layout.dialog_showcomment_longtextlayer_markallocation, null);
+                childHolder.textView_longText = (TextView) convertView.findViewById(R.id.textView_longText_showCommentLongtextLayer);
+                convertView.setTag(childHolder);
+            } else {
+                childHolder = (ChildViewHolder) convertView.getTag();
+            }
+            childHolder.textView_longText.setText(shortTexts.get(groupPosition).getLongtext().get(childPosition));
+
+            return convertView;
+        }
+
+        @Override
+        public boolean isChildSelectable(int groupPosition, int childPosition) {
+            return true;
+        }
+
+        class ParentViewHolder {
+            TextView parentTv;
+            ImageView parentIv;
+        }
+
+        class ChildViewHolder {
+            TextView textView_longText;
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    public class MyBaseExpandableListAdapter extends BaseExpandableListAdapter {
+//
+//        private ArrayList<SubSection> subSections;
+//        private Context mContext;
+//
+//        public MyBaseExpandableListAdapter(ArrayList<SubSection> subSections, Context mContext) {
+//            this.subSections = subSections;
+//            this.mContext = mContext;
+//        }
+//
+//        @Override
+//        public int getGroupCount() {
+//            return subSections.size();
+//        }
+//
+//        @Override
+//        public int getChildrenCount(int groupPosition) {
+//            return subSections.get(groupPosition).getShortTextList().size();
+//        }
+//
+//        @Override
+//        public SubSection getGroup(int groupPosition) {
+//            return subSections.get(groupPosition);
+//        }
+//
+//        @Override
+//        public ShortText getChild(int groupPosition, int childPosition) {
+//            return subSections.get(groupPosition).getShortTextList().get(childPosition);
+//        }
+//
+//        @Override
+//        public long getGroupId(int groupPosition) {
+//            return groupPosition;
+//        }
+//
+//        @Override
+//        public long getChildId(int groupPosition, int childPosition) {
+//            return childPosition;
+//        }
+//
+//        @Override
+//        public boolean hasStableIds() {
+//            return false;
+//        }
+//
+//        @Override
+//        public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+//
+//            ViewHolderGroup groupHolder;
+//            if(convertView == null){
+//                convertView = LayoutInflater.from(mContext).inflate(
+//                        R.layout.dialog_showcomment_subsectionlayer_markallocation, parent, false);
+//                groupHolder = new ViewHolderGroup();
+//                groupHolder.tv_group_name = (TextView) convertView.findViewById(R.id.textView_subsectionName_showCommentSubsectionLayer);
+//                convertView.setTag(groupHolder);
+//            }else{
+//                groupHolder = (ViewHolderGroup) convertView.getTag();
+//            }
+//            groupHolder.tv_group_name.setText(subSections.get(groupPosition).getName());
+//            return convertView;
+//        }
+//
+//        //取得显示给定分组给定子位置的数据用的视图
+//        @Override
+//        public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+//            ViewHolderItem itemHolder;
+//            if(convertView == null){
+//                convertView = LayoutInflater.from(mContext).inflate(
+//                        R.layout.dialog_showcomment_longtextlayer_markallocation, parent, false);
+//                itemHolder = new ViewHolderItem();
+//                itemHolder.tv_name = (TextView) convertView.findViewById(R.id.textView_longText_showCommentLongtextLayer);
+//                convertView.setTag(itemHolder);
+//            }else{
+//                itemHolder = (ViewHolderItem) convertView.getTag();
+//            }
+//            itemHolder.tv_name.setText(subSections.get(groupPosition).getShortTextList().get(childPosition).getName());
+//            return convertView;
+//        }
+//
+//        //设置子列表是否可选中
+//        @Override
+//        public boolean isChildSelectable(int groupPosition, int childPosition) {
+//            return true;
+//        }
+//
+//
+//        private class ViewHolderGroup{
+//            private TextView tv_group_name;
+//        }
+//
+//        private class ViewHolderItem{
+//            private TextView tv_name;
+//        }
+//
+//    }
 
 
 
