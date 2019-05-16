@@ -34,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_below="@id/textView_criteriaName_gridItem"
-        android:background="#7d7d7d"
+        android:background="#707070"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"/>
 
@@ -51,7 +51,6 @@
             android:layout_alignParentStart="true"
             android:layout_toLeftOf="@id/button_minus_gridItem"
             android:text="Maximun Mark"
-            android:textStyle="bold"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
@@ -96,7 +95,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:text="Mark Increments"
-            android:textStyle="bold"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
