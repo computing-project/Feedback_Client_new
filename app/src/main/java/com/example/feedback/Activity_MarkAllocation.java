@@ -284,13 +284,17 @@ public class Activity_MarkAllocation extends Activity {
         //取得显示给定分组给定子位置的数据用的视图
         @Override
         public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+            ViewHolderItem itemHolder;
+            if(convertView == null){
                 convertView = LayoutInflater.from(mContext).inflate(
-                        R.layout.dialog_showcomment_shorttextlayer_markallocation, parent, false);
-
-            ExpandableListView secondExpandableView = convertView.findViewById(R.id.expandableListView_shortText_showCommentMarkAllocation);
-            MyExpandableListAdapter2 myExpandableListAdapter2 = new MyExpandableListAdapter2(subSections.get(groupPosition).getShortTextList(), convertView.getContext());
-            secondExpandableView.setAdapter(myExpandableListAdapter2);
-            //secondExpandableView.setGroupIndicator(null);
+                        R.layout.dialog_showcomment_longtextlayer_markallocation, parent, false);
+                itemHolder = new ViewHolderItem();
+                itemHolder.tv_name = (TextView) convertView.findViewById(R.id.textView_longText_showCommentLongtextLayer);
+                convertView.setTag(itemHolder);
+            }else{
+                itemHolder = (ViewHolderItem) convertView.getTag();
+            }
+            itemHolder.tv_name.setText(subSections.get(groupPosition).getShortTextList().get(childPosition).getName());
             return convertView;
         }
 
@@ -313,99 +317,99 @@ public class Activity_MarkAllocation extends Activity {
 
 
 
-    public class MyExpandableListAdapter2 extends BaseExpandableListAdapter {
-
-        private ArrayList<ShortText> shortTexts;
-        private Context mContext;
-
-        public MyExpandableListAdapter2(ArrayList<ShortText> shortTexts, Context mContext) {
-            this.shortTexts = shortTexts;
-            this.mContext = mContext;
-        }
-
-        @Override
-        public int getGroupCount() {
-            return shortTexts.size();
-        }
-
-        @Override
-        public int getChildrenCount(int groupPosition) {
-            return shortTexts.get(groupPosition).getLongtext().size();
-        }
-
-        @Override
-        public ShortText getGroup(int groupPosition) {
-            return shortTexts.get(groupPosition);
-        }
-
-        @Override
-        public String getChild(int groupPosition, int childPosition) {
-            return shortTexts.get(groupPosition).getLongtext().get(childPosition);
-        }
-
-        @Override
-        public long getGroupId(int groupPosition) {
-            return groupPosition;
-        }
-
-        @Override
-        public long getChildId(int groupPosition, int childPosition) {
-            return childPosition;
-        }
-
-        @Override
-        public boolean hasStableIds() {
-            return false;
-        }
-
-        @Override
-        public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-
-            ViewHolderGroup groupHolder;
-            if(convertView == null){
-                convertView = LayoutInflater.from(mContext).inflate(
-                        R.layout.dialog_showcomment_subsectionlayer_markallocation, parent, false);
-                groupHolder = new ViewHolderGroup();
-                groupHolder.tv_group_name = (TextView) convertView.findViewById(R.id.textView_subsectionName_showCommentSubsectionLayer);
-                convertView.setTag(groupHolder);
-            }else{
-                groupHolder = (ViewHolderGroup) convertView.getTag();
-            }
-            groupHolder.tv_group_name.setText("子类第"+groupPosition);
-            return convertView;
-        }
-
-        //取得显示给定分组给定子位置的数据用的视图
-        @Override
-        public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-            ViewHolderItem itemHolder;
-            if(convertView == null){
-                convertView = LayoutInflater.from(mContext).inflate(
-                        R.layout.dialog_showcomment_longtextlayer_markallocation, parent, false);
-                itemHolder = new ViewHolderItem();
-                itemHolder.tv_name = (TextView) convertView.findViewById(R.id.textView_longText_showCommentLongtextLayer);
-                convertView.setTag(itemHolder);
-            }else{
-                itemHolder = (ViewHolderItem) convertView.getTag();
-            }
-            itemHolder.tv_name.setText(shortTexts.get(groupPosition).getLongtext().get(childPosition));
-            return convertView;
-        }
-
-        //设置子列表是否可选中
-        @Override
-        public boolean isChildSelectable(int groupPosition, int childPosition) {
-            return true;
-        }
-
-
-        private class ViewHolderGroup{
-            private TextView tv_group_name;
-        }
-
-        private class ViewHolderItem{
-            private TextView tv_name;
-        }
+//    public class MyExpandableListAdapter2 extends BaseExpandableListAdapter {
+//
+//        private ArrayList<ShortText> shortTexts;
+//        private Context mContext;
+//
+//        public MyExpandableListAdapter2(ArrayList<ShortText> shortTexts, Context mContext) {
+//            this.shortTexts = shortTexts;
+//            this.mContext = mContext;
+//        }
+//
+//        @Override
+//        public int getGroupCount() {
+//            return shortTexts.size();
+//        }
+//
+//        @Override
+//        public int getChildrenCount(int groupPosition) {
+//            return shortTexts.get(groupPosition).getLongtext().size();
+//        }
+//
+//        @Override
+//        public ShortText getGroup(int groupPosition) {
+//            return shortTexts.get(groupPosition);
+//        }
+//
+//        @Override
+//        public String getChild(int groupPosition, int childPosition) {
+//            return shortTexts.get(groupPosition).getLongtext().get(childPosition);
+//        }
+//
+//        @Override
+//        public long getGroupId(int groupPosition) {
+//            return groupPosition;
+//        }
+//
+//        @Override
+//        public long getChildId(int groupPosition, int childPosition) {
+//            return childPosition;
+//        }
+//
+//        @Override
+//        public boolean hasStableIds() {
+//            return false;
+//        }
+//
+//        @Override
+//        public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+//
+//            ViewHolderGroup groupHolder;
+//            if(convertView == null){
+//                convertView = LayoutInflater.from(mContext).inflate(
+//                        R.layout.dialog_showcomment_subsectionlayer_markallocation, parent, false);
+//                groupHolder = new ViewHolderGroup();
+//                groupHolder.tv_group_name = (TextView) convertView.findViewById(R.id.textView_subsectionName_showCommentSubsectionLayer);
+//                convertView.setTag(groupHolder);
+//            }else{
+//                groupHolder = (ViewHolderGroup) convertView.getTag();
+//            }
+//            groupHolder.tv_group_name.setText("子类第"+groupPosition);
+//            return convertView;
+//        }
+//
+//        //取得显示给定分组给定子位置的数据用的视图
+//        @Override
+//        public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+//            ViewHolderItem itemHolder;
+//            if(convertView == null){
+//                convertView = LayoutInflater.from(mContext).inflate(
+//                        R.layout.dialog_showcomment_longtextlayer_markallocation, parent, false);
+//                itemHolder = new ViewHolderItem();
+//                itemHolder.tv_name = (TextView) convertView.findViewById(R.id.textView_longText_showCommentLongtextLayer);
+//                convertView.setTag(itemHolder);
+//            }else{
+//                itemHolder = (ViewHolderItem) convertView.getTag();
+//            }
+//            itemHolder.tv_name.setText(shortTexts.get(groupPosition).getLongtext().get(childPosition));
+//            return convertView;
+//        }
+//
+//        //设置子列表是否可选中
+//        @Override
+//        public boolean isChildSelectable(int groupPosition, int childPosition) {
+//            return true;
+//        }
+//
+//
+//        private class ViewHolderGroup{
+//            private TextView tv_group_name;
+//        }
+//
+//        private class ViewHolderItem{
+//            private TextView tv_name;
+//        }
 
     }
 
@@ -510,8 +514,3 @@ public class Activity_MarkAllocation extends Activity {
 //
 //
 
-
-
-
-
-}
