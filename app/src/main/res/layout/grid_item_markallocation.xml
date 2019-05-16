@@ -54,7 +54,6 @@
             android:textStyle="bold"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginBottom="5dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <Button
@@ -99,7 +98,7 @@
             android:text="Mark Increments"
             android:textStyle="bold"
             android:layout_marginLeft="10dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="10dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <RadioGroup
