@@ -50,6 +50,7 @@ public class SignupTest_Activity extends Activity {
             public void onClick(View view) {
                 Intent intent = new Intent(SignupTest_Activity.this, LoginTest_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

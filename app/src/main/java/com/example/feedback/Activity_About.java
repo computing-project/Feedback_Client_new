@@ -52,22 +52,38 @@ public class Activity_About extends Activity {
             AllFunctions.getObject().createProject(projectName,subjectName,subjectCode,projectDes);
         else
             AllFunctions.getObject().updateProject(project,projectName,subjectName,subjectCode,projectDes);
-        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }
 
     public void back_About(View view)
     {
-        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
         finish();
     }
 
     public void next_About(View view)
     {
-        Intent intent = new Intent(this, Activity_Timer.class);
-        intent.putExtra("index", index);
-        startActivity(intent);
+        EditText editText_projectName = findViewById(R.id.editText_projectname_inabout);
+        EditText editText_subjectName = findViewById(R.id.editText_subjectname_inabout);
+        EditText editText_subjectCode = findViewById(R.id.editText_subjectcode_inabout);
+        EditText editText_projectDes = findViewById(R.id.editText_projectdescription_inabout);
+        String projectName = editText_projectName.getText().toString();
+        String subjectName = editText_subjectName.getText().toString();
+        String subjectCode = editText_subjectCode.getText().toString();
+        String projectDes = editText_projectDes.getText().toString();
+        if(index.equals("-999")) {
+            AllFunctions.getObject().createProject(projectName, subjectName, subjectCode, projectDes);
+            int indextToSend = AllFunctions.getObject().getProjectList().size() -1;
+            Intent intent = new Intent(this, Activity_Timer.class);
+            intent.putExtra("index", String.valueOf(indextToSend));
+            startActivity(intent);
+        }
+        else {
+            AllFunctions.getObject().updateProject(project, projectName, subjectName, subjectCode, projectDes);
+            Intent intent = new Intent(this, Activity_Timer.class);
+            intent.putExtra("index", index);
+            startActivity(intent);
+        }
     }
 }

@@ -51,6 +51,10 @@ public class LoginTest_Activity extends Activity {
 
     private void init()
     {
+        EditText editView_email = findViewById(R.id.editText_email_inlogin);
+        editView_email.setText("");
+        EditText editText_password = findViewById(R.id.editText_password_inlogin);
+        editText_password.setText("");
         allFunctions = AllFunctions.getObject();
         TextView textView_signup = (TextView)findViewById(R.id.textView_signup_inlogin);
         textView_signup.setOnClickListener(new View.OnClickListener() {

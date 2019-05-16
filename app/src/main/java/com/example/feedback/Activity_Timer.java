@@ -128,9 +128,8 @@ public class Activity_Timer extends Activity {
         durationSec = Integer.parseInt(editText_durationSec.getText().toString());
         warningMin = Integer.parseInt(editText_warningMin.getText().toString());
         warningSec = Integer.parseInt(editText_warningSec.getText().toString());
-        System.out.println("Time in Timer: "+durationMin+":"+durationSec+"   "+warningMin+":"+warningSec);
         AllFunctions.getObject().projectTimer(project,durationMin,durationSec,warningMin,warningSec);
-        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }
@@ -142,6 +141,11 @@ public class Activity_Timer extends Activity {
 
     public void next_Timer(View view)
     {
+        durationMin = Integer.parseInt(editText_durationMin.getText().toString());
+        durationSec = Integer.parseInt(editText_durationSec.getText().toString());
+        warningMin = Integer.parseInt(editText_warningMin.getText().toString());
+        warningSec = Integer.parseInt(editText_warningSec.getText().toString());
+        AllFunctions.getObject().projectTimer(project,durationMin,durationSec,warningMin,warningSec);
         Intent intent = new Intent(this, Activity_CriteriaList.class);
         intent.putExtra("index",String.valueOf(indexOfProject));
         startActivity(intent);
