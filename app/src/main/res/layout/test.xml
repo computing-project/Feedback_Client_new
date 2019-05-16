@@ -164,7 +164,9 @@
                             android:paddingTop="10dp"
                             android:paddingBottom="5dp"
                             android:textColor="#DD000000"
-                            android:gravity="center" />
+                            android:gravity="center"
+                            android:drawableRight="@drawable/ic_add"
+                            android:paddingRight="10dp"/>
 
                         <View
                             android:id="@+id/divider16"
@@ -202,7 +204,9 @@
                             android:paddingTop="10dp"
                             android:paddingBottom="5dp"
                             android:textColor="#DD000000"
-                            android:gravity="center" />
+                            android:gravity="center"
+                            android:drawableRight="@drawable/ic_add"
+                            android:paddingRight="10dp" />
 
                         <View
                             android:id="@+id/divider17"
@@ -216,6 +220,8 @@
                             android:id="@+id/listView_commentOnly_inCriteriaList"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" />
+
+
                     </LinearLayout>
                 </LinearLayout>
 
