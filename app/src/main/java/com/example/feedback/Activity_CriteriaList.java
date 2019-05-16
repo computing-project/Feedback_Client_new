@@ -6,6 +6,8 @@ import android.content.ClipDescription;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +19,7 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -28,25 +31,48 @@ public class Activity_CriteriaList extends Activity {
     ListView listView_criteriaDefault;
     ListView listView_marketCriteria;
     ListView listView_commentOnly;
+    Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__criteria_list);
-
+        System.out.println("criteriaList界面onCreate");
         Intent intent =getIntent();
         indexOfProject = Integer.parseInt(intent.getStringExtra("index"));
-        project = AllFunctions.getObject().getProjectList().get(indexOfProject);
-
-        defaultCriteriaList = DefaultCriteriaList.getDefaultCriteriaList();
-
         init();
+        handler = new Handler(){
+            public void handleMessage(Message msg)
+            {
+                switch (msg.what)
+                {
+                    case 0:
+                        Intent intent = new Intent(Activity_CriteriaList.this, LoginTest_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        finish();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        };
+        AllFunctions.getObject().setHandler(handler);
 
+    }
+
+    protected void onNewIntent(Intent intent) {
+        System.out.println("criteriaList界面onNewIntent");
+        init();
+        AllFunctions.getObject().setHandler(handler);
     }
 
 
     private void init()
     {
+        project = AllFunctions.getObject().getProjectList().get(indexOfProject);
+        defaultCriteriaList = DefaultCriteriaList.getDefaultCriteriaList();
+        defaultCriteriaList.removeAll(project.getCriteria());
+        defaultCriteriaList.removeAll(project.getCommentList());
         listView_criteriaDefault = findViewById(R.id.listView_CriteriaList_inCriteriaList);
         listView_marketCriteria = findViewById(R.id.listView_marketCriteria_inCriteriaList);
         listView_commentOnly = findViewById(R.id.listView_commentOnly_inCriteriaList);
@@ -73,7 +99,7 @@ public class Activity_CriteriaList extends Activity {
         Intent intent = new Intent(this, Activity_MarkAllocation.class);
         intent.putExtra("index", String.valueOf(indexOfProject));
         startActivity(intent);
-        finish();
+//        finish();
     }
 
 

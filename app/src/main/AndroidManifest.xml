@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activity_MarkAllocation"></activity>
-        <activity android:name=".Activity_CriteriaList" />
+        <activity android:name=".Activity_CriteriaList"
+            android:launchMode="singleInstance"/>
         <activity android:name=".Activity_Timer" />
         <activity android:name=".Activity_About" />
         <activity
