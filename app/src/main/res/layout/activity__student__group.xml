@@ -6,14 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".Activity_Student_Group">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <RelativeLayout
+            android:id="@+id/relativeLayout_top_studentManagement"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true">
 
             <TextView
                 android:id="@+id/textView3"
@@ -56,18 +57,48 @@
                 android:layout_marginRight="10dp"
                 android:layout_toLeftOf="@+id/button_addstudent_instudentgroup"
                 android:background="@drawable/ic_cloud_download_fill"
-                android:onClick="importStudent_StudentManagement" />
+                android:onClick="import_StudentManagement" />
         </RelativeLayout>
 
         <View
             android:id="@+id/divider10"
             android:layout_width="match_parent"
             android:layout_height="10dp"
+            android:layout_below="@id/relativeLayout_top_studentManagement"
             android:background="?android:attr/listDivider" />
 
         <ListView
             android:id="@+id/listView_ingroupStudent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_above="@id/relativeLayout_bottom_studentManagement"
+            android:layout_below="@id/divider10" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout_bottom_studentManagement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp">
+
+            <Button
+                android:id="@+id/button_back_inStudentManagement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="40dp"
+                android:onClick="back_studentManagement"
+                android:text="back" />
+
+            <Button
+                android:id="@+id/button_save_studentManagement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="40dp"
+                android:onClick="save_studentManagement"
+                android:text="save" />
+        </RelativeLayout>
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

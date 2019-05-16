@@ -80,6 +80,18 @@ public class Activity_Student_Group extends Activity {
         init();
     }
 
+    public void back_studentManagement(View view)
+    {
+        finish();
+    }
+
+    public void save_studentManagement(View view)
+    {
+        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+    }
+
 
 
     public class MyAdapter extends BaseAdapter {
@@ -240,36 +252,36 @@ public class Activity_Student_Group extends Activity {
 ////
 ////            });
 
-    final ListView l = (ListView) parent;
-            convertView.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    int action = event.getAction();
-                    switch (action)
-                    {
-                        case MotionEvent.ACTION_DOWN:
-                            int rawX1 = (int) event.getRawX() - (int) listView.getX();
-                            int rawY2 = (int) event.getRawY() - (int) listView.getY();
-                            System.out.println("横坐标: "+rawX1+"  纵坐标: "+rawY2);
-                            System.out.println("第几个开始:"+l.pointToPosition(rawX1, rawY2));
-                            break;
-                        case MotionEvent.ACTION_MOVE:
-//                            double moveX = event.getX() - rawX;
-//                            double moveY = event.getY() - rawY;
-//                            System.out.println("移动过程中坐标: "+moveX+" "+moveY);
-//                            if(moveX > 400)
-//                                v.setBackgroundColor(Color.GRAY);
-                            break;
-                        case MotionEvent.ACTION_UP:
-                            System.out.println("第几个:"+listView.pointToPosition((int)event.getX(), (int)event.getY()));
-                            break;
-
-                        default:
-                            break;
-                    }
-                    return true;
-                }
-            });
+//    final ListView l = (ListView) parent;
+////            convertView.setOnTouchListener(new View.OnTouchListener() {
+////                @Override
+////                public boolean onTouch(View v, MotionEvent event) {
+////                    int action = event.getAction();
+////                    switch (action)
+////                    {
+////                        case MotionEvent.ACTION_DOWN:
+////                            int rawX1 = (int) event.getRawX() - (int) listView.getX();
+////                            int rawY2 = (int) event.getRawY() - (int) listView.getY();
+////                            System.out.println("横坐标: "+rawX1+"  纵坐标: "+rawY2);
+////                            System.out.println("第几个开始:"+l.pointToPosition(rawX1, rawY2));
+////                            break;
+////                        case MotionEvent.ACTION_MOVE:
+//////                            double moveX = event.getX() - rawX;
+//////                            double moveY = event.getY() - rawY;
+//////                            System.out.println("移动过程中坐标: "+moveX+" "+moveY);
+//////                            if(moveX > 400)
+//////                                v.setBackgroundColor(Color.GRAY);
+////                            break;
+////                        case MotionEvent.ACTION_UP:
+////                            System.out.println("第几个:"+listView.pointToPosition((int)event.getX(), (int)event.getY()));
+////                            break;
+////
+////                        default:
+////                            break;
+////                    }
+////                    return true;
+////                }
+////            });
 
             return convertView;
         }
@@ -398,10 +410,6 @@ public class Activity_Student_Group extends Activity {
         dialog.show();
     }
 
-    public void importStudent_StudentManagement(View view)
-    {
-        init();
-    }
 
 
 

@@ -137,9 +137,14 @@ public class Activity_Timer extends Activity {
 
     public void back_Timer(View view)
     {
-        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
         finish();
+    }
+
+    public void next_Timer(View view)
+    {
+        Intent intent = new Intent(this, Activity_CriteriaList.class);
+        intent.putExtra("index",String.valueOf(indexOfProject));
+        startActivity(intent);
     }
 
 }
