@@ -7,7 +7,8 @@
     <RelativeLayout
         android:id="@+id/relativeLayout_top_showComments"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="10dp">
 
         <Button
             android:id="@+id/button_done_showComments"
@@ -21,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="+" />
+            android:text="add"/>
     </RelativeLayout>
 
     <TextView
@@ -30,6 +31,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/relativeLayout_top_showComments"
         android:text="TextView"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textSize="18dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <ExpandableListView
