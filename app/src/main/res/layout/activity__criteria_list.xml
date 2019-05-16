@@ -11,130 +11,253 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2">
+            android:background="@drawable/ic_header_background"
+            android:layout_weight="14"
+            android:elevation="40dp">
 
-            <LinearLayout
-                android:id="@+id/linearlayout_defaultCriteriaList_criteriaList"
+            <TextView
+                android:id="@+id/textView9"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="false"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_weight="3"
-                android:background="@android:color/darker_gray"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView_CriteriaList_inCriteriaList"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Criteria List"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-                <View
-                    android:id="@+id/divider15"
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:background="?android:attr/listDivider" />
-
-                <ListView
-                    android:id="@+id/listView_CriteriaList_inCriteriaList"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearlayout_marketCriteria_criterialist"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_weight="3"
-                android:background="@android:color/darker_gray"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView_marketCriteria_inCriteriaList"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Market Criteria"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-                <View
-                    android:id="@+id/divider16"
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:background="?android:attr/listDivider" />
-
-                <ListView
-                    android:id="@+id/listView_marketCriteria_inCriteriaList"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
+                android:fontFamily="sans-serif-medium"
+                android:text="Projects "
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <LinearLayout
-                android:id="@+id/linearlayout_commentOnlyList_criteriaList"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_weight="3"
-                android:background="@android:color/darker_gray"
-                android:orientation="vertical">
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
 
                 <TextView
-                    android:id="@+id/textView_CommentOnly_inCriteriaList"
-                    android:layout_width="match_parent"
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Comment Only"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                    android:layout_weight="100"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="right"
+                    android:text="Hello, Xxxxxx Xxxxxx"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
 
                 <View
-                    android:id="@+id/divider17"
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:background="?android:attr/listDivider" />
+                    android:id="@+id/divider13"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#ffffff" />
 
-                <ListView
-                    android:id="@+id/listView_commentOnly_inCriteriaList"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="right"
+                    android:text="Help"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
+
+                <View
+                    android:id="@+id/divider14"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#ffffff" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Log Out"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
+
             </LinearLayout>
-        </LinearLayout>
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="12">
+            android:layout_weight="1">
 
-            <Button
-                android:id="@+id/button_back_inCriteriaList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="40dp"
-                android:onClick="back_inCriteriaList"
-                android:text="back" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="40dp"
-                android:onClick="next_inCriteriaList"
-                android:text="next" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:id="@+id/linearlayout_defaultCriteriaList_criteriaList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="false"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/ic_criteria_background"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_CriteriaList_inCriteriaList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Criteria List"
+                            android:fontFamily="sans-serif-medium"
+                            android:textSize="24sp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="5dp"
+                            android:textColor="#DD000000"
+                            android:gravity="center"/>
+
+                        <View
+                            android:id="@+id/divider15"
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="#DD014085" />
+
+                        <ListView
+                            android:id="@+id/listView_CriteriaList_inCriteriaList"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearlayout_marketCriteria_criterialist"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="false"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/ic_criteria_background"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_marketCriteria_inCriteriaList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Marking Criteria"
+                            android:fontFamily="sans-serif-medium"
+                            android:textSize="24sp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="5dp"
+                            android:textColor="#DD000000"
+                            android:gravity="center" />
+
+                        <View
+                            android:id="@+id/divider16"
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="#DD014085" />
+
+                        <ListView
+                            android:id="@+id/listView_marketCriteria_inCriteriaList"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearlayout_commentOnlyList_criteriaList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/ic_criteria_background"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_CommentOnly_inCriteriaList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Comment Only"
+                            android:fontFamily="sans-serif-medium"
+                            android:textSize="24sp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="5dp"
+                            android:textColor="#DD000000"
+                            android:gravity="center" />
+
+                        <View
+                            android:id="@+id/divider17"
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="#DD014085" />
+
+                        <ListView
+                            android:id="@+id/listView_commentOnly_inCriteriaList"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4">
+
+                    <Button
+                        android:id="@+id/button_back_inCriteriaList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginBottom="50dp"
+                        android:onClick="back_inCriteriaList"
+                        android:text="Back"
+                        android:background="@drawable/ic_buttom_background"
+                        android:textColor="#ffffff" />
+
+                    <Button
+                        android:id="@+id/button2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="50dp"
+                        android:text="Next"
+                        android:onClick="next_inCriteriaList"
+                        android:background="@drawable/ic_buttom_background"
+                        android:textColor="#ffffff" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
         </RelativeLayout>
+
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
