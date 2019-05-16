@@ -123,6 +123,7 @@
                         android:background="@android:color/transparent"
                         android:gravity="left|center_vertical"
                         android:onClick="edit"
+                        android:layout_centerVertical="true"
                         android:text="Edit"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="#dd000000" />
