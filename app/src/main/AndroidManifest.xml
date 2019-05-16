@@ -23,7 +23,8 @@
             android:launchMode="singleInstance" />
         <activity android:name=".SignupTest_Activity" />
         <activity android:name=".Activity_Student_Group" />
-        <activity android:name=".LoginTest_Activity" />
+        <activity android:name=".LoginTest_Activity"
+            android:launchMode="singleInstance"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

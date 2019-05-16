@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class LoginTest_Activity extends Activity {
 
@@ -26,6 +27,9 @@ public class LoginTest_Activity extends Activity {
             {
                 switch (msg.what)
                 {
+                    case 100:
+                        Toast.makeText(LoginTest_Activity.this, "The email and password are not correct. Please check and try again.", Toast.LENGTH_SHORT).show();
+                        break;
                     case 101: //means login successfully and go to next page
                         Intent intent = new Intent(LoginTest_Activity.this, Assessment_Preparation_Activity.class);
                         startActivity(intent);
@@ -38,6 +42,11 @@ public class LoginTest_Activity extends Activity {
         };
         AllFunctions.getObject().setHandler(handler);
 
+    }
+
+    protected void onNewIntent(Intent intent) {
+        init();
+        AllFunctions.getObject().setHandler(handler);
     }
 
     private void init()

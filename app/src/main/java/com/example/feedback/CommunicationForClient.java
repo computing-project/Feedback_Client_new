@@ -56,7 +56,7 @@ public class CommunicationForClient {
 			JSONObject jsonReceive = JSONObject.parseObject(receive);
 
 			String register_ACK_String = jsonReceive.get("register_ACK").toString();
-			if(register_ACK_String.equals("ture"))
+			if(register_ACK_String.equals("true"))
 				functions.registerACK(true);
 			else
 				functions.registerACK(false);
