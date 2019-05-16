@@ -198,7 +198,6 @@ public class AllFunctions{
 
     }
 
-    public DefaultCriteriaList defaultCriteriaList = new DefaultCriteriaList();
 
     public void addDefaultCriteria(ProjectInfo project, ArrayList<Criteria> criteriaList){
 
@@ -222,7 +221,7 @@ public class AllFunctions{
             @Override
             public void run(){
 
-//                communication.criteriaListSend(project.getProjectName(), criteriaList, commentList);
+                communication.criteriaListSend(project.getProjectName(), criteriaList, commentList);
 
                 Log.d("readExcel","success");
 

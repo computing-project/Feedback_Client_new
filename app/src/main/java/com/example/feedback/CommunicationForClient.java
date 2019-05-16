@@ -168,13 +168,16 @@ public class CommunicationForClient {
 	}
 
 
-	public void criteriaListSend(String projectName, ArrayList<Criteria> criteriaList) {
+	public void criteriaListSend(String projectName, ArrayList<Criteria> markedCriteriaList, ArrayList<Criteria> commentCriteriaList) {
 		JSONObject jsonSend = new JSONObject();
 		jsonSend.put("token", token);
 		jsonSend.put("projectName", projectName);
 
-		String criteriaListString = com.alibaba.fastjson.JSON.toJSONString(criteriaList);
-		jsonSend.put("criteriaList", criteriaListString);
+		String markedCriteriaListString = com.alibaba.fastjson.JSON.toJSONString(markedCriteriaList);
+		jsonSend.put("markedCriteriaList", markedCriteriaListString);
+		String commentCriteriaListString = com.alibaba.fastjson.JSON.toJSONString(commentCriteriaList);
+		jsonSend.put("commentCriteriaList", commentCriteriaListString);
+
 		System.out.println("Send: " + jsonSend.toJSONString()); //just for test
 
 		RequestBody body = RequestBody.create(JSON, jsonSend.toJSONString());

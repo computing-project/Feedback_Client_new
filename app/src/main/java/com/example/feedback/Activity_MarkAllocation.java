@@ -54,6 +54,7 @@ public class Activity_MarkAllocation extends Activity {
     //button 'save'.
     public void save_markAllocation(View view)
     {
+        AllFunctions.getObject().projectCriteria(project, project.getCriteria(), project.getCommentList());
         Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
@@ -72,6 +73,7 @@ public class Activity_MarkAllocation extends Activity {
     //button 'next'.
     public void next_markAllocation(View view)
     {
+        AllFunctions.getObject().projectCriteria(project, project.getCriteria(), project.getCommentList());
         Intent intent = new Intent(this, Activity_Student_Group.class);
         intent.putExtra("index", String.valueOf(indexOfProject));
         startActivity(intent);
