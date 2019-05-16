@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_criteria_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <View
+        android:id="@+id/dv_list_individual_assessment"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@id/tv_criteria_name"
+        android:background="?android:attr/listDivider" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout_firstRow_gridItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dv_list_individual_assessment">
+
+        <SeekBar
+            android:id="@+id/sb_mark"
+            android:layout_width="600dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="100dp"
+            android:max="10" />
+
+        <TextView
+            android:id="@+id/tv_mark"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="750dp"
+            android:layout_toLeftOf="@id/button_minus_gridItem"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="900dp"
+            android:layout_marginBottom="85dp"
+            android:background="@drawable/border"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/tv_red"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="#ff0000" />
+
+            <TextView
+                android:id="@+id/tv_yellow"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="#ffff00" />
+            />
+
+            <TextView
+                android:id="@+id/tv_green"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="#00ff00" />
+            />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>
