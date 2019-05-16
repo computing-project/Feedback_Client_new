@@ -110,6 +110,22 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
         TextView textView_timeDetail = findViewById(R.id.time_detail__inpreparation);
         textView_timeDetail.setText("Assessment duration: " + projectInfo.getDurationMin() + ":" + projectInfo.getDurationSec() + "\n" +
                 "Warning time: " + projectInfo.getWarningMin() + ":" + projectInfo.getWarningSec()+"\n");
+        TextView textView_criteriaDetail = findViewById(R.id.criteria_detail__inpreparation);
+        String criteriaDetailString = "Market Section\n";
+        for(Criteria c: projectInfo.getCriteria())
+        {
+            criteriaDetailString = criteriaDetailString + c.getName() + "\n";
+            criteriaDetailString = criteriaDetailString + "Maximum mark: " + c.getMaximunMark()+"\n";
+            criteriaDetailString = criteriaDetailString + "Mark increments: " + c.getMarkIncrement()+"\n\n";
+        }
+        criteriaDetailString += "\nComments Only\n";
+        for(Criteria c: projectInfo.getCommentList())
+        {
+            criteriaDetailString = criteriaDetailString + c.getName() + "\n";
+        }
+        textView_criteriaDetail.setText(criteriaDetailString);
+
+
 
     }
 

@@ -119,15 +119,18 @@ public class Activity_MarkAllocation extends Activity {
             if(markIncrement != null)
             switch (markIncrement)
             {
-                case "quarter":
+//                case "quarter":
+                case "1/4":
                     RadioButton radioButton_quarter = convertView.findViewById(R.id.radioButton_quarter_gridItem);
                     radioButton_quarter.setChecked(true);
                     break;
-                case "half":
+//                case "half":
+                case "1/2":
                     RadioButton radioButton_half = convertView.findViewById(R.id.radioButton_half_gridItem);
                     radioButton_half.setChecked(true);
                     break;
-                case "full":
+//                case "full":
+                case "1":
                     RadioButton radioButton_full = convertView.findViewById(R.id.radioButton_full_gridItem);
                     radioButton_full.setChecked(true);
                     break;
@@ -143,13 +146,16 @@ public class Activity_MarkAllocation extends Activity {
                     switch(checkID)
                     {
                         case R.id.radioButton_quarter_gridItem:
-                            criteriaList.get(position).setMarkIncrement("quarter");
+//                            criteriaList.get(position).setMarkIncrement("quarter");
+                            criteriaList.get(position).setMarkIncrement("1/4");
                             break;
                         case R.id.radioButton_half_gridItem:
-                            criteriaList.get(position).setMarkIncrement("half");
+//                            criteriaList.get(position).setMarkIncrement("half");
+                            criteriaList.get(position).setMarkIncrement("1/2");
                             break;
                         case R.id.radioButton_full_gridItem:
-                            criteriaList.get(position).setMarkIncrement("full");
+//                            criteriaList.get(position).setMarkIncrement("full");
+                            criteriaList.get(position).setMarkIncrement("1");
                             break;
                         default:
                             break;

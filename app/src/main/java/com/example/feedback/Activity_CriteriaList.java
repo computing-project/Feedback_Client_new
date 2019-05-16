@@ -62,6 +62,8 @@ public class Activity_CriteriaList extends Activity {
 
     protected void onNewIntent(Intent intent) {
         System.out.println("criteriaList界面onNewIntent");
+        Intent intent2 =getIntent();
+        indexOfProject = Integer.parseInt(intent2.getStringExtra("index"));
         init();
         AllFunctions.getObject().setHandler(handler);
     }
@@ -94,12 +96,13 @@ public class Activity_CriteriaList extends Activity {
         finish();
     }
 
+    //button next.
     public void next_inCriteriaList(View view)
     {
         Intent intent = new Intent(this, Activity_MarkAllocation.class);
         intent.putExtra("index", String.valueOf(indexOfProject));
         startActivity(intent);
-//        finish();
+        finish();
     }
 
 

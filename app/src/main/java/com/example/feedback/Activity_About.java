@@ -66,6 +66,8 @@ public class Activity_About extends Activity {
 
     public void next_About(View view)
     {
-
+        Intent intent = new Intent(this, Activity_Timer.class);
+        intent.putExtra("index", index);
+        startActivity(intent);
     }
 }
