@@ -11,6 +11,14 @@
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
+    <Button
+        android:id="@+id/button_commentsDetail_gridItem"
+        android:layout_width="40dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:text="?" />
+
     <View
         android:id="@+id/divider12"
         android:layout_width="match_parent"

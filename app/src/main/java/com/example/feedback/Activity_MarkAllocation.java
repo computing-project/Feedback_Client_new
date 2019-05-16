@@ -185,6 +185,14 @@ public class Activity_MarkAllocation extends Activity {
                 }
             });
 
+            Button button_commentDetail = convertView.findViewById(R.id.button_commentsDetail_gridItem);
+            button_commentDetail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+
             return convertView;
         }
     }
