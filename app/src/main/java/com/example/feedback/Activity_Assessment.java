@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 public class Activity_Assessment extends AppCompatActivity implements View.OnClickListener {
@@ -22,16 +21,22 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
     int indexOfProject;
     ProjectInfo project;
     ArrayList<Criteria> criteriaList;
+    ArrayList<Criteria> commentList;
 
     ListView lv_individual;
     TextView tv_time;
-    Button btn_start;
-    Button btn_refresh;
+    Button btn_assessment_start;
+    Button btn_assessment_refresh;
 
-    SeekBar test_sb;
-    TextView test_text;
+    TextView tv_assessment_student;
+    TextView tv_assessment_total_mark;
+    Button btn_assessment_finish;
 
-    private long time = 60000;
+    SeekBar sb_mark;
+    TextView tv_mark;
+
+    private long durationTime = 0;
+    private long warningTime = 0;
     private boolean isPause = false;
     private CountDownTimer countDownTimer;
     private long leftTime = 0;
@@ -51,17 +56,17 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
 
         tv_time = (TextView)findViewById(R.id.tv_time);
-        tv_time.setText(String.format("%02d", time/1000/60) +":"+String.format("%02d", time/1000%60));
+        tv_time.setText(String.format("%02d", durationTime/1000/60) +":"+String.format("%02d", durationTime/1000%60));
 
-        btn_start = findViewById(R.id.btn_start);
-        btn_refresh = findViewById(R.id.btn_refresh);
+        btn_assessment_start = findViewById(R.id.btn_assessment_start);
+        btn_assessment_refresh = findViewById(R.id.btn_assessment_refresh);
 
-        findViewById(R.id.btn_start).setOnClickListener(this);
-        findViewById(R.id.btn_refresh).setOnClickListener(this);
+        findViewById(R.id.btn_assessment_start).setOnClickListener(this);
+        findViewById(R.id.btn_assessment_refresh).setOnClickListener(this);
 
-        btn_start.setEnabled(true);
-        btn_refresh.setEnabled(false);
-        initTimer(time);
+        btn_assessment_start.setEnabled(true);
+        btn_assessment_refresh.setEnabled(false);
+        initTimer(durationTime);
 
     }
 
@@ -69,7 +74,9 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
     {
 
         criteriaList = project.getCriteria();
-
+        commentList = project.getCommentList();
+        durationTime = project.getDurationMin() * 60000 + project.getDurationSec() * 1000;
+        warningTime = project.getWarningMin() * 60000 + project.getWarningSec() * 1000;
         myAdapter = new MyAdapter(criteriaList, this);
 
         lv_individual.setAdapter(myAdapter);
@@ -142,12 +149,13 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
 
     private void bindViews() {
-        test_sb = (SeekBar) findViewById(R.id.sb_mark);
-        test_text = (TextView) findViewById(R.id.tv_mark);
-        test_sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        sb_mark = (SeekBar) findViewById(R.id.sb_mark);
+        tv_mark = (TextView) findViewById(R.id.tv_mark);
+        sb_mark.setProgress(0);
+        sb_mark.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                test_text.setText(progress + " / 100");
+                tv_mark.setText(progress + " / 10");
             }
 
             @Override
@@ -164,12 +172,12 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
     public void initTimer(long millisUntilFinished){
 
-        btn_start.setEnabled(true);
+        btn_assessment_start.setEnabled(true);
 
         countDownTimer = new CountDownTimer(millisUntilFinished, 1000) {
             public void onTick(long millisUntilFinished) {
                 leftTime = millisUntilFinished;
-                if(leftTime < 10000){
+                if(leftTime < warningTime){
                     tv_time.setTextColor(android.graphics.Color.RED);
                 }
                 tv_time.setText(String.format("%02d", millisUntilFinished/1000/60) +":"+String.format("%02d", millisUntilFinished/1000%60));
@@ -185,13 +193,13 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_start:
+            case R.id.btn_assessment_start:
                 if(flag == 0){
                     isPause = false;
                     countDownTimer.start();
-                    btn_start.setText("PAUSE");
+                    btn_assessment_start.setText("PAUSE");
                     flag = 1;
-                    btn_refresh.setEnabled(false);
+                    btn_assessment_refresh.setEnabled(false);
                     break;
                 }else if(flag == 1){
                     if (!isPause) {
@@ -200,9 +208,9 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
                     }
 
-                    btn_start.setText("START");
+                    btn_assessment_start.setText("START");
                     flag = 2;
-                    btn_refresh.setEnabled(true);
+                    btn_assessment_refresh.setEnabled(true);
                     break;
 
                 }else{
@@ -213,23 +221,36 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
                         isPause = false;
 
                     }
-                    btn_refresh.setEnabled(false);
-                    btn_start.setText("PAUSE");
+                    btn_assessment_refresh.setEnabled(false);
+                    btn_assessment_start.setText("PAUSE");
                     flag = 1;
                     break;
                 }
 
-            case R.id.btn_refresh:
+            case R.id.btn_assessment_refresh:
                 countDownTimer.cancel();
-                btn_refresh.setEnabled(false);
-                tv_time.setText(String.format("%02d", time/1000/60) +":"+String.format("%02d", time/1000%60));
-                initTimer(time);
+                btn_assessment_refresh.setEnabled(false);
+                tv_time.setText(String.format("%02d", durationTime/1000/60) +":"+String.format("%02d", durationTime/1000%60));
+                initTimer(durationTime);
                 flag = 0;
                 break;
             default:
                 break;
         }
     }
+
+//    public void finish_assessment(View view)
+//    {
+//        durationMin = Integer.parseInt(editText_durationMin.getText().toString());
+//        durationSec = Integer.parseInt(editText_durationSec.getText().toString());
+//        warningMin = Integer.parseInt(editText_warningMin.getText().toString());
+//        warningSec = Integer.parseInt(editText_warningSec.getText().toString());
+//        System.out.println("Time in Timer: "+durationMin+":"+durationSec+"   "+warningMin+":"+warningSec);
+//        AllFunctions.getObject().projectTimer(project,durationMin,durationSec,warningMin,warningSec);
+//        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        startActivity(intent);
+//        finish();
+//    }
 
 
 
