@@ -16,7 +16,7 @@
             android:elevation="40dp">
 
             <TextView
-                android:id="@+id/textView_projectName_markAllocation"
+                android:id="@+id/textView_projectName_studentManagement"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -34,7 +34,7 @@
                 android:layout_centerVertical="true">
 
                 <TextView
-                    android:id="@+id/textView_helloUser_markAllocation"
+                    android:id="@+id/textView_helloUser_studentManagement"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="100"

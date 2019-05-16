@@ -69,6 +69,10 @@ public class Activity_Student_Group extends Activity {
         myAdapter = new MyAdapter(students, this);
 
         listView.setAdapter(myAdapter);
+        TextView textView_projectName = findViewById(R.id.textView_projectName_studentManagement);
+        textView_projectName.setText(project.getProjectName());
+        TextView textView_helloUser = findViewById(R.id.textView_helloUser_studentManagement);
+        textView_helloUser.setText("Hello, "+AllFunctions.getObject().getUsername());
 
     }
 
