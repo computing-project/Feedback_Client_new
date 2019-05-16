@@ -70,4 +70,14 @@ public class Criteria{
 
 	}
 
+	@Override
+	public boolean equals(Object anObject)
+	{
+		if (!(anObject instanceof Criteria)) {
+			return false;
+		}
+		Criteria otherMember = (Criteria) anObject;
+		return otherMember.getName().equals(getName());
+	}
+
 }

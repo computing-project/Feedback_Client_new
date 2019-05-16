@@ -56,7 +56,7 @@ public class CommunicationForClient {
 			JSONObject jsonReceive = JSONObject.parseObject(receive);
 
 			String register_ACK_String = jsonReceive.get("register_ACK").toString();
-			if(register_ACK_String.equals("ture"))
+			if(register_ACK_String.equals("true"))
 				functions.registerACK(true);
 			else
 				functions.registerACK(false);
@@ -264,8 +264,8 @@ public class CommunicationForClient {
 			} else {
 				//失败跳出
 			}
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (Exception e1) {
+			System.out.println("Exception in addStudent communication");
 		}
 	}
 

@@ -58,7 +58,7 @@ public class AllFunctions{
 
     public void loginFail(){
 
-        System.out.println("login fail has been called!");
+        handlerAllfunction.sendEmptyMessage(100);
 
     }
 
@@ -98,10 +98,12 @@ public class AllFunctions{
         //for test
         System.out.println("receive register_ACK in AllFunc: "+ack);
 
-        if(ack){
-
-        }else{
-
+        if(ack)
+        {
+            handlerAllfunction.sendEmptyMessage(111);
+        }else
+            {
+            handlerAllfunction.sendEmptyMessage(110);
         }
     }
 

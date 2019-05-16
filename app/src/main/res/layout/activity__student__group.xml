@@ -56,7 +56,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_toLeftOf="@+id/button_addstudent_instudentgroup"
                 android:background="@drawable/ic_cloud_download_fill"
-                android:onClick="import_StudentManagement" />
+                android:onClick="importStudent_StudentManagement" />
         </RelativeLayout>
 
         <View
