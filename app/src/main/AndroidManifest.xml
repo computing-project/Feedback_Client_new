@@ -13,9 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity_MarkAllocation"></activity>
-        <activity android:name=".Activity_CriteriaList"
-            android:launchMode="singleInstance"/>
+        <activity android:name=".Homepage"
+            android:launchMode="singleTask"></activity>
+        <activity android:name=".Activity_MarkAllocation" />
+        <activity
+            android:name=".Activity_CriteriaList"
+            android:launchMode="singleInstance" />
         <activity android:name=".Activity_Timer" />
         <activity android:name=".Activity_About" />
         <activity android:name=".Activity_Assessment" />
@@ -24,8 +27,9 @@
             android:launchMode="singleTask" />
         <activity android:name=".SignupTest_Activity" />
         <activity android:name=".Activity_Student_Group" />
-        <activity android:name=".LoginTest_Activity"
-            android:launchMode="singleTask"/>
+        <activity
+            android:name=".LoginTest_Activity"
+            android:launchMode="singleTask" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

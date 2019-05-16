@@ -53,6 +53,10 @@ public class Activity_MarkAllocation extends Activity {
         gridView.setAdapter(myAdapter);
       //  listView = findViewById(R.id.listView_criteriaList_markAllocation);
       //  listView.setAdapter(myAdapter);
+        TextView textView_projectName = findViewById(R.id.textView_projectName_markAllocation);
+        textView_projectName.setText(project.getProjectName());
+        TextView textView_helloUser = findViewById(R.id.textView_helloUser_markAllocation);
+        textView_helloUser.setText("Hello, "+AllFunctions.getObject().getUsername());
     }
 
     //button 'save'.
