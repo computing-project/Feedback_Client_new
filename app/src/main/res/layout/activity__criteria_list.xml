@@ -128,7 +128,7 @@
                             android:paddingBottom="5dp"
                             android:text="Criteria List"
                             android:textColor="#DD000000"
-                            android:textSize="24sp" />
+                            android:textSize="24dp" />
 
                         <View
                             android:id="@+id/divider15"
@@ -170,20 +170,21 @@
                                 android:fontFamily="sans-serif-medium"
                                 android:paddingLeft="20dp"
                                 android:paddingBottom="5dp"
+                                android:paddingTop="10dp"
+                                android:paddingRight="10dp"
                                 android:text="Marking Criteria"
                                 android:textColor="#DD000000"
-                                android:textSize="24sp" />
+                                android:textSize="24dp" />
 
                             <Button
                                 android:id="@+id/button_addMarkedCriteria_criteriaList"
                                 android:layout_width="28dp"
                                 android:layout_height="28dp"
-                                android:layout_alignParentTop="true"
                                 android:layout_alignParentRight="true"
                                 android:layout_centerVertical="true"
                                 android:layout_marginRight="20dp"
                                 android:background="@drawable/ic_add"
-                                android:gravity="right|center_vertical"
+                                android:gravity="right"
                                 android:onClick="addMarkedCriteria"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
                         </RelativeLayout>
@@ -225,21 +226,22 @@
                                 android:layout_alignParentLeft="true"
                                 android:fontFamily="sans-serif-medium"
                                 android:paddingLeft="20dp"
+                                android:paddingTop="10dp"
                                 android:paddingBottom="5dp"
+                                android:paddingRight="10dp"
                                 android:text="Comment Only"
                                 android:textColor="#DD000000"
-                                android:textSize="24sp" />
+                                android:textSize="24dp" />
 
                             <Button
                                 android:id="@+id/button3"
                                 android:layout_width="28dp"
                                 android:layout_height="28dp"
-                                android:layout_alignParentTop="true"
                                 android:layout_alignParentRight="true"
                                 android:layout_centerVertical="true"
                                 android:layout_marginRight="20dp"
                                 android:background="@drawable/ic_add"
-                                android:gravity="right|center_vertical"
+                                android:gravity="right"
                                 android:onClick="addCommentCriteria"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
                         </RelativeLayout>

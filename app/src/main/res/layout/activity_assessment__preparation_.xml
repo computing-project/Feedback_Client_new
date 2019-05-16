@@ -201,7 +201,8 @@
                         android:layout_marginTop="20dp"
                         android:layout_marginLeft="15dp"
                         android:textColor="#515151"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textAllCaps="false"/>
 
                     <View
                         android:id="@+id/divider2"
@@ -234,7 +235,8 @@
                         android:onClick="timer"
                         android:text="Time"
                         android:textColor="#515151"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textAllCaps="false" />
 
                     <View
                         android:id="@+id/divider3"
@@ -267,7 +269,8 @@
                         android:onClick="criteriaManagement"
                         android:text="Criteria"
                         android:textColor="#515151"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textAllCaps="false" />
 
                     <View
                         android:id="@+id/divider4"
@@ -300,7 +303,8 @@
                         android:onClick="studentManagement"
                         android:text="Student Management"
                         android:textColor="#515151"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textAllCaps="false" />
 
                     <View
                         android:id="@+id/divider5"
@@ -332,7 +336,8 @@
                         android:gravity="left|center_vertical"
                         android:text="Asseccors"
                         android:textColor="#515151"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textAllCaps="false" />
 
                     <View
                         android:id="@+id/divider6"
