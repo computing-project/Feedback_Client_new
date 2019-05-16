@@ -153,7 +153,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="2"
                     android:choiceMode="singleChoice"
-                    android:dividerHeight="1dp" />
+                    android:dividerHeight="1dp"
+                    android:scrollbars="vertical" />
             </LinearLayout>
 
             <View

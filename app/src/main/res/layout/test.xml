@@ -9,10 +9,10 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="14"
             android:background="@drawable/ic_header_background"
+            android:layout_weight="14"
             android:elevation="40dp">
 
             <TextView
@@ -26,8 +26,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="#ffffff"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -49,10 +48,10 @@
                 <View
                     android:id="@+id/divider13"
                     android:layout_width="1dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginLeft="5dp"
                     android:layout_height="match_parent"
-                    android:background="#ffffff"/>
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#ffffff" />
 
                 <TextView
                     android:id="@+id/textView10"
@@ -68,9 +67,9 @@
                 <View
                     android:id="@+id/divider14"
                     android:layout_width="1dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginLeft="5dp"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:background="#ffffff" />
 
                 <TextView
@@ -88,42 +87,174 @@
 
         </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_weight="1">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="2"
-                android:background="@drawable/ic_header_background">
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:id="@+id/linearlayout_defaultCriteriaList_criteriaList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="false"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/ic_criteria_background"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_CriteriaList_inCriteriaList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Criteria List"
+                            android:fontFamily="sans-serif-medium"
+                            android:textSize="24sp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="5dp"
+                            android:textColor="#DD000000"
+                            android:gravity="center"/>
+
+                        <View
+                            android:id="@+id/divider15"
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="#DD014085" />
+
+                        <ListView
+                            android:id="@+id/listView_CriteriaList_inCriteriaList"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearlayout_marketCriteria_criterialist"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="false"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/ic_criteria_background"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_marketCriteria_inCriteriaList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Marking Criteria"
+                            android:fontFamily="sans-serif-medium"
+                            android:textSize="24sp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="5dp"
+                            android:textColor="#DD000000"
+                            android:gravity="center" />
+
+                        <View
+                            android:id="@+id/divider16"
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="#DD014085" />
+
+                        <ListView
+                            android:id="@+id/listView_marketCriteria_inCriteriaList"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearlayout_commentOnlyList_criteriaList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/ic_criteria_background"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_CommentOnly_inCriteriaList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Comment Only"
+                            android:fontFamily="sans-serif-medium"
+                            android:textSize="24sp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="5dp"
+                            android:textColor="#DD000000"
+                            android:gravity="center" />
+
+                        <View
+                            android:id="@+id/divider17"
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="#DD014085" />
+
+                        <ListView
+                            android:id="@+id/listView_commentOnly_inCriteriaList"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="4">
 
-                    <ScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    <Button
+                        android:id="@+id/button_back_inCriteriaList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginBottom="50dp"
+                        android:onClick="back_inCriteriaList"
+                        android:text="Back"
+                        android:background="@drawable/ic_buttom_background"
+                        android:textColor="#ffffff" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical" />
-                    </ScrollView>
+                    <Button
+                        android:id="@+id/button2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="50dp"
+                        android:text="Next"
+                        android:onClick="next_inCriteriaList"
+                        android:background="@drawable/ic_buttom_background"
+                        android:textColor="#ffffff" />
+
                 </RelativeLayout>
             </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
+        </RelativeLayout>
 
-            </RelativeLayout>
-        </LinearLayout>
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
