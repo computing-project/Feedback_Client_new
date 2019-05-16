@@ -81,12 +81,11 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
                             long id) {
         // TODO Auto-generated method stub
         index_to_send = position;
-        String text = listView.getItemAtPosition(position).toString();
         for(int i=0; i<parent.getChildCount(); i++)
             parent.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
         view.setBackgroundColor(Color.rgb(135,206,250));
-        Toast.makeText(this, "position=" + position + "; text=" + text,
-                Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "position=" + position + "; text=" + text,
+//                Toast.LENGTH_SHORT).show();
         showOtherInfo(position);
         Button button_about = findViewById(R.id.button_about_inpreparation);
         button_about.setEnabled(true);
