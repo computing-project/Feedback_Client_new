@@ -1,193 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <LinearLayout
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ic_marking_criteria"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp">
+
+    <TextView
+        android:id="@+id/textView_criteriaName_gridItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="5dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <Button
+        android:id="@+id/button_commentsDetail_gridItem"
+        android:layout_width="40dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/ic_comment"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        />
+
+    <View
+        android:id="@+id/divider12"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="3dp"
+        android:layout_below="@id/textView_criteriaName_gridItem"
+        android:background="#7d7d7d"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/ic_header_background"
-            android:layout_weight="14"
-            android:elevation="40dp">
+    <RelativeLayout
+        android:id="@+id/relativeLayout_firstRow_gridItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider12">
 
-            <TextView
-                android:id="@+id/textView9"
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@id/button_minus_gridItem"
+            android:text="Maximun Mark"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <Button
+            android:id="@+id/button_plus_gridItem"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_toLeftOf="@id/editText_maxMark_gridItem"
+            android:text="+"
+            android:layout_marginTop="5dp"/>
+
+        <EditText
+            android:id="@+id/editText_maxMark_gridItem"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/button_minus_gridItem"
+            android:ems="3"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <Button
+            android:id="@+id/button_minus_gridItem"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:text="-"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relativeLayout_firstRow_gridItem">
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="Mark Increments"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup_markIncrement_gridItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButton_quarter_gridItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:fontFamily="sans-serif-medium"
-                android:text="Projects "
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="#ffffff"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_weight="1"
+                android:text="1/4"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp" />
 
-            <LinearLayout
-                android:layout_width="fill_parent"
+            <RadioButton
+                android:id="@+id/radioButton_half_gridItem"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true">
+                android:layout_weight="1"
+                android:text="1/2"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp" />
 
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="100"
-                    android:fontFamily="sans-serif-medium"
-                    android:gravity="right"
-                    android:text="Hello, Xxxxxx Xxxxxx"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                    android:textColor="#ffffff"
-                    android:textSize="14sp" />
+            <RadioButton
+                android:id="@+id/radioButton_full_gridItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="1"
+                android:textStyle="bold"
+                android:layout_marginRight="15dp"/>
+        </RadioGroup>
+    </RelativeLayout>
 
-                <View
-                    android:id="@+id/divider13"
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:background="#ffffff" />
-
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
-                    android:gravity="right"
-                    android:text="Help"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                    android:textColor="#ffffff"
-                    android:textSize="14sp" />
-
-                <View
-                    android:id="@+id/divider14"
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:background="#ffffff" />
-
-                <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Log Out"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                    android:textColor="#ffffff"
-                    android:textSize="14sp" />
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/back" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:id="@+id/textView_title_markAllocation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="25dp"
-                        android:text="Customised Grading Criteria"
-                        android:textColor="#dd000000"
-                        android:textSize="36dp"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
-
-                    <View
-                        android:id="@+id/divider8"
-                        android:layout_width="match_parent"
-                        android:layout_height="5dp"
-                        android:layout_below="@id/textView_title_markAllocation"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="#014085" />
-                    <GridView
-                        android:id="@+id/gridView_CriteriaList_markAllocation"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@id/divider8"
-                        android:horizontalSpacing="50dp"
-                        android:layout_marginTop="10dp"
-                        android:numColumns="2"
-                        android:verticalSpacing="50dp" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4">
-
-                    <Button
-                        android:id="@+id/button_back_markAllocation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginBottom="50dp"
-                        android:onClick="back_markAllocation"
-                        android:text="Back"
-                        android:background="@drawable/ic_buttom_background"
-                        android:textColor="#ffffff"/>
-
-                    <Button
-                        android:id="@+id/button_save_markAllocation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginRight="40dp"
-                        android:layout_marginBottom="50dp"
-                        android:layout_toLeftOf="@+id/button_next_markAllocation"
-                        android:onClick="save_markAllocation"
-                        android:text="Save"
-                        android:background="@drawable/ic_savebuttom"/>
-
-                    <Button
-                        android:id="@+id/button_next_markAllocation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginEnd="30dp"
-                        android:layout_marginBottom="50dp"
-                        android:background="@drawable/ic_buttom_background"
-                        android:onClick="next_markAllocation"
-                        android:text="Next"
-                        android:textColor="#ffffff" />
-
-                </RelativeLayout>
-            </LinearLayout>
-
-        </RelativeLayout>
-
-    </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
