@@ -129,7 +129,7 @@ public class Activity_Timer extends Activity {
         warningMin = Integer.parseInt(editText_warningMin.getText().toString());
         warningSec = Integer.parseInt(editText_warningSec.getText().toString());
         AllFunctions.getObject().projectTimer(project,durationMin,durationSec,warningMin,warningSec);
-        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
     }

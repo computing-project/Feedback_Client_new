@@ -52,7 +52,7 @@ public class Activity_About extends Activity {
             AllFunctions.getObject().createProject(projectName,subjectName,subjectCode,projectDes);
         else
             AllFunctions.getObject().updateProject(project,projectName,subjectName,subjectCode,projectDes);
-        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
     }
