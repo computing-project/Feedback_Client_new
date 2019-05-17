@@ -119,11 +119,11 @@
                         android:layout_width="45dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginLeft="20dp"
                         android:background="@android:color/transparent"
                         android:gravity="left|center_vertical"
-                        android:onClick="edit"
-                        android:layout_centerVertical="true"
+                        android:onClick="edit_AssessmentPreparation"
                         android:text="Edit"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="#dd000000" />
@@ -134,17 +134,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="28dp"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
                         android:background="@drawable/ic_buttom_background"
                         android:gravity="right|center_vertical"
-                        android:onClick="plus"
-                        android:text="New Project"
+                        android:onClick="plus_AssessmentPreparation"
                         android:paddingLeft="2dp"
                         android:paddingRight="5dp"
+                        android:text="New Project"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="#ffffff"
-                        android:layout_marginRight="10dp"
-                        android:textSize="14dp"
-                        android:layout_centerVertical="true"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                        android:textSize="14dp" />
                 </RelativeLayout>
 
                 <View
@@ -200,17 +200,17 @@
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="68dp"
                         android:layout_height="25dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="20dp"
                         android:background="@android:color/transparent"
-                        android:gravity="left|center_vertical"
-                        android:onClick="about"
-                        android:text="About"
                         android:drawableRight="@drawable/ic_pencil"
                         android:fontFamily="sans-serif-medium"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="15dp"
+                        android:gravity="left|center_vertical"
+                        android:onClick="about_AssessmentPreparation"
+                        android:text="About"
+                        android:textAllCaps="false"
                         android:textColor="#515151"
-                        android:textSize="16sp"
-                        android:textAllCaps="false"/>
+                        android:textSize="16sp" />
 
                     <View
                         android:id="@+id/divider2"
@@ -240,11 +240,11 @@
                         android:drawableRight="@drawable/ic_pencil"
                         android:fontFamily="sans-serif-medium"
                         android:gravity="left|center_vertical"
-                        android:onClick="timer"
+                        android:onClick="timer_AssessmentPreparation"
                         android:text="Time"
+                        android:textAllCaps="false"
                         android:textColor="#515151"
-                        android:textSize="16sp"
-                        android:textAllCaps="false" />
+                        android:textSize="16sp" />
 
                     <View
                         android:id="@+id/divider3"
@@ -274,11 +274,11 @@
                         android:drawableRight="@drawable/ic_pencil"
                         android:fontFamily="sans-serif-medium"
                         android:gravity="left|center_vertical"
-                        android:onClick="criteriaManagement"
+                        android:onClick="criteriaManagement_AssessmentPreparation"
                         android:text="Criteria"
+                        android:textAllCaps="false"
                         android:textColor="#515151"
-                        android:textSize="16sp"
-                        android:textAllCaps="false" />
+                        android:textSize="16sp" />
 
                     <View
                         android:id="@+id/divider4"
@@ -308,11 +308,11 @@
                         android:drawableRight="@drawable/ic_pencil"
                         android:fontFamily="sans-serif-medium"
                         android:gravity="left|center_vertical"
-                        android:onClick="studentManagement"
+                        android:onClick="studentManagement_AssessmentPreparation"
                         android:text="Student Management"
+                        android:textAllCaps="false"
                         android:textColor="#515151"
-                        android:textSize="16sp"
-                        android:textAllCaps="false" />
+                        android:textSize="16sp" />
 
                     <View
                         android:id="@+id/divider5"
@@ -342,10 +342,11 @@
                         android:drawableRight="@drawable/ic_pencil"
                         android:fontFamily="sans-serif-medium"
                         android:gravity="left|center_vertical"
+                        android:onClick="assessors_AssessmentPreparation"
                         android:text="Asseccors"
+                        android:textAllCaps="false"
                         android:textColor="#515151"
-                        android:textSize="16sp"
-                        android:textAllCaps="false" />
+                        android:textSize="16sp" />
 
                     <View
                         android:id="@+id/divider6"
