@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="160dp"
+        android:layout_height="470dp"
+        android:background="@drawable/ic_mark_background"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="160dp"
+            android:layout_height="470dp"
+            android:background="@drawable/ic_mark_background">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:text="mark"
+                android:textSize="36dp" />
+
+            <View
+                android:id="@+id/divider20"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@id/textView6"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="#797979" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_below="@id/divider20"
+                android:layout_centerHorizontal="true"
+                android:text="TextView" />
+
+
+        </RelativeLayout>
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/textView9"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:text="Button" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
