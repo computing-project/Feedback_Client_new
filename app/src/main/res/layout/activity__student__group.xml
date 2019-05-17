@@ -198,9 +198,10 @@
                     android:layout_marginEnd="30dp"
                     android:layout_marginBottom="50dp"
                     android:layout_toLeftOf="@+id/button_back_inStudentManagement"
-                    android:background="@drawable/ic_savebuttom"
+                    android:background="@drawable/ic_buttom_background"
                     android:onClick="save_studentManagement"
-                    android:text="save" />
+                    android:text="done"
+                    android:textColor="#ffffff"/>
             </RelativeLayout>
         </RelativeLayout>
 
