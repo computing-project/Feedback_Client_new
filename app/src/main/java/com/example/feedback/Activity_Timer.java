@@ -52,6 +52,15 @@ public class Activity_Timer extends Activity {
         textView_projectName.setText(project.getProjectName());
         TextView textView_helloUser = findViewById(R.id.textView_helloUser_Timer);
         textView_helloUser.setText("Hello, "+AllFunctions.getObject().getUsername());
+        TextView textView_logout = findViewById(R.id.textView_logout_Timer);
+        textView_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_Timer.this, LoginTest_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 

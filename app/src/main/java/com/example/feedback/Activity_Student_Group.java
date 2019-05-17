@@ -69,7 +69,19 @@ public class Activity_Student_Group extends Activity {
         myAdapter = new MyAdapter(students, this);
 
         listView.setAdapter(myAdapter);
-
+        TextView textView_projectName = findViewById(R.id.textView_projectName_studentManagement);
+        textView_projectName.setText(project.getProjectName());
+        TextView textView_helloUser = findViewById(R.id.textView_helloUser_studentManagement);
+        textView_helloUser.setText("Hello, "+AllFunctions.getObject().getUsername());
+        TextView textView_logout = findViewById(R.id.textView_logout_studentManagement);
+        textView_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_Student_Group.this, LoginTest_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     //button delete click.
