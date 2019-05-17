@@ -131,13 +131,18 @@
                     <Button
                         android:id="@+id/button_plus_inpreparation"
                         style="@style/Widget.AppCompat.Button.Borderless"
-                        android:layout_width="28dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="28dp"
                         android:layout_alignParentRight="true"
-                        android:background="@drawable/ic_add2"
+                        android:background="@drawable/ic_buttom_background"
                         android:gravity="right|center_vertical"
                         android:onClick="plus"
-                        android:layout_marginRight="20dp"
+                        android:text="New Project"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="5dp"
+                        android:textColor="#ffffff"
+                        android:layout_marginRight="10dp"
+                        android:textSize="14dp"
                         android:layout_centerVertical="true"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
                 </RelativeLayout>
