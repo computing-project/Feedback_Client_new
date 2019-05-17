@@ -200,7 +200,7 @@
                     android:layout_toLeftOf="@+id/button_back_inStudentManagement"
                     android:background="@drawable/ic_buttom_background"
                     android:onClick="save_studentManagement"
-                    android:text="done"
+                    android:text="save"
                     android:textColor="#ffffff"/>
             </RelativeLayout>
         </RelativeLayout>
