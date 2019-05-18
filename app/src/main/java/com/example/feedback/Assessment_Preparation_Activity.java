@@ -1,7 +1,9 @@
 package com.example.feedback;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
@@ -16,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +32,7 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
     AllFunctions allFunctions = AllFunctions.getObject();
     ArrayList<ProjectInfo> projectList;
     MyAdapter_for_listView myAdapter;
+    MyAdapterForAssessors adapterForAssessors;
     Button button_edit;
     int index_to_send = -999;
     Handler handler;
@@ -86,6 +90,11 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
                 finish();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        System.out.println("projectList页面的系统back按键被调用！");
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position,
@@ -166,14 +175,14 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
     }
 
     //plus button click function
-    public void plus(View view) {
+    public void plus_AssessmentPreparation(View view) {
         Intent intent = new Intent(this, Activity_About.class);
         intent.putExtra("index", "-999");
         startActivity(intent);
     }
 
     //edit button click function
-    public void edit(View view) {
+    public void edit_AssessmentPreparation(View view) {
         String button_text = button_edit.getText().toString();
         if(button_text.equals("Edit")) {
             button_edit.setText("Done");
@@ -192,31 +201,68 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
     }
 
 
-    public void about(View view)
+    public void about_AssessmentPreparation(View view)
     {
         Intent intent = new Intent(this, Activity_About.class);
         intent.putExtra("index", String.valueOf(index_to_send));
         startActivity(intent);
     }
 
-    public void timer(View view)
+    public void timer_AssessmentPreparation(View view)
     {
         Intent intent = new Intent(this, Activity_Timer.class);
         intent.putExtra("index", String.valueOf(index_to_send));
         startActivity(intent);    }
 
-    public void studentManagement(View view)
+    public void studentManagement_AssessmentPreparation(View view)
     {
         Intent intent = new Intent(this, Activity_Student_Group.class);
         intent.putExtra("index", String.valueOf(index_to_send));
         startActivity(intent);
     }
 
-    public void criteriaManagement(View view)
+    public void criteriaManagement_AssessmentPreparation(View view)
     {
         Intent intent = new Intent(this, Activity_CriteriaList.class);
         intent.putExtra("index", String.valueOf(index_to_send));
         startActivity(intent);
+    }
+
+    public void assessors_AssessmentPreparation(View view)
+    {
+        LayoutInflater layoutInflater = LayoutInflater.from(this);//获得layoutInflater对象
+        final View view2 = layoutInflater.from(this).inflate(R.layout.dialog_asseccors, null);//获得view对象
+
+        ListView listView_assessors = view2.findViewById(R.id.listView_assessors_dialogAssessor);
+        adapterForAssessors = new MyAdapterForAssessors(projectList.get(index_to_send).getAssistant(),this);
+        listView_assessors.setAdapter(adapterForAssessors);
+        Dialog dialog = new android.app.AlertDialog.Builder(this).setView(view2).setPositiveButton("Done", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                ;
+            }
+        }).create();
+
+        dialog.show();
+
+
+        EditText editText_assessorName = view2.findViewById(R.id.editText_inviteAssessor_dialogAssessor);
+        Button button_invite = view2.findViewById(R.id.button_invite_dialogAssessor);
+        button_invite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(editText_assessorName.getText().toString().equals(""))
+                    ;
+                else
+                {
+                    projectList.get(index_to_send).getAssistant().add(editText_assessorName.getText().toString());
+                    editText_assessorName.setText("");
+                    adapterForAssessors.notifyDataSetChanged();
+                }
+            }
+        });
+
+
     }
 
 
@@ -257,6 +303,51 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
                 public void onClick(View view) {
                     myAdapter.notifyDataSetChanged();
                     allFunctions.deleteProject(position);
+                }
+            });
+            return convertView;
+        }
+    }
+
+
+
+    public class MyAdapterForAssessors extends BaseAdapter {
+
+        private ArrayList<String> mAssessorList;
+        private Context mContext;
+
+        public MyAdapterForAssessors(ArrayList<String> assessorList, Context context) {
+            this.mAssessorList = assessorList;
+            this.mContext = context;
+        }
+
+        @Override
+        public int getCount() {
+            return mAssessorList.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.list_item_assessors, parent, false);
+            TextView textView_listItem = (TextView) convertView.findViewById(R.id.textView_assessorName);
+            textView_listItem.setText(mAssessorList.get(position));
+            Button button = convertView.findViewById(R.id.button_deleteAssessor);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mAssessorList.remove(position);
+                    adapterForAssessors.notifyDataSetChanged();
                 }
             });
             return convertView;

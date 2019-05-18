@@ -53,6 +53,8 @@ public class AllFunctions{
     public void loginSucc(ArrayList<ProjectInfo> projectList){
 
         this.projectList = projectList;
+        if(projectList.size()>0)
+        System.out.println("在Allfunction中收到第一个project的criteriaList和commentList的数量分别为："+projectList.get(0).getCriteria().size()+"  "+projectList.get(0).getCommentList().size());
         sortStudent();
         handlerAllfunction.sendEmptyMessage(101);
     }
@@ -184,13 +186,10 @@ public class AllFunctions{
     public void projectTimer(ProjectInfo project,int durationMin, int durationSec,
                              int warningMin, int warningSec){
 
-        System.out.println("Time in allfunction: "+durationMin+":"+durationSec+"   "+warningMin+":"+warningSec);
         project.setDurationMin(durationMin);
         project.setDurationSec(durationSec);
         project.setWarningMin(warningMin);
         project.setWarningSec(warningSec);
-        System.out.println("Time in allfunction: "+project.getDurationMin()+":"+project.getDurationSec()
-                +"   "+project.getWarningMin()+":"+project.getWarningSec());
 
         new Thread(new Runnable(){
             @Override
@@ -223,6 +222,7 @@ public class AllFunctions{
 
     public void projectCriteria(ProjectInfo project, ArrayList<Criteria> criteriaList,
                                 ArrayList<Criteria> commentList){
+        System.out.println("在Allfunction中发送的criteriaList和commentList的数量分别为："+criteriaList.size()+"  "+commentList.size());
 
         new Thread(new Runnable(){
             @Override

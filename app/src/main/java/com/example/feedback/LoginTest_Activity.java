@@ -22,6 +22,16 @@ public class LoginTest_Activity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_test_);
         init();
+        resetHandler();
+    }
+
+    protected void onNewIntent(Intent intent) {
+        init();
+      resetHandler();
+    }
+
+    protected  void resetHandler()
+    {
         handler = new Handler(){
             public void handleMessage(Message msg)
             {
@@ -39,12 +49,6 @@ public class LoginTest_Activity extends Activity {
                 }
             }
         };
-        AllFunctions.getObject().setHandler(handler);
-
-    }
-
-    protected void onNewIntent(Intent intent) {
-        init();
         AllFunctions.getObject().setHandler(handler);
     }
 
