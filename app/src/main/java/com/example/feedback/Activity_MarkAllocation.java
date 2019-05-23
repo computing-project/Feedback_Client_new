@@ -4,19 +4,16 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -24,7 +21,9 @@ import android.widget.Toast;
 
 
 import java.util.ArrayList;
-import java.util.List;
+import showcomments.ChildEntity;
+import showcomments.ParentAdapter;
+import showcomments.ParentEntity;
 
 public class Activity_MarkAllocation extends Activity {
     private int indexOfProject;
@@ -35,6 +34,10 @@ public class Activity_MarkAllocation extends Activity {
     ArrayList<Criteria> allCriteriaList;
     private int markedCriteriaNum;
     private ExpandableListView expandableListView;
+    private ArrayList<ParentEntity> parents;
+    private ExpandableListView eList;
+
+    private ParentAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -206,6 +209,104 @@ public class Activity_MarkAllocation extends Activity {
                 button_commentDetail.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        LayoutInflater layoutInflater = LayoutInflater.from(Activity_MarkAllocation.this);//获得layoutInflater对象
+                        final View view2 = layoutInflater.from(Activity_MarkAllocation.this).inflate(R.layout.dialog_showcomments_markallocation, null);
+
+                        loadData(position);
+
+                        eList = (ExpandableListView) view2.findViewById(R.id.expandable_showComments_markAllocation);
+
+                        eList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+                            @Override
+                            public void onGroupExpand(int groupPosition) {
+                                for (int i = 0; i < parents.size(); i++) {
+                                    if (i != groupPosition) {
+                                        eList.collapseGroup(i);
+                                    }
+                                }
+                            }
+                        });
+
+                        adapter = new ParentAdapter(mContext, parents);
+
+                        eList.setAdapter(adapter);
+
+                        adapter.setOnChildTreeViewClickListener(new ParentAdapter.OnChildTreeViewClickListener() {
+                            @Override
+                            public void onClickPosition(int parentPosition, int groupPosition, int childPosition) {
+                                String childName = parents.get(parentPosition).getChilds()
+                                        .get(groupPosition).getChildNames().get(childPosition)
+                                        .toString();
+                                Toast.makeText(
+                                        mContext,
+                                        "点击的下标为： parentPosition=" + parentPosition
+                                                + "   groupPosition=" + groupPosition
+                                                + "   childPosition=" + childPosition + "\n点击的是："
+                                                + childName, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                        Dialog dialog = new android.app.AlertDialog.Builder(Activity_MarkAllocation.this).setView(view2)
+                                .create();
+
+                        dialog.show();
+
+
+                    }
+                });
+            }
+            else
+            {
+                convertView = LayoutInflater.from(mContext).inflate(R.layout.grid_item_commentonly, parent, false);
+
+                TextView textView_criteriaName = convertView.findViewById(R.id.textView_criteriaName_gridItemCommentOnly);
+                textView_criteriaName.setText(criteriaList.get(position).getName());
+
+                Button button_commentDetail = convertView.findViewById(R.id.button_showComments_gridItemCommentOnly);
+                button_commentDetail.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        LayoutInflater layoutInflater = LayoutInflater.from(Activity_MarkAllocation.this);//获得layoutInflater对象
+                        final View view2 = layoutInflater.from(Activity_MarkAllocation.this).inflate(R.layout.dialog_showcomments_markallocation, null);
+
+                        loadData(position);
+
+                        eList = (ExpandableListView) view2.findViewById(R.id.expandable_showComments_markAllocation);
+
+                        eList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+                            @Override
+                            public void onGroupExpand(int groupPosition) {
+                                for (int i = 0; i < parents.size(); i++) {
+                                    if (i != groupPosition) {
+                                        eList.collapseGroup(i);
+                                    }
+                                }
+                            }
+                        });
+
+                        adapter = new ParentAdapter(mContext, parents);
+
+                        eList.setAdapter(adapter);
+
+                        adapter.setOnChildTreeViewClickListener(new ParentAdapter.OnChildTreeViewClickListener() {
+                            @Override
+                            public void onClickPosition(int parentPosition, int groupPosition, int childPosition) {
+                                String childName = parents.get(parentPosition).getChilds()
+                                        .get(groupPosition).getChildNames().get(childPosition)
+                                        .toString();
+                                Toast.makeText(
+                                        mContext,
+                                        "点击的下标为： parentPosition=" + parentPosition
+                                                + "   groupPosition=" + groupPosition
+                                                + "   childPosition=" + childPosition + "\n点击的是："
+                                                + childName, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                        Dialog dialog = new android.app.AlertDialog.Builder(Activity_MarkAllocation.this).setView(view2)
+                                .create();
+
+                        dialog.show();
 
 
                     }
@@ -214,4 +315,54 @@ public class Activity_MarkAllocation extends Activity {
             return convertView;
         }
     }
+
+    private void loadData(int indexOfCriteria) {
+
+        parents = new ArrayList<ParentEntity>();
+        Criteria criteria = allCriteriaList.get(indexOfCriteria);
+
+        for (int i = 0; i < criteria.getSubsectionList().size(); i++) {
+
+            ParentEntity parent = new ParentEntity();
+
+            parent.setGroupName(criteria.getSubsectionList().get(i).getName());
+
+            parent.setGroupColor(getResources().getColor(
+                    android.R.color.black));
+
+            ArrayList<ChildEntity> childs = new ArrayList<ChildEntity>();
+
+            for (int j = 0; j < criteria.getSubsectionList().get(i).getShortTextList().size(); j++) {
+
+                ChildEntity child = new ChildEntity();
+
+                child.setGroupName(criteria.getSubsectionList().get(i).getShortTextList().get(j).getName());
+
+                child.setGroupColor(Color.parseColor("#000000"));
+
+                ArrayList<String> childNames = new ArrayList<String>();
+
+                ArrayList<Integer> childColors = new ArrayList<Integer>();
+
+                for (int k = 0; k < criteria.getSubsectionList().get(i).getShortTextList().get(j).getLongtext().size(); k++) {
+
+                    childNames.add(criteria.getSubsectionList().get(i).getShortTextList().get(j).getLongtext().get(k));
+
+                    childColors.add(Color.parseColor("#000000"));
+
+                }
+
+                child.setChildNames(childNames);
+
+                childs.add(child);
+
+            }
+
+            parent.setChilds(childs);
+
+            parents.add(parent);
+
+        }
+    }
+
 }
