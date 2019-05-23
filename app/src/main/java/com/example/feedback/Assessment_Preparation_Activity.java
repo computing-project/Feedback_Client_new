@@ -92,7 +92,7 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
 
     @Override
     public void onBackPressed() {
-        System.out.println("projectList页面的系统back按键被调用！");
+        finish();
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position,
