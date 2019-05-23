@@ -9,6 +9,9 @@
         android:id="@+id/tv_criteria_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="25dp"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -30,25 +33,26 @@
             android:layout_width="600dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="100dp"
+            android:layout_marginStart="75dp"
             android:max="10" />
 
         <TextView
             android:id="@+id/tv_mark"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="750dp"
-            android:layout_toLeftOf="@id/button_minus_gridItem"
+            android:layout_alignParentStart="false"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/linearLayout"
             android:text="TextView"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="50dp"
-            android:layout_marginStart="900dp"
+            android:layout_marginStart="50dp"
             android:layout_marginBottom="85dp"
+            android:layout_toLeftOf="@+id/btn_assessment_comment"
             android:background="@drawable/border"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -77,5 +81,14 @@
                 android:background="#00ff00" />
             />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_assessment_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="50dp"
+            android:text="Button" />
     </RelativeLayout>
 </RelativeLayout>
