@@ -1,175 +1,283 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Assessment_Preparation_Activity">
 
-
-
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <RelativeLayout
-            android:id="@+id/lo_assessment_head"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true">
-
-            <TextView
-                android:id="@+id/tv_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/tv_assessment_student"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_marginStart="250dp"
-                android:layout_marginTop="28dp"
-                android:text="TextView" />
-
-            <Button
-                android:id="@+id/btn_assessment_start"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="72dp"
-                android:layout_toLeftOf="@+id/tv_time"
-                android:text="Start" />
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="14"
+            android:background="@drawable/ic_header_background"
+            android:elevation="40dp">
 
             <Button
                 android:id="@+id/btn_assessment_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="34dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
-                android:layout_marginStart="100dp"
-                android:layout_marginTop="16dp"
-                android:text="BACK" />
-
-            <Button
-                android:id="@+id/btn_assessment_finish"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="100dp"
-                android:text="FINISH" />
-
-            <Button
-                android:id="@+id/btn_assessment_refresh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="72dp"
-                android:layout_marginTop="16dp"
-                android:layout_toRightOf="@+id/tv_time"
-                android:text="REFRESH" />
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/ic_back" />
 
             <TextView
-                android:id="@+id/tv_assessment_total_mark"
+                android:id="@+id/textView_projectName_about"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="300dp"
-                android:text="TextView" />
+                android:layout_centerInParent="true"
+                android:fontFamily="sans-serif-medium"
+                android:text="Projects "
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/textView_helloUser_assessmentPreparation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="100"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="right"
+                    android:text="Hello, Xxxxxx Xxxxxx"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
+
+                <View
+                    android:id="@+id/divider13"
+                    android:layout_width="1dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"/>
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="right"
+                    android:text="Help"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
+
+                <View
+                    android:id="@+id/divider14"
+                    android:layout_width="1dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff" />
+
+                <TextView
+                    android:id="@+id/textView_logout_assessmentPreparation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Log Out"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
         </RelativeLayout>
 
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/lo_assessment_head"
-        android:layout_marginTop="50dp"
-        android:orientation="vertical">
-
-
-        <RelativeLayout
-            android:id="@+id/rl_assessment_1"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="#D7D7D7">
 
-            <TextView
-                android:id="@+id/tv_individual"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="Assessment"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-            <View
-                android:id="@+id/dv_individual"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:layout_below="@+id/tv_individual"
-                android:background="?android:attr/listDivider" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="10">
 
-            <ListView
-                android:id="@+id/lv_individual"
+                <TextView
+                    android:id="@+id/tv_assessment_student"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_gravity="center"
+                    android:text="987578 XXXXX XXXXXXX"
+                    android:gravity="center"
+                    android:layout_marginLeft="30dp"
+                    android:paddingLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="#000000"/>
+
+                <Button
+                    android:id="@+id/btn_assessment_start"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_start" />
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:paddingLeft="4dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="15:30" />
+
+                <Button
+                    android:id="@+id/btn_assessment_refresh"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_refresh" />
+
+                <TextView
+                    android:id="@+id/tv_assessment_total_mark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Mark: 72%"
+                    android:textColor="#000000"
+                    android:paddingLeft="20dp"
+                    android:textSize="20dp"/>
+
+                <Button
+                    android:id="@+id/btn_assessment_finish"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:text="Finish"
+                    android:layout_marginRight="15dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="#ffffff"
+                    android:background="@drawable/ic_buttom_background"/>
+            </LinearLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/dv_individual" />
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
-        </RelativeLayout>
+                <ScrollView
+                    android:layout_width="1024dp"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:layout_centerHorizontal="true">
 
-        <RelativeLayout
-            android:id="@+id/rl_assessment_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rl_assessment_1">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/tv_commentOnly"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="Comments only"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                        <TextView
+                            android:id="@+id/tv_individual"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Assessment"
+                            android:textSize="24dp"
+                            android:textColor="#000000"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"/>
 
-            <View
-                android:id="@+id/dv_commentOnly"
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:layout_below="@+id/tv_commentOnly"
-                android:background="?android:attr/listDivider" />
+                        <View
+                            android:id="@+id/dv_individual"
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#797979"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"/>
 
-            <ListView
-                android:id="@+id/lv_commentOnly"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/dv_commentOnly" />
+                        <ListView
+                            android:id="@+id/lv_individual"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginTop="6dp"/>
 
-        </RelativeLayout>
+                        <TextView
+                            android:id="@+id/tv_commentOnly"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Comments Only"
+                            android:textSize="24dp"
+                            android:textColor="#000000"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp" />
 
-        <RelativeLayout
-            android:id="@+id/rl_assessment_3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rl_assessment_2">
+                        <View
+                            android:id="@+id/dv_commentOnly"
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#797979"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp" />
 
-            <TextView
-                android:id="@+id/tv_otherComment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="Other comments"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                        <ListView
+                            android:id="@+id/lv_commentOnly"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginTop="6dp" />
 
-            <View
-                android:id="@+id/dv_otherComment"
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:layout_below="@+id/tv_otherComment"
-                android:background="?android:attr/listDivider" />
+                        <TextView
+                            android:id="@+id/tv_otherComment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="24dp"
+                            android:textColor="#000000"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:text="Other Comments"/>
 
-            <ListView
-                android:id="@+id/lv_otherComment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/dv_otherComment" />
+                        <View
+                            android:id="@+id/dv_otherComment"
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#797979"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp" />
 
-        </RelativeLayout>
-    </RelativeLayout>
+                        <ListView
+                            android:id="@+id/lv_otherComment"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginBottom="30dp"/>
 
+                    </LinearLayout>
+                </ScrollView>
+            </RelativeLayout>
+        </LinearLayout>
 
-</RelativeLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

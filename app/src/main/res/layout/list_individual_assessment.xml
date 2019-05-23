@@ -1,62 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/tv_criteria_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="25dp"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-    <View
-        android:id="@+id/dv_list_individual_assessment"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_below="@id/tv_criteria_name"
-        android:background="?android:attr/listDivider" />
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="10dp"/>
 
     <RelativeLayout
-        android:id="@+id/relativeLayout_firstRow_gridItem"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/dv_list_individual_assessment">
+        android:layout_height="wrap_content">
 
         <SeekBar
             android:id="@+id/sb_mark"
-            style="@android:style/Widget.Holo.SeekBar"
-            android:layout_width="600dp"
-            android:layout_height="50dp"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="75dp" />
+            android:layout_marginStart="13dp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:progressDrawable="@drawable/sb_bar"
+            android:thumb="@drawable/sb_thumb"
+            android:maxHeight="10dp"
+            android:minHeight="3dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="12dp"
+            />
 
         <TextView
             android:id="@+id/tv_mark"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_alignParentStart="false"
-            android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@+id/linearLayout"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/sb_mark"
+            android:text="0/10"
+            android:layout_alignBottom="@id/sb_mark"
+            android:textColor="#cc0000"
+            android:textSize="18dp" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginBottom="85dp"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="20dp"
             android:layout_toLeftOf="@+id/btn_assessment_comment"
             android:background="@drawable/border"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            android:layout_alignBottom="@id/sb_mark">
 
             <TextView
                 android:id="@+id/tv_red"
@@ -81,14 +80,23 @@
                 android:background="#00ff00" />
             />
         </LinearLayout>
-
         <Button
             android:id="@+id/btn_assessment_comment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="50dp"
-            android:text="Button" />
+            android:layout_width="28dp"
+            android:layout_height="24dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/ic_comment"
+            android:layout_alignBottom="@id/sb_mark"
+            android:layout_alignParentRight="true"/>
+
     </RelativeLayout>
-</RelativeLayout>
+
+    <View
+        android:id="@+id/dv_list_individual_assessment"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="10dp"
+        android:background="#797979"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+</LinearLayout>
