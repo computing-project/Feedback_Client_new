@@ -160,7 +160,84 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical" />
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/textView12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Assessment"
+                            android:textSize="24dp"
+                            android:textColor="#000000"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"/>
+
+                        <View
+                            android:id="@+id/divider22"
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#797979"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"/>
+
+                        <ListView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginTop="6dp"/>
+
+                        <TextView
+                            android:id="@+id/textView20"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Comments Only"
+                            android:textSize="24dp"
+                            android:textColor="#000000"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp" />
+
+                        <View
+                            android:id="@+id/divider24"
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#797979"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp" />
+
+                        <ListView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginTop="6dp" />
+
+                        <TextView
+                            android:id="@+id/textView21"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="24dp"
+                            android:textColor="#000000"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:text="Other Comments"/>
+
+                        <View
+                            android:id="@+id/divider25"
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#797979"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp" />
+
+                        <ListView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginTop="6dp" />
+
+                    </LinearLayout>
                 </ScrollView>
             </RelativeLayout>
         </LinearLayout>
