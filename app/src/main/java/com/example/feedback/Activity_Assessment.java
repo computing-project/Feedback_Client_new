@@ -44,6 +44,10 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
     SeekBar sb_mark;
     TextView tv_mark;
+    Double singleMark;
+    Double totalMark = 0.0;
+    ArrayList<Double> markList;
+    int totalWeighting = 0;
 
     TextView tv_list_comment_only;
     Button btn_comment_only_comment;
@@ -85,6 +89,18 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
             }
         }
 
+        tv_mark = (TextView) findViewById(R.id.tv_mark);
+        for(int j = 0; j < project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().size(); j++){
+            totalWeighting = totalWeighting + project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(j).getWeighting();
+        }
+
+        for(int k = 0; k < project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().size(); k++){
+            totalMark = totalMark + project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().get(k) *
+                    (project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(k).getWeighting() / totalWeighting);
+        }
+
+        tv_mark.setText(totalWeighting + "%");
+
         lv_individual = (ListView) findViewById(R.id.lv_individual);
         lv_commentOnly = (ListView) findViewById(R.id.lv_commentOnly);
         lv_otherComment = (ListView) findViewById(R.id.lv_otherComment);
@@ -125,6 +141,7 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
         private Context mContext;
         private ArrayList<Criteria> criteriaList;
+        private Double increment;
 
         public MyAdapter(ArrayList<Criteria> criteriaList, Context context) {
             this.criteriaList = criteriaList;
@@ -152,10 +169,52 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
             TextView tv_criteria_name = convertView.findViewById(R.id.tv_criteria_name);
             tv_criteria_name.setText(criteriaList.get(position).getName());
 
-            final TextView tv_red = findViewById(R.id.tv_red);
-            final TextView tv_yellow = findViewById(R.id.tv_yellow);
-            final TextView tv_green = findViewById(R.id.tv_green);
-            //Button btn_color = findViewById(R.id.btn_color);
+            if(criteriaList.get(position).getMarkIncrement().equals("full")){
+                increment = 1.0;
+            }else if(criteriaList.get(position).getMarkIncrement().equals("half")){
+                increment = 0.5;
+            }else if(criteriaList.get(position).getMarkIncrement().equals("quarter")) {
+                increment = 0.25;
+            }
+
+            TextView tv_red = findViewById(R.id.tv_red);
+            TextView tv_yellow = findViewById(R.id.tv_yellow);
+            TextView tv_green = findViewById(R.id.tv_green);
+
+            sb_mark = (SeekBar) findViewById(R.id.sb_mark);
+
+            sb_mark.setProgress(0);
+            sb_mark.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    Double progressDisplay = progress * increment;
+                    sb_mark.setMax((int)(10/increment));
+                    tv_mark.setText(progressDisplay + " / 10");
+                    for(int i = 0; i < studentList.size(); i++){
+                        project.getStudentInfo().get(i).getMark().getMarkList().set(position, progressDisplay);
+
+                        for(int k = 0; k < project.getStudentInfo().get(i).getMark().getMarkList().size(); k++){
+                            totalMark = totalMark + project.getStudentInfo().get(i).getMark().getMarkList().get(k) *
+                                    (project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(k).getWeighting() / totalWeighting);
+                        }
+                        project.getStudentInfo().get(i).getMark().setTotalMark(totalMark);
+                        tv_mark.setText(totalWeighting + "%");
+                    }
+
+
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            });
+
 //        btn_color.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -177,7 +236,7 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 //            }
 //        });
 
-            bindViews();
+
 
             return convertView;
         }
@@ -185,28 +244,6 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
     }
 
 
-
-    private void bindViews() {
-        sb_mark = (SeekBar) findViewById(R.id.sb_mark);
-        tv_mark = (TextView) findViewById(R.id.tv_mark);
-        sb_mark.setProgress(0);
-        sb_mark.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                tv_mark.setText(progress + " / 10");
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-    }
 
     public void initTimer(long millisUntilFinished){
 
@@ -306,7 +343,7 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
             convertView = LayoutInflater.from(mContext).inflate(R.layout.list_comment_only, parent, false);
 
             TextView tv_list_comment_only = convertView.findViewById(R.id.tv_list_comment_only);
-            tv_list_comment_only.setText(commentList.get(position).getName());
+//            tv_list_comment_only.setText("");
 
             return convertView;
         }
@@ -317,7 +354,8 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
         private Context mContext;
         private ArrayList<Integer> studentList;
 
-        public MyAdapter3(ArrayList<Integer> studentList, Context context) {
+        public MyAdapter3(ArrayList<Integer> studentList,
+                          Context context) {
             this.studentList = studentList;
             this.mContext = context;
         }
@@ -339,9 +377,12 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
         public View getView(final int position, View convertView, ViewGroup parent) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.list_other_comment, parent, false);
-            
+
             et_other_comment = convertView.findViewById(R.id.et_other_comment);
             String otherComment = et_other_comment.getText().toString();
+            for(int i = 0; i < studentList.size(); i++){
+                project.getStudentInfo().get(i).getMark().setComment(otherComment);
+            }
 
             return convertView;
         }
