@@ -102,6 +102,8 @@ public class Activity_Realtime_Assessment extends Activity {
                     intent.putExtra("indexOfProject",indexOfProject);
                     intent.putExtra("indexOfStudent",position);
                     intent.putExtra("indexOfGroup", -999);
+                    System.out.println("project: "+indexOfProject);
+                    System.out.println("student: "+position);
                     startActivity(intent);
                 }
             });
