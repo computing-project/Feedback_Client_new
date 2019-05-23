@@ -18,6 +18,15 @@
             android:background="@drawable/ic_header_background"
             android:elevation="40dp">
 
+            <Button
+                android:id="@+id/btn_assessment_back"
+                android:layout_width="34dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/ic_back" />
+
             <TextView
                 android:id="@+id/textView_projectName_about"
                 android:layout_width="wrap_content"
@@ -108,30 +117,52 @@
                     android:id="@+id/tv_assessment_student"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:layout_gravity="center"
                     android:text="987578 XXXXX XXXXXXX"
-                    android:paddingRight="-40dp"
+                    android:gravity="center"
                     android:layout_marginLeft="30dp"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:textColor="#000000"/>
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/btn_assessment_start"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_start" />
+
+                <TextView
+                    android:id="@+id/tv_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:text="Button" />
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:paddingLeft="4dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="15:30" />
+
+                <Button
+                    android:id="@+id/btn_assessment_refresh"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_refresh" />
 
                 <TextView
                     android:id="@+id/tv_assessment_total_mark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:layout_gravity="center"
+                    android:gravity="center"
                     android:text="Mark: 72%"
-                    android:layout_marginRight="-20dp"
                     android:textColor="#000000"
+                    android:paddingLeft="20dp"
                     android:textSize="20dp"/>
 
                 <Button
@@ -141,6 +172,7 @@
                     android:layout_weight="1"
                     android:text="Finish"
                     android:layout_marginRight="15dp"
+                    android:gravity="center"
                     android:layout_gravity="center"
                     android:textColor="#ffffff"
                     android:background="@drawable/ic_buttom_background"/>
@@ -163,7 +195,7 @@
                         android:orientation="vertical" >
 
                         <TextView
-                            android:id="@+id/textView12"
+                            android:id="@+id/tv_individual"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Assessment"
@@ -173,7 +205,7 @@
                             android:paddingTop="5dp"/>
 
                         <View
-                            android:id="@+id/divider22"
+                            android:id="@+id/dv_individual"
                             android:layout_width="match_parent"
                             android:layout_height="2dp"
                             android:background="#797979"
@@ -181,6 +213,7 @@
                             android:layout_marginRight="10dp"/>
 
                         <ListView
+                            android:id="@+id/lv_individual"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="15dp"
@@ -188,7 +221,7 @@
                             android:layout_marginTop="6dp"/>
 
                         <TextView
-                            android:id="@+id/textView20"
+                            android:id="@+id/tv_commentOnly"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Comments Only"
@@ -198,7 +231,7 @@
                             android:paddingTop="5dp" />
 
                         <View
-                            android:id="@+id/divider24"
+                            android:id="@+id/dv_commentOnly"
                             android:layout_width="match_parent"
                             android:layout_height="2dp"
                             android:background="#797979"
@@ -206,6 +239,7 @@
                             android:layout_marginRight="10dp" />
 
                         <ListView
+                            android:id="@+id/lv_commentOnly"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="15dp"
@@ -213,7 +247,7 @@
                             android:layout_marginTop="6dp" />
 
                         <TextView
-                            android:id="@+id/textView21"
+                            android:id="@+id/tv_otherComment"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="24dp"
@@ -223,7 +257,7 @@
                             android:text="Other Comments"/>
 
                         <View
-                            android:id="@+id/divider25"
+                            android:id="@+id/dv_otherComment"
                             android:layout_width="match_parent"
                             android:layout_height="2dp"
                             android:background="#797979"
@@ -231,11 +265,13 @@
                             android:layout_marginRight="10dp" />
 
                         <ListView
+                            android:id="@+id/lv_otherComment"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="15dp"
                             android:layout_marginRight="15dp"
-                            android:layout_marginTop="6dp" />
+                            android:layout_marginTop="6dp"
+                            android:layout_marginBottom="30dp"/>
 
                     </LinearLayout>
                 </ScrollView>

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,6 +75,10 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
         indexOfGroup= Integer.parseInt(intent.getStringExtra("indexOfGroup"));
         project = AllFunctions.getObject().getProjectList().get(indexOfProject);
 
+
+        tv_assessment_student = (TextView) findViewById(R.id.tv_assessment_student);
+        studentList = new ArrayList<Integer>();
+
         if(indexOfGroup == -999){
             tv_assessment_student.setText(project.getStudentInfo().get(indexOfStudent).getNumber() + " " +
                     project.getStudentInfo().get(indexOfStudent).getFirstName() + " " +
@@ -89,22 +94,45 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
             }
         }
 
-        tv_mark = (TextView) findViewById(R.id.tv_mark);
-        if(project.getStudentInfo().get(studentList.get(0)).getMark().equals(null)){
+        //Log.d("1111111111", String.valueOf(studentList.size()));
+
+        tv_assessment_total_mark = (TextView) findViewById(R.id.tv_assessment_total_mark);
+
+        if(project.getStudentInfo().get(studentList.get(0)).getMark() != null){
 
             for(int j = 0; j < project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().size(); j++){
-                totalWeighting = totalWeighting + project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(j).getWeighting();
+                totalWeighting = totalWeighting + project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(j).getMaximunMark();
             }
 
             for(int k = 0; k < project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().size(); k++){
                 totalMark = totalMark + project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().get(k) *
-                        (project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(k).getWeighting() / totalWeighting);
+                        (project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(k).getMaximunMark() / totalWeighting);
             }
 
-            tv_mark.setText(totalWeighting + "%");
+            tv_assessment_total_mark.setText(totalMark + "%");
+            Log.d("111", String.valueOf(totalWeighting));
         }else{
-            tv_mark.setText("0%");
+            tv_assessment_total_mark.setText("0%");
+            for(int m = 0; m < studentList.size(); m++){
+                project.getStudentInfo().get(m).setMark(new Mark());
+                for(int n = 0; n < project.getCriteria().size(); n++){
+                    project.getStudentInfo().get(m).getMark().getCriteriaList().add(project.getCriteria().get(n));
+                    project.getStudentInfo().get(m).getMark().getCriteriaList().get(n).getSubsectionList().clear();
+                    project.getStudentInfo().get(m).getMark().getMarkList().add(0.0);
+                }
+                for(int n = 0; n < project.getCommentList().size(); n++){
+                    project.getStudentInfo().get(m).getMark().getCommentList().add(project.getCommentList().get(n));
+                    project.getStudentInfo().get(m).getMark().getCommentList().get(n).getSubsectionList().clear();
+                }
+            }
+
+            for(int j = 0; j < project.getCriteria().size(); j++){
+                totalWeighting = totalWeighting + project.getCriteria().get(j).getMaximunMark();
+                Log.d("22222", String.valueOf(project.getCriteria().get(j).getMaximunMark()));
+            }
+
         }
+
 
 
         lv_individual = (ListView) findViewById(R.id.lv_individual);
@@ -140,6 +168,8 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
         myAdapter3 = new MyAdapter3(studentList, this);
 
         lv_individual.setAdapter(myAdapter);
+        lv_commentOnly.setAdapter(myAdapter2);
+        lv_otherComment.setAdapter(myAdapter3);
 
     }
 
@@ -147,7 +177,7 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
         private Context mContext;
         private ArrayList<Criteria> criteriaList;
-        private Double increment;
+        private Double increment = 0.0;
 
         public MyAdapter(ArrayList<Criteria> criteriaList, Context context) {
             this.criteriaList = criteriaList;
@@ -175,37 +205,45 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
             TextView tv_criteria_name = convertView.findViewById(R.id.tv_criteria_name);
             tv_criteria_name.setText(criteriaList.get(position).getName());
 
-            if(criteriaList.get(position).getMarkIncrement().equals("full")){
+            if(criteriaList.get(position).getMarkIncrement().equals("1")){
                 increment = 1.0;
-            }else if(criteriaList.get(position).getMarkIncrement().equals("half")){
+            }else if(criteriaList.get(position).getMarkIncrement().equals("1/2")){
                 increment = 0.5;
-            }else if(criteriaList.get(position).getMarkIncrement().equals("quarter")) {
+            }else if(criteriaList.get(position).getMarkIncrement().equals("1/4")) {
                 increment = 0.25;
             }
 
-            TextView tv_red = findViewById(R.id.tv_red);
-            TextView tv_yellow = findViewById(R.id.tv_yellow);
-            TextView tv_green = findViewById(R.id.tv_green);
+            TextView tv_red = convertView.findViewById(R.id.tv_red);
+            TextView tv_yellow = convertView.findViewById(R.id.tv_yellow);
+            TextView tv_green = convertView.findViewById(R.id.tv_green);
 
-            sb_mark = (SeekBar) findViewById(R.id.sb_mark);
-
-            sb_mark.setProgress(0);
+            sb_mark = (SeekBar) convertView.findViewById(R.id.sb_mark);
+            tv_mark = (TextView) convertView.findViewById(R.id.tv_mark);
+            //tv_mark.setText("10");
+            sb_mark.setMax((int)(10.0/increment));
+            final View view2 = convertView;
+            //sb_mark.setProgress(0);
             sb_mark.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     Double progressDisplay = progress * increment;
-                    sb_mark.setMax((int)(10/increment));
-                    tv_mark.setText(progressDisplay + " / 10");
-                    for(int i = 0; i < studentList.size(); i++){
-                        project.getStudentInfo().get(i).getMark().getMarkList().set(position, progressDisplay);
+                    tv_mark = (TextView) view2.findViewById(R.id.tv_mark);
+                    tv_mark.setText(String.valueOf(progressDisplay) + " / 10");
 
-                        for(int k = 0; k < project.getStudentInfo().get(i).getMark().getMarkList().size(); k++){
-                            totalMark = totalMark + project.getStudentInfo().get(i).getMark().getMarkList().get(k) *
-                                    (project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(k).getWeighting() / totalWeighting);
+                    for(int i = 0; i < studentList.size(); i++){
+                        if(project.getStudentInfo().get(i).getMark().getMarkList() == null){
+                            project.getStudentInfo().get(i).getMark().getMarkList().add(progressDisplay * project.getCriteria().get(position).getMaximunMark() / 10);
+
+                        }else{
+                            project.getStudentInfo().get(i).getMark().getMarkList().set(position, progressDisplay * project.getCriteria().get(position).getMaximunMark() / 10);
+
                         }
-                        project.getStudentInfo().get(i).getMark().setTotalMark(totalMark);
-                        tv_mark.setText(totalWeighting + "%");
+
                     }
+
+                    totalMark();
+                    tv_assessment_total_mark.setText(String.format("%.2f", project.getStudentInfo().get(0).getMark().getTotalMark()) + "%");
+
 
 
                 }
@@ -243,11 +281,30 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 //        });
 
 
-
             return convertView;
         }
 
     }
+
+    public void totalMark() {
+        for (int i = 0; i < studentList.size(); i++) {
+            Double sum = 0.0;
+            for (int k = 0; k < project.getStudentInfo().get(i).getMark().getMarkList().size(); k++) {
+
+                sum = sum + 100 * project.getStudentInfo().get(i).getMark().getMarkList().get(k) / totalWeighting;
+
+                Log.d("111", String.valueOf(project.getStudentInfo().get(i).getMark().getMarkList().size()));
+
+                Log.d("111", String.valueOf(project.getStudentInfo().get(i).getMark().getMarkList().get(k)));
+                Log.d("111", String.valueOf(sum));
+                project.getStudentInfo().get(i).getMark().setTotalMark(sum);
+            }
+
+
+        }
+    }
+
+
 
 
 
