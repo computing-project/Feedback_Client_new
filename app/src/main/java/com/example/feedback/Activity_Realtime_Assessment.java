@@ -99,9 +99,9 @@ public class Activity_Realtime_Assessment extends Activity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(Activity_Realtime_Assessment.this,Activity_Assessment.class);
-                    intent.putExtra("indexOfProject",indexOfProject);
-                    intent.putExtra("indexOfStudent",position);
-                    intent.putExtra("indexOfGroup", -999);
+                    intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
+                    intent.putExtra("indexOfStudent",String.valueOf(position));
+                    intent.putExtra("indexOfGroup", String.valueOf(-999));
                     System.out.println("project: "+indexOfProject);
                     System.out.println("student: "+position);
                     startActivity(intent);
