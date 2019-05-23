@@ -384,6 +384,77 @@ public class CommunicationForClient {
 		}
 	}
 
+
+	public void inviteAssessor(String projectName, String assessorEmail)
+	{
+		//construct JSONObject to send
+		JSONObject jsonSend = new JSONObject();
+		jsonSend.put("token", token);
+		jsonSend.put("projectName", projectName);
+		jsonSend.put("assessorEmail", assessorEmail);
+
+		System.out.println("Send: " + jsonSend.toJSONString()); //just for test
+
+		RequestBody body = RequestBody.create(JSON, jsonSend.toJSONString());
+		Request request = new Request.Builder()
+				.url(host + "InviteAssessorServlet")
+				.post(body)
+				.build();
+
+		//get the JSONObject from response
+		try (Response response = client.newCall(request).execute()) {
+			String receive = response.body().string();
+
+			System.out.println("Receive: " + receive); //just for test
+
+			JSONObject jsonReceive = JSONObject.parseObject(receive);
+			String invite_ACK = jsonReceive.get("invite_ACK").toString();
+			if (invite_ACK.equals("true")) {
+				;
+			} else {
+				//失败跳出
+			}
+		} catch (Exception e1) {
+			System.out.println("exception in invite_Assessor!");
+		}
+	}
+
+	public void deleteAssessor(String projectName, String assessorEmail)
+	{
+		//construct JSONObject to send
+		JSONObject jsonSend = new JSONObject();
+		jsonSend.put("token", token);
+		jsonSend.put("projectName", projectName);
+		jsonSend.put("assessorEmail", assessorEmail);
+
+		System.out.println("Send: " + jsonSend.toJSONString()); //just for test
+
+		RequestBody body = RequestBody.create(JSON, jsonSend.toJSONString());
+		Request request = new Request.Builder()
+				.url(host + "InviteAssessorServlet")
+				.delete(body)
+				.build();
+
+		//get the JSONObject from response
+		try (Response response = client.newCall(request).execute()) {
+			String receive = response.body().string();
+
+			System.out.println("Receive: " + receive); //just for test
+
+			JSONObject jsonReceive = JSONObject.parseObject(receive);
+			String delete_ACK = jsonReceive.get("delete_ACK").toString();
+			if (delete_ACK.equals("true")) {
+				;
+			} else {
+				//失败跳出
+			}
+		} catch (Exception e1) {
+			System.out.println("exception in delete_Assessor!");
+		}
+	}
+
+
+
 	public void sendMark(String projectName, String studentID, Mark mark)
 	{
 		//construct JSONObject to send
