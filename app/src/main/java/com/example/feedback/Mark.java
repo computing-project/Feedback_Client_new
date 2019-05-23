@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Mark {
 
     private ArrayList<Criteria> criteriaList = new ArrayList<Criteria>();
-    private ArrayList<double> markList = new ArrayList<Double>();
+    private ArrayList<Double> markList = new ArrayList<Double>();
     private ArrayList<Criteria> commentList= new ArrayList<Criteria>();
     private String comment;
     private double totalMark;
@@ -61,7 +61,7 @@ public class Mark {
 
     }
 
-    public ArrayList<double> getMarkList() {
+    public ArrayList<Double> getMarkList() {
 
         return markList;
 
