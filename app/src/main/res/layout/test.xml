@@ -94,104 +94,77 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
             android:layout_weight="1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="7"
-                android:choiceMode="singleChoice"
-                android:dividerHeight="1dp"
-                android:paddingLeft="5dp"
-                android:paddingTop="5dp"
-                android:paddingEnd="5dp"
-                android:scrollbars="vertical"/>
-
-            <View
-                android:id="@+id/divider18"
-                android:layout_width="1dp"
-                android:background="#000000"
-                android:layout_height="match_parent" />
+            android:orientation="vertical"
+            android:background="#D7D7D7">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="3">
+                android:orientation="horizontal"
+                android:layout_weight="10">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tv_assessment_student"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="987578 XXXXX XXXXXXX"
+                    android:paddingRight="-40dp"
+                    android:layout_marginLeft="30dp"
+                    android:paddingLeft="20dp"
+                    android:textColor="#000000"/>
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="Button" />
+
+                <TextView
+                    android:id="@+id/tv_assessment_total_mark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Mark: 72%"
+                    android:layout_marginRight="-20dp"
+                    android:textColor="#000000"
+                    android:textSize="20dp"/>
+
+                <Button
+                    android:id="@+id/btn_assessment_finish"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:text="Finish"
+                    android:layout_marginRight="15dp"
+                    android:layout_gravity="center"
+                    android:textColor="#ffffff"
+                    android:background="@drawable/ic_buttom_background"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ScrollView
+                    android:layout_width="1024dp"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_weight="24">
-
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="3:30 Presentation"
-                        android:textSize="18dp"
-                        android:layout_weight="3"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="10dp"
-                        android:textColor="#000000"/>
+                    android:background="#ffffff"
+                    android:layout_centerHorizontal="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_weight="4">
-
-                        <TextView
-                            android:id="@+id/textView11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:text="3 of 67 candidates marked"
-                            android:layout_marginRight="5dp"
-                            android:textSize="16dp"
-                            android:textColor="#000000"/>
-
-                        <View
-                            android:id="@+id/divider23"
-                            android:layout_width="1dp"
-                            android:layout_height="28dp"
-                            android:layout_gravity="center_vertical"
-                            android:background="#999999"
-                            android:layout_marginRight="6dp"/>
-
-                        <TextView
-                            android:id="@+id/textView12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:text="3 elevators"
-                            android:textSize="16dp"
-                            android:textColor="#000000"/>
-                    </LinearLayout>
-
-
-                </LinearLayout>
-                <View
-                    android:id="@+id/divider19"
-                    android:layout_height="1dp"
-                    android:background="#000000"
-                    android:layout_width="match_parent" />
-                <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:padding="5dp"/>
-
-            </LinearLayout>
-
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+                </ScrollView>
+            </RelativeLayout>
         </LinearLayout>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
