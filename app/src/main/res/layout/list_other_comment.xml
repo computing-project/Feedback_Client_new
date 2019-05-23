@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_other_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="25dp"
+        android:text="TextView" />
+
+    <EditText
+        android:id="@+id/et_other_comment"
+        android:layout_width="1150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_other_comment"
+        android:layout_marginLeft="50dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="200dp"
+        android:text="Name" />
+</RelativeLayout>

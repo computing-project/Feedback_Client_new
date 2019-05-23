@@ -59,15 +59,17 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="5dp"
+            android:layout_marginRight="1dp"
             android:layout_toLeftOf="@id/editText_maxMark_gridItem"
             android:text="+" />
 
         <EditText
             android:id="@+id/editText_maxMark_gridItem"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/button_minus_gridItem"
             android:ems="3"
+            android:layout_marginRight="1dp"
             android:inputType="textPersonName"
             android:text="Name"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
