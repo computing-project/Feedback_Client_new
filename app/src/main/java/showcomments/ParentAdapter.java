@@ -16,12 +16,6 @@ import com.example.feedback.R;
 
 import java.util.ArrayList;
 
-/**
- *
- *         方法 {@link #getChildView(int, int, boolean, View, ViewGroup)}<b><font
- *         color='#ff00ff' size='2'>极其重要</font></b>
- *
- * */
 
 public class ParentAdapter extends BaseExpandableListAdapter {
 

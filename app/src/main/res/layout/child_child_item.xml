@@ -5,14 +5,19 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/parent_expandable_list_height" >
+        android:layout_height="wrap_content"
+        >
 
         <TextView
             android:id="@+id/childChildTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:paddingLeft="@dimen/child_expandable_list_child_padding_left" />
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:paddingLeft="@dimen/child_expandable_list_child_padding_left"
+            android:text="Text"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
     </RelativeLayout>
 
 </LinearLayout>
