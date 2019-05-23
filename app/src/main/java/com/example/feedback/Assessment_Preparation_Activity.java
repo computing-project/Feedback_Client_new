@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +20,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -104,9 +102,6 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
         for(int i=0; i<parent.getChildCount(); i++)
             parent.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
         view.setBackgroundColor(Color.parseColor("#dbdbdb"));
-        //view.setBackgroundColor(Color.rgb(135,206,250));
-//        Toast.makeText(this, "position=" + position + "; text=" + text,
-//                Toast.LENGTH_SHORT).show();
         showOtherInfo(position);
         Button button_about = findViewById(R.id.button_about_inpreparation);
         button_about.setEnabled(true);

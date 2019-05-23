@@ -18,7 +18,7 @@
             android:elevation="40dp">
 
             <TextView
-                android:id="@+id/textView_projectName_about"
+                android:id="@+id/textView_title_realtimeAssessment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -37,7 +37,7 @@
                 android:layout_centerVertical="true">
 
                 <TextView
-                    android:id="@+id/textView_helloUser_assessmentPreparation"
+                    android:id="@+id/textView_helloUser_realtimeAssessment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="100"
@@ -76,7 +76,7 @@
                     android:background="#ffffff" />
 
                 <TextView
-                    android:id="@+id/textView_logout_assessmentPreparation"
+                    android:id="@+id/textView_logout_realtimeAssessment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
@@ -102,6 +102,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ListView
+                android:id="@+id/listView_projects_realtimeAssessment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="7"
@@ -110,7 +111,7 @@
                 android:paddingLeft="5dp"
                 android:paddingTop="5dp"
                 android:paddingEnd="5dp"
-                android:scrollbars="vertical"/>
+                android:scrollbars="vertical" />
 
             <View
                 android:id="@+id/divider18"
@@ -131,7 +132,7 @@
                     android:layout_weight="24">
 
                     <TextView
-                        android:id="@+id/textView9"
+                        android:id="@+id/textView_duration_realtimeAssessment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="3:30 Presentation"
@@ -148,7 +149,7 @@
                         android:layout_weight="4">
 
                         <TextView
-                            android:id="@+id/textView11"
+                            android:id="@+id/textView_numCandidates_realtimeAssessment"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -166,7 +167,7 @@
                             android:layout_marginRight="6dp"/>
 
                         <TextView
-                            android:id="@+id/textView12"
+                            android:id="@+id/textView_numAssessors_realtimeAssessment"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -184,6 +185,7 @@
                     android:layout_width="match_parent" />
 
                 <ListView
+                    android:id="@+id/listView_students_realtimeAssessment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
