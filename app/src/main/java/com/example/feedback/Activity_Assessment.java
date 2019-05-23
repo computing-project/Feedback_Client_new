@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -18,12 +19,21 @@ import java.util.ArrayList;
 public class Activity_Assessment extends AppCompatActivity implements View.OnClickListener {
 
     MyAdapter myAdapter;
+    MyAdapter2 myAdapter2;
+    MyAdapter3 myAdapter3;
+
     int indexOfProject;
+    int indexOfStudent;
+    int indexOfGroup;
+    ArrayList<Integer> studentList;
+
     ProjectInfo project;
     ArrayList<Criteria> criteriaList;
     ArrayList<Criteria> commentList;
 
     ListView lv_individual;
+    ListView lv_commentOnly;
+    ListView lv_otherComment;
     TextView tv_time;
     Button btn_assessment_start;
     Button btn_assessment_refresh;
@@ -34,6 +44,12 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
     SeekBar sb_mark;
     TextView tv_mark;
+
+    TextView tv_list_comment_only;
+    Button btn_comment_only_comment;
+
+    TextView tv_other_comment;
+    EditText et_other_comment;
 
     private long durationTime = 0;
     private long warningTime = 0;
@@ -49,11 +65,29 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_assessment);
 
         Intent intent =getIntent();
-        indexOfProject = Integer.parseInt(intent.getStringExtra("index"));
+        indexOfProject = Integer.parseInt(intent.getStringExtra("indexOfProject"));
+        indexOfStudent= Integer.parseInt(intent.getStringExtra("indexOfStudent"));
+        indexOfGroup= Integer.parseInt(intent.getStringExtra("indexOfGroup"));
         project = AllFunctions.getObject().getProjectList().get(indexOfProject);
 
+        if(indexOfGroup == -999){
+            tv_assessment_student.setText(project.getStudentInfo().get(indexOfStudent).getNumber() + " " +
+                    project.getStudentInfo().get(indexOfStudent).getFirstName() + " " +
+                    project.getStudentInfo().get(indexOfStudent).getMiddleName() + " " +
+                    project.getStudentInfo().get(indexOfStudent).getSurname());
+            studentList.add(indexOfStudent);
+        }else {
+            tv_assessment_student.setText("Group " + indexOfGroup);
+            for(int i = 0; i < project.getStudentInfo().size(); i++){
+                if(project.getStudentInfo().get(i).getGroup() == indexOfGroup){
+                    studentList.add(i);
+                }
+            }
+        }
 
         lv_individual = (ListView) findViewById(R.id.lv_individual);
+        lv_commentOnly = (ListView) findViewById(R.id.lv_commentOnly);
+        lv_otherComment = (ListView) findViewById(R.id.lv_otherComment);
         init();
 
 
@@ -80,6 +114,8 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
         durationTime = project.getDurationMin() * 60000 + project.getDurationSec() * 1000;
         warningTime = project.getWarningMin() * 60000 + project.getWarningSec() * 1000;
         myAdapter = new MyAdapter(criteriaList, this);
+        myAdapter2 = new MyAdapter2(commentList, this);
+        myAdapter3 = new MyAdapter3(studentList, this);
 
         lv_individual.setAdapter(myAdapter);
 
@@ -244,16 +280,16 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
     public class MyAdapter2 extends BaseAdapter {
 
         private Context mContext;
-        private ArrayList<Criteria> criteriaList;
+        private ArrayList<Criteria> commentList;
 
-        public MyAdapter2(ArrayList<Criteria> criteriaList, Context context) {
-            this.criteriaList = criteriaList;
+        public MyAdapter2(ArrayList<Criteria> commentList, Context context) {
+            this.commentList = commentList;
             this.mContext = context;
         }
 
         @Override
         public int getCount() {
-            return criteriaList.size();
+            return commentList.size();
         }
 
         @Override
@@ -267,41 +303,51 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
         }
 
         public View getView(final int position, View convertView, ViewGroup parent) {
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.li, parent, false);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.list_comment_only, parent, false);
 
-            TextView tv_criteria_name = convertView.findViewById(R.id.tv_criteria_name);
-            tv_criteria_name.setText(criteriaList.get(position).getName());
-
-            final TextView tv_red = findViewById(R.id.tv_red);
-            final TextView tv_yellow = findViewById(R.id.tv_yellow);
-            final TextView tv_green = findViewById(R.id.tv_green);
-            //Button btn_color = findViewById(R.id.btn_color);
-//        btn_color.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                LinearLayout.LayoutParams param1 = new LinearLayout.LayoutParams(
-//                        0, LinearLayout.LayoutParams.MATCH_PARENT, 1);
-//
-//                tv_red.setLayoutParams(param1);
-//
-//                LinearLayout.LayoutParams param2 = new LinearLayout.LayoutParams(
-//                        0, LinearLayout.LayoutParams.MATCH_PARENT, 2);
-//
-//                tv_yellow.setLayoutParams(param2);
-//
-//                LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(
-//                        0, LinearLayout.LayoutParams.MATCH_PARENT, 3);
-//
-//                tv_green.setLayoutParams(param3);
-//            }
-//        });
-
+            TextView tv_list_comment_only = convertView.findViewById(R.id.tv_list_comment_only);
+            tv_list_comment_only.setText(commentList.get(position).getName());
 
             return convertView;
         }
-
     }
+
+    public class MyAdapter3 extends BaseAdapter {
+
+        private Context mContext;
+        private ArrayList<Integer> studentList;
+
+        public MyAdapter3(ArrayList<Integer> studentList, Context context) {
+            this.studentList = studentList;
+            this.mContext = context;
+        }
+
+        @Override
+        public int getCount() {
+            return studentList.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return position;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.list_other_comment, parent, false);
+            
+            et_other_comment = convertView.findViewById(R.id.et_other_comment);
+            String otherComment = et_other_comment.getText().toString();
+
+            return convertView;
+        }
+    }
+
+
 
 //    public void finish_assessment(View view)
 //    {
