@@ -51,6 +51,8 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
         Intent intent =getIntent();
         indexOfProject = Integer.parseInt(intent.getStringExtra("index"));
         project = AllFunctions.getObject().getProjectList().get(indexOfProject);
+
+
         lv_individual = (ListView) findViewById(R.id.lv_individual);
         init();
 
@@ -237,6 +239,68 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
             default:
                 break;
         }
+    }
+
+    public class MyAdapter2 extends BaseAdapter {
+
+        private Context mContext;
+        private ArrayList<Criteria> criteriaList;
+
+        public MyAdapter2(ArrayList<Criteria> criteriaList, Context context) {
+            this.criteriaList = criteriaList;
+            this.mContext = context;
+        }
+
+        @Override
+        public int getCount() {
+            return criteriaList.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return position;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.li, parent, false);
+
+            TextView tv_criteria_name = convertView.findViewById(R.id.tv_criteria_name);
+            tv_criteria_name.setText(criteriaList.get(position).getName());
+
+            final TextView tv_red = findViewById(R.id.tv_red);
+            final TextView tv_yellow = findViewById(R.id.tv_yellow);
+            final TextView tv_green = findViewById(R.id.tv_green);
+            //Button btn_color = findViewById(R.id.btn_color);
+//        btn_color.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                LinearLayout.LayoutParams param1 = new LinearLayout.LayoutParams(
+//                        0, LinearLayout.LayoutParams.MATCH_PARENT, 1);
+//
+//                tv_red.setLayoutParams(param1);
+//
+//                LinearLayout.LayoutParams param2 = new LinearLayout.LayoutParams(
+//                        0, LinearLayout.LayoutParams.MATCH_PARENT, 2);
+//
+//                tv_yellow.setLayoutParams(param2);
+//
+//                LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(
+//                        0, LinearLayout.LayoutParams.MATCH_PARENT, 3);
+//
+//                tv_green.setLayoutParams(param3);
+//            }
+//        });
+
+
+            return convertView;
+        }
+
     }
 
 //    public void finish_assessment(View view)
