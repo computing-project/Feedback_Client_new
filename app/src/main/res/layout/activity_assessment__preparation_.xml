@@ -28,7 +28,7 @@
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="#ffffff"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textStyle="bold"
                 />
 
@@ -47,7 +47,7 @@
                     android:text="Hello, Xxxxxx Xxxxxx"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="#ffffff"
-                    android:textSize="14sp" />
+                    android:textSize="14dp" />
 
                 <View
                     android:id="@+id/divider13"
@@ -66,7 +66,7 @@
                     android:text="Help"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="#ffffff"
-                    android:textSize="14sp" />
+                    android:textSize="14dp" />
 
                 <View
                     android:id="@+id/divider14"
@@ -85,7 +85,7 @@
                     android:text="Log Out"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="#ffffff"
-                    android:textSize="14sp" />
+                    android:textSize="14dp" />
 
             </LinearLayout>
 
@@ -193,7 +193,8 @@
                         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                         android:textColor="#dd000000"
                         android:textSize="28sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_marginTop="5dp"/>
 
                     <Button
                         android:id="@+id/button_about_inpreparation"
@@ -364,7 +365,8 @@
                         android:layout_height="wrap_content"
                         android:text="asseccor details"
                         android:textAppearance="@android:style/TextAppearance.DeviceDefault"
-                        android:layout_marginLeft="15dp" />
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginBottom="50dp"/>
 
                 </LinearLayout>
             </ScrollView>
