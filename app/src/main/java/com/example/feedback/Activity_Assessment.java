@@ -90,16 +90,22 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
         }
 
         tv_mark = (TextView) findViewById(R.id.tv_mark);
-        for(int j = 0; j < project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().size(); j++){
-            totalWeighting = totalWeighting + project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(j).getWeighting();
+        if(project.getStudentInfo().get(studentList.get(0)).getMark().equals(null)){
+
+            for(int j = 0; j < project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().size(); j++){
+                totalWeighting = totalWeighting + project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(j).getWeighting();
+            }
+
+            for(int k = 0; k < project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().size(); k++){
+                totalMark = totalMark + project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().get(k) *
+                        (project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(k).getWeighting() / totalWeighting);
+            }
+
+            tv_mark.setText(totalWeighting + "%");
+        }else{
+            tv_mark.setText("0%");
         }
 
-        for(int k = 0; k < project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().size(); k++){
-            totalMark = totalMark + project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().get(k) *
-                    (project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(k).getWeighting() / totalWeighting);
-        }
-
-        tv_mark.setText(totalWeighting + "%");
 
         lv_individual = (ListView) findViewById(R.id.lv_individual);
         lv_commentOnly = (ListView) findViewById(R.id.lv_commentOnly);
