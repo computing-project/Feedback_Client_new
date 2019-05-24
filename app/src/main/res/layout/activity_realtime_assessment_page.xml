@@ -43,7 +43,9 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true">
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/textView_title_realtimeAssessment"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
 
                 <TextView
                     android:id="@+id/textView_helloUser_realtimeAssessment"
@@ -51,11 +53,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="100"
                     android:fontFamily="sans-serif-medium"
-                    android:gravity="right"
+                    android:gravity="right|center_vertical"
                     android:text="Hello, Xxxxxx Xxxxxx"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="#ffffff"
-                    android:textSize="14dp" />
+                    android:singleLine="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
 
                 <View
                     android:id="@+id/divider13"
@@ -70,11 +75,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
-                    android:gravity="right"
+                    android:gravity="right|center_vertical"
                     android:text="Help"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="#ffffff"
-                    android:textSize="14dp" />
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
 
                 <View
                     android:id="@+id/divider14"
@@ -91,9 +98,11 @@
                     android:layout_marginRight="5dp"
                     android:fontFamily="sans-serif-medium"
                     android:text="Log Out"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="#ffffff"
-                    android:textSize="14dp" />
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
 
             </LinearLayout>
 

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        >
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -37,10 +37,13 @@
                 android:fontFamily="sans-serif-medium"
                 android:text="Projects "
                 android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="#ffffff"
-                android:textSize="18sp"
                 android:textStyle="bold"
+                android:singleLine="true"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="12dp"
+                app:autoSizeMaxTextSize="18dp"
+                app:autoSizeStepGranularity="2dp"
                 />
 
             <LinearLayout
@@ -56,9 +59,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="100"
                     android:fontFamily="sans-serif-medium"
-                    android:gravity="right|center_vertical"
                     android:text="Hello, Xxxxxx Xxxxxx"
                     android:textColor="#ffffff"
+                    android:gravity="right|center_vertical"
                     android:singleLine="true"
                     app:autoSizeTextType="uniform"
                     app:autoSizeMinTextSize="10dp"

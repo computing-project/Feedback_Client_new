@@ -53,11 +53,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="100"
                     android:fontFamily="sans-serif-medium"
-                    android:gravity="right"
                     android:text="Hello, Xxxxxx Xxxxxx"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="#ffffff"
-                    android:textSize="14sp" />
+                    android:gravity="right|center_vertical"
+                    android:singleLine="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
 
                 <View
                     android:id="@+id/divider13"
@@ -72,11 +75,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
-                    android:gravity="right"
                     android:text="Help"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="#ffffff"
-                    android:textSize="14sp" />
+                    android:gravity="right|center_vertical"
+                    android:singleLine="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
 
                 <View
                     android:id="@+id/divider14"
@@ -93,9 +99,13 @@
                     android:layout_marginRight="5dp"
                     android:fontFamily="sans-serif-medium"
                     android:text="Log Out"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="#ffffff"
-                    android:textSize="14sp" />
+                    android:gravity="right|center_vertical"
+                    android:singleLine="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
 
             </LinearLayout>
 
