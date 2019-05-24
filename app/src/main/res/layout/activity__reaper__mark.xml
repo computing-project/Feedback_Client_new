@@ -10,10 +10,11 @@
             android:layout_height="wrap_content"
             android:text="Button" />
 
-        <ListView
-            android:id="@+id/listView_markItem_markPage"
-            android:layout_width="match_parent"
+        <GridView
+        android:id="@+id/listView_markItem_markPage"
+        android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/button_fresh_markPage"
+            android:numColumns="auto_fit"
             android:scrollbars="horizontal" />
-    </RelativeLayout>
+</RelativeLayout>

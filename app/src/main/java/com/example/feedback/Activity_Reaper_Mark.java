@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.GridView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,10 +22,16 @@ public class Activity_Reaper_Mark extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__reaper__mark);
+
+        init();
     }
 
     private void init()
     {
+        ArrayList<Mark> marks = testMarkObject.markList();
+        MyAdapterForGridView myAdapterForGridView = new MyAdapterForGridView(marks, this);
+        GridView listView_gridGroup = findViewById(R.id.listView_markItem_markPage);
+        listView_gridGroup.setAdapter(myAdapterForGridView);
 
     }
 
@@ -65,15 +73,9 @@ public class Activity_Reaper_Mark extends AppCompatActivity {
             ListView listView_gridCriteria = convertView.findViewById(R.id.listView_criteriaMark_gridItemMark);
             MyAdapterForGridItem myAdapterForGridItem = new MyAdapterForGridItem(markList.get(position), convertView.getContext());
             listView_gridCriteria.setAdapter(myAdapterForGridItem);
+            setListViewHeightBasedOnChildren(listView_gridCriteria);
+            System.out.println("第"+position+"个Mark里面有"+markList.get(position).getCriteriaList().size()+"个criteria");
 
-
-            Button button_viewReport = convertView.findViewById(R.id.button_viewReport_gridItemMark);
-            button_viewReport.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
 
             return convertView;
         }
@@ -108,6 +110,7 @@ public class Activity_Reaper_Mark extends AppCompatActivity {
 
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
+            System.out.println("这是第"+position+"个criteria");
             convertView = LayoutInflater.from(mContext).inflate(R.layout.list_item_criteria_andmark, parent, false);
 
             TextView textView_markWithTotalMark = convertView.findViewById(R.id.textView_markTotalMark_listItemCriteriaMark);
@@ -118,5 +121,25 @@ public class Activity_Reaper_Mark extends AppCompatActivity {
 
             return convertView;
         }
+    }
+
+    public void setListViewHeightBasedOnChildren(ListView listView) {
+        // 获取ListView对应的Adapter
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) {
+            return;
+        }
+        int totalHeight = 0;
+        for (int i = 0, len = listAdapter.getCount(); i < len; i++) { // listAdapter.getCount()返回数据项的数目
+            View listItem = listAdapter.getView(i, null, listView);
+            listItem.measure(0, 0); // 计算子项View 的宽高
+            totalHeight += listItem.getMeasuredHeight(); // 统计所有子项的总高度
+        }
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight
+                + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        // listView.getDividerHeight()获取子项间分隔符占用的高度
+        // params.height最后得到整个ListView完整显示需要的高度
+        listView.setLayoutParams(params);
     }
 }
