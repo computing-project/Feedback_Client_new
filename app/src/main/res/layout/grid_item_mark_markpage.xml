@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ic_mark_background">
 
     <TextView
         android:id="@+id/textView_totalMark_gridItemMark"
@@ -10,15 +11,22 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textColor="#000000"
+        android:textStyle="italic"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
     <View
         android:id="@+id/divider22"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_below="@+id/textView_totalMark_gridItemMark"
-        android:background="?android:attr/listDivider" />
+        android:layout_height="2dp"
+        android:layout_marginLeft="15dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:background="#797979"
+        android:layout_below="@+id/textView_totalMark_gridItemMark" />
 
     <TextView
         android:id="@+id/textView_assessorName_gridItemMark"
@@ -33,6 +41,8 @@
         android:id="@+id/listView_criteriaMark_gridItemMark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/textView_assessorName_gridItemMark">
 
 
@@ -40,12 +50,16 @@
 
     <Button
         android:id="@+id/button_viewReport_gridItemMark"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="0"
+        android:background="@drawable/ic_button_background"
         android:layout_below="@+id/listView_criteriaMark_gridItemMark"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentBottom="false"
-        android:layout_centerHorizontal="true"
-        android:text="View Report" />
+        android:text="View Report"
+        android:textColor="#ffffff" />
 
 </RelativeLayout>
