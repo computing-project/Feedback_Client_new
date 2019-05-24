@@ -63,7 +63,8 @@ public class Activity_Reaper_Mark extends AppCompatActivity {
             textView_assessorName.setText(markList.get(position).getLecturerName());
 
             ListView listView_gridCriteria = convertView.findViewById(R.id.listView_criteriaMark_gridItemMark);
-
+            MyAdapterForGridItem myAdapterForGridItem = new MyAdapterForGridItem(markList.get(position), convertView.getContext());
+            listView_gridCriteria.setAdapter(myAdapterForGridItem);
 
 
             Button button_viewReport = convertView.findViewById(R.id.button_viewReport_gridItemMark);
@@ -114,7 +115,7 @@ public class Activity_Reaper_Mark extends AppCompatActivity {
                     markItem.getCriteriaList().get(position).getMaximunMark());
             TextView textView_criteriaName = convertView.findViewById(R.id.textView_criteriaName_listItemCriteriaMark);
             textView_criteriaName.setText(markItem.getCriteriaList().get(position).getName());
-            
+
             return convertView;
         }
     }
