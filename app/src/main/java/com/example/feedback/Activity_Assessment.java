@@ -15,6 +15,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
@@ -119,16 +120,17 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
             for(int j = 0; j < project.getCriteria().size(); j++){
                 totalWeighting = totalWeighting + project.getCriteria().get(j).getMaximunMark();
+
             }
 
-            for(int k = 0; k < project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().size(); k++){
+            for(int k = 0; k < project.getCriteria().size(); k++){
                 totalMark = totalMark + project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().get(k) *
-                        (project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(k).getMaximunMark() / totalWeighting);
-                Log.d("1115", String.valueOf(project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().get(k)));
+                        (project.getCriteria().get(k).getMaximunMark() / totalWeighting);
+                Log.d("1115", String.valueOf(project.getCriteria().get(k).getMaximunMark()));
 
             }
 
-            tv_assessment_total_mark.setText(totalMark + "%");
+            tv_assessment_total_mark.setText(String.format("%.2f", project.getStudentInfo().get(0).getMark().getTotalMark()) + "%");
             Log.d("1112", String.valueOf(totalWeighting));
             Log.d("1113", String.valueOf(totalMark));
 
@@ -139,11 +141,34 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
                 for(int n = 0; n < project.getCriteria().size(); n++){
                     project.getStudentInfo().get(m).getMark().getCriteriaList().add(new Criteria());
                     project.getStudentInfo().get(m).getMark().getCriteriaList().get(n).setName(project.getCriteria().get(n).getName());
+                    project.getStudentInfo().get(m).getMark().getCriteriaList().get(n).setMaximunMark(project.getCriteria().get(n).getMaximunMark());
                     project.getStudentInfo().get(m).getMark().getMarkList().add(0.0);
+
+                    for(int l = 0; l < project.getCriteria().get(n).getSubsectionList().size(); l++){
+                        project.getStudentInfo().get(m).getMark().getCriteriaList().get(n).getSubsectionList().add(new SubSection());
+                        project.getStudentInfo().get(m).getMark().getCriteriaList().get(n).getSubsectionList().get(l).setName(project.getCriteria().get(n).getSubsectionList().get(l).getName());
+
+                        for(int p = 0; p < project.getCriteria().get(n).getSubsectionList().get(l).getShortTextList().size(); p++){
+                            project.getStudentInfo().get(m).getMark().getCriteriaList().get(n).getSubsectionList().get(l).getShortTextList().add(new ShortText());
+                            project.getStudentInfo().get(m).getMark().getCriteriaList().get(n).getSubsectionList().get(l).getShortTextList().get(p).setName(project.getCriteria().get(n).getSubsectionList().get(l).getShortTextList().get(p).getName());
+
+                        }
+                    }
                 }
                 for(int n = 0; n < project.getCommentList().size(); n++){
                     project.getStudentInfo().get(m).getMark().getCommentList().add(new Criteria());
                     project.getStudentInfo().get(m).getMark().getCommentList().get(n).setName(project.getCommentList().get(n).getName());
+
+                    for(int l = 0; l < project.getCommentList().get(n).getSubsectionList().size(); l++){
+                        project.getStudentInfo().get(m).getMark().getCommentList().get(n).getSubsectionList().add(new SubSection());
+                        project.getStudentInfo().get(m).getMark().getCommentList().get(n).getSubsectionList().get(l).setName(project.getCommentList().get(n).getSubsectionList().get(l).getName());
+
+                        for(int p = 0; p < project.getCommentList().get(n).getSubsectionList().get(l).getShortTextList().size(); p++){
+                            project.getStudentInfo().get(m).getMark().getCommentList().get(n).getSubsectionList().get(l).getShortTextList().add(new ShortText());
+                            project.getStudentInfo().get(m).getMark().getCommentList().get(n).getSubsectionList().get(l).getShortTextList().get(p).setName(project.getCommentList().get(n).getSubsectionList().get(l).getShortTextList().get(p).getName());
+
+                        }
+                    }
                 }
             }
 
@@ -222,7 +247,7 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
         public View getView(final int position, View convertView, ViewGroup parent) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.list_individual_assessment, parent, false);
-
+            final View view10 = convertView;
             TextView tv_criteria_name = convertView.findViewById(R.id.tv_criteria_name);
             tv_criteria_name.setText(criteriaList.get(position).getName());
 
@@ -265,12 +290,68 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
                             String childName = parents.get(parentPosition).getChilds()
                                     .get(groupPosition).getChildNames().get(childPosition)
                                     .toString();
+                            for(int i = 0; i < studentList.size(); i++){
+
+                                int weight1 = 0;
+                                int weight2 = 0;
+                                int weight3 = 0;
+
+                                if(project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getLongtext().size() == 0){
+
+                                    project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getLongtext().add(childName);
+                                }else{
+
+                                    project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getLongtext().set(0, childName);
+
+                                }
+
+                                if(project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getGrade() == 1){
+                                    weight1 += 1;
+
+                                }else if(project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getGrade() == 2){
+                                    weight2 += 1;
+
+                                }else if(project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getGrade() == 3){
+                                    weight3 += 1;
+
+                                }
+
+                                Log.d("77777", project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getLongtext().get(0));
+
+                                TextView tv_red = view10.findViewById(R.id.tv_red);
+                                TextView tv_yellow = view10.findViewById(R.id.tv_yellow);
+                                TextView tv_green = view10.findViewById(R.id.tv_green);
+
+                                LinearLayout.LayoutParams param1 = new LinearLayout.LayoutParams(
+                                        0, LinearLayout.LayoutParams.MATCH_PARENT, weight1);
+
+                                tv_red.setLayoutParams(param1);
+
+                                LinearLayout.LayoutParams param2 = new LinearLayout.LayoutParams(
+                                        0, LinearLayout.LayoutParams.MATCH_PARENT, weight2);
+
+                                tv_yellow.setLayoutParams(param2);
+
+                                LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(
+                                        0, LinearLayout.LayoutParams.MATCH_PARENT, weight3);
+
+                                tv_green.setLayoutParams(param3);
+
+                            }
                             Toast.makeText(
                                     mContext,
                                     "点击的下标为： parentPosition=" + parentPosition
                                             + "   groupPosition=" + groupPosition
                                             + "   childPosition=" + childPosition + "\n点击的是："
                                             + childName, Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
+
+
 
 
 
@@ -282,19 +363,11 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
                     dialog.show();
                     dialog.getWindow().setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
-
-
-
                 }
             });
 
 
 
-
-
-            TextView tv_red = convertView.findViewById(R.id.tv_red);
-            TextView tv_yellow = convertView.findViewById(R.id.tv_yellow);
-            TextView tv_green = convertView.findViewById(R.id.tv_green);
 
             sb_mark = (SeekBar) convertView.findViewById(R.id.sb_mark);
             tv_mark = (TextView) convertView.findViewById(R.id.tv_mark);
@@ -341,26 +414,9 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
                 }
             });
 
-//        btn_color.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                LinearLayout.LayoutParams param1 = new LinearLayout.LayoutParams(
-//                        0, LinearLayout.LayoutParams.MATCH_PARENT, 1);
-//
-//                tv_red.setLayoutParams(param1);
-//
-//                LinearLayout.LayoutParams param2 = new LinearLayout.LayoutParams(
-//                        0, LinearLayout.LayoutParams.MATCH_PARENT, 2);
-//
-//                tv_yellow.setLayoutParams(param2);
-//
-//                LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(
-//                        0, LinearLayout.LayoutParams.MATCH_PARENT, 3);
-//
-//                tv_green.setLayoutParams(param3);
-//            }
-//        });
+
+
+
 
 
             return convertView;
@@ -375,10 +431,6 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
                 sum = sum + 100 * project.getStudentInfo().get(i).getMark().getMarkList().get(k) / totalWeighting;
 
-//                Log.d("111", String.valueOf(project.getStudentInfo().get(i).getMark().getMarkList().size()));
-//
-//                Log.d("111", String.valueOf(project.getStudentInfo().get(i).getMark().getMarkList().get(k)));
-//                Log.d("111", String.valueOf(sum));
                 project.getStudentInfo().get(i).getMark().setTotalMark(sum);
             }
 
