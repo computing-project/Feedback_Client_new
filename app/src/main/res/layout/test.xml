@@ -48,18 +48,26 @@
 
     </ListView>
 
-    <Button
-        android:id="@+id/button_viewReport_gridItemMark"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:layout_weight="0"
-        android:background="@drawable/ic_button_background"
-        android:layout_below="@+id/listView_criteriaMark_gridItemMark"
-        android:text="View Report"
-        android:textColor="#ffffff" />
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/button_viewReport_gridItemMark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="0"
+            android:background="@drawable/ic_button_background"
+            android:text="View Report"
+            android:textColor="#ffffff" />
+
+    </RelativeLayout>
+
+
 
 </RelativeLayout>
