@@ -20,7 +20,8 @@ public class AllFunctions{
     private CommunicationForClient communication;
     private ArrayList<ProjectInfo> projectList = new ArrayList<ProjectInfo>();
     private Handler handlerAllfunction;
-    private String username;
+    private String username;//for welcome message. this is the firstName.
+    private String myEmail;
 
     private AllFunctions(){
 
@@ -49,6 +50,12 @@ public class AllFunctions{
 
     public String getUsername()
     {return this.username;}
+
+    public void setMyEmail(String email)
+    {this.myEmail = email;}
+
+    public String getMyEmail()
+    {return this.myEmail;}
 
     public void loginSucc(ArrayList<ProjectInfo> projectList){
 
@@ -131,6 +138,7 @@ public class AllFunctions{
         project.setSubjectName(subjectName);
         project.setSubjectCode(subjectCode);
         project.setDescription(description);
+        project.getAssistant().add(myEmail);
 
         new Thread(new Runnable(){
             @Override

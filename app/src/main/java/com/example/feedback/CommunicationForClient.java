@@ -93,6 +93,7 @@ public class CommunicationForClient {
 				arrayList = new ArrayList();
 				arrayList.addAll(projectList);
 				functions.setUsername(firstName);
+				functions.setMyEmail(username);
 				System.out.println("when login firstName received is: "+firstName);
 
 				functions.loginSucc(arrayList);
