@@ -175,7 +175,7 @@
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:textColor="#ffffff"
-                    android:background="@drawable/ic_buttom_background"/>
+                    android:background="@drawable/ic_button_background"/>
             </LinearLayout>
 
             <RelativeLayout
@@ -200,6 +200,7 @@
                             android:layout_height="wrap_content"
                             android:text="Assessment"
                             android:textSize="24dp"
+
                             android:textColor="#000000"
                             android:paddingLeft="15dp"
                             android:paddingTop="5dp"/>
