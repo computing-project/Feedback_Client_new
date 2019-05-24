@@ -9,10 +9,9 @@
 
         <TextView
             android:id="@+id/textView9"
-            android:layout_width="match_parent"
+            android:layout_width="80dp"
             android:layout_height="35dp"
             android:text="Group No."
-            android:layout_weight="1"
             android:textSize="16dp"
             android:textColor="#000000"
             android:gravity="left"
@@ -27,11 +26,10 @@
 
     <TextView
             android:id="@+id/textView_studentID_studentsWithButton"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="35dp"
             android:clickable="false"
             android:text="Student ID"
-            android:layout_weight="1"
             android:textSize="16dp"
             android:singleLine="true"
             android:textColor="#000000"
@@ -46,11 +44,10 @@
 
     <TextView
             android:id="@+id/textView_fullname_studentsWithButton"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="35dp"
             android:clickable="false"
             android:text="Student Name"
-            android:layout_weight="1"
             android:textSize="16dp"
         android:singleLine="true"
             android:textColor="#000000"
@@ -65,11 +62,10 @@
 
     <TextView
             android:id="@+id/textView_email_studentsWithButton"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="35dp"
             android:clickable="false"
             android:text="Email"
-            android:layout_weight="1"
             android:textSize="16dp"
             android:textColor="#000000"
             android:singleLine="true"
