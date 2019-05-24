@@ -26,7 +26,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:background="@drawable/ic_back"
-                android:onClick="back_assessment" />
+                android:onClick="back_assessment"/>
 
             <TextView
                 android:id="@+id/textView_projectName_about"
