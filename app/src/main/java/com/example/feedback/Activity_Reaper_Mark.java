@@ -107,25 +107,14 @@ public class Activity_Reaper_Mark extends AppCompatActivity {
 
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.grid_item_mark_markpage, parent, false);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.list_item_criteria_andmark, parent, false);
 
-            TextView textView_totalMark = convertView.findViewById(R.id.textView_totalMark_gridItemMark);
-            textView_totalMark.setText(String.valueOf(markList.get(position).getTotalMark()));
-            TextView textView_assessorName = convertView.findViewById(R.id.textView_assessorName_gridItemMark);
-            textView_assessorName.setText(markList.get(position).getLecturerName());
-
-            ListView listView_gridCriteria = convertView.findViewById(R.id.listView_criteriaMark_gridItemMark);
-
-
-
-            Button button_viewReport = convertView.findViewById(R.id.button_viewReport_gridItemMark);
-            button_viewReport.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-
+            TextView textView_markWithTotalMark = convertView.findViewById(R.id.textView_markTotalMark_listItemCriteriaMark);
+            textView_markWithTotalMark.setText(markItem.getMarkList().get(position)+"/"+
+                    markItem.getCriteriaList().get(position).getMaximunMark());
+            TextView textView_criteriaName = convertView.findViewById(R.id.textView_criteriaName_listItemCriteriaMark);
+            textView_criteriaName.setText(markItem.getCriteriaList().get(position).getName());
+            
             return convertView;
         }
     }
