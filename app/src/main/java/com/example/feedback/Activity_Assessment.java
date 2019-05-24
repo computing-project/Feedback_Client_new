@@ -38,6 +38,8 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
     TextView tv_time;
     Button btn_assessment_start;
     Button btn_assessment_refresh;
+    Button btn_assessment_save;
+
 
     TextView tv_assessment_student;
     TextView tv_assessment_total_mark;
@@ -222,8 +224,10 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
             //tv_mark.setText("10");
             sb_mark.setMax((int)(10.0/increment));
             final View view2 = convertView;
-            //sb_mark.setProgress(0);
+            sb_mark.setProgress((int)(project.getStudentInfo().get(0).getMark().getMarkList().get(position)*10 / project.getCriteria().get(position).getMaximunMark()/increment));
+            tv_mark.setText((project.getStudentInfo().get(0).getMark().getMarkList().get(position)*10 / project.getCriteria().get(position).getMaximunMark()) + " / 10");
             sb_mark.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     Double progressDisplay = progress * increment;
@@ -335,7 +339,7 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
                 if(flag == 0){
                     isPause = false;
                     countDownTimer.start();
-                    btn_assessment_start.setText("PAUSE");
+                    btn_assessment_start.setBackgroundResource(R.drawable.ic_pause);
                     flag = 1;
                     btn_assessment_refresh.setEnabled(false);
                     break;
@@ -346,7 +350,7 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
                     }
 
-                    btn_assessment_start.setText("START");
+                    btn_assessment_start.setBackgroundResource(R.drawable.ic_start);
                     flag = 2;
                     btn_assessment_refresh.setEnabled(true);
                     break;
@@ -360,7 +364,8 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
                     }
                     btn_assessment_refresh.setEnabled(false);
-                    btn_assessment_start.setText("PAUSE");
+                    btn_assessment_start.setBackgroundResource(R.drawable.ic_pause);
+
                     flag = 1;
                     break;
                 }
@@ -441,11 +446,30 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
         public View getView(final int position, View convertView, ViewGroup parent) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.list_other_comment, parent, false);
 
+            TextView tv_other_comment = convertView.findViewById(R.id.tv_other_comment);
+            tv_other_comment.setText("For " + project.getStudentInfo().get(studentList.get(position)).getFirstName() + " "
+                    + project.getStudentInfo().get(studentList.get(position)).getMiddleName() + " "
+                    + project.getStudentInfo().get(studentList.get(position)).getSurname());
+            Button btn_assessment_save = convertView.findViewById(R.id.btn_assessment_save);
             et_other_comment = convertView.findViewById(R.id.et_other_comment);
-            String otherComment = et_other_comment.getText().toString();
-            for(int i = 0; i < studentList.size(); i++){
-                project.getStudentInfo().get(i).getMark().setComment(otherComment);
-            }
+            final View view4 = convertView;
+            btn_assessment_save.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    et_other_comment = view4.findViewById(R.id.et_other_comment);
+
+
+                    String otherComment = et_other_comment.getText().toString();
+
+                    for(int i = 0; i < studentList.size(); i++){
+                        project.getStudentInfo().get(i).getMark().setComment(otherComment);
+
+                    }
+                }
+            });
+
+
 
             return convertView;
         }
@@ -453,18 +477,20 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
 
 
-//    public void finish_assessment(View view)
-//    {
-//        durationMin = Integer.parseInt(editText_durationMin.getText().toString());
-//        durationSec = Integer.parseInt(editText_durationSec.getText().toString());
-//        warningMin = Integer.parseInt(editText_warningMin.getText().toString());
-//        warningSec = Integer.parseInt(editText_warningSec.getText().toString());
-//        System.out.println("Time in Timer: "+durationMin+":"+durationSec+"   "+warningMin+":"+warningSec);
-//        AllFunctions.getObject().projectTimer(project,durationMin,durationSec,warningMin,warningSec);
+    public void finish_assessment(View view)
+    {
+        for(int i = 0; i < studentList.size(); i++){
+            AllFunctions.getObject().sendMark(project, String.valueOf(studentList.get(i)), project.getStudentInfo().get(i).getMark() );
+        }
+
 //        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //        startActivity(intent);
-//        finish();
-//    }
+        finish();
+    }
+
+    public void back_assessment(View view){
+        finish();
+    }
 
 
 
