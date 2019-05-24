@@ -62,14 +62,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
-                android:background="#ff0000" />
+                android:background="#fe0000" />
 
             <TextView
                 android:id="@+id/tv_yellow"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
-                android:background="#ffff00" />
+                android:background="#ff9600" />
             />
 
             <TextView
@@ -77,7 +77,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
-                android:background="#00ff00" />
+                android:background="#00fe32" />
             />
         </LinearLayout>
         <Button

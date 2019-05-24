@@ -71,7 +71,8 @@ public class AllFunctions{
 
     }
 
-    public void logout(){
+    public void exceptionWithServer(){
+        System.out.println("通讯错误，最后此处要改成弹出并报错！");
 
 
 
@@ -234,6 +235,37 @@ public class AllFunctions{
     {
         handlerAllfunction.sendEmptyMessage(208);
     }
+
+    public void deleteAssessor(ProjectInfo project, String assessorEmail)
+    {
+        String projectName = project.getProjectName();
+        new Thread(new Runnable(){
+            @Override
+            public void run(){
+
+                communication.deleteAssessor(projectName,assessorEmail);
+
+            }
+        }).start();
+    }
+
+//    public void deleteAssessor_Success()
+//    {
+//        for(ProjectInfo projectInfo:projectList)
+//        {
+//            if(projectInfo.getProjectName().equals(projectName))
+//            {
+//                projectInfo.getAssistant().add(assessorEmail);
+//                handlerAllfunction.sendEmptyMessage(207);
+//                break;
+//            }
+//        }
+//    }
+
+//    public void deleteAssessor_Fail()
+//    {
+//        handlerAllfunction.sendEmptyMessage(208);
+//    }
 
 
     public void addDefaultCriteria(ProjectInfo project, ArrayList<Criteria> criteriaList){

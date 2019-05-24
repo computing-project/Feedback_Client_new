@@ -26,7 +26,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:background="@drawable/ic_back"
-                android:onClick="back_assessment" />
+                android:onClick="back_assessment"/>
 
             <TextView
                 android:id="@+id/textView_projectName_about"
@@ -173,11 +173,11 @@
                     android:layout_gravity="center"
                     android:layout_marginRight="15dp"
                     android:layout_weight="1"
-                    android:background="@drawable/ic_buttom_background"
                     android:gravity="center"
-                    android:onClick="finish_assessment"
-                    android:text="Finish"
-                    android:textColor="#ffffff" />
+                    android:textColor="#ffffff"
+                    android:background="@drawable/ic_button_background"android:onClick="finish_assessment"
+                    android:text="Finish"/>
+
             </LinearLayout>
 
             <RelativeLayout

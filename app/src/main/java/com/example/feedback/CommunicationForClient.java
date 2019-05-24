@@ -451,7 +451,7 @@ public class CommunicationForClient {
 				//失败跳出
 			}
 		} catch (Exception e1) {
-			System.out.println("exception in delete_Assessor!");
+			AllFunctions.getObject().exceptionWithServer();
 		}
 	}
 
