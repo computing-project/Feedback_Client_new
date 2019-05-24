@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity_Realtime_Assessment"></activity>
+        <activity android:name=".Activity_Reaper_Mark"></activity>
+        <activity android:name=".Activity_Realtime_Assessment" />
         <activity
             android:name=".Homepage"
             android:launchMode="singleTask" />

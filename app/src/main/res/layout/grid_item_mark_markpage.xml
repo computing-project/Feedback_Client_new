@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView_totalMark_gridItemMark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+    <View
+        android:id="@+id/divider22"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@+id/textView_totalMark_gridItemMark"
+        android:background="?android:attr/listDivider" />
+
+    <TextView
+        android:id="@+id/textView_assessorName_gridItemMark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/divider22"
+        android:layout_centerHorizontal="true"
+        android:text="name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <ListView
+        android:id="@+id/listView_criteriaMark_gridItemMark"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/button_viewReport_gridItemMark"
+        android:layout_below="@+id/textView_assessorName_gridItemMark">
+
+
+    </ListView>
+
+    <Button
+        android:id="@+id/button_viewReport_gridItemMark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="View Report" />
+</RelativeLayout>
