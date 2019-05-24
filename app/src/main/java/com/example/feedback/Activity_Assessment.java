@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
@@ -214,8 +215,11 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
         myAdapter3 = new MyAdapter3(studentList, this);
 
         lv_individual.setAdapter(myAdapter);
+        setListViewHeightBasedOnChildren(lv_individual);
         lv_commentOnly.setAdapter(myAdapter2);
+        setListViewHeightBasedOnChildren(lv_commentOnly);
         lv_otherComment.setAdapter(myAdapter3);
+        setListViewHeightBasedOnChildren(lv_otherComment);
 
     }
 
@@ -258,6 +262,50 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
             }else if(criteriaList.get(position).getMarkIncrement().equals("1/4")) {
                 increment = 0.25;
             }
+
+            TextView tv_red = view10.findViewById(R.id.tv_red);
+            TextView tv_yellow = view10.findViewById(R.id.tv_yellow);
+            TextView tv_green = view10.findViewById(R.id.tv_green);
+
+            ArrayList<Integer> weightList = new ArrayList<>();
+
+            weightList.add(0, 0);
+            weightList.add(1, 0);
+            weightList.add(2, 0);
+
+            for(int n = 0; n < project.getStudentInfo().get(0).getMark().getCriteriaList().size(); n++){
+                for(int l = 0; l < project.getStudentInfo().get(0).getMark().getCriteriaList().get(n).getSubsectionList().size(); l++){
+                    for(int p = 0; p < project.getStudentInfo().get(0).getMark().getCriteriaList().get(n).getSubsectionList().get(l).getShortTextList().size(); p++) {
+                        if(project.getStudentInfo().get(0).getMark().getCriteriaList().get(n).getSubsectionList().get(l).getShortTextList().get(p).getLongtext().size() == 0){
+                        }else if(project.getCriteria().get(n).getSubsectionList().get(l).getShortTextList().get(p).getGrade() == 1){
+                            weightList.set(0, (weightList.get(0)+1));
+                        }else if(project.getCriteria().get(n).getSubsectionList().get(l).getShortTextList().get(p).getGrade() == 2){
+                            weightList.set(1, (weightList.get(0)+1));
+                        }else if(project.getCriteria().get(n).getSubsectionList().get(l).getShortTextList().get(p).getGrade() == 3){
+                            weightList.set(2, (weightList.get(0)+1));
+                        }
+                    }
+                }
+            }
+            Log.d("77777", String.valueOf(weightList.get(0)) + " " + String.valueOf(weightList.get(1)) + " " + String.valueOf(weightList.get(2)));
+
+
+            LinearLayout.LayoutParams param1 = new LinearLayout.LayoutParams(
+                    0, LinearLayout.LayoutParams.MATCH_PARENT, weightList.get(0));
+
+            tv_red.setLayoutParams(param1);
+
+            LinearLayout.LayoutParams param2 = new LinearLayout.LayoutParams(
+                    0, LinearLayout.LayoutParams.MATCH_PARENT, weightList.get(1));
+
+            tv_yellow.setLayoutParams(param2);
+
+            LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(
+                    0, LinearLayout.LayoutParams.MATCH_PARENT, weightList.get(2));
+
+            tv_green.setLayoutParams(param3);
+
+
             Button btn_assessment_comment = convertView.findViewById(R.id.btn_assessment_comment);
             btn_assessment_comment.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -284,6 +332,8 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
                     eList.setAdapter(adapter);
 
+
+
                     adapter.setOnChildTreeViewClickListener(new ParentAdapter.OnChildTreeViewClickListener() {
                         @Override
                         public void onClickPosition(int parentPosition, int groupPosition, int childPosition) {
@@ -292,48 +342,42 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
                                     .toString();
                             for(int i = 0; i < studentList.size(); i++){
 
-                                int weight1 = 0;
-                                int weight2 = 0;
-                                int weight3 = 0;
-
                                 if(project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getLongtext().size() == 0){
 
                                     project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getLongtext().add(childName);
+
+                                    if(project.getCriteria().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getGrade() == 1){
+                                        weightList.set(0, (weightList.get(0)+1));
+
+                                    }else if(project.getCriteria().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getGrade() == 2){
+                                        weightList.set(1, (weightList.get(1)+1));
+                                    }else if(project.getCriteria().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getGrade() == 3){
+                                        weightList.set(2, (weightList.get(2)+1));
+                                    }
+
                                 }else{
 
                                     project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getLongtext().set(0, childName);
 
                                 }
 
-                                if(project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getGrade() == 1){
-                                    weight1 += 1;
 
-                                }else if(project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getGrade() == 2){
-                                    weight2 += 1;
+                                Log.d("77777", String.valueOf(weightList.get(0)) + " " + String.valueOf(weightList.get(1)) + " " + String.valueOf(weightList.get(2)));
 
-                                }else if(project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getGrade() == 3){
-                                    weight3 += 1;
 
-                                }
-
-                                Log.d("77777", project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getLongtext().get(0));
-
-                                TextView tv_red = view10.findViewById(R.id.tv_red);
-                                TextView tv_yellow = view10.findViewById(R.id.tv_yellow);
-                                TextView tv_green = view10.findViewById(R.id.tv_green);
 
                                 LinearLayout.LayoutParams param1 = new LinearLayout.LayoutParams(
-                                        0, LinearLayout.LayoutParams.MATCH_PARENT, weight1);
+                                        0, LinearLayout.LayoutParams.MATCH_PARENT, weightList.get(0));
 
                                 tv_red.setLayoutParams(param1);
 
                                 LinearLayout.LayoutParams param2 = new LinearLayout.LayoutParams(
-                                        0, LinearLayout.LayoutParams.MATCH_PARENT, weight2);
+                                        0, LinearLayout.LayoutParams.MATCH_PARENT, weightList.get(1));
 
                                 tv_yellow.setLayoutParams(param2);
 
                                 LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(
-                                        0, LinearLayout.LayoutParams.MATCH_PARENT, weight3);
+                                        0, LinearLayout.LayoutParams.MATCH_PARENT, weightList.get(2));
 
                                 tv_green.setLayoutParams(param3);
 
@@ -344,15 +388,6 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
                                             + "   groupPosition=" + groupPosition
                                             + "   childPosition=" + childPosition + "\n点击的是："
                                             + childName, Toast.LENGTH_SHORT).show();
-
-
-
-
-
-
-
-
-
 
 
                         }
@@ -657,7 +692,7 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
     public void finish_assessment(View view)
     {
         for(int i = 0; i < studentList.size(); i++){
-            AllFunctions.getObject().sendMark(project, String.valueOf(studentList.get(i)), project.getStudentInfo().get(i).getMark() );
+            AllFunctions.getObject().sendMark(project, project.getStudentInfo().get(studentList.get(i)).getNumber(), project.getStudentInfo().get(i).getMark() );
         }
 
 //        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -667,6 +702,26 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
     public void back_assessment(View view){
         finish();
+    }
+
+    public void setListViewHeightBasedOnChildren(ListView listView) {
+        // 获取ListView对应的Adapter
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) {
+            return;
+        }
+        int totalHeight = 0;
+        for (int i = 0, len = listAdapter.getCount(); i < len; i++) { // listAdapter.getCount()返回数据项的数目
+            View listItem = listAdapter.getView(i, null, listView);
+            listItem.measure(0, 0); // 计算子项View 的宽高
+            totalHeight += listItem.getMeasuredHeight(); // 统计所有子项的总高度
+        }
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight
+                + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        // listView.getDividerHeight()获取子项间分隔符占用的高度
+        // params.height最后得到整个ListView完整显示需要的高度
+        listView.setLayoutParams(params);
     }
 
 
