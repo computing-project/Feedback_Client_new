@@ -129,8 +129,8 @@
 
                 <Button
                     android:id="@+id/btn_assessment_start"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center"
                     android:background="@drawable/ic_start" />
 
@@ -139,9 +139,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="20dp"
+                    android:textSize="24dp"
                     android:textStyle="bold"
                     android:textColor="#000000"
+                    android:background="#ffffff"
                     android:paddingLeft="4dp"
                     android:gravity="center"
                     android:layout_gravity="center"
@@ -149,8 +150,8 @@
 
                 <Button
                     android:id="@+id/btn_assessment_refresh"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center"
                     android:background="@drawable/ic_refresh" />
 
@@ -194,7 +195,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:orientation="vertical" >
 
                         <TextView

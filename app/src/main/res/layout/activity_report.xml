@@ -153,7 +153,7 @@
                     android:layout_marginRight="40dp"
                     app:autoSizeTextType="uniform"
                     app:autoSizeMinTextSize="10dp"
-                    app:autoSizeMaxTextSize="28dp"
+                    app:autoSizeMaxTextSize="26dp"
                     app:autoSizeStepGranularity="2dp" />
 
                 <Button
