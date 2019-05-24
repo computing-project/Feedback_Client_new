@@ -18,37 +18,56 @@
             android:gravity="left"
             android:padding="5dp" />
 
-        <TextView
+
+    <View
+        android:id="@+id/divider22"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#d9000000"/>
+
+    <TextView
             android:id="@+id/textView_studentID_studentsWithButton"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:clickable="false"
             android:text="Student ID"
-            android:layout_weight="2"
+            android:layout_weight="6"
             android:textSize="16dp"
             android:textColor="#000000"
             android:gravity="left"
             android:padding="5dp"/>
 
-        <TextView
+    <View
+        android:id="@+id/divider24"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#d9000000"/>
+
+    <TextView
             android:id="@+id/textView_fullname_studentsWithButton"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:clickable="false"
             android:text="Student Name"
-            android:layout_weight="3"
+            android:layout_weight="12"
             android:textSize="16dp"
             android:textColor="#000000"
             android:gravity="left"
             android:padding="5dp"/>
 
-        <TextView
+    <View
+        android:id="@+id/divider25"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#d9000000"/>
+
+    <TextView
             android:id="@+id/textView_email_studentsWithButton"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:clickable="false"
             android:text="Email"
-            android:layout_weight="4"
+            android:layout_weight="20"
             android:textSize="16dp"
             android:textColor="#000000"
             android:gravity="left"
