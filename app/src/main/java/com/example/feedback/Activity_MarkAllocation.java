@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,7 @@ import android.widget.ExpandableListView;
 import android.widget.GridView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -304,33 +306,37 @@ public class Activity_MarkAllocation extends Activity {
                                                 + childName, Toast.LENGTH_SHORT).show();
 
 
-                                LayoutInflater layoutInflater = LayoutInflater.from(view.getContext());//获得layoutInflater对象
-                                final View view3 = layoutInflater.from(view.getContext()).inflate(R.layout.dialog_edit_and_delete_comment, null);//获得view对象
-                                EditText editText_longtextDetail = (EditText) view3.findViewById(R.id.editText_longTextDetail_markAllocation);//获取控件
-                                editText_longtextDetail.setText(criteriaList.get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getLongtext().get(childPosition));
-                                Dialog dialog3 = new AlertDialog.Builder(view.getContext()).setView(view3).setPositiveButton("Edit", new DialogInterface.OnClickListener() {
-
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        criteriaList.get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition)
-                                                .getLongtext().set(childPosition,editText_longtextDetail.getText().toString());
-                                       // adapter.notifyDataSetChanged();
-                                    }
-                                }).setNegativeButton("Delete", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        criteriaList.get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition)
-                                                .getLongtext().remove(childPosition);
-                                    //    adapter.notifyDataSetChanged();
-
-                                    }
-                                }).create();
-                                dialog3.show();
+//                                LayoutInflater layoutInflater = LayoutInflater.from(view.getContext());//获得layoutInflater对象
+//                                final View view3 = layoutInflater.from(view.getContext()).inflate(R.layout.dialog_edit_and_delete_comment, null);//获得view对象
+//                                EditText editText_longtextDetail = (EditText) view3.findViewById(R.id.editText_longTextDetail_markAllocation);//获取控件
+//                                editText_longtextDetail.setText(criteriaList.get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getLongtext().get(childPosition));
+//                                Dialog dialog3 = new AlertDialog.Builder(view.getContext()).setView(view3).setPositiveButton("Edit", new DialogInterface.OnClickListener() {
+//
+//                                    public void onClick(DialogInterface dialog, int which) {
+//                                        criteriaList.get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition)
+//                                                .getLongtext().set(childPosition,editText_longtextDetail.getText().toString());
+//                                       // adapter.notifyDataSetChanged();
+//                                    }
+//                                }).setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialog, int which) {
+//                                        criteriaList.get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition)
+//                                                .getLongtext().remove(childPosition);
+//                                    //    adapter.notifyDataSetChanged();
+//
+//                                    }
+//                                }).create();
+//                                dialog3.show();
                             }
                         });
 
                         Dialog dialog = new android.app.AlertDialog.Builder(Activity_MarkAllocation.this).setView(view2).create();
 
                         dialog.show();
+                        dialog.getWindow().setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+
+
                     }
                 });
             }
