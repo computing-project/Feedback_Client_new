@@ -68,6 +68,10 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
                         Toast.makeText(Assessment_Preparation_Activity.this,
                                 "The email has not been registered. Please check and try again.", Toast.LENGTH_SHORT).show();
                         break;
+                    case 209: //删除assessor失败
+                        Toast.makeText(Assessment_Preparation_Activity.this,
+                                "There is anything wrong on server. Please try later.", Toast.LENGTH_SHORT).show();
+                        break;
                     default:
                         break;
                 }
@@ -356,9 +360,9 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    allFunctions.deleteAssessor(projectList.get(index_to_send),mAssessorList.get(position));
                     mAssessorList.remove(position);
                     adapterForAssessors.notifyDataSetChanged();
-
                 }
             });
             return convertView;
