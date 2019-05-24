@@ -292,6 +292,10 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
                                     .toString();
                             for(int i = 0; i < studentList.size(); i++){
 
+                                int weight1 = 0;
+                                int weight2 = 0;
+                                int weight3 = 0;
+
                                 if(project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getLongtext().size() == 0){
 
                                     project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getLongtext().add(childName);
@@ -301,8 +305,37 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
                                 }
 
+                                if(project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getGrade() == 1){
+                                    weight1 += 1;
+
+                                }else if(project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getGrade() == 2){
+                                    weight2 += 1;
+
+                                }else if(project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getGrade() == 3){
+                                    weight3 += 1;
+
+                                }
+
                                 Log.d("77777", project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getLongtext().get(0));
 
+                                TextView tv_red = view10.findViewById(R.id.tv_red);
+                                TextView tv_yellow = view10.findViewById(R.id.tv_yellow);
+                                TextView tv_green = view10.findViewById(R.id.tv_green);
+
+                                LinearLayout.LayoutParams param1 = new LinearLayout.LayoutParams(
+                                        0, LinearLayout.LayoutParams.MATCH_PARENT, weight1);
+
+                                tv_red.setLayoutParams(param1);
+
+                                LinearLayout.LayoutParams param2 = new LinearLayout.LayoutParams(
+                                        0, LinearLayout.LayoutParams.MATCH_PARENT, weight2);
+
+                                tv_yellow.setLayoutParams(param2);
+
+                                LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(
+                                        0, LinearLayout.LayoutParams.MATCH_PARENT, weight3);
+
+                                tv_green.setLayoutParams(param3);
 
                             }
                             Toast.makeText(
@@ -312,39 +345,13 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
                                             + "   childPosition=" + childPosition + "\n点击的是："
                                             + childName, Toast.LENGTH_SHORT).show();
 
-                            TextView tv_red = view10.findViewById(R.id.tv_red);
-                            TextView tv_yellow = view10.findViewById(R.id.tv_yellow);
-                            TextView tv_green = view10.findViewById(R.id.tv_green);
 
-                            int weight1 = 0;
-                            int weight2 = 0;
-                            int weight3 = 0;
 
-                            for(int n = 0; n < project.getCriteria().size(); n++){
 
-                                for(int l = 0; l < project.getCriteria().get(n).getSubsectionList().size(); l++){
 
-                                    for(int p = 0; p < project.getCriteria().get(n).getSubsectionList().get(l).getShortTextList().size(); p++){
-                                        //project.getStudentInfo().get(0).getMark().getCriteriaList().get(n).getSubsectionList().get(l).getShortTextList().get(p).ge;
 
-                                    }
-                                }
-                            }
 
-                            LinearLayout.LayoutParams param1 = new LinearLayout.LayoutParams(
-                                    0, LinearLayout.LayoutParams.MATCH_PARENT, 1);
 
-                            tv_red.setLayoutParams(param1);
-
-                            LinearLayout.LayoutParams param2 = new LinearLayout.LayoutParams(
-                                    0, LinearLayout.LayoutParams.MATCH_PARENT, 2);
-
-                            tv_yellow.setLayoutParams(param2);
-
-                            LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(
-                                    0, LinearLayout.LayoutParams.MATCH_PARENT, 3);
-
-                            tv_green.setLayoutParams(param3);
 
 
 
