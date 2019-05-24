@@ -406,7 +406,7 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
             convertView = LayoutInflater.from(mContext).inflate(R.layout.list_comment_only, parent, false);
 
             TextView tv_list_comment_only = convertView.findViewById(R.id.tv_list_comment_only);
-//            tv_list_comment_only.setText("");
+            tv_list_comment_only.setText(commentList.get(position).getName());
 
             return convertView;
         }
