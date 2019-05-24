@@ -410,7 +410,7 @@ public class CommunicationForClient {
 			System.out.println("Receive: " + receive); //just for test
 
 			JSONObject jsonReceive = JSONObject.parseObject(receive);
-			String invite_ACK = jsonReceive.get("sendMail_ACK").toString();
+			String invite_ACK = jsonReceive.get("invite_ACK").toString();
 			if (invite_ACK.equals("true")) {
 				AllFunctions.getObject().inviteAssessor_Success(projectName, assessorEmail);
 			} else {

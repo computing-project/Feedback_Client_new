@@ -235,6 +235,7 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
 
     public void assessors_AssessmentPreparation(View view)
     {
+        AllFunctions.getObject().setHandler(handler);
         LayoutInflater layoutInflater = LayoutInflater.from(this);//获得layoutInflater对象
         final View view2 = layoutInflater.from(this).inflate(R.layout.dialog_asseccors, null);//获得view对象
 
