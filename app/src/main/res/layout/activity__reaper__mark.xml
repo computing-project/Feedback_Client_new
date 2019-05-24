@@ -148,9 +148,9 @@
                 android:id="@+id/listView_markItem_markPage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:numColumns="auto_fit"
-                android:scrollbars="horizontal"
-                android:padding="30dp"/>
+                android:numColumns="3"
+                android:padding="30dp"
+                android:scrollbars="horizontal" />
 
         </RelativeLayout>
     </LinearLayout>
