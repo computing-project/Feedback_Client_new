@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -43,19 +44,7 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
 
         init();
         System.out.println("Preparation: onCreate has been called!");
-        handler = new Handler(){
-            public void handleMessage(Message msg)
-            {
-                switch (msg.what)
-                {
-                    case 201: //创建新项目成功
-                        ;
-                        break;
-                    default:
-                        break;
-                }
-            }
-        };
+
     }
 
     protected void onNewIntent(Intent intent) {
@@ -64,6 +53,27 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
     }
 
     private void init() {
+        handler = new Handler(){
+            public void handleMessage(Message msg)
+            {
+                switch (msg.what)
+                {
+                    case 201: //创建新项目成功
+                        ;
+                        break;
+                    case 207: //邀请assessor成功
+                        adapterForAssessors.notifyDataSetChanged();
+                        break;
+                    case 208: //邀请assessor失败
+                        Toast.makeText(Assessment_Preparation_Activity.this,
+                                "The email has not been registered. Please check and try again.", Toast.LENGTH_SHORT).show();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        };
+        AllFunctions.getObject().setHandler(handler);
         button_edit = findViewById(R.id.button_edit_inpreparation);
         resetDetailView();
         alist = new ArrayList<String>();
@@ -250,9 +260,13 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
                     ;
                 else
                 {
-                    projectList.get(index_to_send).getAssistant().add(editText_assessorName.getText().toString());
+                    //projectList.get(index_to_send).getAssistant().add(editText_assessorName.getText().toString());
+                    allFunctions.inviteAssessor(projectList.get(index_to_send),editText_assessorName.getText().toString());
                     editText_assessorName.setText("");
-                    adapterForAssessors.notifyDataSetChanged();
+                    Toast.makeText(Assessment_Preparation_Activity.this,
+                            "The invitation has been sent.", Toast.LENGTH_SHORT).show();
+
+                   // adapterForAssessors.notifyDataSetChanged();
                 }
             }
         });
@@ -343,6 +357,7 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
                 public void onClick(View view) {
                     mAssessorList.remove(position);
                     adapterForAssessors.notifyDataSetChanged();
+
                 }
             });
             return convertView;

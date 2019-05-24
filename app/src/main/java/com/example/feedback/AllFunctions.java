@@ -204,6 +204,37 @@ public class AllFunctions{
 
     }
 
+    public void inviteAssessor(ProjectInfo project, String assessorEmail)
+    {
+        String projectName = project.getProjectName();
+        new Thread(new Runnable(){
+            @Override
+            public void run(){
+
+                communication.inviteAssessor(projectName,assessorEmail);
+
+            }
+        }).start();
+    }
+
+    public void inviteAssessor_Success(String projectName, String assessorEmail)
+    {
+        for(ProjectInfo projectInfo:projectList)
+        {
+            if(projectInfo.getProjectName().equals(projectName))
+            {
+                projectInfo.getAssistant().add(assessorEmail);
+                handlerAllfunction.sendEmptyMessage(207);
+                break;
+            }
+        }
+    }
+
+    public void inviteAssessor_Fail()
+    {
+        handlerAllfunction.sendEmptyMessage(208);
+    }
+
 
     public void addDefaultCriteria(ProjectInfo project, ArrayList<Criteria> criteriaList){
 

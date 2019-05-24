@@ -87,11 +87,12 @@ public class CommunicationForClient {
 			{
 				//get projectlist from jsonReceive
 				String projectListString = jsonReceive.get("projectList").toString();
+				String firstName = jsonReceive.getString("firstName");
 				List<ProjectInfo> projectList = JSONObject.parseArray(projectListString, ProjectInfo.class);
 				ArrayList<ProjectInfo> arrayList ;
 				arrayList = new ArrayList();
 				arrayList.addAll(projectList);
-				functions.setUsername(username);
+				functions.setUsername(firstName);
 
 				functions.loginSucc(arrayList);
 
@@ -410,9 +411,9 @@ public class CommunicationForClient {
 			JSONObject jsonReceive = JSONObject.parseObject(receive);
 			String invite_ACK = jsonReceive.get("invite_ACK").toString();
 			if (invite_ACK.equals("true")) {
-				;
+				AllFunctions.getObject().inviteAssessor_Success(projectName, assessorEmail);
 			} else {
-				//失败跳出
+				AllFunctions.getObject().inviteAssessor_Fail();
 			}
 		} catch (Exception e1) {
 			System.out.println("exception in invite_Assessor!");

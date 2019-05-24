@@ -71,6 +71,7 @@ public class LoginTest_Activity extends Activity {
 
     public void login(View view)
     {
+        AllFunctions.getObject().setHandler(handler);
         EditText editText_email = findViewById(R.id.editText_email_inlogin);
         EditText editText_password = findViewById(R.id.editText_password_inlogin);
         String email = editText_email.getText().toString();
