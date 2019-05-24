@@ -1,43 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:descendantFocusability="blocksDescendants"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Group No."
+            android:layout_weight="1"
+            android:textSize="16dp"
+            android:textColor="#000000"
+            android:gravity="left"
+            android:padding="5dp" />
 
         <TextView
             android:id="@+id/textView_studentID_studentsWithButton"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="10"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
             android:clickable="false"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:text="Student ID"
+            android:layout_weight="2"
+            android:textSize="16dp"
+            android:textColor="#000000"
+            android:gravity="left"
+            android:padding="5dp"/>
 
-    <TextView
-        android:id="@+id/textView_fullname_studentsWithButton"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="10"
-        android:clickable="false"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        <TextView
+            android:id="@+id/textView_fullname_studentsWithButton"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:clickable="false"
+            android:text="Student Name"
+            android:layout_weight="3"
+            android:textSize="16dp"
+            android:textColor="#000000"
+            android:gravity="left"
+            android:padding="5dp"/>
 
-    <TextView
-        android:id="@+id/textView_email_studentsWithButton"
-        android:layout_width="270dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="10"
-        android:clickable="false"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        <TextView
+            android:id="@+id/textView_email_studentsWithButton"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:clickable="false"
+            android:text="Email"
+            android:layout_weight="4"
+            android:textSize="16dp"
+            android:textColor="#000000"
+            android:gravity="left"
+            android:padding="5dp" />
 
-    <Button
-        android:id="@+id/button_start_studentsWithButton"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="10"
-        android:text="start" />
+        <Button
+            android:id="@+id/button_start_studentsWithButton"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="start"
+            android:background="@drawable/ic_start_button"/>
+
 
 </LinearLayout>
