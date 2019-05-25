@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="14"
+            android:background="@drawable/ic_header_background"
+            android:elevation="40dp">
+
+            <Button
+                android:id="@+id/btn_assessment_back"
+                android:layout_width="34dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/ic_back" />
+
+            <TextView
+                android:id="@+id/textView_title_reviewReport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="sans-serif-medium"
+                android:text="Projects "
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="#ffffff"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/textView_title_realtimeAssessment"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
+
+                <TextView
+                    android:id="@+id/textView_helloUser_reviewReport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="100"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="right|center_vertical"
+                    android:text="Hello, Xxxxxx Xxxxxx"
+                    android:textColor="#ffffff"
+                    android:singleLine="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
+
+                <View
+                    android:id="@+id/divider13_reviewReport"
+                    android:layout_width="1dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"/>
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="right|center_vertical"
+                    android:text="Help"
+                    android:textColor="#ffffff"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
+
+                <View
+                    android:id="@+id/divider14_reviewReport"
+                    android:layout_width="1dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff" />
+
+                <TextView
+                    android:id="@+id/textView_logout_reviewReport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Log Out"
+                    android:textColor="#ffffff"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ListView
+                android:id="@+id/listView_projects_reviewReport"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="7"
+                android:choiceMode="singleChoice"
+                android:dividerHeight="1dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:scrollbars="vertical" />
+
+            <View
+                android:id="@+id/divider18_reviewReport"
+                android:layout_width="1dp"
+                android:background="#000000"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="3">
+
+                <View
+                    android:id="@+id/divider19_reviewReport"
+                    android:layout_height="1dp"
+                    android:background="#000000"
+                    android:layout_width="match_parent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="20"
+                    android:orientation="horizontal"
+                    android:background="#E4E4E4">
+
+                    <TextView
+                        android:id="@+id/textView9_reviewReport"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:text="Group No."
+                        android:layout_weight="1"
+                        android:textSize="16dp"
+                        android:textColor="#000000"
+                        android:gravity="left|center_vertical"
+                        android:padding="5dp" />
+
+
+                    <TextView
+                        android:id="@+id/textView_studentID_reviewReport"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:clickable="false"
+                        android:text="Student ID"
+                        android:layout_weight="6"
+                        android:textSize="16dp"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:gravity="left|center_vertical"
+                        android:padding="5dp"/>
+
+
+                    <TextView
+                        android:id="@+id/textView_fullname_reviewReport"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:clickable="false"
+                        android:text="Student Name"
+                        android:layout_weight="12"
+                        android:textSize="16dp"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:gravity="left|center_vertical"
+                        android:padding="5dp"/>
+
+
+                    <TextView
+                        android:id="@+id/textView_email_reviewReport"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:clickable="false"
+                        android:text="Email"
+                        android:layout_weight="20"
+                        android:textSize="16dp"
+                        android:textColor="#000000"
+                        android:singleLine="true"
+                        android:gravity="left|center_vertical"
+                        android:padding="5dp" />
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/listView_students_reviewReport"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:choiceMode="multipleChoice"
+                    android:divider="#000000"
+                    android:dividerHeight="1dp"
+                    android:scrollbars="vertical" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

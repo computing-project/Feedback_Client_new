@@ -17,11 +17,17 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class Activity_Reaper_Mark extends AppCompatActivity {
+    private int indexOfProject;
+    private int indexOfStudent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__reaper__mark);
+
+        Intent intent = getIntent();
+        indexOfProject = Integer.parseInt(intent.getStringExtra("indexOfProject"));
+        indexOfStudent = Integer.parseInt(intent.getStringExtra("indexOfStudent"));
 
         init();
     }

@@ -37,4 +37,10 @@ public class Homepage extends Activity {
         Intent intent = new Intent(this,Activity_Realtime_Assessment.class);
         startActivity(intent);
     }
+
+    public void toPart3(View view)
+    {
+        Intent intent = new Intent(this, Activity_ReviewReport.class);
+        startActivity(intent);
+    }
 }
