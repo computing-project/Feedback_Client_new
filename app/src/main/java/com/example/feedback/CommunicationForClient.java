@@ -344,10 +344,10 @@ public class CommunicationForClient {
 			if (updateStudent_ACK.equals("true")) {
 				;
 			} else {
-				//失败跳出
+				AllFunctions.getObject().exceptionWithServer();
 			}
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (Exception e1) {
+			AllFunctions.getObject().exceptionWithServer();
 		}
 	}
 

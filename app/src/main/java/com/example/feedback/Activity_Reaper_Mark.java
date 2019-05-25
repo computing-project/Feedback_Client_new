@@ -29,6 +29,12 @@ public class Activity_Reaper_Mark extends AppCompatActivity {
     private void init()
     {
         ArrayList<Mark> marks = testMarkObject.markList();
+        for(int i=0; i<marks.size(); i++)
+        {
+            System.out.println("第"+i+"个Mark的lectureName是"+marks.get(i).getLecturerName());
+            for (int j = 0; j < marks.get(i).getCriteriaList().size(); j++)
+                System.out.println("第" + i + "个Mark的第" + j + "个criteria叫" + marks.get(i).getCriteriaList().get(j).getName());
+        }
         MyAdapterForGridView myAdapterForGridView = new MyAdapterForGridView(marks, this);
         GridView listView_gridGroup = findViewById(R.id.listView_markItem_markPage);
         listView_gridGroup.setAdapter(myAdapterForGridView);
@@ -70,11 +76,13 @@ public class Activity_Reaper_Mark extends AppCompatActivity {
             TextView textView_assessorName = convertView.findViewById(R.id.textView_assessorName_gridItemMark);
             textView_assessorName.setText(markList.get(position).getLecturerName());
 
+            System.out.println("第"+position+"个Mark里面有"+markList.get(position).getCriteriaList().size()+"个criteria");
+
+
             ListView listView_gridCriteria = convertView.findViewById(R.id.listView_criteriaMark_gridItemMark);
             MyAdapterForGridItem myAdapterForGridItem = new MyAdapterForGridItem(markList.get(position), convertView.getContext());
             listView_gridCriteria.setAdapter(myAdapterForGridItem);
             setListViewHeightBasedOnChildren(listView_gridCriteria);
-            System.out.println("第"+position+"个Mark里面有"+markList.get(position).getCriteriaList().size()+"个criteria");
 
 
             return convertView;
@@ -110,7 +118,7 @@ public class Activity_Reaper_Mark extends AppCompatActivity {
 
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
-            System.out.println("这是第"+position+"个criteria");
+          //  System.out.println("这是第"+position+"个criteria");
             convertView = LayoutInflater.from(mContext).inflate(R.layout.list_item_criteria_andmark, parent, false);
 
             TextView textView_markWithTotalMark = convertView.findViewById(R.id.textView_markTotalMark_listItemCriteriaMark);

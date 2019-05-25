@@ -720,7 +720,7 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
                 }
                 if(shortText_is_empty == true)
                 {
-                    criteria_ls.get(i).getSubsectionList().get(j).getShortTextList().remove(k);
+                   // criteria_ls.get(i).getSubsectionList().get(j).getShortTextList().remove(k);
                 }
             }
         }
