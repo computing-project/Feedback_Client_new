@@ -751,6 +751,72 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
         listView.setLayoutParams(params);
     }
 
+    private void criteriaArrayList_reduce(Mark mark_before)
+    {
+        ArrayList<Criteria> criteria_before = mark_before.getCriteriaList();
+        ArrayList<Criteria> criteria_project = project.getCriteria();
+        String longTexts[][] = new String[criteria_before.size()][20];
+        int matrix[][] = new int[criteria_before.size()][20];
+
+
+        for(int i=0; i<criteria_before.size(); i++)
+        {
+            for(int q=0; q<20; q++)
+                matrix[i][q] = -999;
+
+            //criteria layer
+            for(int j=0; j<criteria_before.get(i).getSubsectionList().size(); j++)
+            {
+                //subsection layer
+                OUT_ShortTextLayer:
+                for(int k=0; k<criteria_before.get(i).getSubsectionList().get(j).getShortTextList().size(); k++)
+                {
+                    //shortText layer
+                    if(criteria_before.get(i).getSubsectionList().get(j).getShortTextList().get(k).getLongtext().size() == 1)
+                    {
+                        longTexts[i][j] = criteria_before.get(i).getSubsectionList().get(j).getShortTextList().get(k).getLongtext().get(0);
+                        matrix[i][j] = k;
+                        break OUT_ShortTextLayer;
+                    }
+                }
+            }
+        }
+        for(int i=0; i<mark_before.getCriteriaList().size(); i++)
+        {
+            mark_before.getCriteriaList().get(i).getSubsectionList().clear();
+        }
+
+        for(int i=0; i<mark_before.getCriteriaList().size(); i++)
+        {
+            //criteria layer
+            OUT_SubsectionLayer:
+            for(int j=0; j<criteria_project.get(i).getSubsectionList().size(); j++)
+            {
+                if(matrix[i][j] == -999)
+                    ;
+                else
+                {
+                    SubSection subSection = new SubSection();
+                    subSection.setName(criteria_project.get(i).getSubsectionList().get(j).getName());
+                    ShortText shortText = new ShortText();
+                    shortText.setName(criteria_project.get(i).getSubsectionList().get(j).getShortTextList().get(matrix[i][j]).getName());
+                    shortText.getLongtext().add(longTexts[i][j]);
+                    subSection.getShortTextList().add(shortText);
+                    mark_before.getCriteriaList().get(i).getSubsectionList().add(subSection);
+                }
+            }
+
+        }
+        System.out.println("接下来是Mark的信息：");
+        for(int i=0; i<mark_before.getCriteriaList().size(); i++)
+        {
+            for(int j=0; j<mark_before.getCriteriaList().get(i).getSubsectionList().size(); j++)
+                System.out.println("第"+i+"个Criteria的第"+j+"个Subsection的名字是"
+                        +mark_before.getCriteriaList().get(i).getSubsectionList().get(j).getName()+"\n"+
+                        "选择的shortText是"+mark_before.getCriteriaList().get(i).getSubsectionList().get(j).getShortTextList().get(0).getName());
+        }
+    }
+
 
 
 }
