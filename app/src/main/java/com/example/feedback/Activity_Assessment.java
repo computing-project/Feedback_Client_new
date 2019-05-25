@@ -700,6 +700,34 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
         finish();
     }
 
+
+//    private void removeEmptyShortText(int student_Index_toRemove)
+//    {
+//        ArrayList<Criteria> criteria_ls = (ArrayList<Criteria>) project.getStudentInfo().get(student_Index_toRemove).getMark().getCriteriaList().clone();
+//       ArrayList<Criteria> criterias = project.getStudentInfo().get(student_Index_toRemove).getMark().getCriteriaList();
+//        for(int i=0; i<criterias.size(); i++)
+//        {
+//            boolean subsection_is_empty = true;
+//            for(int j=0; j<criterias.get(i).getSubsectionList().size();i++)
+//            {
+//                boolean shortText_is_empty = true;
+//                for(int k=0; k<criterias.get(i).getSubsectionList().get(j).getShortTextList().size();k++)
+//                {
+//                    if(criterias.get(i).getSubsectionList().get(j).getShortTextList().get(k).getLongtext().size() != 0)
+//                    {
+//                        shortText_is_empty = false;
+//                        break;
+//                    }
+//                }
+//                if(shortText_is_empty == true)
+//                {
+//                    criteria_ls.get(i).getSubsectionList().get(j).getShortTextList().remove(k);
+//                }
+//            }
+//        }
+//
+//    }
+
     private void removeEmptyShortText(int student_Index_toRemove)
     {
         ArrayList<Criteria> criteria_ls = (ArrayList<Criteria>) project.getStudentInfo().get(student_Index_toRemove).getMark().getCriteriaList().clone();
@@ -726,6 +754,7 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
         }
 
     }
+
 
     public void back_assessment(View view){
         finish();
