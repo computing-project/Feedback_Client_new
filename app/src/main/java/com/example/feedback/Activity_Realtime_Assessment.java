@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -41,17 +43,61 @@ public class Activity_Realtime_Assessment extends Activity {
         ArrayAdapter<String> adpter = new ArrayAdapter<String>
                 (this, R.layout.list_item_projectlist_default, projectNameList);
         listView_projects = findViewById(R.id.listView_projects_realtimeAssessment);
+        listView_students = findViewById(R.id.listView_students_realtimeAssessment);
         listView_projects.setAdapter(adpter);
         listView_projects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 indexOfProject = position;
                 ProjectInfo project = projectList.get(position);
-                listView_students = findViewById(R.id.listView_students_realtimeAssessment);
                 MyAdapter myAdapter = new MyAdapter(project.getStudentInfo(),Activity_Realtime_Assessment.this);
                 listView_students.setAdapter(myAdapter);
+                listView_students.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        myAdapter.notifyDataSetChanged();
+                    }
+                });
+
+              //  listView_students.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
             }
         });
+
+        Button button_groupAssessment = findViewById(R.id.button_assess_AsGroup_realtimeAssessment);
+        button_groupAssessment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listView_students.getCheckedItemCount() > 1) {
+                    SparseBooleanArray checkedItemsStudents = listView_students.getCheckedItemPositions();
+                    if (checkedItemsStudents != null) {
+                        int maxGroupNum = AllFunctions.getObject().getMaxGroupNumber(indexOfProject);
+                        for (int i = 0; i < checkedItemsStudents.size(); i++) {
+                            if (checkedItemsStudents.valueAt(i)) {
+                                projectList.get(indexOfProject).getStudentInfo().get(i).setGroup(maxGroupNum + 1);
+                                AllFunctions.getObject().groupStudent(projectList.get(indexOfProject),
+                                        projectList.get(indexOfProject).getStudentInfo().get(i).getNumber(),
+                                        maxGroupNum + 1);
+                            }
+                        }
+
+                        Intent intent = new Intent(Activity_Realtime_Assessment.this, Activity_Assessment.class);
+                        intent.putExtra("indexOfProject", String.valueOf(indexOfProject));
+                        intent.putExtra("indexOfStudent", String.valueOf(-999));
+                        intent.putExtra("indexOfGroup", String.valueOf(maxGroupNum + 1));
+                        startActivity(intent);
+                    }
+
+                }
+                else
+                {
+                    Toast.makeText(Activity_Realtime_Assessment.this,
+                            "Please choose more than 1 students to start the group assessment.",
+                            Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
+
 
 
     }
@@ -107,6 +153,10 @@ public class Activity_Realtime_Assessment extends Activity {
                     startActivity(intent);
                 }
             });
+            if(listView_students.isItemChecked(position))
+                convertView.setBackgroundColor(Color.YELLOW);
+            else
+                convertView.setBackgroundColor(Color.TRANSPARENT);
 
             return convertView;
         }

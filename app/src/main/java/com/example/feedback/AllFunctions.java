@@ -124,10 +124,6 @@ public class AllFunctions{
         }
     }
 
-    public void communicationFail(){
-
-
-    }
 
     public void createProject(String projectName, String subjectName,
                               String subjectCode, String description){
@@ -411,8 +407,8 @@ public class AllFunctions{
             @Override
             public void run(){
 
-//                communication.groupStudents(project.getProjectName(),
-//                        studentID, groupNumber);
+                communication.groupStudent(project.getProjectName(),
+                        studentID, groupNumber);
 
                 Log.d("groupStudent","success");
 
