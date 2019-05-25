@@ -2,6 +2,8 @@ package com.example.feedback;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,12 +15,15 @@ import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class Activity_Reaper_Mark extends AppCompatActivity {
     private int indexOfProject;
     private int indexOfStudent;
+    private ArrayList<Mark> marks;
+    private Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +34,29 @@ public class Activity_Reaper_Mark extends AppCompatActivity {
         indexOfProject = Integer.parseInt(intent.getStringExtra("indexOfProject"));
         indexOfStudent = Integer.parseInt(intent.getStringExtra("indexOfStudent"));
 
-        init();
+        handler = new Handler(){
+            public void handleMessage(Message msg)
+            {
+                switch (msg.what)
+                {
+                    case 301: //means getMark success
+                        init();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        };
+
+        AllFunctions.getObject().setHandler(handler);
+
+        AllFunctions.getObject().getMarks(AllFunctions.getObject().getProjectList().get(indexOfProject).getProjectName(),
+                AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentInfo().get(indexOfStudent).getNumber());
     }
 
     private void init()
     {
-        ArrayList<Mark> marks = testMarkObject.markList();
+        marks = AllFunctions.getObject().get
         for(int i=0; i<marks.size(); i++)
         {
             System.out.println("第"+i+"个Mark的lectureName是"+marks.get(i).getLecturerName());

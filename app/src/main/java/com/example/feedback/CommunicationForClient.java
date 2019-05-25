@@ -457,6 +457,44 @@ public class CommunicationForClient {
 	}
 
 
+	public void getMarks(String projectName, String studentID)
+	{
+		//construct JSONObject to send
+		JSONObject jsonSend = new JSONObject();
+		jsonSend.put("token", token);
+		jsonSend.put("projectName", projectName);
+		jsonSend.put("studentNumber", studentID);
+
+		System.out.println("Send: " + jsonSend.toJSONString()); //just for test
+
+		RequestBody body = RequestBody.create(JSON, jsonSend.toJSONString());
+		Request request = new Request.Builder()
+				.url(host + "GetMarkServlet")
+				.delete(body)
+				.build();
+
+		//get the JSONObject from response
+		try (Response response = client.newCall(request).execute()) {
+			String receive = response.body().string();
+
+			System.out.println("Receive: " + receive); //just for test
+
+			JSONObject jsonReceive = JSONObject.parseObject(receive);
+			String mark_ACK = jsonReceive.get("mark_ACK").toString();
+			if (mark_ACK.equals("true")) {
+				String markListString = jsonReceive.get("markList").toString();
+				List<Mark> markList = JSONObject.parseArray(markListString, Mark.class);
+				ArrayList<Mark> arrayList = new ArrayList();
+				arrayList.addAll(markList);
+			} else {
+				//失败跳出
+			}
+		} catch (Exception e1) {
+			AllFunctions.getObject().exceptionWithServer();
+		}
+	}
+
+
 
 	public void sendMark(String projectName, String studentID, Mark mark)
 	{

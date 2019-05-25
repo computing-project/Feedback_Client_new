@@ -170,6 +170,19 @@ public class AllFunctions{
 
     }
 
+    public void getMarks(String projectName, String studentID){
+
+        new Thread(new Runnable(){
+            @Override
+            public void run(){
+
+                communication.getMarks(projectName, studentID);
+
+            }
+        }).start();
+
+    }
+
 
 
     public void deleteProject(int index)
