@@ -64,9 +64,27 @@ public class Activity_signUp extends Activity {
         String middleName = editText_MiddleName.getText().toString();
         String lastName = editText_LastName.getText().toString();
         String email = editText_email.getText().toString();
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
         String password = editText_password.getText().toString();
         String passwordConfirm = editText_passwordConfirm.getText().toString();
-        AllFunctions allFunctions = AllFunctions.getObject();
-        allFunctions.register(firstName,middleName,lastName,email,password);
+        if(firstName.equals(null))
+        {
+            Toast.makeText(getApplicationContext(),"First Name Empty", Toast.LENGTH_SHORT).show();
+        }
+        else if(lastName.equals(null)){
+            Toast.makeText(getApplicationContext(),"Last Name Empty", Toast.LENGTH_SHORT).show();
+        }
+        else if(!(password.equals(passwordConfirm)))
+        {
+            Toast.makeText(getApplicationContext(),"Passwords Don't Match", Toast.LENGTH_SHORT).show();
+        }
+        else if(email.matches(emailPattern)) {
+            AllFunctions allFunctions = AllFunctions.getObject();
+            allFunctions.register(firstName, middleName, lastName, email, password);
+        }
+        else{
+            Toast.makeText(getApplicationContext(),"Invalid Email format", Toast.LENGTH_SHORT).show();
+        }
     }
 }

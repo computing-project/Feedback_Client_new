@@ -56,6 +56,7 @@ public class Activity_Login extends Activity {
         editView_email.setText("");
         EditText editText_password = findViewById(R.id.editText_password_inlogin);
         editText_password.setText("");
+
         allFunctions = AllFunctions.getObject();
         TextView textView_signup = (TextView)findViewById(R.id.textView_signup_inlogin);
         textView_signup.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +76,18 @@ public class Activity_Login extends Activity {
         String email = editText_email.getText().toString();
         String password = editText_password.getText().toString();
 
-        allFunctions.login(email, password);
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+        if(email.matches(emailPattern))
+        {
+            allFunctions.login(email, password);
+        }
+
+        else
+        {
+            Toast.makeText(getApplicationContext(),"Invalid email address", Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 }
