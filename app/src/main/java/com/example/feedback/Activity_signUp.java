@@ -4,22 +4,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-public class SignupTest_Activity extends Activity {
+public class Activity_signUp extends Activity {
 
     Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup_test_);
+        setContentView(R.layout.activity_signup);
         init();
         handler = new Handler(){
             public void handleMessage(Message msg)
@@ -27,12 +24,12 @@ public class SignupTest_Activity extends Activity {
                 switch (msg.what)
                 {
                     case 111: //means Sign Up successfully and go to login page
-                        Intent intent = new Intent(SignupTest_Activity.this, LoginTest_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        Intent intent = new Intent(Activity_signUp.this, Activity_Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();
                         break;
                     case 110: //Sign Up failed.
-                        Toast.makeText(SignupTest_Activity.this, "The email address is already occupied. Please try another one.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Activity_signUp.this, "The email address is already occupied. Please try another one.", Toast.LENGTH_SHORT).show();
                         break;
                     default:
                         break;
@@ -48,7 +45,7 @@ public class SignupTest_Activity extends Activity {
         textView_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SignupTest_Activity.this, LoginTest_Activity.class);
+                Intent intent = new Intent(Activity_signUp.this, Activity_Login.class);
                 startActivity(intent);
                 finish();
             }

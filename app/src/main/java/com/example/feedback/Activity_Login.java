@@ -3,16 +3,14 @@ package com.example.feedback;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class LoginTest_Activity extends Activity {
+public class Activity_Login extends Activity {
 
     AllFunctions allFunctions;
     Handler handler;
@@ -38,10 +36,10 @@ public class LoginTest_Activity extends Activity {
                 switch (msg.what)
                 {
                     case 100:
-                        Toast.makeText(LoginTest_Activity.this, "The email and password are not correct. Please check and try again.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Activity_Login.this, "The email and password are not correct. Please check and try again.", Toast.LENGTH_SHORT).show();
                         break;
                     case 101: //means login successfully and go to next page
-                        Intent intent = new Intent(LoginTest_Activity.this, Homepage.class);
+                        Intent intent = new Intent(Activity_Login.this, Homepage.class);
                         startActivity(intent);
                         break;
                     default:
@@ -63,7 +61,7 @@ public class LoginTest_Activity extends Activity {
         textView_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginTest_Activity.this, SignupTest_Activity.class);
+                Intent intent = new Intent(Activity_Login.this, Activity_signUp.class);
                 startActivity(intent);
             }
         });
