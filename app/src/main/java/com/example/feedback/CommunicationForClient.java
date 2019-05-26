@@ -470,7 +470,7 @@ public class CommunicationForClient {
 		RequestBody body = RequestBody.create(JSON, jsonSend.toJSONString());
 		Request request = new Request.Builder()
 				.url(host + "GetMarkServlet")
-				.delete(body)
+				.post(body)
 				.build();
 
 		//get the JSONObject from response
