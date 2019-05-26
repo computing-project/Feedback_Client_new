@@ -1,6 +1,5 @@
 package com.example.feedback;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -20,7 +19,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Activity_Realtime_Assessment extends Activity {
+public class Activity_ReviewReport extends AppCompatActivity {
     private ListView listView_projects;
     private ListView listView_students;
     private ArrayList<ProjectInfo> projectList;
@@ -29,7 +28,7 @@ public class Activity_Realtime_Assessment extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_realtime_assessment_page);
+        setContentView(R.layout.activity__review_report);
 
         init();
     }
@@ -42,15 +41,15 @@ public class Activity_Realtime_Assessment extends Activity {
             projectNameList.add(p.getProjectName());
         ArrayAdapter<String> adpter = new ArrayAdapter<String>
                 (this, R.layout.list_item_projectlist_default, projectNameList);
-        listView_projects = findViewById(R.id.listView_projects_realtimeAssessment);
-        listView_students = findViewById(R.id.listView_students_realtimeAssessment);
+        listView_projects = findViewById(R.id.listView_projects_reviewReport);
+        listView_students = findViewById(R.id.listView_students_reviewReport);
         listView_projects.setAdapter(adpter);
         listView_projects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 indexOfProject = position;
                 ProjectInfo project = projectList.get(position);
-                MyAdapter myAdapter = new MyAdapter(project.getStudentInfo(),Activity_Realtime_Assessment.this);
+                MyAdapter myAdapter = new MyAdapter(project.getStudentInfo(),Activity_ReviewReport.this);
                 listView_students.setAdapter(myAdapter);
                 listView_students.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -59,49 +58,9 @@ public class Activity_Realtime_Assessment extends Activity {
                     }
                 });
 
-              //  listView_students.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
             }
         });
-
-        Button button_groupAssessment = findViewById(R.id.button_assess_AsGroup_realtimeAssessment);
-        button_groupAssessment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (listView_students.getCheckedItemCount() > 1) {
-                    SparseBooleanArray checkedItemsStudents = listView_students.getCheckedItemPositions();
-                    if (checkedItemsStudents != null) {
-                        int maxGroupNum = AllFunctions.getObject().getMaxGroupNumber(indexOfProject);
-                        for (int i = 0; i < checkedItemsStudents.size(); i++) {
-                            if (checkedItemsStudents.valueAt(i)) {
-                                projectList.get(indexOfProject).getStudentInfo().get(i).setGroup(maxGroupNum + 1);
-                                AllFunctions.getObject().groupStudent(projectList.get(indexOfProject),
-                                        projectList.get(indexOfProject).getStudentInfo().get(i).getNumber(),
-                                        maxGroupNum + 1);
-                            }
-                        }
-
-                        Intent intent = new Intent(Activity_Realtime_Assessment.this, Activity_Assessment.class);
-                        intent.putExtra("indexOfProject", String.valueOf(indexOfProject));
-                        intent.putExtra("indexOfStudent", String.valueOf(-999));
-                        intent.putExtra("indexOfGroup", String.valueOf(maxGroupNum + 1));
-                        startActivity(intent);
-                    }
-
-                }
-                else
-                {
-                    Toast.makeText(Activity_Realtime_Assessment.this,
-                            "Please choose more than 1 students to start the group assessment.",
-                            Toast.LENGTH_SHORT).show();
-
-                }
-            }
-        });
-
-
-
     }
-
 
 
 
@@ -140,32 +99,23 @@ public class Activity_Realtime_Assessment extends Activity {
             textView_studentName.setText(studentList.get(position).getFirstName()+" "+studentList.get(position).getMiddleName()+" "+studentList.get(position).getSurname());
             TextView textView_studentEmail = convertView.findViewById(R.id.textView_email_studentsWithButton);
             textView_studentEmail.setText(studentList.get(position).getEmail());
-            Button button_start = convertView.findViewById(R.id.button_start_studentsWithButton);
-            button_start.setOnClickListener(new View.OnClickListener() {
+            Button button_viewReport = convertView.findViewById(R.id.button_start_studentsWithButton);
+            button_viewReport.setText("report");
+            if(studentList.get(position).getTotalMark() < 0.0) {
+                button_viewReport.setEnabled(false);
+                button_viewReport.setVisibility(View.INVISIBLE);
+            }
+            button_viewReport.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Realtime_Assessment.this,Activity_Assessment.class);
+                    Intent intent = new Intent(Activity_ReviewReport.this, Activity_Reaper_Mark.class);
                     intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
                     intent.putExtra("indexOfStudent",String.valueOf(position));
-                    intent.putExtra("indexOfGroup", String.valueOf(-999));
-                    System.out.println("project: "+indexOfProject);
-                    System.out.println("student: "+position);
                     startActivity(intent);
                 }
             });
-            if(studentList.get(position).getTotalMark() > 0)
-            {
-                button_start.setVisibility(View.INVISIBLE);
-                button_start.setEnabled(false);
-                convertView.setEnabled(false);
-            }
-            if(listView_students.isItemChecked(position))
-                convertView.setBackgroundColor(Color.YELLOW);
-            else
-                convertView.setBackgroundColor(Color.TRANSPARENT);
 
             return convertView;
         }
     }
-
 }

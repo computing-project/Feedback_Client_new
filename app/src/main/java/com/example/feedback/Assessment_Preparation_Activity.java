@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -43,19 +44,7 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
 
         init();
         System.out.println("Preparation: onCreate has been called!");
-        handler = new Handler(){
-            public void handleMessage(Message msg)
-            {
-                switch (msg.what)
-                {
-                    case 201: //创建新项目成功
-                        ;
-                        break;
-                    default:
-                        break;
-                }
-            }
-        };
+
     }
 
     protected void onNewIntent(Intent intent) {
@@ -64,6 +53,31 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
     }
 
     private void init() {
+        handler = new Handler(){
+            public void handleMessage(Message msg)
+            {
+                switch (msg.what)
+                {
+                    case 201: //创建新项目成功
+                        ;
+                        break;
+                    case 207: //邀请assessor成功
+                        adapterForAssessors.notifyDataSetChanged();
+                        break;
+                    case 208: //邀请assessor失败
+                        Toast.makeText(Assessment_Preparation_Activity.this,
+                                "The email has not been registered. Please check and try again.", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 209: //删除assessor失败
+                        Toast.makeText(Assessment_Preparation_Activity.this,
+                                "There is anything wrong on server. Please try later.", Toast.LENGTH_SHORT).show();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        };
+        AllFunctions.getObject().setHandler(handler);
         button_edit = findViewById(R.id.button_edit_inpreparation);
         resetDetailView();
         alist = new ArrayList<String>();
@@ -83,7 +97,7 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
         textView_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Assessment_Preparation_Activity.this, LoginTest_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Intent intent = new Intent(Assessment_Preparation_Activity.this, Activity_Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
             }
@@ -225,6 +239,7 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
 
     public void assessors_AssessmentPreparation(View view)
     {
+        AllFunctions.getObject().setHandler(handler);
         LayoutInflater layoutInflater = LayoutInflater.from(this);//获得layoutInflater对象
         final View view2 = layoutInflater.from(this).inflate(R.layout.dialog_asseccors, null);//获得view对象
 
@@ -250,9 +265,13 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
                     ;
                 else
                 {
-                    projectList.get(index_to_send).getAssistant().add(editText_assessorName.getText().toString());
+                    //projectList.get(index_to_send).getAssistant().add(editText_assessorName.getText().toString());
+                    allFunctions.inviteAssessor(projectList.get(index_to_send),editText_assessorName.getText().toString());
                     editText_assessorName.setText("");
-                    adapterForAssessors.notifyDataSetChanged();
+                    Toast.makeText(Assessment_Preparation_Activity.this,
+                            "The invitation has been sent.", Toast.LENGTH_SHORT).show();
+
+                   // adapterForAssessors.notifyDataSetChanged();
                 }
             }
         });
@@ -341,6 +360,7 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    allFunctions.deleteAssessor(projectList.get(index_to_send),mAssessorList.get(position));
                     mAssessorList.remove(position);
                     adapterForAssessors.notifyDataSetChanged();
                 }

@@ -18,6 +18,15 @@
             android:background="@drawable/ic_header_background"
             android:elevation="40dp">
 
+            <Button
+                android:id="@+id/btn_assessment_back"
+                android:layout_width="34dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/ic_back" />
+
             <TextView
                 android:id="@+id/textView_projectName_about"
                 android:layout_width="wrap_content"
@@ -35,7 +44,9 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true">
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/textView_projectName_about"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
 
                 <TextView
                     android:id="@+id/textView_helloUser_assessmentPreparation"
@@ -43,11 +54,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="100"
                     android:fontFamily="sans-serif-medium"
-                    android:gravity="right"
                     android:text="Hello, Xxxxxx Xxxxxx"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="#ffffff"
-                    android:textSize="14dp" />
+                    android:gravity="right|center_vertical"
+                    android:singleLine="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
 
                 <View
                     android:id="@+id/divider13"
@@ -62,11 +76,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
-                    android:gravity="right"
                     android:text="Help"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="#ffffff"
-                    android:textSize="14dp" />
+                    android:gravity="right|center_vertical"
+                    android:singleLine="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp"/>
 
                 <View
                     android:id="@+id/divider14"
@@ -83,9 +100,13 @@
                     android:layout_marginRight="5dp"
                     android:fontFamily="sans-serif-medium"
                     android:text="Log Out"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="#ffffff"
-                    android:textSize="14dp" />
+                    android:gravity="right|center_vertical"
+                    android:singleLine="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
 
             </LinearLayout>
 
@@ -136,7 +157,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="10dp"
-                        android:background="@drawable/ic_buttom_background"
+                        android:background="@drawable/ic_button_background"
                         android:gravity="right|center_vertical"
                         android:onClick="plus_AssessmentPreparation"
                         android:paddingLeft="2dp"

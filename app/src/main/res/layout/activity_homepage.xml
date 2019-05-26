@@ -64,7 +64,7 @@
             android:layout_marginBottom="25dp"
             android:fontFamily="sans-serif-black"
             android:text="Hello, Xxxxxx Xxxxxx"
-            android:singleLine="false"
+            android:maxLines="2"
             android:textAlignment="center"
             android:textColor="#DD000000"
             android:textSize="36dp" />
@@ -97,13 +97,14 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/button_toPart3_homepage"
             android:layout_width="445dp"
             android:layout_height="90dp"
             android:layout_below="@id/button_part2_homepage"
             android:layout_centerInParent="true"
             android:layout_marginTop="25dp"
             android:background="@drawable/rounded_report"
+            android:onClick="toPart3"
             android:text="Review and Report"
             android:textAllCaps="false"
             android:textColor="#ffffff"

@@ -2,7 +2,6 @@ package com.example.feedback;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -19,7 +18,7 @@ public class Homepage extends Activity {
         textView_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Homepage.this, LoginTest_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Intent intent = new Intent(Homepage.this, Activity_Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
             }
@@ -35,6 +34,12 @@ public class Homepage extends Activity {
     public void toPart2(View view)
     {
         Intent intent = new Intent(this,Activity_Realtime_Assessment.class);
+        startActivity(intent);
+    }
+
+    public void toPart3(View view)
+    {
+        Intent intent = new Intent(this, Activity_ReviewReport.class);
         startActivity(intent);
     }
 }

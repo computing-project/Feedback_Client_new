@@ -20,7 +20,9 @@ public class AllFunctions{
     private CommunicationForClient communication;
     private ArrayList<ProjectInfo> projectList = new ArrayList<ProjectInfo>();
     private Handler handlerAllfunction;
-    private String username;
+    private String username;//for welcome message. this is the firstName.
+    private String myEmail;
+    private ArrayList<Mark> markListForMarkPage;
 
     private AllFunctions(){
 
@@ -50,6 +52,19 @@ public class AllFunctions{
     public String getUsername()
     {return this.username;}
 
+    public void setMyEmail(String email)
+    {this.myEmail = email;}
+
+    public String getMyEmail()
+    {return this.myEmail;}
+
+    public void setMarkListForMarkPage(ArrayList<Mark> markList)
+    {this.markListForMarkPage = markList;
+    handlerAllfunction.sendEmptyMessage(301);}
+
+    public ArrayList<Mark> getMarkListForMarkPage()
+    {return this.markListForMarkPage;}
+
     public void loginSucc(ArrayList<ProjectInfo> projectList){
 
         this.projectList = projectList;
@@ -71,7 +86,8 @@ public class AllFunctions{
 
     }
 
-    public void logout(){
+    public void exceptionWithServer(){
+        System.out.println("通讯错误，最后此处要改成弹出并报错！");
 
 
 
@@ -116,10 +132,6 @@ public class AllFunctions{
         }
     }
 
-    public void communicationFail(){
-
-
-    }
 
     public void createProject(String projectName, String subjectName,
                               String subjectCode, String description){
@@ -130,6 +142,7 @@ public class AllFunctions{
         project.setSubjectName(subjectName);
         project.setSubjectCode(subjectCode);
         project.setDescription(description);
+        project.getAssistant().add(myEmail);
 
         new Thread(new Runnable(){
             @Override
@@ -159,6 +172,19 @@ public class AllFunctions{
                 communication.updateProject_About(projectName, subjectName,
                         subjectCode, description);
                 Log.d("createProject","success");
+
+            }
+        }).start();
+
+    }
+
+    public void getMarks(String projectName, String studentID){
+
+        new Thread(new Runnable(){
+            @Override
+            public void run(){
+
+                communication.getMarks(projectName, studentID);
 
             }
         }).start();
@@ -203,6 +229,68 @@ public class AllFunctions{
         }).start();
 
     }
+
+    public void inviteAssessor(ProjectInfo project, String assessorEmail)
+    {
+        String projectName = project.getProjectName();
+        new Thread(new Runnable(){
+            @Override
+            public void run(){
+
+                communication.inviteAssessor(projectName,assessorEmail);
+
+            }
+        }).start();
+    }
+
+    public void inviteAssessor_Success(String projectName, String assessorEmail)
+    {
+        for(ProjectInfo projectInfo:projectList)
+        {
+            if(projectInfo.getProjectName().equals(projectName))
+            {
+                projectInfo.getAssistant().add(assessorEmail);
+                handlerAllfunction.sendEmptyMessage(207);
+                break;
+            }
+        }
+    }
+
+    public void inviteAssessor_Fail()
+    {
+        handlerAllfunction.sendEmptyMessage(208);
+    }
+
+    public void deleteAssessor(ProjectInfo project, String assessorEmail)
+    {
+        String projectName = project.getProjectName();
+        new Thread(new Runnable(){
+            @Override
+            public void run(){
+
+                communication.deleteAssessor(projectName,assessorEmail);
+
+            }
+        }).start();
+    }
+
+//    public void deleteAssessor_Success()
+//    {
+//        for(ProjectInfo projectInfo:projectList)
+//        {
+//            if(projectInfo.getProjectName().equals(projectName))
+//            {
+//                projectInfo.getAssistant().add(assessorEmail);
+//                handlerAllfunction.sendEmptyMessage(207);
+//                break;
+//            }
+//        }
+//    }
+
+//    public void deleteAssessor_Fail()
+//    {
+//        handlerAllfunction.sendEmptyMessage(208);
+//    }
 
 
     public void addDefaultCriteria(ProjectInfo project, ArrayList<Criteria> criteriaList){
@@ -340,8 +428,8 @@ public class AllFunctions{
             @Override
             public void run(){
 
-//                communication.groupStudents(project.getProjectName(),
-//                        studentID, groupNumber);
+                communication.groupStudent(project.getProjectName(),
+                        studentID, groupNumber);
 
                 Log.d("groupStudent","success");
 
@@ -376,6 +464,7 @@ public class AllFunctions{
         }).start();
 
     }
+
 
     public void sortStudent(){
 

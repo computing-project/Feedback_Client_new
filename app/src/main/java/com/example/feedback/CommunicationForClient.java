@@ -87,11 +87,14 @@ public class CommunicationForClient {
 			{
 				//get projectlist from jsonReceive
 				String projectListString = jsonReceive.get("projectList").toString();
+				String firstName = jsonReceive.getString("firstName");
 				List<ProjectInfo> projectList = JSONObject.parseArray(projectListString, ProjectInfo.class);
 				ArrayList<ProjectInfo> arrayList ;
 				arrayList = new ArrayList();
 				arrayList.addAll(projectList);
-				functions.setUsername(username);
+				functions.setUsername(firstName);
+				functions.setMyEmail(username);
+				System.out.println("when login firstName received is: "+firstName);
 
 				functions.loginSucc(arrayList);
 
@@ -100,8 +103,8 @@ public class CommunicationForClient {
 			else {
 				functions.loginFail();
 			}
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (Exception e1) {
+			System.out.println("连接服务器错误");
 		}
 	}
 
@@ -341,10 +344,10 @@ public class CommunicationForClient {
 			if (updateStudent_ACK.equals("true")) {
 				;
 			} else {
-				//失败跳出
+				AllFunctions.getObject().exceptionWithServer();
 			}
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (Exception e1) {
+			AllFunctions.getObject().exceptionWithServer();
 		}
 	}
 
@@ -410,9 +413,9 @@ public class CommunicationForClient {
 			JSONObject jsonReceive = JSONObject.parseObject(receive);
 			String invite_ACK = jsonReceive.get("invite_ACK").toString();
 			if (invite_ACK.equals("true")) {
-				;
+				AllFunctions.getObject().inviteAssessor_Success(projectName, assessorEmail);
 			} else {
-				//失败跳出
+				AllFunctions.getObject().inviteAssessor_Fail();
 			}
 		} catch (Exception e1) {
 			System.out.println("exception in invite_Assessor!");
@@ -449,7 +452,46 @@ public class CommunicationForClient {
 				//失败跳出
 			}
 		} catch (Exception e1) {
-			System.out.println("exception in delete_Assessor!");
+			AllFunctions.getObject().exceptionWithServer();
+		}
+	}
+
+
+	public void getMarks(String projectName, String studentID)
+	{
+		//construct JSONObject to send
+		JSONObject jsonSend = new JSONObject();
+		jsonSend.put("token", token);
+		jsonSend.put("projectName", projectName);
+		jsonSend.put("studentNumber", studentID);
+
+		System.out.println("Send: " + jsonSend.toJSONString()); //just for test
+
+		RequestBody body = RequestBody.create(JSON, jsonSend.toJSONString());
+		Request request = new Request.Builder()
+				.url(host + "GetMarkServlet")
+				.post(body)
+				.build();
+
+		//get the JSONObject from response
+		try (Response response = client.newCall(request).execute()) {
+			String receive = response.body().string();
+
+			System.out.println("Receive: " + receive); //just for test
+
+			JSONObject jsonReceive = JSONObject.parseObject(receive);
+			String mark_ACK = jsonReceive.get("mark_ACK").toString();
+			if (mark_ACK.equals("true")) {
+				String markListString = jsonReceive.get("markList").toString();
+				List<Mark> markList = JSONObject.parseArray(markListString, Mark.class);
+				ArrayList<Mark> arrayList = new ArrayList();
+				arrayList.addAll(markList);
+				AllFunctions.getObject().setMarkListForMarkPage(arrayList);
+			} else {
+				//失败跳出
+			}
+		} catch (Exception e1) {
+			AllFunctions.getObject().exceptionWithServer();
 		}
 	}
 

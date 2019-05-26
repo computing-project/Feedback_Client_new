@@ -31,7 +31,9 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true">
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/textView_projectName_studentManagement"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
 
                 <TextView
                     android:id="@+id/textView_helloUser_studentManagement"
@@ -39,11 +41,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="100"
                     android:fontFamily="sans-serif-medium"
-                    android:gravity="right"
                     android:text="Hello, Xxxxxx Xxxxxx"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="#ffffff"
-                    android:textSize="14sp" />
+                    android:gravity="right|center_vertical"
+                    android:singleLine="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
 
                 <View
                     android:id="@+id/divider13"
@@ -58,11 +63,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
-                    android:gravity="right"
                     android:text="Help"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="#ffffff"
-                    android:textSize="14sp" />
+                    android:gravity="right|center_vertical"
+                    android:singleLine="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
 
                 <View
                     android:id="@+id/divider14"
@@ -79,9 +87,13 @@
                     android:layout_marginRight="5dp"
                     android:fontFamily="sans-serif-medium"
                     android:text="Log Out"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="#ffffff"
-                    android:textSize="14sp" />
+                    android:gravity="right|center_vertical"
+                    android:singleLine="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
 
             </LinearLayout>
 
@@ -102,17 +114,21 @@
                 android:id="@+id/relativeLayout_top_studentManagement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true">
+                android:layout_alignParentStart="true"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
 
                 <TextView
                     android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
                     android:text="Student Management"
-                    android:textSize="30dp"
+                    android:layout_toLeftOf="@id/button_addstudent_instudentgroup"
                     android:paddingLeft="15dp"
                     android:paddingTop="10dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="34dp"
+                    app:autoSizeStepGranularity="2dp"  />
 
                 <Button
                     android:id="@+id/button_addstudent_instudentgroup"
@@ -184,7 +200,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginStart="30dp"
                     android:layout_marginBottom="50dp"
-                    android:background="@drawable/ic_buttom_background"
+                    android:background="@drawable/ic_button_background"
                     android:onClick="back_studentManagement"
                     android:text="back"
                     android:textColor="#ffffff" />
@@ -198,7 +214,7 @@
                     android:layout_marginEnd="30dp"
                     android:layout_marginBottom="50dp"
                     android:layout_toLeftOf="@+id/button_back_inStudentManagement"
-                    android:background="@drawable/ic_buttom_background"
+                    android:background="@drawable/ic_button_background"
                     android:onClick="save_studentManagement"
                     android:text="save"
                     android:textColor="#ffffff"/>

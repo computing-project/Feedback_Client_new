@@ -13,9 +13,18 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:layout_weight="14"
+            android:layout_weight="7"
             android:background="@drawable/ic_header_background"
             android:elevation="40dp">
+
+            <Button
+                android:id="@+id/btn_assessment_back"
+                android:layout_width="34dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/ic_back" />
 
             <TextView
                 android:id="@+id/textView_projectName_Timer"
@@ -33,7 +42,9 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true">
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/textView_projectName_Timer"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
 
                 <TextView
                     android:id="@+id/textView_helloUser_Timer"
@@ -41,11 +52,15 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="100"
                     android:fontFamily="sans-serif-medium"
-                    android:gravity="right"
+                    android:gravity="right|center_vertical"
                     android:text="Hello, Xxxxxx Xxxxxx"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="#ffffff"
-                    android:textSize="14sp" />
+                    android:layout_marginLeft="5dp"
+                    android:singleLine="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
 
                 <View
                     android:id="@+id/divider13"
@@ -60,11 +75,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
-                    android:gravity="right"
+                    android:gravity="right|center_vertical"
                     android:text="Help"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="#ffffff"
-                    android:textSize="14sp" />
+                    android:singleLine="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
 
                 <View
                     android:id="@+id/divider14"
@@ -81,11 +99,37 @@
                     android:layout_marginRight="5dp"
                     android:fontFamily="sans-serif-medium"
                     android:text="Log Out"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="#ffffff"
-                    android:textSize="14sp" />
+                    android:singleLine="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
 
             </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="7">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/back" />
+
+            <Button
+                android:id="@+id/button_fresh_markPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Refresh"
+                android:layout_margin="5dp"
+                android:layout_alignParentRight="true"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:background="@drawable/ic_refresh_button"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -99,11 +143,18 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/back" />
 
-            <android.support.v7.widget.RecyclerView
+
+            <GridView
+                android:id="@+id/listView_markItem_markPage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/list"/>
+                android:numColumns="3"
+                android:padding="30dp"
+                android:scrollbars="horizontal" />
+
         </RelativeLayout>
     </LinearLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>
