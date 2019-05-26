@@ -16,5 +16,6 @@ public class Activity_mark_page extends AppCompatActivity {
         String[] marks = new String[10];
         recyclerView.setAdapter(new ProgrammingAdapter(marks));
 
+
     }
 }

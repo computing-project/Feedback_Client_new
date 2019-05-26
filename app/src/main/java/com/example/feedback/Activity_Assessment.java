@@ -353,8 +353,7 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
                 }else{
                     if (leftTime != 0 && isPause) {
-                        //将上次当前剩余时间作为新的时长
-                        initTimer(leftTime);
+                        //将上次当前剩余时间作为新的时长                        initTimer(leftTime);
                         countDownTimer.start();
                         isPause = false;
 
