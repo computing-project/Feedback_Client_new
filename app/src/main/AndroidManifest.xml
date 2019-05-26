@@ -21,9 +21,7 @@
             android:name=".Homepage"
             android:launchMode="singleTask" />
         <activity android:name=".Activity_MarkAllocation" />
-        <activity
-            android:name=".Activity_CriteriaList"
-            android:launchMode="singleInstance" />
+        <activity android:name=".Activity_CriteriaList" />
         <activity android:name=".Activity_Timer" />
         <activity android:name=".Activity_About" />
         <activity android:name=".Activity_Assessment" />

@@ -103,8 +103,8 @@ public class CommunicationForClient {
 			else {
 				functions.loginFail();
 			}
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (Exception e1) {
+			System.out.println("连接服务器错误");
 		}
 	}
 
