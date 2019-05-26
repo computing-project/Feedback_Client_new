@@ -29,10 +29,10 @@
         <activity
             android:name=".Assessment_Preparation_Activity"
             android:launchMode="singleTask" />
-        <activity android:name=".SignupTest_Activity" />
+        <activity android:name=".Activity_signUp" />
         <activity android:name=".Activity_Student_Group" />
         <activity
-            android:name=".LoginTest_Activity"
+            android:name=".Activity_Login"
             android:launchMode="singleTask" />
         <activity android:name=".MainActivity">
             <intent-filter>

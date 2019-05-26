@@ -486,6 +486,7 @@ public class CommunicationForClient {
 				List<Mark> markList = JSONObject.parseArray(markListString, Mark.class);
 				ArrayList<Mark> arrayList = new ArrayList();
 				arrayList.addAll(markList);
+				AllFunctions.getObject().setMarkListForMarkPage(arrayList);
 			} else {
 				//失败跳出
 			}

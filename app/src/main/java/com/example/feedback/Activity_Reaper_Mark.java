@@ -56,7 +56,7 @@ public class Activity_Reaper_Mark extends AppCompatActivity {
 
     private void init()
     {
-        marks = AllFunctions.getObject().get
+        marks = AllFunctions.getObject().getMarkListForMarkPage();
         for(int i=0; i<marks.size(); i++)
         {
             System.out.println("第"+i+"个Mark的lectureName是"+marks.get(i).getLecturerName());

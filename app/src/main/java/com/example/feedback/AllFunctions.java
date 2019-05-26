@@ -22,6 +22,7 @@ public class AllFunctions{
     private Handler handlerAllfunction;
     private String username;//for welcome message. this is the firstName.
     private String myEmail;
+    private ArrayList<Mark> markListForMarkPage;
 
     private AllFunctions(){
 
@@ -56,6 +57,13 @@ public class AllFunctions{
 
     public String getMyEmail()
     {return this.myEmail;}
+
+    public void setMarkListForMarkPage(ArrayList<Mark> markList)
+    {this.markListForMarkPage = markList;
+    handlerAllfunction.sendEmptyMessage(301);}
+
+    public ArrayList<Mark> getMarkListForMarkPage()
+    {return this.markListForMarkPage;}
 
     public void loginSucc(ArrayList<ProjectInfo> projectList){
 
