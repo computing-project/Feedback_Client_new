@@ -101,7 +101,7 @@ public class Activity_ReviewReport extends AppCompatActivity {
             textView_studentEmail.setText(studentList.get(position).getEmail());
             Button button_viewReport = convertView.findViewById(R.id.button_start_studentsWithButton);
             button_viewReport.setText("report");
-            if(studentList.get(position).getTotalMark() > 0.0) {
+            if(studentList.get(position).getTotalMark() < 0.0) {
                 button_viewReport.setEnabled(false);
                 button_viewReport.setVisibility(View.INVISIBLE);
             }

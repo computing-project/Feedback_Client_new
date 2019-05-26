@@ -30,7 +30,7 @@
                 android:background="@drawable/ic_back" />
 
             <TextView
-                android:id="@+id/textView_projectName_about"
+                android:id="@+id/textView_projectName_report"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -54,7 +54,7 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto">
 
                 <TextView
-                    android:id="@+id/textView_helloUser_assessmentPreparation"
+                    android:id="@+id/textView_helloUser_report"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="100"
@@ -69,7 +69,7 @@
                     app:autoSizeStepGranularity="2dp" />
 
                 <View
-                    android:id="@+id/divider13"
+                    android:id="@+id/divider13_report"
                     android:layout_width="1dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginLeft="5dp"
@@ -77,7 +77,7 @@
                     android:background="#ffffff"/>
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/textView_help_report"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
@@ -90,7 +90,7 @@
                     app:autoSizeStepGranularity="2dp" />
 
                 <View
-                    android:id="@+id/divider14"
+                    android:id="@+id/divider14_report"
                     android:layout_width="1dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginLeft="5dp"
@@ -98,7 +98,7 @@
                     android:background="#ffffff" />
 
                 <TextView
-                    android:id="@+id/textView_logout_assessmentPreparation"
+                    android:id="@+id/textView_logout_report"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
@@ -129,7 +129,7 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto">
 
                 <TextView
-                    android:id="@+id/textView21"
+                    android:id="@+id/textView_totalMark_report"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -144,7 +144,7 @@
 
 
                 <TextView
-                    android:id="@+id/textView22"
+                    android:id="@+id/textView_assessorName_report"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -158,7 +158,7 @@
                     app:autoSizeStepGranularity="2dp" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/button_edit_report"
                     android:layout_width="70dp"
                     android:layout_height="30dp"
                     android:text="Edit"
@@ -172,10 +172,10 @@
                     android:background="@drawable/ic_edit_button"/>
 
                 <Button
-                    android:id="@+id/btn_assessment_finish"
+                    android:id="@+id/button_finalReport_report"
                     android:layout_width="100dp"
                     android:layout_height="30dp"
-                    android:text="Finish report"
+                    android:text="Final report"
                     android:singleLine="true"
                     android:layout_marginRight="15dp"
                     android:gravity="center"
@@ -198,7 +198,7 @@
                     android:layout_centerHorizontal="true">
 
                     <TextView
-                        android:id="@+id/textView23"
+                        android:id="@+id/textView_pdfContent_report"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="TextView"
