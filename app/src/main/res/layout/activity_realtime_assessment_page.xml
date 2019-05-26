@@ -146,7 +146,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="20"
+                    android:layout_weight="14"
                     android:orientation="horizontal">
 
                     <TextView
@@ -197,10 +197,11 @@
                             android:id="@+id/button_assess_AsGroup_realtimeAssessment"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:text="Group"
-                            android:textAppearance="@android:style/TextAppearance.Material.Small"
-                            android:textSize="12sp" />
+                            android:layout_margin="5dp"
+                            android:background="@drawable/ic_button_background"
+                            android:textColor="#ffffff"
+                            android:textSize="12dp" />
                     </LinearLayout>
 
 
@@ -214,7 +215,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="20"
+                    android:layout_weight="14"
                     android:orientation="horizontal"
                     android:background="#E4E4E4">
 
@@ -224,6 +225,7 @@
                         android:layout_height="35dp"
                         android:text="Group No."
                         android:layout_weight="1"
+                        android:layout_gravity="center_vertical|left"
                         android:textSize="16dp"
                         android:textColor="#000000"
                         android:gravity="left|center_vertical"
@@ -238,6 +240,7 @@
                         android:text="Student ID"
                         android:layout_weight="6"
                         android:textSize="16dp"
+                        android:layout_gravity="center_vertical|left"
                         android:singleLine="true"
                         android:textColor="#000000"
                         android:gravity="left|center_vertical"
@@ -251,6 +254,7 @@
                         android:clickable="false"
                         android:text="Student Name"
                         android:layout_weight="12"
+                        android:layout_gravity="center_vertical|left"
                         android:textSize="16dp"
                         android:singleLine="true"
                         android:textColor="#000000"
@@ -265,6 +269,7 @@
                         android:clickable="false"
                         android:text="Email"
                         android:layout_weight="20"
+                        android:layout_gravity="center_vertical|left"
                         android:textSize="16dp"
                         android:textColor="#000000"
                         android:singleLine="true"
