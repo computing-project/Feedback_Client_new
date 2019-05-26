@@ -153,6 +153,12 @@ public class Activity_Realtime_Assessment extends Activity {
                     startActivity(intent);
                 }
             });
+            if(studentList.get(position).getTotalMark() > 0)
+            {
+                button_start.setVisibility(View.INVISIBLE);
+                button_start.setEnabled(false);
+                convertView.setEnabled(false);
+            }
             if(listView_students.isItemChecked(position))
                 convertView.setBackgroundColor(Color.YELLOW);
             else

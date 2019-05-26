@@ -132,175 +132,174 @@ public class Activity_MarkAllocation extends Activity {
 
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
-            if (position < markedCriteriaNum) {
-                convertView = LayoutInflater.from(mContext).inflate(R.layout.grid_item_markallocation, parent, false);
+            if(convertView == null) {
+                if (position < markedCriteriaNum) {
+                    convertView = LayoutInflater.from(mContext).inflate(R.layout.grid_item_markallocation, parent, false);
 
-                TextView textView_criteriaName = convertView.findViewById(R.id.textView_criteriaName_gridItem);
-                textView_criteriaName.setText(criteriaList.get(position).getName());
-                EditText editText_maxMark = convertView.findViewById(R.id.editText_maxMark_gridItem);
-                editText_maxMark.setText(String.valueOf(criteriaList.get(position).getMaximunMark()));
-                String markIncrement = criteriaList.get(position).getMarkIncrement();
-                if (markIncrement != null)
-                    switch (markIncrement) {
+                    TextView textView_criteriaName = convertView.findViewById(R.id.textView_criteriaName_gridItem);
+                    textView_criteriaName.setText(criteriaList.get(position).getName());
+                    EditText editText_maxMark = convertView.findViewById(R.id.editText_maxMark_gridItem);
+                    editText_maxMark.setText(String.valueOf(criteriaList.get(position).getMaximunMark()));
+                    String markIncrement = criteriaList.get(position).getMarkIncrement();
+                    if (markIncrement != null)
+                        switch (markIncrement) {
 //                case "quarter":
-                        case "1/4":
-                            RadioButton radioButton_quarter = convertView.findViewById(R.id.radioButton_quarter_gridItem);
-                            radioButton_quarter.setChecked(true);
-                            break;
+                            case "1/4":
+                                RadioButton radioButton_quarter = convertView.findViewById(R.id.radioButton_quarter_gridItem);
+                                radioButton_quarter.setChecked(true);
+                                break;
 //                case "half":
-                        case "1/2":
-                            RadioButton radioButton_half = convertView.findViewById(R.id.radioButton_half_gridItem);
-                            radioButton_half.setChecked(true);
-                            break;
+                            case "1/2":
+                                RadioButton radioButton_half = convertView.findViewById(R.id.radioButton_half_gridItem);
+                                radioButton_half.setChecked(true);
+                                break;
 //                case "full":
-                        case "1":
-                            RadioButton radioButton_full = convertView.findViewById(R.id.radioButton_full_gridItem);
-                            radioButton_full.setChecked(true);
-                            break;
-                        default:
-                            break;
-                    }
-
-
-                RadioGroup radioGroup = convertView.findViewById(R.id.radioGroup_markIncrement_gridItem);
-                radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup rG, int checkID) {
-                        switch (checkID) {
-                            case R.id.radioButton_quarter_gridItem:
-//                            criteriaList.get(position).setMarkIncrement("quarter");
-                                markedCriteriaList.get(position).setMarkIncrement("1/4");
-                                break;
-                            case R.id.radioButton_half_gridItem:
-//                            criteriaList.get(position).setMarkIncrement("half");
-                                markedCriteriaList.get(position).setMarkIncrement("1/2");
-                                break;
-                            case R.id.radioButton_full_gridItem:
-//                            criteriaList.get(position).setMarkIncrement("full");
-                                markedCriteriaList.get(position).setMarkIncrement("1");
+                            case "1":
+                                RadioButton radioButton_full = convertView.findViewById(R.id.radioButton_full_gridItem);
+                                radioButton_full.setChecked(true);
                                 break;
                             default:
                                 break;
                         }
-                    }
-                });
-
-                Button button_plus = convertView.findViewById(R.id.button_plus_gridItem);
-                button_plus.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        int mark = Integer.parseInt(editText_maxMark.getText().toString());
-                        markedCriteriaList.get(position).setMaximunMark(mark + 1);
-                        editText_maxMark.setText(String.valueOf(mark + 1));
-                    }
-                });
-
-                Button button_minus = convertView.findViewById(R.id.button_minus_gridItem);
-                button_minus.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        int mark = Integer.parseInt(editText_maxMark.getText().toString());
-                        markedCriteriaList.get(position).setMaximunMark(mark - 1);
-                        editText_maxMark.setText(String.valueOf(mark - 1));
-                    }
-                });
 
 
-                Button button_commentDetail = convertView.findViewById(R.id.button_commentsDetail_gridItem);
-                button_commentDetail.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        LayoutInflater layoutInflater = LayoutInflater.from(Activity_MarkAllocation.this);//获得layoutInflater对象
-                        final View view2 = layoutInflater.from(Activity_MarkAllocation.this).inflate(R.layout.dialog_showcomments_markallocation, null);
+                    RadioGroup radioGroup = convertView.findViewById(R.id.radioGroup_markIncrement_gridItem);
+                    radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(RadioGroup rG, int checkID) {
+                            switch (checkID) {
+                                case R.id.radioButton_quarter_gridItem:
+//                            criteriaList.get(position).setMarkIncrement("quarter");
+                                    markedCriteriaList.get(position).setMarkIncrement("1/4");
+                                    break;
+                                case R.id.radioButton_half_gridItem:
+//                            criteriaList.get(position).setMarkIncrement("half");
+                                    markedCriteriaList.get(position).setMarkIncrement("1/2");
+                                    break;
+                                case R.id.radioButton_full_gridItem:
+//                            criteriaList.get(position).setMarkIncrement("full");
+                                    markedCriteriaList.get(position).setMarkIncrement("1");
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    });
 
-                        loadData(position);
+                    Button button_plus = convertView.findViewById(R.id.button_plus_gridItem);
+                    button_plus.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            int mark = Integer.parseInt(editText_maxMark.getText().toString());
+                            markedCriteriaList.get(position).setMaximunMark(mark + 1);
+                            editText_maxMark.setText(String.valueOf(mark + 1));
+                        }
+                    });
 
-                        eList = (ExpandableListView) view2.findViewById(R.id.expandable_showComments_markAllocation);
+                    Button button_minus = convertView.findViewById(R.id.button_minus_gridItem);
+                    button_minus.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            int mark = Integer.parseInt(editText_maxMark.getText().toString());
+                            markedCriteriaList.get(position).setMaximunMark(mark - 1);
+                            editText_maxMark.setText(String.valueOf(mark - 1));
+                        }
+                    });
 
-                        eList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-                            @Override
-                            public void onGroupExpand(int groupPosition) {
-                                for (int i = 0; i < parents.size(); i++) {
-                                    if (i != groupPosition) {
-                                        eList.collapseGroup(i);
+
+                    Button button_commentDetail = convertView.findViewById(R.id.button_commentsDetail_gridItem);
+                    button_commentDetail.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            LayoutInflater layoutInflater = LayoutInflater.from(Activity_MarkAllocation.this);//获得layoutInflater对象
+                            final View view2 = layoutInflater.from(Activity_MarkAllocation.this).inflate(R.layout.dialog_showcomments_markallocation, null);
+
+                            loadData(position);
+
+                            eList = (ExpandableListView) view2.findViewById(R.id.expandable_showComments_markAllocation);
+
+                            eList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+                                @Override
+                                public void onGroupExpand(int groupPosition) {
+                                    for (int i = 0; i < parents.size(); i++) {
+                                        if (i != groupPosition) {
+                                            eList.collapseGroup(i);
+                                        }
                                     }
                                 }
-                            }
-                        });
+                            });
 
-                        adapter = new ParentAdapter(mContext, parents);
+                            adapter = new ParentAdapter(mContext, parents);
 
-                        eList.setAdapter(adapter);
+                            eList.setAdapter(adapter);
 
-                        adapter.setOnChildTreeViewClickListener(new ParentAdapter.OnChildTreeViewClickListener() {
-                            @Override
-                            public void onClickPosition(int parentPosition, int groupPosition, int childPosition) {
-                                String childName = parents.get(parentPosition).getChilds()
-                                        .get(groupPosition).getChildNames().get(childPosition)
-                                        .toString();
-                                Toast.makeText(
-                                        mContext,
-                                        "点击的下标为： parentPosition=" + parentPosition
-                                                + "   groupPosition=" + groupPosition
-                                                + "   childPosition=" + childPosition + "\n点击的是："
-                                                + childName, Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                            adapter.setOnChildTreeViewClickListener(new ParentAdapter.OnChildTreeViewClickListener() {
+                                @Override
+                                public void onClickPosition(int parentPosition, int groupPosition, int childPosition) {
+                                    String childName = parents.get(parentPosition).getChilds()
+                                            .get(groupPosition).getChildNames().get(childPosition)
+                                            .toString();
+                                    Toast.makeText(
+                                            mContext,
+                                            "点击的下标为： parentPosition=" + parentPosition
+                                                    + "   groupPosition=" + groupPosition
+                                                    + "   childPosition=" + childPosition + "\n点击的是："
+                                                    + childName, Toast.LENGTH_SHORT).show();
+                                }
+                            });
 
-                        Dialog dialog = new android.app.AlertDialog.Builder(Activity_MarkAllocation.this).setView(view2)
-                                .create();
+                            Dialog dialog = new android.app.AlertDialog.Builder(Activity_MarkAllocation.this).setView(view2)
+                                    .create();
 
-                        dialog.show();
+                            dialog.show();
 
 
-                    }
-                });
-            }
-            else
-            {
-                convertView = LayoutInflater.from(mContext).inflate(R.layout.grid_item_commentonly, parent, false);
+                        }
+                    });
+                } else {
+                    convertView = LayoutInflater.from(mContext).inflate(R.layout.grid_item_commentonly, parent, false);
 
-                TextView textView_criteriaName = convertView.findViewById(R.id.textView_criteriaName_gridItemCommentOnly);
-                textView_criteriaName.setText(criteriaList.get(position).getName());
+                    TextView textView_criteriaName = convertView.findViewById(R.id.textView_criteriaName_gridItemCommentOnly);
+                    textView_criteriaName.setText(criteriaList.get(position).getName());
 
-                Button button_commentDetail = convertView.findViewById(R.id.button_showComments_gridItemCommentOnly);
-                button_commentDetail.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        LayoutInflater layoutInflater = LayoutInflater.from(Activity_MarkAllocation.this);//获得layoutInflater对象
-                        final View view2 = layoutInflater.from(Activity_MarkAllocation.this).inflate(R.layout.dialog_showcomments_markallocation, null);
+                    Button button_commentDetail = convertView.findViewById(R.id.button_showComments_gridItemCommentOnly);
+                    button_commentDetail.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            LayoutInflater layoutInflater = LayoutInflater.from(Activity_MarkAllocation.this);//获得layoutInflater对象
+                            final View view2 = layoutInflater.from(Activity_MarkAllocation.this).inflate(R.layout.dialog_showcomments_markallocation, null);
 
-                        loadData(position);
+                            loadData(position);
 
-                        eList = (ExpandableListView) view2.findViewById(R.id.expandable_showComments_markAllocation);
+                            eList = (ExpandableListView) view2.findViewById(R.id.expandable_showComments_markAllocation);
 
-                        eList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-                            @Override
-                            public void onGroupExpand(int groupPosition) {
-                                for (int i = 0; i < parents.size(); i++) {
-                                    if (i != groupPosition) {
-                                        eList.collapseGroup(i);
+                            eList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+                                @Override
+                                public void onGroupExpand(int groupPosition) {
+                                    for (int i = 0; i < parents.size(); i++) {
+                                        if (i != groupPosition) {
+                                            eList.collapseGroup(i);
+                                        }
                                     }
                                 }
-                            }
-                        });
+                            });
 
-                        adapter = new ParentAdapter(mContext, parents);
+                            adapter = new ParentAdapter(mContext, parents);
 
-                        eList.setAdapter(adapter);
+                            eList.setAdapter(adapter);
 
-                        adapter.setOnChildTreeViewClickListener(new ParentAdapter.OnChildTreeViewClickListener() {
-                            @Override
-                            public void onClickPosition(int parentPosition, int groupPosition, int childPosition) {
-                                String childName = parents.get(parentPosition).getChilds()
-                                        .get(groupPosition).getChildNames().get(childPosition)
-                                        .toString();
-                                Toast.makeText(
-                                        mContext,
-                                        "点击的下标为： parentPosition=" + parentPosition
-                                                + "   groupPosition=" + groupPosition
-                                                + "   childPosition=" + childPosition + "\n点击的是："
-                                                + childName, Toast.LENGTH_SHORT).show();
+                            adapter.setOnChildTreeViewClickListener(new ParentAdapter.OnChildTreeViewClickListener() {
+                                @Override
+                                public void onClickPosition(int parentPosition, int groupPosition, int childPosition) {
+                                    String childName = parents.get(parentPosition).getChilds()
+                                            .get(groupPosition).getChildNames().get(childPosition)
+                                            .toString();
+                                    Toast.makeText(
+                                            mContext,
+                                            "点击的下标为： parentPosition=" + parentPosition
+                                                    + "   groupPosition=" + groupPosition
+                                                    + "   childPosition=" + childPosition + "\n点击的是："
+                                                    + childName, Toast.LENGTH_SHORT).show();
 
 
 //                                LayoutInflater layoutInflater = LayoutInflater.from(view.getContext());//获得layoutInflater对象
@@ -324,18 +323,19 @@ public class Activity_MarkAllocation extends Activity {
 //                                    }
 //                                }).create();
 //                                dialog3.show();
-                            }
-                        });
+                                }
+                            });
 
-                        Dialog dialog = new android.app.AlertDialog.Builder(Activity_MarkAllocation.this).setView(view2).create();
+                            Dialog dialog = new android.app.AlertDialog.Builder(Activity_MarkAllocation.this).setView(view2).create();
 
-                        dialog.show();
-                        dialog.getWindow().setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                            dialog.show();
+                            dialog.getWindow().setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
 
+                        }
+                    });
+                }
 
-                    }
-                });
             }
             return convertView;
         }
