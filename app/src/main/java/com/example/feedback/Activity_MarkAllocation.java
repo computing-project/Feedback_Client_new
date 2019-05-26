@@ -132,9 +132,9 @@ public class Activity_MarkAllocation extends Activity {
 
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
-            if(convertView == null) {
                 if (position < markedCriteriaNum) {
-                    convertView = LayoutInflater.from(mContext).inflate(R.layout.grid_item_markallocation, parent, false);
+                    if(convertView == null)
+                        convertView = LayoutInflater.from(mContext).inflate(R.layout.grid_item_markallocation, parent, false);
 
                     TextView textView_criteriaName = convertView.findViewById(R.id.textView_criteriaName_gridItem);
                     textView_criteriaName.setText(criteriaList.get(position).getName());
@@ -336,7 +336,6 @@ public class Activity_MarkAllocation extends Activity {
                     });
                 }
 
-            }
             return convertView;
         }
     }
