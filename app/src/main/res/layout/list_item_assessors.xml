@@ -18,6 +18,6 @@
         android:layout_width="15dp"
         android:layout_height="15dp"
         android:layout_toRightOf="@+id/textView_assessorName"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="6dp"
         android:background="@drawable/ic_delete_item"/>
 </RelativeLayout>
