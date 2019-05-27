@@ -1,52 +1,67 @@
 package com.example.feedback;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.widget.TextView;
 
 public class Activity_editable_report extends Activity {
+    private int indexOfProject;
+    private int indexOfStudent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
+        Intent intent = getIntent();
+        indexOfProject = Integer.parseInt(intent.getStringExtra("indexOfProject"));
+        indexOfStudent = Integer.parseInt(intent.getStringExtra("indexOfStudent"));
+
         init();
     }
 
     private void init()
     {
+        ProjectInfo project = AllFunctions.getObject().getProjectList().get(indexOfProject);
+        StudentInfo student = AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentInfo().get(indexOfStudent);
+        Mark mark = AllFunctions.getObject().getMarkListForMarkPage().get(0);
         String htmlString =
                 "<html>" +
-                "<head>" +
-                "<meta charset=\"UTF-8\">" +
-                "<title>PDF Report</title>" +
-                "</head>" +
                 "<body>" +
-                "<h1 style=\"font-weight: normal\">Project Name Report</h1>" +
+                "<h1 style=\"font-weight: normal\">"+project.getProjectName()+"</h1>" +
                 "<hr>" +
-                "<p> Feedback for Jaya Kummar — 985789</p >" +
+                "<p>"+ student.getFirstName()+" "+student.getMiddleName()+" "+student.getSurname()+" --- "+student.getNumber() +"</p >" +
                 "<h2 style=\"font-weight: normal\">Subject</h2>" +
-                "<p>CHEN2001 - Chemical Process Analysis</p >" +
+                "<p>"+project.getSubjectCode()+" --- "+project.getSubjectName()+"</p >" +
                 "<h2 style=\"font-weight: normal\">Project</h2>" +
-                "<p>Project</p >" +
+                "<p>"+project.getProjectName()+"</p >" +
                 "<h2 style=\"font-weight: normal\">Mark Attained</h2>" +
-                "<p>72%</p >" +
-                "<h2 style=\"font-weight: normal\">Assessor</h2>" +
-                "<p>David Shallcross, Xxxxxxx Xxxx</p >" +
+                "<p>"+mark.getTotalMark()+"%</p >" +
+                "<h2 style=\"font-weight: normal\">Assessor</h2>" + "<p>";
+        for(int i=0; i<project.getAssistant().size(); i++)
+            htmlString = htmlString + project.getAssistant().get(i);
+        htmlString = htmlString +
+                "</p >" +
                 "<h2 style=\"font-weight: normal\">Assessment Date</h2>" +
-                "<p>Friday, 20 Novermber, 2018</p ><br><br><br><hr>" +
+                "<p>"+"test date"+"</p ><br><br><br><hr>" +
                 "<br><br>" +
-                "<div>" +
-                "<h3 style=\"font-weight: normal\"><span style=\"float:left\">Presentation Structure&nbsp;(20%)</span><span style=\"float:right\">7/10</span></h3><br><br>" +
-                "<h4 style=\"font-weight: normal;color: #014085\">David Shallcross:</h4>" +
-                "<p>&lt;Introduction general:&gt;xxxxxxxxxxxxxx</p >" +
-                "<p>&lt;Presentation length:&gt;xxxxxxxxxxxxxx</p >" +
-                "<h4 style=\"font-weight: normal;color: #014085\">Leaon Sterling:</h4>" +
-                "<p>&lt;Introduction general:&gt;xxxxxxxxxxxxxx</p >" +
-                "<p>&lt;Presentation length:&gt;xxxxxxxxxxxxxx</p ><br><br>" +
+                "<div>";
+        for(int i=0; i<mark.getCriteriaList().size(); i++)
+        {
+            htmlString += "<h3 style=\"font-weight: normal\"><span style=\"float:left\">" + mark.getCriteriaList().get(i).getName() + "</span>" +
+                    "<span style=\"float:right\">"+ mark.getMarkList().get(i) +"/"+ mark.getCriteriaList().get(i).getMaximunMark() + "</span></h3><br><br>";
+            for(int j=0; j<mark.getCriteriaList().get(i).getSubsectionList().size(); j++)
+            {
+                htmlString+= "<h4 style=\"font-weight: normal;color: #014085\">" + mark.getLecturerName() + "</h4>" +
+                        "<p>&lt;"+mark.getCriteriaList().get(i).getSubsectionList().get(j).getName()+
+                        ":&gt;"+mark.getCriteriaList().get(i).getSubsectionList().get(j).getShortTextList().get(0).getLongtext()+"</p >" +
+                        "<br><br>";
+            }
+        }
+        htmlString +=
                 "</div>" +
                 "</body>" +
                 "</html>";

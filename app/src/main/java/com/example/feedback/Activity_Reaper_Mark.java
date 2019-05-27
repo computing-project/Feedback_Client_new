@@ -104,13 +104,24 @@ public class Activity_Reaper_Mark extends AppCompatActivity {
             TextView textView_assessorName = convertView.findViewById(R.id.textView_assessorName_gridItemMark);
             textView_assessorName.setText(markList.get(position).getLecturerName());
 
-            System.out.println("第"+position+"个Mark里面有"+markList.get(position).getCriteriaList().size()+"个criteria");
+            //System.out.println("第"+position+"个Mark里面有"+markList.get(position).getCriteriaList().size()+"个criteria");
 
 
             ListView listView_gridCriteria = convertView.findViewById(R.id.listView_criteriaMark_gridItemMark);
             MyAdapterForGridItem myAdapterForGridItem = new MyAdapterForGridItem(markList.get(position), convertView.getContext());
-            listView_gridCriteria.setAdapter(myAdapterForGridItem);;
+            listView_gridCriteria.setAdapter(myAdapterForGridItem);
             setListViewHeightBasedOnChildren(listView_gridCriteria);
+
+            Button button_viewReport = convertView.findViewById(R.id.button_viewReport_gridItemMark);
+            button_viewReport.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Activity_Reaper_Mark.this, Activity_editable_report.class);
+                    intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
+                    intent.putExtra("indexOfStudent",String.valueOf(indexOfStudent));
+                    startActivity(intent);
+                }
+            });
 
 
             return convertView;
