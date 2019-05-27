@@ -11,10 +11,10 @@ public class Activity_mark_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assessment);
         RecyclerView recyclerView;
-        //recyclerView=(RecyclerView)findViewById(R.id.list);
-       // recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView=(RecyclerView)findViewById(R.id.list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         String[] marks = new String[10];
-       // recyclerView.setAdapter(new ProgrammingAdapter(marks));
+        recyclerView.setAdapter(new ProgrammingAdapter(marks));
 
 
     }

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Activity_About extends Activity {
 
@@ -63,33 +62,13 @@ public class Activity_About extends Activity {
         String subjectName = editText_subjectName.getText().toString();
         String subjectCode = editText_subjectCode.getText().toString();
         String projectDes = editText_projectDes.getText().toString();
-        if(projectName.equals(null))
-        {
-            Toast.makeText(getApplicationContext(),"Enter Project Name", Toast.LENGTH_SHORT).show();
-        }
-        else if(subjectCode.equals(null))
-        {
-            Toast.makeText(getApplicationContext(),"Enter Subject Code", Toast.LENGTH_SHORT).show();
-
-        }
-        else if(subjectName.equals(null))
-        {
-            Toast.makeText(getApplicationContext(),"Enter Subject Name", Toast.LENGTH_SHORT).show();
-        }
-        else if(projectName.equals(null))
-        {
-            Toast.makeText(getApplicationContext(),"Enter Project Description", Toast.LENGTH_SHORT).show();
-        }
-
-        else if(index.equals("-999")) {
-            AllFunctions.getObject().createProject(projectName, subjectName, subjectCode, projectDes);
-        }
-        else {
-            AllFunctions.getObject().updateProject(project, projectName, subjectName, subjectCode, projectDes);
-            Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            finish();
-        }
+        if(index.equals("-999"))
+            AllFunctions.getObject().createProject(projectName,subjectName,subjectCode,projectDes);
+        else
+            AllFunctions.getObject().updateProject(project,projectName,subjectName,subjectCode,projectDes);
+        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 
     public void back_About(View view)
@@ -107,25 +86,7 @@ public class Activity_About extends Activity {
         String subjectName = editText_subjectName.getText().toString();
         String subjectCode = editText_subjectCode.getText().toString();
         String projectDes = editText_projectDes.getText().toString();
-        if(projectName.equals(null))
-        {
-            Toast.makeText(getApplicationContext(),"Enter Project Name", Toast.LENGTH_SHORT).show();
-        }
-        else if(subjectCode.equals(null))
-        {
-            Toast.makeText(getApplicationContext(),"Enter Subject Code", Toast.LENGTH_SHORT).show();
-
-        }
-        else if(subjectName.equals(null))
-        {
-            Toast.makeText(getApplicationContext(),"Enter Subject Name", Toast.LENGTH_SHORT).show();
-        }
-        else if(projectName.equals(null))
-        {
-            Toast.makeText(getApplicationContext(),"Enter Project Description", Toast.LENGTH_SHORT).show();
-        }
-
-        else if(index.equals("-999")) {
+        if(index.equals("-999")) {
             AllFunctions.getObject().createProject(projectName, subjectName, subjectCode, projectDes);
             int indextToSend = AllFunctions.getObject().getProjectList().size() -1;
             Intent intent = new Intent(this, Activity_Timer.class);
