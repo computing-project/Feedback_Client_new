@@ -58,8 +58,23 @@ public class Activity_Realtime_Assessment extends Activity {
                         myAdapter.notifyDataSetChanged();
                     }
                 });
+                TextView textView_duration_title = findViewById(R.id.textView_duration_realtimeAssessment);
+                textView_duration_title.setText(""+projectList.get(indexOfProject).getDurationMin()+":"+
+                        +projectList.get(indexOfProject).getDurationSec()+" Presentation");
+                TextView textView_numCandicate = findViewById(R.id.textView_numCandidates_realtimeAssessment);
+                int numStudentHasMarked = 0;
+                for(int i=0; i<projectList.get(indexOfProject).getStudentInfo().size(); i++)
+                {
+                    if(projectList.get(indexOfProject).getStudentInfo().get(i).getTotalMark()>0.0)
+                        numStudentHasMarked++;
+                }
+                textView_numCandicate.setText(numStudentHasMarked+" of "+
+                        projectList.get(indexOfProject).getStudentInfo().size()+" candidates marked");
+                TextView textView_numAssessor = findViewById(R.id.textView_numAssessors_realtimeAssessment);
+                textView_numAssessor.setText(projectList.get(indexOfProject).getAssistant().size()+" elevators");
 
-              //  listView_students.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
+                //  listView_students.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
             }
         });
 
@@ -158,6 +173,7 @@ public class Activity_Realtime_Assessment extends Activity {
                 button_start.setVisibility(View.INVISIBLE);
                 button_start.setEnabled(false);
                 convertView.setEnabled(false);
+                listView_students.setItemChecked(position,false);
             }
             if(listView_students.isItemChecked(position))
                 convertView.setBackgroundColor(Color.YELLOW);
