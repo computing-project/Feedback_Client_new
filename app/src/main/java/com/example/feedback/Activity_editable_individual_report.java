@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.View;
 import android.widget.TextView;
 
 public class Activity_editable_individual_report extends Activity {
@@ -45,7 +46,7 @@ public class Activity_editable_individual_report extends Activity {
                 "<p>"+mark.getTotalMark()+"%</p >" +
                 "<h2 style=\"font-weight: normal\">Assessor</h2>" + "<p>";
         for(int i=0; i<project.getAssistant().size(); i++)
-            htmlString = htmlString + project.getAssistant().get(i);
+            htmlString = htmlString + project.getAssistant().get(i)+"<br>";
         htmlString = htmlString +
                 "</p >" +
                 "<h2 style=\"font-weight: normal\">Assessment Date</h2>" +
@@ -54,7 +55,7 @@ public class Activity_editable_individual_report extends Activity {
         for(int i=0; i<mark.getCriteriaList().size(); i++)
         {
             htmlString += "<h3 style=\"font-weight: normal\"><span style=\"float:left\">" + mark.getCriteriaList().get(i).getName() + "</span>" +
-                    "<span style=\"float:right\">   "+ mark.getMarkList().get(i) +"/"+ mark.getCriteriaList().get(i).getMaximunMark() + "</span></h3>";
+                    "<span style=\"float:right\">"+ mark.getMarkList().get(i) +"/"+ mark.getCriteriaList().get(i).getMaximunMark() + "</span></h3>";
             for(int j=0; j<mark.getCriteriaList().get(i).getSubsectionList().size(); j++)
             {
                 htmlString+= "<p>&lt;"+mark.getCriteriaList().get(i).getSubsectionList().get(j).getName()+
@@ -68,5 +69,13 @@ public class Activity_editable_individual_report extends Activity {
                 "</html>";
         TextView textView_pdfContent = findViewById(R.id.textView_pdfContent_report);
         textView_pdfContent.setText(Html.fromHtml(htmlString));
+    }
+
+    public void finalReport(View view)
+    {
+        Intent intent = new Intent(Activity_editable_individual_report.this, Activity_SendReport_Individual.class);
+        intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
+        intent.putExtra("indexOfStudent",String.valueOf(indexOfStudent));
+        startActivity(intent);
     }
 }

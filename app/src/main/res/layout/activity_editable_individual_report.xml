@@ -181,6 +181,7 @@
                     android:gravity="center"
                     android:textSize="12dp"
                     android:textAllCaps="false"
+                    android:onClick="finalReport"
                     android:layout_gravity="center"
                     android:textColor="#ffffff"
                     android:background="@drawable/ic_button_background"/>

@@ -127,7 +127,7 @@
                 android:layout_weight="10">
 
                 <TextView
-                    android:id="@+id/textView21"
+                    android:id="@+id/textView_totalMark_sendReportIndividual"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -142,7 +142,7 @@
 
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/button_sendStudent_sendReportIndividual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -156,7 +156,7 @@
                     android:background="@drawable/ic_edit_button"/>
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/button_sendBoth_sendReportIndividual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -171,7 +171,7 @@
                     android:background="@drawable/ic_edit_button"/>
 
                 <Button
-                    android:id="@+id/btn_assessment_finish"
+                    android:id="@+id/btn_finish_sendReportIndividual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -197,7 +197,7 @@
                     android:layout_centerHorizontal="true">
 
                     <TextView
-                        android:id="@+id/textView23"
+                        android:id="@+id/textView_pdfContent_sendReportIndividual"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="TextView"
