@@ -27,6 +27,10 @@ public class Activity_editable_individual_report extends Activity {
         ProjectInfo project = AllFunctions.getObject().getProjectList().get(indexOfProject);
         StudentInfo student = AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentInfo().get(indexOfStudent);
         Mark mark = AllFunctions.getObject().getMarkListForMarkPage().get(0);
+        TextView textView_totalMark = findViewById(R.id.textView_totalMark_report);
+        textView_totalMark.setText("Mark:"+(int)mark.getTotalMark()+"%");
+        TextView textView_assessorName = findViewById(R.id.textView_assessorName_report);
+        textView_assessorName.setText("Assessor: "+ mark.getLecturerName());
         String htmlString =
                 "<html>" +
                 "<body>" +

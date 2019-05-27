@@ -1,5 +1,6 @@
 package com.example.feedback;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,7 +20,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Activity_ReviewReport extends AppCompatActivity {
+public class Activity_ReviewReport extends Activity {
     private ListView listView_projects;
     private ListView listView_students;
     private ArrayList<ProjectInfo> projectList;
@@ -95,6 +96,13 @@ public class Activity_ReviewReport extends AppCompatActivity {
 
             TextView textView_studentID = convertView.findViewById(R.id.textView_studentID_studentsWithButton);
             textView_studentID.setText(studentList.get(position).getNumber());
+            //test mark Num
+            textView_studentID.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(getApplicationContext(),"Total Mark of "+studentList.get(position).getFirstName()+" is "+studentList.get(position).getTotalMark(), Toast.LENGTH_SHORT).show();
+                }
+            });
             TextView textView_studentName = convertView.findViewById(R.id.textView_fullname_studentsWithButton);
             textView_studentName.setText(studentList.get(position).getFirstName()+" "+studentList.get(position).getMiddleName()+" "+studentList.get(position).getSurname());
             TextView textView_studentEmail = convertView.findViewById(R.id.textView_email_studentsWithButton);

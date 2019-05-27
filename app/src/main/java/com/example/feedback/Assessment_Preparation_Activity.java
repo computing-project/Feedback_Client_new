@@ -254,7 +254,7 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
         Dialog dialog = new android.app.AlertDialog.Builder(this).setView(view2).setPositiveButton("Done", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                ;
+                showOtherInfo(index_to_send);
             }
         }).create();
 

@@ -176,7 +176,7 @@ public class Activity_Realtime_Assessment extends Activity {
                 listView_students.setItemChecked(position,false);
             }
             if(listView_students.isItemChecked(position))
-                convertView.setBackgroundColor(Color.YELLOW);
+                convertView.setBackgroundColor(Color.parseColor("#D2EBF7"));
             else
                 convertView.setBackgroundColor(Color.TRANSPARENT);
 
