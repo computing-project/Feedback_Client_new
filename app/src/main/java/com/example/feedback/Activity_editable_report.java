@@ -47,7 +47,6 @@ public class Activity_editable_report extends Activity {
                 "</p >" +
                 "<h2 style=\"font-weight: normal\">Assessment Date</h2>" +
                 "<p>"+"test date"+"</p ><br><br><br><hr>" +
-                "<br><br>" +
                 "<div>";
         for(int i=0; i<mark.getCriteriaList().size(); i++)
         {
@@ -57,8 +56,7 @@ public class Activity_editable_report extends Activity {
             {
                 htmlString+= "<h4 style=\"font-weight: normal;color: #014085\">" + mark.getLecturerName() + "</h4>" +
                         "<p>&lt;"+mark.getCriteriaList().get(i).getSubsectionList().get(j).getName()+
-                        ":&gt;"+mark.getCriteriaList().get(i).getSubsectionList().get(j).getShortTextList().get(0).getLongtext()+"</p >" +
-                        "<br><br>";
+                        ":&gt;"+mark.getCriteriaList().get(i).getSubsectionList().get(j).getShortTextList().get(0).getLongtext()+"</p >";
             }
         }
         htmlString +=
