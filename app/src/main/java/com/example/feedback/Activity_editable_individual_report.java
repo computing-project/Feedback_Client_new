@@ -2,12 +2,11 @@ package com.example.feedback;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.widget.TextView;
 
-public class Activity_editable_report extends Activity {
+public class Activity_editable_individual_report extends Activity {
     private int indexOfProject;
     private int indexOfStudent;
 
@@ -15,7 +14,7 @@ public class Activity_editable_report extends Activity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_report);
+        setContentView(R.layout.activity_editable_individual_report);
         Intent intent = getIntent();
         indexOfProject = Integer.parseInt(intent.getStringExtra("indexOfProject"));
         indexOfStudent = Integer.parseInt(intent.getStringExtra("indexOfStudent"));
@@ -51,7 +50,7 @@ public class Activity_editable_report extends Activity {
         for(int i=0; i<mark.getCriteriaList().size(); i++)
         {
             htmlString += "<h3 style=\"font-weight: normal\"><span style=\"float:left\">" + mark.getCriteriaList().get(i).getName() + "</span>" +
-                    "<span style=\"float:right\">"+ mark.getMarkList().get(i) +"/"+ mark.getCriteriaList().get(i).getMaximunMark() + "</span></h3>";
+                    "<span style=\"float:right\">   "+ mark.getMarkList().get(i) +"/"+ mark.getCriteriaList().get(i).getMaximunMark() + "</span></h3>";
             for(int j=0; j<mark.getCriteriaList().get(i).getSubsectionList().size(); j++)
             {
                 htmlString+= "<p>&lt;"+mark.getCriteriaList().get(i).getSubsectionList().get(j).getName()+
