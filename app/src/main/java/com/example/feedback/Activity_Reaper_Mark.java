@@ -1,5 +1,6 @@
 package com.example.feedback;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -19,7 +20,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Activity_Reaper_Mark extends AppCompatActivity {
+public class Activity_Reaper_Mark extends Activity {
     private int indexOfProject;
     private int indexOfStudent;
     private ArrayList<Mark> marks;

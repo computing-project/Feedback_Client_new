@@ -51,13 +51,13 @@ public class Activity_editable_report extends Activity {
         for(int i=0; i<mark.getCriteriaList().size(); i++)
         {
             htmlString += "<h3 style=\"font-weight: normal\"><span style=\"float:left\">" + mark.getCriteriaList().get(i).getName() + "</span>" +
-                    "<span style=\"float:right\">"+ mark.getMarkList().get(i) +"/"+ mark.getCriteriaList().get(i).getMaximunMark() + "</span></h3><br><br>";
+                    "<span style=\"float:right\">"+ mark.getMarkList().get(i) +"/"+ mark.getCriteriaList().get(i).getMaximunMark() + "</span></h3>";
             for(int j=0; j<mark.getCriteriaList().get(i).getSubsectionList().size(); j++)
             {
-                htmlString+= "<h4 style=\"font-weight: normal;color: #014085\">" + mark.getLecturerName() + "</h4>" +
-                        "<p>&lt;"+mark.getCriteriaList().get(i).getSubsectionList().get(j).getName()+
+                htmlString+= "<p>&lt;"+mark.getCriteriaList().get(i).getSubsectionList().get(j).getName()+
                         ":&gt;"+mark.getCriteriaList().get(i).getSubsectionList().get(j).getShortTextList().get(0).getLongtext()+"</p >";
             }
+            htmlString += "<br>";
         }
         htmlString +=
                 "</div>" +
