@@ -154,6 +154,11 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
             criteriaDetailString = criteriaDetailString + c.getName() + "\n";
         }
         textView_criteriaDetail.setText(criteriaDetailString);
+        TextView textView_asseccorDetail = findViewById(R.id.asseccor_detail__inpreparation);
+        String assessorDetailString = new String();
+        for(int i=0; i<projectInfo.getAssistant().size(); i++)
+            assessorDetailString = assessorDetailString + projectInfo.getAssistant().get(i)+"\n";
+        textView_asseccorDetail.setText(assessorDetailString);
 
 
 
@@ -365,6 +370,11 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
                     adapterForAssessors.notifyDataSetChanged();
                 }
             });
+            if(position == 0)
+            {
+                button.setVisibility(View.INVISIBLE);
+                button.setEnabled(false);
+            }
             return convertView;
         }
     }
