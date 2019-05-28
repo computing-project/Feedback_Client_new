@@ -30,6 +30,13 @@ public class Activity_Realtime_Assessment extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_realtime_assessment_page);
+        Button button_back_title = findViewById(R.id.button_back_title);
+        button_back_title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         init();
     }

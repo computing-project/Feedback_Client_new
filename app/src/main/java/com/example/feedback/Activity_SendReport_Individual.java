@@ -1,14 +1,17 @@
 package com.example.feedback;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class Activity_SendReport_Individual extends AppCompatActivity {
+public class Activity_SendReport_Individual extends Activity {
     private int indexOfProject;
     private int indexOfStudent;
 
@@ -20,6 +23,25 @@ public class Activity_SendReport_Individual extends AppCompatActivity {
         Intent intent = getIntent();
         indexOfProject = Integer.parseInt(intent.getStringExtra("indexOfProject"));
         indexOfStudent = Integer.parseInt(intent.getStringExtra("indexOfStudent"));
+
+        Button button_back_title = findViewById(R.id.button_back_title);
+        button_back_title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        TextView textView_helloUser = findViewById(R.id.textView_helloUser);
+        textView_helloUser.setText("Hello, "+AllFunctions.getObject().getUsername());
+        TextView textView_logout = findViewById(R.id.textView_logout);
+        textView_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_SendReport_Individual.this, Activity_Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         init();
     }

@@ -31,6 +31,14 @@ public class Activity_ReviewReport extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__review_report);
 
+        Button button_back_title = findViewById(R.id.button_back_title);
+        button_back_title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         init();
     }
 

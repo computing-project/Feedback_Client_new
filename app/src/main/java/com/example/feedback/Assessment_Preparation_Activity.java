@@ -102,6 +102,13 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
                 finish();
             }
         });
+        Button button_back_title = findViewById(R.id.button_back_title);
+        button_back_title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     @Override

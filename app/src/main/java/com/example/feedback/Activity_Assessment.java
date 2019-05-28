@@ -1,5 +1,6 @@
 package com.example.feedback;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -29,7 +30,7 @@ import showcomments.ChildEntity;
 import showcomments.ParentAdapter;
 import showcomments.ParentEntity;
 
-public class Activity_Assessment extends AppCompatActivity implements View.OnClickListener {
+public class Activity_Assessment extends Activity implements View.OnClickListener {
 
     MyAdapter myAdapter;
     MyAdapter2 myAdapter2;

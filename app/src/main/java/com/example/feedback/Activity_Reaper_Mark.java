@@ -49,6 +49,14 @@ public class Activity_Reaper_Mark extends Activity {
 
         AllFunctions.getObject().setHandler(handler);
 
+        Button button_back_title = findViewById(R.id.button_back_title);
+        button_back_title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         AllFunctions.getObject().getMarks(AllFunctions.getObject().getProjectList().get(indexOfProject).getProjectName(),
                 AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentInfo().get(indexOfStudent).getNumber());
     }

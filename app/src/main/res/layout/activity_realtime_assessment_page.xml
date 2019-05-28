@@ -18,7 +18,7 @@
             android:elevation="40dp">
 
             <Button
-                android:id="@+id/btn_assessment_back"
+                android:id="@+id/button_back_title"
                 android:layout_width="34dp"
                 android:layout_height="25dp"
                 android:layout_centerVertical="true"

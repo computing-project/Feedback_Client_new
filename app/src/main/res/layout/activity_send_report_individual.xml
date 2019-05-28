@@ -20,7 +20,7 @@
             android:elevation="40dp">
 
             <Button
-                android:id="@+id/btn_assessment_back"
+                android:id="@+id/button_back_title"
                 android:layout_width="34dp"
                 android:layout_height="25dp"
                 android:layout_centerVertical="true"
@@ -53,7 +53,7 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto">
 
                 <TextView
-                    android:id="@+id/textView_helloUser_assessmentPreparation"
+                    android:id="@+id/textView_helloUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="100"
@@ -97,7 +97,7 @@
                     android:background="#ffffff" />
 
                 <TextView
-                    android:id="@+id/textView_logout_assessmentPreparation"
+                    android:id="@+id/textView_logout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
