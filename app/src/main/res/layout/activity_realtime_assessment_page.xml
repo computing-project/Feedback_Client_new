@@ -190,12 +190,14 @@
                         <Button
                             android:id="@+id/button_assess_AsGroup_realtimeAssessment"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="36dp"
+                            android:textSize="14dp"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
                             android:text="Group"
                             android:layout_margin="5dp"
                             android:background="@drawable/ic_button_background"
-                            android:textColor="#ffffff"
-                            android:textSize="12dp" />
+                            android:textColor="#ffffff" />
                     </LinearLayout>
 
 

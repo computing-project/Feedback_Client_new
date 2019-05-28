@@ -12,10 +12,10 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textColor="#000000"
-        android:textSize="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginBottom="10dp"/>
+        android:textSize="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="5dp"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -84,7 +84,7 @@
             android:id="@+id/btn_assessment_comment"
             android:layout_width="28dp"
             android:layout_height="24dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="16dp"
             android:background="@drawable/ic_comment"
             android:layout_alignBottom="@id/sb_mark"
             android:layout_alignParentRight="true"/>
@@ -94,8 +94,8 @@
     <View
         android:id="@+id/dv_list_individual_assessment"
         android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
         android:background="#797979"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"/>

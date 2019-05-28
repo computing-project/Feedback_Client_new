@@ -123,11 +123,14 @@
             <Button
                 android:id="@+id/button_fresh_markPage"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="36dp"
+                android:textSize="14dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
                 android:text="Refresh"
-                android:layout_margin="5dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="6dp"
                 android:layout_alignParentRight="true"
-                android:textAllCaps="false"
                 android:textColor="#ffffff"
                 android:background="@drawable/ic_refresh_button"/>
         </RelativeLayout>

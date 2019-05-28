@@ -9,7 +9,8 @@
         android:layout_height="8dp"
         android:background="@drawable/ic_list_oval"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="5dp"/>
+        android:layout_marginLeft="16dp"
+        />
 
     <TextView
         android:id="@+id/textView"
@@ -18,8 +19,11 @@
         android:text="TextView"
         android:layout_toRightOf="@id/textView11"
         android:textSize="16dp"
-        android:padding="4dp"
-        android:singleLine="false"/>
+        android:singleLine="false"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:layout_marginLeft="6dp"
+        android:paddingRight="16dp"/>
 
 
 </RelativeLayout>
