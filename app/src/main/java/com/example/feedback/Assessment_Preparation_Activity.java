@@ -27,7 +27,6 @@ import java.util.ArrayList;
 public class Assessment_Preparation_Activity extends Activity implements AdapterView.OnItemClickListener {
 
     ListView listView;
-    ArrayList<String> alist;
     AllFunctions allFunctions = AllFunctions.getObject();
     ArrayList<ProjectInfo> projectList;
     MyAdapter_for_listView myAdapter;
@@ -80,16 +79,13 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
         AllFunctions.getObject().setHandler(handler);
         button_edit = findViewById(R.id.button_edit_inpreparation);
         resetDetailView();
-        alist = new ArrayList<String>();
 
         projectList = allFunctions.getProjectList();
-        for (ProjectInfo p : projectList)
-            alist.add(p.getProjectName());
 
-        ArrayAdapter<String> adpter = new ArrayAdapter<String>
-                (Assessment_Preparation_Activity.this, R.layout.list_item_projectlist_default, alist);
+        MyAdapterDefaultlistView myAdapterDefaultlistView = new MyAdapterDefaultlistView
+                (Assessment_Preparation_Activity.this, AllFunctions.getObject().getProjectList());
         listView = (ListView) findViewById(R.id.listView_inpreparation);
-        listView.setAdapter(adpter);
+        listView.setAdapter(myAdapterDefaultlistView);
         listView.setOnItemClickListener(this);
         TextView textView_helloUser = findViewById(R.id.textView_helloUser_assessmentPreparation);
         textView_helloUser.setText("Hello, "+AllFunctions.getObject().getUsername());
@@ -289,6 +285,41 @@ public class Assessment_Preparation_Activity extends Activity implements Adapter
         });
 
 
+    }
+
+    public class MyAdapterDefaultlistView extends BaseAdapter {
+
+        private ArrayList<ProjectInfo> mProjectList;
+        private Context mContext;
+
+        public MyAdapterDefaultlistView(Context context,ArrayList<ProjectInfo> projectList) {
+            this.mProjectList = projectList;
+            this.mContext = context;
+        }
+
+        @Override
+        public int getCount() {
+            return mProjectList.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.list_item_projectlist_default, parent, false);
+            TextView textView_listItem = (TextView) convertView.findViewById(R.id.textView_defaultView);
+            textView_listItem.setText(mProjectList.get(position).getProjectName());
+            return convertView;
+        }
     }
 
 

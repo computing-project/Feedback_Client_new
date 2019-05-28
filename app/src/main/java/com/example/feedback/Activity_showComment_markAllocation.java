@@ -33,6 +33,7 @@ public class Activity_showComment_markAllocation extends Activity {
     private int indexOfProject;
     private int indexOfCriteria;
     private Spinner spinner_shortText;
+    private ExpandableListView expandableListView_comments_left;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class Activity_showComment_markAllocation extends Activity {
 
     private void init()
     {
-        ExpandableListView expandableListView_comments_left = findViewById(R.id.expandableListView_showComment);
+        expandableListView_comments_left = findViewById(R.id.expandableListView_showComment);
         MyAdapterForCommentLeft myAdapterForCommentLeft = new MyAdapterForCommentLeft(this,criteria.getSubsectionList());
         expandableListView_comments_left.setAdapter(myAdapterForCommentLeft);
         expandableListView_comments_left.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
@@ -261,6 +262,7 @@ public class Activity_showComment_markAllocation extends Activity {
                 convertView = LayoutInflater.from(mContext).inflate(R.layout.list_item_shorttext_showcomments, null);
             TextView textView_shortText = convertView.findViewById(R.id.textView_shortText_showComments);
             textView_shortText.setText(criteria.getSubsectionList().get(groupPosition).getShortTextList().get(childPosition).getName());
+            final View convertView2 = convertView;
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -270,9 +272,14 @@ public class Activity_showComment_markAllocation extends Activity {
                     listView_longText.setAdapter(myAdapterForLongText);
                     indexOfSubsection = groupPosition;
                     indexOfShortText = childPosition;
+                    convertView2.setSelected(true);
 
                 }
             });
+            if(convertView.isSelected())
+                convertView.setBackgroundColor(Color.GRAY);
+            else
+                convertView.setBackgroundColor(Color.TRANSPARENT);
             return convertView;
         }
 

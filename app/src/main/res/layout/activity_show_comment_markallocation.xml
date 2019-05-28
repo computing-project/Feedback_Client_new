@@ -22,8 +22,8 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Done"
-                android:background="@drawable/ic_button_background"
-                android:textColor="#ffffff"/>
+                android:background="#ffffff"
+                android:textColor="#000000"/>
 
             <Button
                 android:id="@+id/button_add_showComment"
@@ -35,8 +35,9 @@
                 android:layout_toLeftOf="@id/button_edit_showComment"
                 android:layout_alignTop="@id/button_back_showComment"
                 android:onClick="add_showComment"
-                android:background="@drawable/ic_save_button"
-                android:text="add" />
+                android:background="@drawable/ic_button_background"
+                android:text="add"
+                android:textColor="#ffffff"/>
 
             <Button
                 android:id="@+id/button_edit_showComment"
@@ -84,6 +85,7 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:layout_marginTop="8dp">
+                android:choiceMode="singleChoice">
             </ExpandableListView>
 
             <View
