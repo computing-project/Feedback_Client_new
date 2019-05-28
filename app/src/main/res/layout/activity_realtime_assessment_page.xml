@@ -126,9 +126,6 @@
                 android:layout_weight="7"
                 android:choiceMode="singleChoice"
                 android:dividerHeight="1dp"
-                android:paddingLeft="5dp"
-                android:paddingTop="5dp"
-                android:paddingEnd="5dp"
                 android:scrollbars="vertical" />
 
             <View
