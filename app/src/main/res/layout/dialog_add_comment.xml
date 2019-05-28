@@ -7,12 +7,17 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
 
         <TextView
             android:id="@+id/textView_subsetion_addComment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="16dp"
             android:text="Subsection:"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -25,9 +30,21 @@
             android:spinnerMode="dropdown" />
     </RelativeLayout>
 
+    <View
+        android:id="@+id/divider27"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#e4e4e4" />
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
 
         <TextView
             android:id="@+id/textView_others_addComment"
@@ -35,6 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Others:"
+            android:textSize="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <EditText
@@ -44,15 +62,26 @@
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/textView_others_addComment"
             android:ems="10"
-            android:hint="subsection name"
+            android:textSize="14dp"
+            android:hint="Subsection name"
             android:inputType="textPersonName"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     </RelativeLayout>
 
+    <View
+        android:id="@+id/divider28"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e4e4e4" />
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
 
         <Spinner
             android:id="@+id/spinner_shortText_addComment"
@@ -66,12 +95,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ShortText:"
+            android:textSize="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     </RelativeLayout>
 
+
+    <View
+        android:id="@+id/divider29"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#e4e4e4" />
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
 
         <EditText
             android:id="@+id/editText_shortText_addComment"
@@ -80,7 +123,8 @@
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/textView_otherShortText_addComment"
             android:ems="10"
-            android:hint="shortText content"
+            android:hint="Short-text content"
+            android:textSize="14dp"
             android:inputType="textPersonName"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -90,6 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Others:"
+            android:textSize="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <EditText
@@ -99,14 +144,28 @@
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/editText_shortText_addComment"
             android:ems="10"
-            android:hint="grade"
+            android:hint="Grade"
+            android:textSize="14dp"
             android:inputType="number"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
     </RelativeLayout>
 
+
+    <View
+        android:id="@+id/divider30"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#e4e4e4" />
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
 
         <EditText
             android:id="@+id/editText_longText_addComment"
@@ -114,9 +173,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/textView_longText_addComment"
-            android:ems="10"
+            android:ems="100"
             android:gravity="start|top"
-            android:hint="longText content"
+            android:textSize="14dp"
+            android:hint="Long-text content"
             android:inputType="textMultiLine"
             android:singleLine="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -126,7 +186,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textSize="16dp"
             android:text="LongText:"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     </RelativeLayout>
+
+
+
 </LinearLayout>
