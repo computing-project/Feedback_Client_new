@@ -67,8 +67,9 @@ public class Activity_SendReport_Individual extends Activity {
                         "<h2 style=\"font-weight: normal\">Mark Attained</h2>" +
                         "<p>"+markList.get(0).getTotalMark()+"%</p >" +
                         "<h2 style=\"font-weight: normal\">Assessor</h2>" + "<p>";
-        for(int i=0; i<project.getAssistant().size(); i++)
-            htmlString = htmlString + project.getAssistant().get(i);
+        for(int i=0; i<project.getAssistant().size(); i++) {
+            htmlString = htmlString + project.getAssistant().get(i)+"<br>";
+        }
         htmlString = htmlString +
                 "</p >" +
                 "<h2 style=\"font-weight: normal\">Assessment Date</h2>" +
@@ -81,11 +82,12 @@ public class Activity_SendReport_Individual extends Activity {
             for(int j=0; j<markList.size(); j++)
             {
                 htmlString += "<h4 style=\"font-weight: normal;color: #014085\">"+markList.get(j).getLecturerName()+":</h4>";
-                for(int k=0; k<markList.get(j).getCriteriaList().get(i).getSubsectionList().size(); k++)
-                {
-                    htmlString += "<p>&lt;" + markList.get(j).getCriteriaList().get(i).getSubsectionList().get(k).getName() +
-                            ":&gt;" + markList.get(j).getCriteriaList().get(i).getSubsectionList().get(k).getShortTextList().get(0).getLongtext() + "</p >";
-                }
+                if(markList.get(j).getCriteriaList().size() > 0)
+                    for(int k=0; k<markList.get(j).getCriteriaList().get(i).getSubsectionList().size(); k++)
+                    {
+                        htmlString += "<p>&lt;" + markList.get(j).getCriteriaList().get(i).getSubsectionList().get(k).getName() + ":&gt;"
+                              + markList.get(j).getCriteriaList().get(i).getSubsectionList().get(k).getShortTextList().get(0).getLongtext() + "</p >";
+                    }
             }
             htmlString += "<br>";
         }
