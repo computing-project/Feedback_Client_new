@@ -22,9 +22,7 @@ import android.widget.Toast;
 
 
 import java.util.ArrayList;
-import showcomments.ChildEntity;
-import showcomments.ParentAdapter;
-import showcomments.ParentEntity;
+
 
 public class Activity_MarkAllocation extends Activity {
     private int indexOfProject;
@@ -35,10 +33,8 @@ public class Activity_MarkAllocation extends Activity {
     ArrayList<Criteria> allCriteriaList;
     private int markedCriteriaNum;
     private ExpandableListView expandableListView;
-    private ArrayList<ParentEntity> parents;
     private ExpandableListView eList;
 
-    private ParentAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -241,53 +237,5 @@ public class Activity_MarkAllocation extends Activity {
         }
     }
 
-    private void loadData(int indexOfCriteria) {
-
-        parents = new ArrayList<ParentEntity>();
-        Criteria criteria = allCriteriaList.get(indexOfCriteria);
-
-        for (int i = 0; i < criteria.getSubsectionList().size(); i++) {
-
-            ParentEntity parent = new ParentEntity();
-
-            parent.setGroupName(criteria.getSubsectionList().get(i).getName());
-
-            parent.setGroupColor(getResources().getColor(
-                    android.R.color.black));
-
-            ArrayList<ChildEntity> childs = new ArrayList<ChildEntity>();
-
-            for (int j = 0; j < criteria.getSubsectionList().get(i).getShortTextList().size(); j++) {
-
-                ChildEntity child = new ChildEntity();
-
-                child.setGroupName(criteria.getSubsectionList().get(i).getShortTextList().get(j).getName());
-
-                child.setGroupColor(Color.parseColor("#000000"));
-
-                ArrayList<String> childNames = new ArrayList<String>();
-
-                ArrayList<Integer> childColors = new ArrayList<Integer>();
-
-                for (int k = 0; k < criteria.getSubsectionList().get(i).getShortTextList().get(j).getLongtext().size(); k++) {
-
-                    childNames.add(criteria.getSubsectionList().get(i).getShortTextList().get(j).getLongtext().get(k));
-
-                    childColors.add(Color.parseColor("#000000"));
-
-                }
-
-                child.setChildNames(childNames);
-
-                childs.add(child);
-
-            }
-
-            parent.setChilds(childs);
-
-            parents.add(parent);
-
-        }
-    }
 
 }

@@ -188,6 +188,7 @@ public class Activity_assessment_comment extends Activity {
 
 
                 if(indexOfCriteria == -999){
+
                     Activity_Assessment.saveCommentToMatrixCommentOnly(indexOfComment, threeListAdapter.getOneItemSelect(), threeListAdapter.getTwoItemSelect(), Integer.valueOf(TextUtils.join(", ", threeSelect)));
                 }else{
                     Activity_Assessment.saveCommentToMatrixCriteria(indexOfCriteria, threeListAdapter.getOneItemSelect(), threeListAdapter.getTwoItemSelect(), Integer.valueOf(TextUtils.join(", ", threeSelect)));

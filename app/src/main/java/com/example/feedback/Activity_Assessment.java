@@ -21,8 +21,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import showcomments.ParentAdapter;
-import showcomments.ParentEntity;
+
 
 public class Activity_Assessment extends Activity implements View.OnClickListener {
 
@@ -72,10 +71,6 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
     private long leftTime = 0;
     private int flag = 0;
 
-    private ArrayList<ParentEntity> parents;
-    private ExpandableListView eList;
-
-    private ParentAdapter adapter;
 
     static private int matrixOfMarkedCriteria[][];
     static private int matrixOfCommentOnly[][];
@@ -108,7 +103,7 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
         }else {
             tv_assessment_student.setText("Group " + indexOfGroup);
             for(int i = 0; i < project.getStudentInfo().size(); i++){
-                if(project.getStudentInfo().get(i).getGroup() == indexOfGroup){
+                if(project.getStudentInfo().get(studentList.get(i)).getGroup() == indexOfGroup){
                     studentList.add(i);
                 }
             }
@@ -132,7 +127,7 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
 
             }
 
-            tv_assessment_total_mark.setText(String.format("%.2f", project.getStudentInfo().get(0).getMark().getTotalMark()) + "%");
+            tv_assessment_total_mark.setText(String.format("%.2f", project.getStudentInfo().get(studentList.get(0)).getMark().getTotalMark()) + "%");
             Log.d("1112", String.valueOf(totalWeighting));
             Log.d("1113", String.valueOf(totalMark));
 
@@ -281,10 +276,10 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
             weightList.add(1, 0);
             weightList.add(2, 0);
 
-            for(int n = 0; n < project.getStudentInfo().get(0).getMark().getCriteriaList().size(); n++){
-                for(int l = 0; l < project.getStudentInfo().get(0).getMark().getCriteriaList().get(n).getSubsectionList().size(); l++){
-                    for(int p = 0; p < project.getStudentInfo().get(0).getMark().getCriteriaList().get(n).getSubsectionList().get(l).getShortTextList().size(); p++) {
-                        if(project.getStudentInfo().get(0).getMark().getCriteriaList().get(n).getSubsectionList().get(l).getShortTextList().get(p).getLongtext().size() == 0){
+            for(int n = 0; n < project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().size(); n++){
+                for(int l = 0; l < project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(n).getSubsectionList().size(); l++){
+                    for(int p = 0; p < project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(n).getSubsectionList().get(l).getShortTextList().size(); p++) {
+                        if(project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(n).getSubsectionList().get(l).getShortTextList().get(p).getLongtext().size() == 0){
                         }else if(project.getCriteria().get(n).getSubsectionList().get(l).getShortTextList().get(p).getGrade() == 1){
                             weightList.set(0, (weightList.get(0)+1));
                         }else if(project.getCriteria().get(n).getSubsectionList().get(l).getShortTextList().get(p).getGrade() == 2){
@@ -350,8 +345,8 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
             //tv_mark.setText("10");
             sb_mark.setMax((int)(10.0/increment));
             final View view2 = convertView;
-            sb_mark.setProgress((int)(project.getStudentInfo().get(0).getMark().getMarkList().get(position)*10 / project.getCriteria().get(position).getMaximunMark()/increment));
-            tv_mark.setText((project.getStudentInfo().get(0).getMark().getMarkList().get(position)*10 / project.getCriteria().get(position).getMaximunMark()) + " / 10");
+            sb_mark.setProgress((int)(project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().get(position)*10 / project.getCriteria().get(position).getMaximunMark()/increment));
+            tv_mark.setText((project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().get(position)*10 / project.getCriteria().get(position).getMaximunMark()) + " / 10");
             sb_mark.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
                 @Override
@@ -361,19 +356,19 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
                     tv_mark.setText(String.valueOf(progressDisplay) + " / 10");
 
                     for(int i = 0; i < studentList.size(); i++){
-                        if(project.getStudentInfo().get(i).getMark().getMarkList() == null){
-                            project.getStudentInfo().get(i).getMark().getMarkList().add(progressDisplay * project.getCriteria().get(position).getMaximunMark() / 10);
+                        if(project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList() == null){
+                            project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList().add(progressDisplay * project.getCriteria().get(position).getMaximunMark() / 10);
 
                         }else{
-                            project.getStudentInfo().get(i).getMark().getMarkList().set(position, progressDisplay * project.getCriteria().get(position).getMaximunMark() / 10);
+                            project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList().set(position, progressDisplay * project.getCriteria().get(position).getMaximunMark() / 10);
 
                         }
-                        Log.d("1114", String.valueOf(project.getStudentInfo().get(i).getMark().getMarkList()));
+                        Log.d("1114", String.valueOf(project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList()));
 
                     }
 
                     totalMark();
-                    tv_assessment_total_mark.setText(String.format("%.2f", project.getStudentInfo().get(0).getMark().getTotalMark()) + "%");
+                    tv_assessment_total_mark.setText(String.format("%.2f", project.getStudentInfo().get(studentList.get(0)).getMark().getTotalMark()) + "%");
 
 
 
@@ -403,23 +398,18 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
     public void totalMark() {
         for (int i = 0; i < studentList.size(); i++) {
             Double sum = 0.0;
-            for (int k = 0; k < project.getStudentInfo().get(i).getMark().getMarkList().size(); k++) {
+            for (int k = 0; k < project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList().size(); k++) {
 
-                sum = sum + 100 * project.getStudentInfo().get(i).getMark().getMarkList().get(k) / totalWeighting;
+                sum = sum + 100 * project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList().get(k) / totalWeighting;
 
-                project.getStudentInfo().get(i).getMark().setTotalMark(sum);
+                project.getStudentInfo().get(studentList.get(i)).getMark().setTotalMark(sum);
             }
 
 
         }
     }
 
-    private void loadData(int indexOfCriteria) {
 
-        Criteria criteria = project.getCriteria().get(indexOfCriteria);
-
-
-    }
 
 
 
@@ -577,7 +567,7 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
             et_other_comment = convertView.findViewById(R.id.et_other_comment);
 
             if(project.getStudentInfo().get(studentList.get(position)).getMark() != null){
-                et_other_comment.setText(project.getStudentInfo().get(position).getMark().getComment());
+                et_other_comment.setText(project.getStudentInfo().get(studentList.get(position)).getMark().getComment());
 
             }
             final View view4 = convertView;
@@ -590,7 +580,7 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
 
                     String otherComment = et_other_comment.getText().toString();
 
-                    project.getStudentInfo().get(position).getMark().setComment(otherComment);
+                    project.getStudentInfo().get(studentList.get(position)).getMark().setComment(otherComment);
 
 
                 }
@@ -611,7 +601,7 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
         for(int i = 0; i < studentList.size(); i++){
 //            criteriaArrayList_reduce(project.getStudentInfo().get(i).getMark());
             project.getStudentInfo().get(studentList.get(i)).setTotalMark(project.getStudentInfo().get(studentList.get(i)).getMark().getTotalMark());
-            AllFunctions.getObject().sendMark(project, project.getStudentInfo().get(studentList.get(i)).getNumber(), project.getStudentInfo().get(i).getMark() );
+            AllFunctions.getObject().sendMark(project, project.getStudentInfo().get(studentList.get(i)).getNumber(), project.getStudentInfo().get(studentList.get(i)).getMark() );
         }
 
         Intent intent = new Intent(Activity_Assessment.this, Activity_Reaper_Mark.class);
