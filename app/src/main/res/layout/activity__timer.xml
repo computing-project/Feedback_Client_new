@@ -121,7 +121,7 @@
                 android:layout_marginTop="25dp"
                 android:text="Assessment Time"
                 android:textColor="#dd000000"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
             <View
                 android:id="@+id/divider9"

@@ -13,6 +13,7 @@
         android:paddingBottom="20dp"
         android:paddingTop="20dp"
         android:paddingLeft="16dp"
+        android:textColor="#000000"
         android:singleLine="false"
         android:paddingRight="5dp"/>
 
