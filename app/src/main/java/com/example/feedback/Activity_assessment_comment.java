@@ -28,6 +28,7 @@ public class Activity_assessment_comment extends Activity {
 
     private int indexOfProject;
     private int indexOfCriteria;
+    private int indexOfComment;
 
     /**
      * 第三级适配器
@@ -42,6 +43,7 @@ public class Activity_assessment_comment extends Activity {
     static int subsectionIndex;
     static int shortTextIndex;
     static int longTextIndex;
+
     private int subsectionIndexTemp = 3;
     private int shortTextIndexTemp = 1;
     private int longTextIndexTemp = 1;
@@ -58,8 +60,15 @@ public class Activity_assessment_comment extends Activity {
         Intent intent = getIntent();
         indexOfProject = Integer.parseInt(intent.getStringExtra("indexOfProject"));
         indexOfCriteria = Integer.parseInt(intent.getStringExtra("indexOfCriteria"));
+        indexOfComment = Integer.parseInt(intent.getStringExtra("indexOfComment"));
         ProjectInfo project = AllFunctions.getObject().getProjectList().get(indexOfProject);
-        criteria = project.getCriteria().get(indexOfCriteria);
+
+        if(indexOfCriteria == -999){
+            criteria = project.getCommentList().get(indexOfComment);
+
+        }else{
+            criteria = project.getCriteria().get(indexOfCriteria);
+        }
 
 
 
@@ -147,19 +156,30 @@ public class Activity_assessment_comment extends Activity {
                 shortTextIndex = threeListAdapter.getTwoItemSelect();
                 longTextIndex = Integer.valueOf(TextUtils.join(", ", threeSelect));
 
+                if(indexOfCriteria == -999){
+
+                }else{
+                }
+
+                
                 Log.d("10000000000", subsectionIndex +" " + shortTextIndex + " " + longTextIndex);
             }
-            }
+        }
 
 
     };
 
    public void commentDone(View view){
-           finish();
-   }
 
-   public void commentBack(View view){
+       if(indexOfCriteria == -999){
+
+       }else{
+       }
+
+
+
        finish();
    }
+
 
 }
