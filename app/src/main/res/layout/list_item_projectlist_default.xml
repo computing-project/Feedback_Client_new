@@ -5,8 +5,8 @@
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="8dp"
-        android:layout_height="8dp"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
         android:background="@drawable/ic_list_oval"
         android:layout_centerVertical="true"
         android:layout_marginLeft="16dp"
