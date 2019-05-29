@@ -8,6 +8,7 @@
     <dimen name="child_expandable_list_child_padding_left">75dp</dimen>
 
     <dimen name="tv_left_20">20dp</dimen>
+    <dimen name="tv_left_40">40dp</dimen>
     <dimen name="tv_left_80">80dp</dimen>
     <dimen name="zero">0dp</dimen>
 

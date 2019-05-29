@@ -52,7 +52,7 @@
             android:layout_width="100dp"
             android:layout_height="25dp"
             android:layout_marginRight="20dp"
-            android:layout_toLeftOf="@+id/btn_assessment_comment"
+            android:layout_toLeftOf="@+id/btn_assessment_comment_back"
             android:background="@drawable/border"
             android:orientation="horizontal"
             android:layout_alignBottom="@id/sb_mark">
@@ -82,7 +82,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_assessment_comment"
+            android:id="@+id/btn_assessment_comment_back"
             android:layout_width="28dp"
             android:layout_height="24dp"
             android:layout_alignBottom="@id/sb_mark"

@@ -32,7 +32,7 @@ import bean.ThreeBean;
 public class ThreeAdapter extends BaseAdapter {
 
     private Context mContext;
-
+    private OnThreeItemClickListener itemClickListener;
     private List<ThreeBean> mThreeBeans = new ArrayList<>();
     /**
      * 一级id
@@ -43,8 +43,10 @@ public class ThreeAdapter extends BaseAdapter {
      */
     private int chilcId = -1;
 
-    public ThreeAdapter(Context context) {
+    public ThreeAdapter(Context context, OnThreeItemClickListener itemClickListener) {
+
         this.mContext = context;
+        this.itemClickListener = itemClickListener;
     }
 
     public void notifyDataSetChanged(List<ThreeBean> threeBeans, int groupId, int chilcId) {
@@ -87,6 +89,12 @@ public class ThreeAdapter extends BaseAdapter {
                 threeBeans.add(threeBean);
         }
         return threeBeans;
+    }
+
+
+
+    public interface OnThreeItemClickListener {
+        void onClick(int childId);
     }
 
     @Override
@@ -151,6 +159,9 @@ public class ThreeAdapter extends BaseAdapter {
             getItem(position).setChecked(true);
             notifyDataSetChanged();
         }
+
+            if (itemClickListener != null)
+                itemClickListener.onClick(position);
     }
 }
 }

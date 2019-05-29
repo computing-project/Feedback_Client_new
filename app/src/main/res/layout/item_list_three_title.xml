@@ -12,9 +12,7 @@
         android:background="@drawable/selector_tv_three_bg"
         android:gravity="center_vertical"
         android:paddingEnd="@dimen/tv_left_20"
-        android:paddingLeft="@dimen/tv_left_20"
-        android:paddingRight="@dimen/zero"
-        android:paddingStart="@dimen/zero"
+        android:paddingStart="@dimen/tv_left_40"
         android:textColor="@color/selector_tv_color" />
 
 </LinearLayout>
