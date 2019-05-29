@@ -44,13 +44,7 @@ public class Activity_assessment_comment extends Activity {
     static int shortTextIndex;
     static int longTextIndex;
 
-    private int subsectionIndexTemp = 3;
-    private int shortTextIndexTemp = 1;
-    private int longTextIndexTemp = 1;
-
-
-
-
+    ArrayList<ArrayList<Integer>> savedIndexList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +59,25 @@ public class Activity_assessment_comment extends Activity {
 
         if(indexOfCriteria == -999){
             criteria = project.getCommentList().get(indexOfComment);
+            savedIndexList = Activity_Assessment.getMatrixCommentOnly(indexOfComment);
 
         }else{
             criteria = project.getCriteria().get(indexOfCriteria);
+            savedIndexList = Activity_Assessment.getMatrixMarkedCriteria(indexOfCriteria);
+
         }
 
+        if(savedIndexList.size() == 0){
+            System.out.println("zero");
+        }else{
+            for(int i = 0; i < savedIndexList.size(); i ++){
+                for(int j = 0; j < savedIndexList.get(i).size(); j ++){
+                    System.out.print(savedIndexList.get(i).get(j) + " ");
+
+                }
+                System.out.println();
+            }
+        }
 
 
         // 第三级
@@ -87,10 +95,23 @@ public class Activity_assessment_comment extends Activity {
             List<TwoBean> twoBeans = new ArrayList<>();
             for (int j = 0; j < criteria.getSubsectionList().get(i).getShortTextList().size(); j++) {
                 twoBeans.add(new TwoBean(false, criteria.getSubsectionList().get(i).getShortTextList().get(j).getName()));
-                if(i == subsectionIndexTemp && j == shortTextIndexTemp){
-                    twoBeans.get(j).setChecked(true);
+
+                if(savedIndexList.size() != 0) {
+                    for (int m = 0; m < savedIndexList.size(); m++) {
+                        for (int n = 0; n < 3; n++){
+
+                            if (i == savedIndexList.get(m).get(0) && j == savedIndexList.get(m).get(1)) {
+                                twoBeans.get(j).setChecked(true);
+                            }
+
+
+                        }
+                    }
                 }
+
+
             }
+
             oneBeans.add(new OneBean(twoBeans, criteria.getSubsectionList().get(i).getName()));
         }
 
@@ -108,8 +129,17 @@ public class Activity_assessment_comment extends Activity {
             // 这里模拟请求第三级的数据
             for (int i = 0; i < criteria.getSubsectionList().get(groupId).getShortTextList().get(childId).getLongtext().size(); i++) {
                 threeBeans.add(new ThreeBean(false, criteria.getSubsectionList().get(groupId).getShortTextList().get(childId).getLongtext().get(i), i));
-                if(groupId == subsectionIndexTemp && childId == shortTextIndexTemp && i == longTextIndexTemp){
-                    threeBeans.get(i).setChecked(true);
+
+                if(savedIndexList.size() != 0) {
+                    for (int m = 0; m < savedIndexList.size(); m++) {
+                        for (int n = 0; n < 3; n++){
+
+                            if (groupId == savedIndexList.get(m).get(0) && childId == savedIndexList.get(m).get(1) && i == savedIndexList.get(m).get(2)) {
+                                threeBeans.get(i).setChecked(true);                            }
+
+
+                        }
+                    }
                 }
             }
             threeListAdapter.notifyDataSetChanged(threeBeans, groupId, childId);
@@ -156,29 +186,51 @@ public class Activity_assessment_comment extends Activity {
                 shortTextIndex = threeListAdapter.getTwoItemSelect();
                 longTextIndex = Integer.valueOf(TextUtils.join(", ", threeSelect));
 
-                if(indexOfCriteria == -999){
 
+                if(indexOfCriteria == -999){
+                    Activity_Assessment.saveCommentToMatrixCommentOnly(indexOfComment, threeListAdapter.getOneItemSelect(), threeListAdapter.getTwoItemSelect(), Integer.valueOf(TextUtils.join(", ", threeSelect)));
                 }else{
+                    Activity_Assessment.saveCommentToMatrixCriteria(indexOfCriteria, threeListAdapter.getOneItemSelect(), threeListAdapter.getTwoItemSelect(), Integer.valueOf(TextUtils.join(", ", threeSelect)));
                 }
 
-                
+                refreshComment();
+
+
+
                 Log.d("10000000000", subsectionIndex +" " + shortTextIndex + " " + longTextIndex);
             }
         }
-
 
     };
 
    public void commentDone(View view){
 
        if(indexOfCriteria == -999){
-
+            if(Activity_Assessment.commentOnlySelectedAll(indexOfComment)){
+                finish();
+            }else{
+                Toast.makeText(this, "You need to select a comment for each subsection", Toast.LENGTH_SHORT).show();
+            }
        }else{
+           if (Activity_Assessment.markedCriteriaSelectedAll(indexOfCriteria)) {
+               finish();
+
+           }else {
+               Toast.makeText(this, "You need to select a comment for each subsection", Toast.LENGTH_SHORT).show();
+
+           }
        }
 
 
+   }
 
-       finish();
+   public void refreshComment(){
+
+       if(indexOfCriteria == -999){
+           savedIndexList = Activity_Assessment.getMatrixCommentOnly(indexOfComment);
+       }else{
+           savedIndexList = Activity_Assessment.getMatrixMarkedCriteria(indexOfCriteria);
+       }
    }
 
 
