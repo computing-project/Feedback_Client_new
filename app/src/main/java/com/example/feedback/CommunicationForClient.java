@@ -457,13 +457,16 @@ public class CommunicationForClient {
 	}
 
 
-	public void getMarks(String projectName, String studentID)
+	public void getMarks(String projectName, ArrayList<String> studentIDList)
 	{
 		//construct JSONObject to send
 		JSONObject jsonSend = new JSONObject();
 		jsonSend.put("token", token);
 		jsonSend.put("projectName", projectName);
-		jsonSend.put("studentNumber", studentID);
+		String studentIDListString = com.alibaba.fastjson.JSON.toJSONString(studentIDList);
+		jsonSend.put("studentNumberList", studentIDListString);
+		jsonSend.put("primaryEmail", AllFunctions.getObject().getMyEmail());
+
 
 		System.out.println("Send: " + jsonSend.toJSONString()); //just for test
 
