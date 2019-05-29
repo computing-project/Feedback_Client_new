@@ -21,8 +21,9 @@
                 android:onClick="back_showComment"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="Done"
-                android:background="#ffffff"
+                android:background="@drawable/ic_white_button"
                 android:textColor="#000000"/>
 
             <Button

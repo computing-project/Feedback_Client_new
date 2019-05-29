@@ -125,7 +125,7 @@
                 android:layout_marginTop="25dp"
                 android:text="About"
                 android:textColor="#dd000000"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
             <View
                 android:id="@+id/divider9"
@@ -142,37 +142,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/divider9"
-                android:layout_marginTop="25dp"
                 android:layout_marginLeft="34dp"
+                android:layout_marginTop="20dp"
                 android:text="Project Name"
-                android:textColor="#DD000000"
-                android:textStyle="bold"
-                android:textSize="14sp"/>
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/editText_projectname_inabout"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="34dp"
+                android:layout_marginTop="20dp"
                 android:text="Subject Name"
-                android:textColor="#DD000000"
-                android:textStyle="bold"
-                android:textSize="14sp" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_below="@id/editText_projectname_inabout"
+                android:layout_marginTop="20dp"
                 android:layout_toRightOf="@id/editText_subjectname_inabout"
-                android:layout_marginLeft="94dp"
                 android:text="Subject Code"
-                android:textColor="#DD000000"
-                android:textStyle="bold"
-                android:textSize="14sp"/>
+                android:layout_marginLeft="3dp"
+                android:layout_alignLeft="@id/editText_subjectcode_inabout"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/textView17"
@@ -181,44 +176,49 @@
                 android:layout_below="@id/editText_subjectname_inabout"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="34dp"
+                android:layout_marginBottom="8dp"
                 android:text="Project Description"
-                android:textColor="#DD000000"
-                android:textStyle="bold"
-                android:textSize="14sp" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <EditText
                 android:id="@+id/editText_projectname_inabout"
-                android:layout_width="240dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textView13"
                 android:layout_marginLeft="30dp"
                 android:hint="Project Name"
-                android:textSize="14sp"
                 android:inputType="text"
-                android:layout_marginTop="-5dp"/>
+                android:ems="20"
+                android:layout_marginTop="-8dp"
+                android:textColor="#8A000000"
+                android:textSize="16dp" />
 
             <EditText
                 android:id="@+id/editText_subjectname_inabout"
-                android:layout_width="240dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textView15"
                 android:layout_marginLeft="30dp"
                 android:hint="Subject Name"
-                android:textSize="14sp"
-                android:layout_marginTop="-5dp"
+                android:textColor="#8A000000"
+                android:textSize="16dp"
+                android:ems="16"
+                android:layout_marginTop="-8dp"
                 android:inputType="text" />
 
             <EditText
                 android:id="@+id/editText_subjectcode_inabout"
-                android:layout_width="240dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textView16"
-                android:layout_marginLeft="90dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_toRightOf="@id/editText_subjectname_inabout"
                 android:hint="Subject Code"
-                android:layout_marginTop="-5dp"
-                android:textSize="14sp"
+                android:layout_marginTop="-8dp"
+                android:ems="10"
+                android:textColor="#8A000000"
+                android:textSize="16dp"
                 android:inputType="text" />
 
             <EditText
