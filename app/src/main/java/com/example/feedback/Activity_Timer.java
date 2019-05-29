@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Activity_Timer extends Activity {
     int durationMin, durationSec, warningMin, warningSec;
@@ -141,10 +142,24 @@ public class Activity_Timer extends Activity {
         durationSec = Integer.parseInt(editText_durationSec.getText().toString());
         warningMin = Integer.parseInt(editText_warningMin.getText().toString());
         warningSec = Integer.parseInt(editText_warningSec.getText().toString());
-        AllFunctions.getObject().projectTimer(project,durationMin,durationSec,warningMin,warningSec);
-        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-        finish();
+        if(durationMin<0||durationMin >59||durationSec<0||durationSec>59||warningMin<0||warningMin>59||warningSec<0||warningSec>59)
+        {
+            Toast.makeText(getApplicationContext(),"Min & Sec must between 0~59", Toast.LENGTH_SHORT).show();
+        }
+        else if(durationMin<warningMin )
+        {
+            Toast.makeText(getApplicationContext(),"Duration time cannot be less that warning time", Toast.LENGTH_SHORT).show();
+        }
+        else if(durationMin == warningMin && durationSec<warningSec)
+        {
+            Toast.makeText(getApplicationContext(),"Duration time cannot be less that warning time", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            AllFunctions.getObject().projectTimer(project, durationMin, durationSec, warningMin, warningSec);
+            Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+        }
     }
 
     public void back_Timer(View view)
@@ -154,14 +169,25 @@ public class Activity_Timer extends Activity {
 
     public void next_Timer(View view)
     {
-        durationMin = Integer.parseInt(editText_durationMin.getText().toString());
-        durationSec = Integer.parseInt(editText_durationSec.getText().toString());
-        warningMin = Integer.parseInt(editText_warningMin.getText().toString());
-        warningSec = Integer.parseInt(editText_warningSec.getText().toString());
-        AllFunctions.getObject().projectTimer(project,durationMin,durationSec,warningMin,warningSec);
-        Intent intent = new Intent(this, Activity_CriteriaList.class);
-        intent.putExtra("index",String.valueOf(indexOfProject));
-        startActivity(intent);
+        if(durationMin<0||durationMin >59||durationSec<0||durationSec>59||warningMin<0||warningMin>59||warningSec<0||warningSec>59)
+        {
+            Toast.makeText(getApplicationContext(),"Min & Sec must between 0~59", Toast.LENGTH_SHORT).show();
+        }
+        else if(durationMin<warningMin )
+        {
+            Toast.makeText(getApplicationContext(),"Duration time cannot be less that warning time", Toast.LENGTH_SHORT).show();
+        }
+        else if(durationMin == warningMin && durationSec<warningSec)
+        {
+            Toast.makeText(getApplicationContext(),"Duration time cannot be less that warning time", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            AllFunctions.getObject().projectTimer(project,durationMin,durationSec,warningMin,warningSec);
+            Intent intent = new Intent(this, Activity_CriteriaList.class);
+            intent.putExtra("index",String.valueOf(indexOfProject));
+            startActivity(intent);
+        }
+
     }
 
 }

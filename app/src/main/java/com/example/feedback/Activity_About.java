@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Activity_About extends Activity {
 
@@ -52,8 +53,7 @@ public class Activity_About extends Activity {
     }
 
     //save button click
-    public void save_About(View view)
-    {
+    public void save_About(View view) {
         EditText editText_projectName = findViewById(R.id.editText_projectname_inabout);
         EditText editText_subjectName = findViewById(R.id.editText_subjectname_inabout);
         EditText editText_subjectCode = findViewById(R.id.editText_subjectcode_inabout);
@@ -62,13 +62,24 @@ public class Activity_About extends Activity {
         String subjectName = editText_subjectName.getText().toString();
         String subjectCode = editText_subjectCode.getText().toString();
         String projectDes = editText_projectDes.getText().toString();
-        if(index.equals("-999"))
-            AllFunctions.getObject().createProject(projectName,subjectName,subjectCode,projectDes);
-        else
-            AllFunctions.getObject().updateProject(project,projectName,subjectName,subjectCode,projectDes);
-        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-        finish();
+
+        if (projectName.equals("")) {
+            Toast.makeText(getApplicationContext(), "Project name cannot be empty", Toast.LENGTH_SHORT).show();
+        } else if (subjectCode.equals(null)) {
+            Toast.makeText(getApplicationContext(), "Subject code cannot be empty", Toast.LENGTH_SHORT).show();
+
+        } else if (subjectName.equals(null)) {
+            Toast.makeText(getApplicationContext(), "Subject name cannot be empty", Toast.LENGTH_SHORT).show();
+        } else {
+            if (index.equals("-999"))
+                AllFunctions.getObject().createProject(projectName, subjectName, subjectCode, projectDes);
+            else
+                AllFunctions.getObject().updateProject(project, projectName, subjectName, subjectCode, projectDes);
+
+            Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+        }
     }
 
     public void back_About(View view)
@@ -86,18 +97,29 @@ public class Activity_About extends Activity {
         String subjectName = editText_subjectName.getText().toString();
         String subjectCode = editText_subjectCode.getText().toString();
         String projectDes = editText_projectDes.getText().toString();
-        if(index.equals("-999")) {
-            AllFunctions.getObject().createProject(projectName, subjectName, subjectCode, projectDes);
-            int indextToSend = AllFunctions.getObject().getProjectList().size() -1;
-            Intent intent = new Intent(this, Activity_Timer.class);
-            intent.putExtra("index", String.valueOf(indextToSend));
-            startActivity(intent);
+
+        if (projectName.equals("")) {
+            Toast.makeText(getApplicationContext(), "Project name cannot be empty", Toast.LENGTH_SHORT).show();
+        } else if (subjectCode.equals(null)) {
+            Toast.makeText(getApplicationContext(), "Subject code cannot be empty", Toast.LENGTH_SHORT).show();
+
+        } else if (subjectName.equals(null)) {
+            Toast.makeText(getApplicationContext(), "Subject name cannot be empty", Toast.LENGTH_SHORT).show();
+        } else {
+            if(index.equals("-999")) {
+                AllFunctions.getObject().createProject(projectName, subjectName, subjectCode, projectDes);
+                int indextToSend = AllFunctions.getObject().getProjectList().size() -1;
+                Intent intent = new Intent(this, Activity_Timer.class);
+                intent.putExtra("index", String.valueOf(indextToSend));
+                startActivity(intent);
+            }
+            else {
+                AllFunctions.getObject().updateProject(project, projectName, subjectName, subjectCode, projectDes);
+                Intent intent = new Intent(this, Activity_Timer.class);
+                intent.putExtra("index", index);
+                startActivity(intent);
+            }
         }
-        else {
-            AllFunctions.getObject().updateProject(project, projectName, subjectName, subjectCode, projectDes);
-            Intent intent = new Intent(this, Activity_Timer.class);
-            intent.putExtra("index", index);
-            startActivity(intent);
-        }
+        
     }
 }
