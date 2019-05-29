@@ -208,18 +208,25 @@ public class Activity_assessment_comment extends Activity {
        if(indexOfCriteria == -999){
             if(Activity_Assessment.commentOnlySelectedAll(indexOfComment)){
                 finish();
+                Intent intent = new Intent(this, Activity_Assessment.class).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+
             }else{
                 Toast.makeText(this, "You need to select a comment for each subsection", Toast.LENGTH_SHORT).show();
             }
        }else{
            if (Activity_Assessment.markedCriteriaSelectedAll(indexOfCriteria)) {
                finish();
+               Intent intent = new Intent(this, Activity_Assessment.class).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+               startActivity(intent);
 
            }else {
                Toast.makeText(this, "You need to select a comment for each subsection", Toast.LENGTH_SHORT).show();
 
            }
        }
+
+
 
 
    }
