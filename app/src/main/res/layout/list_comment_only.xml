@@ -54,9 +54,9 @@
         android:id="@+id/btn_comment_only_comment"
         android:layout_width="28dp"
         android:layout_height="24dp"
-        android:layout_marginRight="16dp"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="15dp"
+        android:layout_marginRight="16dp"
         android:background="@drawable/ic_comment" />
     <View
         android:id="@+id/dv_list_comment_only"

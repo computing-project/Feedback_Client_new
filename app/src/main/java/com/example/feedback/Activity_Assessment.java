@@ -86,7 +86,7 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
         Intent intent =getIntent();
         indexOfProject = Integer.parseInt(intent.getStringExtra("indexOfProject"));
         indexOfStudent= Integer.parseInt(intent.getStringExtra("indexOfStudent"));
-        indexOfGroup= Integer.parseInt(intent.getStringExtra("indexOfGroup"));
+        indexOfGroup = Integer.parseInt(intent.getStringExtra("indexOfGroup"));
         project = AllFunctions.getObject().getProjectList().get(indexOfProject);
 
 
@@ -308,6 +308,8 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
                     Intent intent = new Intent(Activity_Assessment.this, Activity_assessment_comment.class);
                     intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
                     intent.putExtra("indexOfCriteria",String.valueOf(position));
+                    intent.putExtra("indexOfComment",String.valueOf(-999));
+
                     startActivity(intent);
                 }
             });
@@ -491,6 +493,19 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
             TextView tv_list_comment_only = convertView.findViewById(R.id.tv_list_comment_only);
             tv_list_comment_only.setText(commentList.get(position).getName());
 
+            Button btn_comment_only_comment = convertView.findViewById(R.id.btn_comment_only_comment);
+            btn_comment_only_comment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Activity_Assessment.this, Activity_assessment_comment.class);
+                    intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
+                    intent.putExtra("indexOfCriteria",String.valueOf(-999));
+                    intent.putExtra("indexOfComment",String.valueOf(position));
+
+                    startActivity(intent);
+                }
+            });
+
             return convertView;
         }
     }
@@ -555,17 +570,21 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
 
 
 
-    public void finish_assessment(View view)
-    {
+    public void finish_assessment(View view){
+
         for(int i = 0; i < studentList.size(); i++){
             criteriaArrayList_reduce(project.getStudentInfo().get(i).getMark());
             project.getStudentInfo().get(studentList.get(i)).setTotalMark(project.getStudentInfo().get(studentList.get(i)).getMark().getTotalMark());
             AllFunctions.getObject().sendMark(project, project.getStudentInfo().get(studentList.get(i)).getNumber(), project.getStudentInfo().get(i).getMark() );
         }
 
-//        Intent intent = new Intent(this, Assessment_Preparation_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//        startActivity(intent);
+        Intent intent = new Intent(Activity_Assessment.this, Activity_assessment_comment.class);
+        intent.putExtra("indexOfProject", String.valueOf(indexOfProject));
+        intent.putExtra("indexOfStudent", String.valueOf(indexOfStudent));
+        intent.putExtra("indexOfGroup", String.valueOf(indexOfGroup));
+        startActivity(intent);
         finish();
+
     }
 
 
