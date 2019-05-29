@@ -80,14 +80,15 @@
                 android:background="#00fe32" />
             />
         </LinearLayout>
+
         <Button
             android:id="@+id/btn_assessment_comment"
             android:layout_width="28dp"
             android:layout_height="24dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/ic_comment"
             android:layout_alignBottom="@id/sb_mark"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/ic_comment" />
 
     </RelativeLayout>
 
