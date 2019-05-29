@@ -1,5 +1,6 @@
 package com.example.feedback;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -29,7 +30,7 @@ import showcomments.ChildEntity;
 import showcomments.ParentAdapter;
 import showcomments.ParentEntity;
 
-public class Activity_Assessment extends AppCompatActivity implements View.OnClickListener {
+public class Activity_Assessment extends Activity implements View.OnClickListener {
 
     MyAdapter myAdapter;
     MyAdapter2 myAdapter2;
@@ -569,8 +570,7 @@ public class Activity_Assessment extends AppCompatActivity implements View.OnCli
 
                 }else{
                     if (leftTime != 0 && isPause) {
-                        //将上次当前剩余时间作为新的时长
-                        initTimer(leftTime);
+                        //将上次当前剩余时间作为新的时长                        initTimer(leftTime);
                         countDownTimer.start();
                         isPause = false;
 

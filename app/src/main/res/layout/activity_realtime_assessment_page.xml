@@ -18,7 +18,7 @@
             android:elevation="40dp">
 
             <Button
-                android:id="@+id/btn_assessment_back"
+                android:id="@+id/button_back_title"
                 android:layout_width="34dp"
                 android:layout_height="25dp"
                 android:layout_centerVertical="true"
@@ -126,9 +126,6 @@
                 android:layout_weight="7"
                 android:choiceMode="singleChoice"
                 android:dividerHeight="1dp"
-                android:paddingLeft="5dp"
-                android:paddingTop="5dp"
-                android:paddingEnd="5dp"
                 android:scrollbars="vertical" />
 
             <View
@@ -156,7 +153,6 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="5"
-                        android:text="3:30 Presentation"
                         android:textColor="#000000"
                         android:textSize="18dp" />
 
@@ -172,7 +168,6 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginRight="5dp"
-                            android:text="3 of 67 candidates marked"
                             android:textColor="#000000"
                             android:textSize="16dp" />
 
@@ -189,19 +184,20 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:text="3 elevators"
                             android:textColor="#000000"
                             android:textSize="16dp" />
 
                         <Button
                             android:id="@+id/button_assess_AsGroup_realtimeAssessment"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="36dp"
+                            android:textSize="14dp"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
                             android:text="Group"
                             android:layout_margin="5dp"
                             android:background="@drawable/ic_button_background"
-                            android:textColor="#ffffff"
-                            android:textSize="12dp" />
+                            android:textColor="#ffffff" />
                     </LinearLayout>
 
 

@@ -10,25 +10,58 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:textColor="#000000"
-        android:textSize="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"
+        android:textSize="16dp"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="20dp"
         android:layout_marginBottom="10dp"
         android:text="TextView" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="100dp"
+        android:layout_height="25dp"
+        android:layout_marginRight="20dp"
+        android:layout_toLeftOf="@+id/btn_comment_only_comment"
+        android:background="@drawable/border"
+        android:orientation="horizontal"
+        android:layout_alignBottom="@id/btn_comment_only_comment">
+
+        <TextView
+            android:id="@+id/tv_red"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:background="#fe0000" />
+
+        <TextView
+            android:id="@+id/tv_yellow"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:background="#ff9600" />
+
+
+        <TextView
+            android:id="@+id/tv_green"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:background="#00fe32" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_comment_only_comment"
         android:layout_width="28dp"
         android:layout_height="24dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginRight="16dp"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="15dp"
         android:background="@drawable/ic_comment" />
     <View
         android:id="@+id/dv_list_comment_only"
         android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="1dp"
         android:background="#797979"
         android:layout_below="@+id/tv_list_comment_only"
         android:layout_marginLeft="10dp"

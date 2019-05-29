@@ -24,7 +24,7 @@
                 android:layout_height="25dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="16dp"
                 android:background="@drawable/ic_back"
                 android:onClick="back_assessment"/>
 
@@ -179,11 +179,13 @@
 
                 <Button
                     android:id="@+id/btn_assessment_finish"
-                    android:layout_width="40dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:textSize="14dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
                     android:layout_gravity="center"
                     android:layout_marginRight="15dp"
-                    android:layout_weight="1"
                     android:gravity="center"
                     android:textColor="#ffffff"
                     android:background="@drawable/ic_button_background"
@@ -215,8 +217,8 @@
                             android:text="Assessment"
                             android:textSize="24dp"
                             android:textColor="#000000"
-                            android:paddingLeft="15dp"
-                            android:paddingTop="5dp"/>
+                            android:paddingLeft="16dp"
+                            android:paddingTop="8dp"/>
 
                         <View
                             android:id="@+id/dv_individual"
@@ -230,8 +232,8 @@
                             android:id="@+id/lv_individual"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
                             android:layout_marginTop="6dp"/>
 
                         <TextView
@@ -241,7 +243,7 @@
                             android:text="Comments Only"
                             android:textSize="24dp"
                             android:textColor="#000000"
-                            android:paddingLeft="15dp"
+                            android:paddingLeft="16dp"
                             android:paddingTop="5dp" />
 
                         <View
@@ -249,15 +251,15 @@
                             android:layout_width="match_parent"
                             android:layout_height="2dp"
                             android:background="#797979"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp" />
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp" />
 
                         <ListView
                             android:id="@+id/lv_commentOnly"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
                             android:layout_marginTop="6dp" />
 
                         <TextView
@@ -266,7 +268,7 @@
                             android:layout_height="wrap_content"
                             android:textSize="24dp"
                             android:textColor="#000000"
-                            android:paddingLeft="15dp"
+                            android:paddingLeft="16dp"
                             android:paddingTop="5dp"
                             android:text="Other Comments"/>
 
@@ -275,15 +277,15 @@
                             android:layout_width="match_parent"
                             android:layout_height="2dp"
                             android:background="#797979"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp" />
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp" />
 
                         <ListView
                             android:id="@+id/lv_otherComment"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
                             android:layout_marginTop="6dp"
                             android:layout_marginBottom="30dp"/>
 

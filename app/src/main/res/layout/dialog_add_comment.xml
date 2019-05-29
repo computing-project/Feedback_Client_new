@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:id="@+id/textView_subsetion_addComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Subsection:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <Spinner
+            android:id="@+id/spinner_subsection_addComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/textView_subsetion_addComment"
+            android:spinnerMode="dropdown" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/divider27"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#e4e4e4" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:id="@+id/textView_others_addComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Others:"
+            android:textSize="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <EditText
+            android:id="@+id/editText_otherSubsection_addComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/textView_others_addComment"
+            android:ems="10"
+            android:textSize="14dp"
+            android:hint="Subsection name"
+            android:inputType="textPersonName"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/divider28"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e4e4e4" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
+
+        <Spinner
+            android:id="@+id/spinner_shortText_addComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/textView_shortText_addComment" />
+
+        <TextView
+            android:id="@+id/textView_shortText_addComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ShortText:"
+            android:textSize="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+    </RelativeLayout>
+
+
+    <View
+        android:id="@+id/divider29"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#e4e4e4" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
+
+        <EditText
+            android:id="@+id/editText_shortText_addComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/textView_otherShortText_addComment"
+            android:ems="10"
+            android:hint="Short-text content"
+            android:textSize="14dp"
+            android:inputType="textPersonName"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/textView_otherShortText_addComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Others:"
+            android:textSize="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <EditText
+            android:id="@+id/editText_shortTextgrade_addComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/editText_shortText_addComment"
+            android:ems="10"
+            android:hint="Grade"
+            android:textSize="14dp"
+            android:inputType="number"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+    </RelativeLayout>
+
+
+    <View
+        android:id="@+id/divider30"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#e4e4e4" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
+
+        <EditText
+            android:id="@+id/editText_longText_addComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/textView_longText_addComment"
+            android:ems="100"
+            android:gravity="start|top"
+            android:textSize="14dp"
+            android:hint="Long-text content"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/textView_longText_addComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:text="LongText:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+    </RelativeLayout>
+
+
+
+</LinearLayout>

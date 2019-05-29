@@ -1,6 +1,7 @@
 package com.example.feedback;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
@@ -24,6 +25,7 @@ public class Activity_signUp extends Activity {
                 switch (msg.what)
                 {
                     case 111: //means Sign Up successfully and go to login page
+                        Toast.makeText(getApplicationContext(), "Sign Up successfully.", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Activity_signUp.this, Activity_Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();

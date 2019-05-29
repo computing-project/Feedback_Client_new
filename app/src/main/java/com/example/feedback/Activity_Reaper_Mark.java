@@ -1,10 +1,10 @@
 package com.example.feedback;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +15,10 @@ import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Activity_Reaper_Mark extends AppCompatActivity {
+public class Activity_Reaper_Mark extends Activity {
     private int indexOfProject;
     private int indexOfStudent;
     private ArrayList<Mark> marks;
@@ -49,6 +48,14 @@ public class Activity_Reaper_Mark extends AppCompatActivity {
         };
 
         AllFunctions.getObject().setHandler(handler);
+
+        Button button_back_title = findViewById(R.id.button_back_title);
+        button_back_title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         AllFunctions.getObject().getMarks(AllFunctions.getObject().getProjectList().get(indexOfProject).getProjectName(),
                 AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentInfo().get(indexOfStudent).getNumber());
@@ -104,13 +111,24 @@ public class Activity_Reaper_Mark extends AppCompatActivity {
             TextView textView_assessorName = convertView.findViewById(R.id.textView_assessorName_gridItemMark);
             textView_assessorName.setText(markList.get(position).getLecturerName());
 
-            System.out.println("第"+position+"个Mark里面有"+markList.get(position).getCriteriaList().size()+"个criteria");
+            //System.out.println("第"+position+"个Mark里面有"+markList.get(position).getCriteriaList().size()+"个criteria");
 
 
             ListView listView_gridCriteria = convertView.findViewById(R.id.listView_criteriaMark_gridItemMark);
             MyAdapterForGridItem myAdapterForGridItem = new MyAdapterForGridItem(markList.get(position), convertView.getContext());
-            listView_gridCriteria.setAdapter(myAdapterForGridItem);;
+            listView_gridCriteria.setAdapter(myAdapterForGridItem);
             setListViewHeightBasedOnChildren(listView_gridCriteria);
+
+            Button button_viewReport = convertView.findViewById(R.id.button_viewReport_gridItemMark);
+            button_viewReport.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Activity_Reaper_Mark.this, Activity_editable_individual_report.class);
+                    intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
+                    intent.putExtra("indexOfStudent",String.valueOf(indexOfStudent));
+                    startActivity(intent);
+                }
+            });
 
 
             return convertView;

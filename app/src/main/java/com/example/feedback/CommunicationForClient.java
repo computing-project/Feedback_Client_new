@@ -29,7 +29,7 @@ public class CommunicationForClient {
 	AllFunctions functions;
 
 	public CommunicationForClient(AllFunctions functions) {
-		host = "http://10.13.112.163:8080/RapidFeedback/";
+		host = "http://54.206.24.105:8888/RapidFeedback/";
 		client = new OkHttpClient();
 		this.functions = functions;
 	}
@@ -103,8 +103,8 @@ public class CommunicationForClient {
 			else {
 				functions.loginFail();
 			}
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (Exception e1) {
+			System.out.println("连接服务器错误");
 		}
 	}
 

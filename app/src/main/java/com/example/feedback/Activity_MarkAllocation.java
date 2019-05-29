@@ -211,49 +211,10 @@ public class Activity_MarkAllocation extends Activity {
                     button_commentDetail.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            LayoutInflater layoutInflater = LayoutInflater.from(Activity_MarkAllocation.this);//获得layoutInflater对象
-                            final View view2 = layoutInflater.from(Activity_MarkAllocation.this).inflate(R.layout.dialog_showcomments_markallocation, null);
-
-                            loadData(position);
-
-                            eList = (ExpandableListView) view2.findViewById(R.id.expandable_showComments_markAllocation);
-
-                            eList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-                                @Override
-                                public void onGroupExpand(int groupPosition) {
-                                    for (int i = 0; i < parents.size(); i++) {
-                                        if (i != groupPosition) {
-                                            eList.collapseGroup(i);
-                                        }
-                                    }
-                                }
-                            });
-
-                            adapter = new ParentAdapter(mContext, parents);
-
-                            eList.setAdapter(adapter);
-
-                            adapter.setOnChildTreeViewClickListener(new ParentAdapter.OnChildTreeViewClickListener() {
-                                @Override
-                                public void onClickPosition(int parentPosition, int groupPosition, int childPosition) {
-                                    String childName = parents.get(parentPosition).getChilds()
-                                            .get(groupPosition).getChildNames().get(childPosition)
-                                            .toString();
-                                    Toast.makeText(
-                                            mContext,
-                                            "点击的下标为： parentPosition=" + parentPosition
-                                                    + "   groupPosition=" + groupPosition
-                                                    + "   childPosition=" + childPosition + "\n点击的是："
-                                                    + childName, Toast.LENGTH_SHORT).show();
-                                }
-                            });
-
-                            Dialog dialog = new android.app.AlertDialog.Builder(Activity_MarkAllocation.this).setView(view2)
-                                    .create();
-
-                            dialog.show();
-
-
+                            Intent intent = new Intent(Activity_MarkAllocation.this, Activity_showComment_markAllocation.class);
+                            intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
+                            intent.putExtra("indexOfCriteria",String.valueOf(position));
+                            startActivity(intent);
                         }
                     });
                 } else {
@@ -266,72 +227,10 @@ public class Activity_MarkAllocation extends Activity {
                     button_commentDetail.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            LayoutInflater layoutInflater = LayoutInflater.from(Activity_MarkAllocation.this);//获得layoutInflater对象
-                            final View view2 = layoutInflater.from(Activity_MarkAllocation.this).inflate(R.layout.dialog_showcomments_markallocation, null);
-
-                            loadData(position);
-
-                            eList = (ExpandableListView) view2.findViewById(R.id.expandable_showComments_markAllocation);
-
-                            eList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-                                @Override
-                                public void onGroupExpand(int groupPosition) {
-                                    for (int i = 0; i < parents.size(); i++) {
-                                        if (i != groupPosition) {
-                                            eList.collapseGroup(i);
-                                        }
-                                    }
-                                }
-                            });
-
-                            adapter = new ParentAdapter(mContext, parents);
-
-                            eList.setAdapter(adapter);
-
-                            adapter.setOnChildTreeViewClickListener(new ParentAdapter.OnChildTreeViewClickListener() {
-                                @Override
-                                public void onClickPosition(int parentPosition, int groupPosition, int childPosition) {
-                                    String childName = parents.get(parentPosition).getChilds()
-                                            .get(groupPosition).getChildNames().get(childPosition)
-                                            .toString();
-                                    Toast.makeText(
-                                            mContext,
-                                            "点击的下标为： parentPosition=" + parentPosition
-                                                    + "   groupPosition=" + groupPosition
-                                                    + "   childPosition=" + childPosition + "\n点击的是："
-                                                    + childName, Toast.LENGTH_SHORT).show();
-
-
-//                                LayoutInflater layoutInflater = LayoutInflater.from(view.getContext());//获得layoutInflater对象
-//                                final View view3 = layoutInflater.from(view.getContext()).inflate(R.layout.dialog_edit_and_delete_comment, null);//获得view对象
-//                                EditText editText_longtextDetail = (EditText) view3.findViewById(R.id.editText_longTextDetail_markAllocation);//获取控件
-//                                editText_longtextDetail.setText(criteriaList.get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getLongtext().get(childPosition));
-//                                Dialog dialog3 = new AlertDialog.Builder(view.getContext()).setView(view3).setPositiveButton("Edit", new DialogInterface.OnClickListener() {
-//
-//                                    public void onClick(DialogInterface dialog, int which) {
-//                                        criteriaList.get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition)
-//                                                .getLongtext().set(childPosition,editText_longtextDetail.getText().toString());
-//                                       // adapter.notifyDataSetChanged();
-//                                    }
-//                                }).setNegativeButton("Delete", new DialogInterface.OnClickListener() {
-//                                    @Override
-//                                    public void onClick(DialogInterface dialog, int which) {
-//                                        criteriaList.get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition)
-//                                                .getLongtext().remove(childPosition);
-//                                    //    adapter.notifyDataSetChanged();
-//
-//                                    }
-//                                }).create();
-//                                dialog3.show();
-                                }
-                            });
-
-                            Dialog dialog = new android.app.AlertDialog.Builder(Activity_MarkAllocation.this).setView(view2).create();
-
-                            dialog.show();
-                            dialog.getWindow().setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-
-
+                            Intent intent = new Intent(Activity_MarkAllocation.this, Activity_showComment_markAllocation.class);
+                            intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
+                            intent.putExtra("indexOfCriteria",String.valueOf(position));
+                            startActivity(intent);
                         }
                     });
                 }

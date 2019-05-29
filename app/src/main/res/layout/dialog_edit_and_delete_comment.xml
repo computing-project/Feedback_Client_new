@@ -8,7 +8,7 @@
         android:id="@+id/editText_longTextDetail_markAllocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:inputType="text"
+        android:text="Name"
+        android:padding="5dp"/>
 </RelativeLayout>

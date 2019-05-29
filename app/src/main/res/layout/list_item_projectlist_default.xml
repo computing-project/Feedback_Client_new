@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/textView"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="TextView"
-    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:background="@drawable/ic_list_oval"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        />
+
+    <TextView
+        android:id="@+id/textView_defaultView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_toRightOf="@id/textView11"
+        android:textSize="16dp"
+        android:singleLine="false"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:layout_marginLeft="6dp"
+        android:paddingRight="16dp"/>
+
+
+</RelativeLayout>
