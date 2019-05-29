@@ -21,18 +21,8 @@ public class Activity_About extends Activity {
         if(index.equals("-999"))
             ;
         else
-            project = AllFunctions.getObject().getProjectList().get(Integer.parseInt(index));
-        EditText editText_projectName = findViewById(R.id.editText_projectname_inabout);
-        editText_projectName.setText(project.getProjectName());
-        editText_projectName.setEnabled(false);
-        EditText editText_subjectName = findViewById(R.id.editText_subjectname_inabout);
-        editText_subjectName.setText(project.getSubjectName());
-        EditText editText_subjectCode = findViewById(R.id.editText_subjectcode_inabout);
-        editText_subjectCode.setText(project.getSubjectCode());
-        EditText editText_projectDes = findViewById(R.id.editText_projectdescription_inabout);
-        editText_projectDes.setText(project.getDescription());
-        TextView textView_projectName = findViewById(R.id.textView_projectName_about);
-        textView_projectName.setText(project.getProjectName());
+            init(Integer.parseInt(index));
+
         TextView textView_helloUser = findViewById(R.id.textView_helloUser_about);
         textView_helloUser.setText("Hello, "+AllFunctions.getObject().getUsername());
         TextView textView_logout = findViewById(R.id.textView_logout_about);
@@ -45,6 +35,22 @@ public class Activity_About extends Activity {
             }
         });
 
+    }
+
+    private void init(int index1)
+    {
+        project = AllFunctions.getObject().getProjectList().get(index1);
+        EditText editText_projectName = findViewById(R.id.editText_projectname_inabout);
+        editText_projectName.setText(project.getProjectName());
+        editText_projectName.setEnabled(false);
+        EditText editText_subjectName = findViewById(R.id.editText_subjectname_inabout);
+        editText_subjectName.setText(project.getSubjectName());
+        EditText editText_subjectCode = findViewById(R.id.editText_subjectcode_inabout);
+        editText_subjectCode.setText(project.getSubjectCode());
+        EditText editText_projectDes = findViewById(R.id.editText_projectdescription_inabout);
+        editText_projectDes.setText(project.getDescription());
+        TextView textView_projectName = findViewById(R.id.textView_projectName_about);
+        textView_projectName.setText(project.getProjectName());
     }
     
 
