@@ -201,8 +201,10 @@ public class Activity_MarkAllocation extends Activity {
                         @Override
                         public void onClick(View view) {
                             int mark = Integer.parseInt(editText_maxMark.getText().toString());
-                            markedCriteriaList.get(position).setMaximunMark(mark - 1);
-                            editText_maxMark.setText(String.valueOf(mark - 1));
+                            if(mark > 0) {
+                                markedCriteriaList.get(position).setMaximunMark(mark - 1);
+                                editText_maxMark.setText(String.valueOf(mark - 1));
+                            }
                         }
                     });
 

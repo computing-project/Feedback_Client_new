@@ -38,6 +38,18 @@ public class Activity_Realtime_Assessment extends Activity {
             }
         });
 
+        TextView textView_helloUser = findViewById(R.id.textView_helloUser_realtimeAssessment);
+        textView_helloUser.setText("Hello, " + AllFunctions.getObject().getUsername());
+        TextView textView_logout = findViewById(R.id.textView_logout_realtimeAssessment);
+        textView_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_Realtime_Assessment.this, Activity_Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         init();
     }
 
@@ -57,12 +69,12 @@ public class Activity_Realtime_Assessment extends Activity {
                 ProjectInfo project = projectList.get(position);
                 MyAdapter myAdapter = new MyAdapter(project.getStudentInfo(),Activity_Realtime_Assessment.this);
                 listView_students.setAdapter(myAdapter);
-                listView_students.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        myAdapter.notifyDataSetChanged();
-                    }
-                });
+//                listView_students.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                        myAdapter.notifyDataSetChanged();
+//                    }
+//                });
                 TextView textView_duration_title = findViewById(R.id.textView_duration_realtimeAssessment);
                 textView_duration_title.setText(""+projectList.get(indexOfProject).getDurationMin()+":"+
                         +projectList.get(indexOfProject).getDurationSec()+" Presentation");
@@ -78,47 +90,8 @@ public class Activity_Realtime_Assessment extends Activity {
                 TextView textView_numAssessor = findViewById(R.id.textView_numAssessors_realtimeAssessment);
                 textView_numAssessor.setText(projectList.get(indexOfProject).getAssistant().size()+" elevators");
 
-
-                //  listView_students.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
             }
         });
-
-        Button button_groupAssessment = findViewById(R.id.button_assess_AsGroup_realtimeAssessment);
-        button_groupAssessment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (listView_students.getCheckedItemCount() > 1) {
-                    SparseBooleanArray checkedItemsStudents = listView_students.getCheckedItemPositions();
-                    if (checkedItemsStudents != null) {
-                        int maxGroupNum = AllFunctions.getObject().getMaxGroupNumber(indexOfProject);
-                        for (int i = 0; i < checkedItemsStudents.size(); i++) {
-                            if (checkedItemsStudents.valueAt(i)) {
-                                projectList.get(indexOfProject).getStudentInfo().get(i).setGroup(maxGroupNum + 1);
-                                AllFunctions.getObject().groupStudent(projectList.get(indexOfProject),
-                                        projectList.get(indexOfProject).getStudentInfo().get(i).getNumber(),
-                                        maxGroupNum + 1);
-                            }
-                        }
-
-                        Intent intent = new Intent(Activity_Realtime_Assessment.this, Activity_Assessment.class);
-                        intent.putExtra("indexOfProject", String.valueOf(indexOfProject));
-                        intent.putExtra("indexOfStudent", String.valueOf(-999));
-                        intent.putExtra("indexOfGroup", String.valueOf(maxGroupNum + 1));
-                        startActivity(intent);
-                    }
-
-                }
-                else
-                {
-                    Toast.makeText(Activity_Realtime_Assessment.this,
-                            "Please choose more than 1 students to start the group assessment.",
-                            Toast.LENGTH_SHORT).show();
-
-                }
-            }
-        });
-
-
 
     }
 
@@ -154,6 +127,11 @@ public class Activity_Realtime_Assessment extends Activity {
         public View getView(final int position, View convertView, ViewGroup parent) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.list_student_withbutton, parent, false);
 
+            TextView textView_groupNum = convertView.findViewById(R.id.textView_group_studentswithButton);
+            if(studentList.get(position).getGroup() == -999)
+                textView_groupNum.setText("");
+            else
+                textView_groupNum.setText(String.valueOf(studentList.get(position).getGroup()));
             TextView textView_studentID = convertView.findViewById(R.id.textView_studentID_studentsWithButton);
             textView_studentID.setText(studentList.get(position).getNumber());
             TextView textView_studentName = convertView.findViewById(R.id.textView_fullname_studentsWithButton);
@@ -167,7 +145,7 @@ public class Activity_Realtime_Assessment extends Activity {
                     Intent intent = new Intent(Activity_Realtime_Assessment.this,Activity_Assessment.class);
                     intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
                     intent.putExtra("indexOfStudent",String.valueOf(position));
-                    intent.putExtra("indexOfGroup", String.valueOf(-999));
+                    intent.putExtra("indexOfGroup", String.valueOf(studentList.get(position).getGroup()));
                     System.out.println("project: "+indexOfProject);
                     System.out.println("student: "+position);
                     startActivity(intent);

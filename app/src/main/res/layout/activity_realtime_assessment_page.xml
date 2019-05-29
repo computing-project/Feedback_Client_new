@@ -171,13 +171,6 @@
                             android:textColor="#000000"
                             android:textSize="16dp" />
 
-                        <View
-                            android:id="@+id/divider23"
-                            android:layout_width="1dp"
-                            android:layout_height="28dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginRight="6dp"
-                            android:background="#999999" />
 
                         <TextView
                             android:id="@+id/textView_numAssessors_realtimeAssessment"
@@ -198,7 +191,7 @@
                             android:layout_margin="8dp"
                             android:background="@drawable/ic_button_background"
                             android:textColor="#ffffff" />
-                    </LinearLayout>
+                </LinearLayout>
 
 
                 </LinearLayout>
@@ -278,7 +271,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:choiceMode="multipleChoice"
                     android:divider="#000000"
                     android:dividerHeight="1dp"
                     android:scrollbars="vertical" />

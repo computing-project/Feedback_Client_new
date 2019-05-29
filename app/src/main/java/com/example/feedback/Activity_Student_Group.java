@@ -129,6 +129,8 @@ public class Activity_Student_Group extends Activity {
                     }
                 }
                 Collections.sort(project.getStudentInfo(), new SortByGroup());
+                for(int i=0; i<project.getStudentInfo().size(); i++)
+                    listView.setItemChecked(i,false);
                 myAdapter.notifyDataSetChanged();
             }
         }
@@ -156,6 +158,8 @@ public class Activity_Student_Group extends Activity {
                     }
                 }
                 Collections.sort(project.getStudentInfo(), new SortByGroup());
+                for(int i=0; i<project.getStudentInfo().size(); i++)
+                    listView.setItemChecked(i,false);
                 myAdapter.notifyDataSetChanged();
             }
         }

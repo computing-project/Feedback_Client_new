@@ -24,6 +24,7 @@ public class AllFunctions{
     private String myEmail;
     private ArrayList<Mark> markListForMarkPage;
 
+
     private AllFunctions(){
 
         communication = new CommunicationForClient(this);
@@ -184,7 +185,7 @@ public class AllFunctions{
             @Override
             public void run(){
 
-                communication.getMarks(projectName, studentID);
+//                communication.getMarks(projectName, studentID);
 
             }
         }).start();

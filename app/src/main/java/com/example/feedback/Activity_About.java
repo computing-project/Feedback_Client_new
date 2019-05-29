@@ -21,13 +21,7 @@ public class Activity_About extends Activity {
         if(index.equals("-999"))
             ;
         else
-            init(Integer.parseInt(index));
-
-    }
-
-    private void init(int i)
-    {
-        project = AllFunctions.getObject().getProjectList().get(i);
+            project = AllFunctions.getObject().getProjectList().get(Integer.parseInt(index));
         EditText editText_projectName = findViewById(R.id.editText_projectname_inabout);
         editText_projectName.setText(project.getProjectName());
         editText_projectName.setEnabled(false);
@@ -50,7 +44,9 @@ public class Activity_About extends Activity {
                 finish();
             }
         });
+
     }
+    
 
     //save button click
     public void save_About(View view) {
