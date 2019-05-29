@@ -179,13 +179,23 @@ public class AllFunctions{
 
     }
 
-    public void getMarks(String projectName, String studentID){
-
+    public void getMarks(ProjectInfo project, int groupNum, String studentID){
+        ArrayList<String> studentIDList = new ArrayList<String>();
+        if(groupNum == -999)
+            studentIDList.add(studentID);
+        else
+        {
+            for(int i=0; i<project.getStudentInfo().size(); i++)
+            {
+                if(project.getStudentInfo().get(i).getGroup() == groupNum)
+                    studentIDList.add(project.getStudentInfo().get(i).getNumber());
+            }
+        }
         new Thread(new Runnable(){
             @Override
             public void run(){
-
-//                communication.getMarks(projectName, studentID);
+            if(groupNum == -999)
+                communication.getMarks(project.getProjectName(), studentIDList);
 
             }
         }).start();
