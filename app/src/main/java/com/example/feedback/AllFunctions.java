@@ -24,6 +24,7 @@ public class AllFunctions{
     private String myEmail;
     private ArrayList<Mark> markListForMarkPage;
 
+
     private AllFunctions(){
 
         communication = new CommunicationForClient(this);
