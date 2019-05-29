@@ -35,7 +35,7 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
     int indexOfGroup;
     ArrayList<Integer> studentList;
 
-    ProjectInfo project;
+    private static ProjectInfo project;
     ArrayList<Criteria> criteriaList;
     ArrayList<Criteria> commentList;
 
@@ -76,6 +76,11 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
     private ExpandableListView eList;
 
     private ParentAdapter adapter;
+
+    static private int matrixOfMarkedCriteria[][];
+    static private int matrixOfCommentOnly[][];
+    static private String matrixCriteriaLongtext[][];
+    static private String matrixCommentLongText[][];
 
 
     @Override
@@ -660,6 +665,64 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
                         +mark_before.getCriteriaList().get(i).getSubsectionList().get(j).getName()+"\n"+
                         "选择的shortText是"+mark_before.getCriteriaList().get(i).getSubsectionList().get(j).getShortTextList().get(0).getName());
         }
+    }
+
+    private void initMatrix()
+    {
+        matrixOfMarkedCriteria = new int[project.getCriteria().size()][10];
+        matrixCriteriaLongtext = new String[project.getCriteria().size()][10];
+        for(int i=0; i<project.getCriteria().size(); i++)
+            for(int j=0; j<10; j++)
+                matrixOfMarkedCriteria[i][j] = -999;
+        matrixOfCommentOnly = new int[project.getCommentList().size()][10];
+        matrixCommentLongText = new String[project.getCommentList().size()][10];
+        for(int i=0; i<project.getCommentList().size(); i++)
+            for(int j=0; j<10; j++)
+                matrixOfCommentOnly[i][j] = -999;
+    }
+
+    static public void saveCommentToMatrixCriteria(int criteriaIndex, int subsectionIndex, int shortIndex, int longIndex)
+    {
+        matrixOfMarkedCriteria[criteriaIndex][subsectionIndex] = shortIndex;
+        matrixCriteriaLongtext[criteriaIndex][subsectionIndex] =
+                project.getCriteria().get(criteriaIndex).getSubsectionList().get(subsectionIndex).getShortTextList().get(shortIndex).getLongtext().get(longIndex);
+    }
+
+    static public void saveCommentToMatrixCommentOnly(int criteriaIndex, int subsectionIndex, int shortIndex, int longIndex)
+    {
+        matrixOfCommentOnly[criteriaIndex][subsectionIndex] = shortIndex;
+        matrixCommentLongText[criteriaIndex][subsectionIndex] =
+                project.getCommentList().get(criteriaIndex).getSubsectionList().get(subsectionIndex).getShortTextList().get(shortIndex).getLongtext().get(longIndex);
+    }
+
+    static public void getMatrixMarkedCriteria(int criteriaIndex)
+    {
+
+    }
+
+    static public void getMatrixCommentOnly(int criteriaIndex)
+    {
+
+    }
+
+    static public boolean markedCriteriaSelectedAll(int criteriaIndex)
+    {
+        for(int i=0; i<project.getCriteria().get(criteriaIndex).getSubsectionList().size();i++)
+        {
+            if(matrixOfMarkedCriteria[criteriaIndex][i]==-999)
+                return false;
+        }
+        return true;
+    }
+
+    static public boolean commentOnlySelectedAll(int criteriaIndex)
+    {
+        for(int i=0; i<project.getCommentList().get(criteriaIndex).getSubsectionList().size();i++)
+        {
+            if(matrixOfCommentOnly[criteriaIndex][i]==-999)
+                return false;
+        }
+        return true;
     }
 
 
