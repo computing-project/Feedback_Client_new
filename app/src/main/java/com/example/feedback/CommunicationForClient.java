@@ -506,6 +506,7 @@ public class CommunicationForClient {
 		jsonSend.put("studentID", studentID);
 		String markString = com.alibaba.fastjson.JSON.toJSONString(mark);
 		jsonSend.put("mark", markString);
+		jsonSend.put("primaryEmail", AllFunctions.getObject().getMyEmail());
 
 		System.out.println("Send in method sendMark: " + jsonSend.toJSONString()); //just for test
 
@@ -529,6 +530,41 @@ public class CommunicationForClient {
 				//失败跳出
 			}
 		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+
+	public void sendPDF(String projectName, String studentID)
+	{
+		//construct JSONObject to send
+		JSONObject jsonSend = new JSONObject();
+		jsonSend.put("token", token);
+		jsonSend.put("projectName", projectName);
+		jsonSend.put("studentID", studentID);
+
+		System.out.println("Send in method sendPDF: " + jsonSend.toJSONString()); //just for test
+
+		RequestBody body = RequestBody.create(JSON, jsonSend.toJSONString());
+		Request request = new Request.Builder()
+				.url(host + "SendEmailServlet")
+				.post(body)
+				.build();
+
+		//get the JSONObject from response
+		try (Response response = client.newCall(request).execute()) {
+			String receive = response.body().string();
+
+			System.out.println("Receive: " + receive); //just for test
+
+			JSONObject jsonReceive = JSONObject.parseObject(receive);
+			String sendMail_ACK = jsonReceive.get("sendMail_ACK").toString();
+			if (sendMail_ACK.equals("true")) {
+				;
+			} else {
+				//失败跳出
+			}
+		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
 	}
