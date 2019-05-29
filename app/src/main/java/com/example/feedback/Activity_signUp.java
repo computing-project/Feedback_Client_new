@@ -69,7 +69,7 @@ public class Activity_signUp extends Activity {
         String password = editText_password.getText().toString();
         String passwordConfirm = editText_passwordConfirm.getText().toString();
 
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.+[a-z]+";
         if(firstName.equals(""))
         {
             Toast.makeText(getApplicationContext(),"First name cannot be empty", Toast.LENGTH_SHORT).show();

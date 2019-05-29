@@ -75,7 +75,7 @@ public class Activity_Login extends Activity {
         String email = editText_email.getText().toString();
         String password = editText_password.getText().toString();
 
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.+[a-z]+";
 
         if(email.matches(emailPattern))
         {
