@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
+    android:layout_marginBottom="10dp"
     android:background="@drawable/ic_marking_criteria">
 
     <TextView
@@ -31,7 +32,7 @@
     <View
         android:id="@+id/divider12"
         android:layout_width="match_parent"
-        android:layout_height="3dp"
+        android:layout_height="1dp"
         android:layout_below="@id/textView_criteriaName_gridItem"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -71,8 +72,9 @@
             android:layout_toLeftOf="@id/button_minus_gridItem"
             android:ems="3"
             android:enabled="false"
+            android:gravity="center"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:text="Mark"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <Button

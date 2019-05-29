@@ -123,8 +123,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:text="Student Management"
-                    android:layout_toLeftOf="@id/button_addstudent_instudentgroup"
-                    android:paddingLeft="15dp"
+                    android:layout_toLeftOf="@id/button_group_studentManage"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:gravity="center_vertical"
+                    android:textColor="#de000000"
                     android:paddingTop="10dp"
                     app:autoSizeTextType="uniform"
                     app:autoSizeMinTextSize="10dp"
@@ -134,27 +137,34 @@
                 <Button
                     android:id="@+id/button_ungroup_studentManage"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:layout_marginRight="10dp"
                     android:layout_toLeftOf="@+id/button_import_instudentgroup"
                     android:onClick="unGroup_studentManagement"
-                    android:text="Ungroup" />
+                    android:text="Ungroup"
+                    android:layout_alignBaseline="@id/textView3"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp" />
 
                 <Button
                     android:id="@+id/button_group_studentManage"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:layout_marginRight="10dp"
+                    android:layout_alignBaseline="@id/textView3"
                     android:layout_toLeftOf="@+id/button_ungroup_studentManage"
                     android:onClick="group_studentManagement"
-                    android:text="group" />
+                    android:text="group"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"/>
 
                 <Button
                     android:id="@+id/button_addstudent_instudentgroup"
                     android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_height="36dp"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
+                    android:layout_alignBaseline="@id/textView3"
                     android:layout_toLeftOf="@+id/button_editStudent_instudentgroup"
                     android:background="@drawable/ic_add_user"
                     android:onClick="addStudent" />
