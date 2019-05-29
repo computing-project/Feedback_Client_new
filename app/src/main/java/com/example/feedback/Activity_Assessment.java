@@ -793,6 +793,28 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
         return true;
     }
 
+    private void addSubsectionToMarkObject()
+    {
+        for(int i=0; i<studentList.size(); i++)
+        {
+            ArrayList<Criteria> criteriaArrayList = project.getStudentInfo().get(studentList.get(i)).getMark().getCriteriaList();
+            for(int j=0; j<criteriaArrayList.size(); j++)
+            {
+                for(int k=0; k<project.getCriteria().get(j).getSubsectionList().size(); k++)
+                {
+                    String longText_ls = project.getCriteria().get(j).getSubsectionList().get(k).getShortTextList().get(matrixOfMarkedCriteria[j][k]).getLongtext().get(matrixCriteriaLongtext[j][k]);
+                    ShortText shortText_ls = new ShortText();
+                    shortText_ls.setName(project.getCriteria().get(j).getSubsectionList().get(k).getShortTextList().get(matrixOfMarkedCriteria[j][k]).getName());
+                    shortText_ls.getLongtext().add(longText_ls);
+                    SubSection subSection_ls = new SubSection();
+                    subSection_ls.setName(project.getCriteria().get(j).getSubsectionList().get(k).getName());
+                    subSection_ls.getShortTextList().add(shortText_ls);
+                    criteriaArrayList.get(j).getSubsectionList().add(subSection_ls);
+                }
+            }
+        }
+    }
+
 
 
 }
