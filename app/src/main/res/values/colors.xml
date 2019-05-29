@@ -3,4 +3,16 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="normal">#FF3F3F3F</color>
+    <color name="pressed">#303F9F</color>
+    <color name="selected">#FF4081</color>
+
+    <color name="bg_two_normal">#FFFFFFFF</color>
+    <color name="bg_two_pressed">#FF00FFFF</color>
+    <color name="bg_two_selected">#FFFFFF00</color>
+
+    <color name="bg_three_normal">#FFFFFFFF</color>
+    <color name="bg_three_pressed">#FFFF00FF</color>
+    <color name="bg_three_selected">#FF00FF00</color>
 </resources>
