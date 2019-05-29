@@ -818,6 +818,22 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
                     criteriaArrayList.get(j).getSubsectionList().add(subSection_ls);
                 }
             }
+
+            ArrayList<Criteria> commentOnlyList = project.getStudentInfo().get(studentList.get(i)).getMark().getCommentList();
+            for(int j=0; j<commentOnlyList.size(); j++)
+            {
+                for(int k=0; k<project.getCommentList().get(j).getSubsectionList().size(); k++)
+                {
+                    String longText_ls = project.getCommentList().get(j).getSubsectionList().get(k).getShortTextList().get(matrixOfCommentOnly[j][k]).getLongtext().get(matrixCommentLongText[j][k]);
+                    ShortText shortText_ls = new ShortText();
+                    shortText_ls.setName(project.getCommentList().get(j).getSubsectionList().get(k).getShortTextList().get(matrixOfCommentOnly[j][k]).getName());
+                    shortText_ls.getLongtext().add(longText_ls);
+                    SubSection subSection_ls = new SubSection();
+                    subSection_ls.setName(project.getCommentList().get(j).getSubsectionList().get(k).getName());
+                    subSection_ls.getShortTextList().add(shortText_ls);
+                    criteriaArrayList.get(j).getSubsectionList().add(subSection_ls);
+                }
+            }
         }
     }
 
