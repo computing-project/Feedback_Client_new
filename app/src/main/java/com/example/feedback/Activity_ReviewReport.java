@@ -38,6 +38,17 @@ public class Activity_ReviewReport extends Activity {
                 finish();
             }
         });
+        TextView textView_helloUser = findViewById(R.id.textView_helloUser_reviewReport);
+        textView_helloUser.setText("Hello, " + AllFunctions.getObject().getUsername());
+        TextView textView_logout = findViewById(R.id.textView_logout_reviewReport);
+        textView_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_ReviewReport.this, Activity_Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         init();
     }

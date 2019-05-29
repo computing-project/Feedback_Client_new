@@ -38,6 +38,18 @@ public class Activity_Realtime_Assessment extends Activity {
             }
         });
 
+        TextView textView_helloUser = findViewById(R.id.textView_helloUser_realtimeAssessment);
+        textView_helloUser.setText("Hello, " + AllFunctions.getObject().getUsername());
+        TextView textView_logout = findViewById(R.id.textView_logout_realtimeAssessment);
+        textView_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_Realtime_Assessment.this, Activity_Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         init();
     }
 
@@ -57,12 +69,12 @@ public class Activity_Realtime_Assessment extends Activity {
                 ProjectInfo project = projectList.get(position);
                 MyAdapter myAdapter = new MyAdapter(project.getStudentInfo(),Activity_Realtime_Assessment.this);
                 listView_students.setAdapter(myAdapter);
-                listView_students.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        myAdapter.notifyDataSetChanged();
-                    }
-                });
+//                listView_students.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                        myAdapter.notifyDataSetChanged();
+//                    }
+//                });
                 TextView textView_duration_title = findViewById(R.id.textView_duration_realtimeAssessment);
                 textView_duration_title.setText(""+projectList.get(indexOfProject).getDurationMin()+":"+
                         +projectList.get(indexOfProject).getDurationSec()+" Presentation");
@@ -133,7 +145,7 @@ public class Activity_Realtime_Assessment extends Activity {
                     Intent intent = new Intent(Activity_Realtime_Assessment.this,Activity_Assessment.class);
                     intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
                     intent.putExtra("indexOfStudent",String.valueOf(position));
-                    intent.putExtra("indexOfGroup", String.valueOf(-999));
+                    intent.putExtra("indexOfGroup", String.valueOf(studentList.get(position).getGroup()));
                     System.out.println("project: "+indexOfProject);
                     System.out.println("student: "+position);
                     startActivity(intent);
