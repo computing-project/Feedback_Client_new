@@ -7,7 +7,7 @@ public class StudentInfo {
     private String middleName;
     private String surname;
     private String email;
-    private double totalMark;
+    private double totalMark = -999.0;
     private Mark mark;
     private int group = -999;
     private boolean sendEmail;
