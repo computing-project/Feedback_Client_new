@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -114,8 +116,7 @@
                 android:id="@+id/relativeLayout_top_studentManagement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                xmlns:app="http://schemas.android.com/apk/res-auto">
+                android:layout_alignParentStart="true">
 
                 <TextView
                     android:id="@+id/textView3"
@@ -129,6 +130,24 @@
                     app:autoSizeMinTextSize="10dp"
                     app:autoSizeMaxTextSize="34dp"
                     app:autoSizeStepGranularity="2dp"  />
+
+                <Button
+                    android:id="@+id/button_ungroup_studentManage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/button_import_instudentgroup"
+                    android:onClick="unGroup_studentManagement"
+                    android:text="Ungroup" />
+
+                <Button
+                    android:id="@+id/button_group_studentManage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/button_ungroup_studentManage"
+                    android:onClick="group_studentManagement"
+                    android:text="group" />
 
                 <Button
                     android:id="@+id/button_addstudent_instudentgroup"
@@ -184,7 +203,9 @@
                 android:layout_height="match_parent"
                 android:layout_above="@id/relativeLayout_bottom_studentManagement"
                 android:layout_below="@id/divider10"
-                android:padding="10dp"/>
+                android:choiceMode="multipleChoice"
+                android:scrollbars="vertical"
+                android:padding="10dp" />
 
             <RelativeLayout
                 android:id="@+id/relativeLayout_bottom_studentManagement"

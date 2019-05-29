@@ -274,39 +274,6 @@ public class AllFunctions{
         }).start();
     }
 
-//    public void deleteAssessor_Success()
-//    {
-//        for(ProjectInfo projectInfo:projectList)
-//        {
-//            if(projectInfo.getProjectName().equals(projectName))
-//            {
-//                projectInfo.getAssistant().add(assessorEmail);
-//                handlerAllfunction.sendEmptyMessage(207);
-//                break;
-//            }
-//        }
-//    }
-
-//    public void deleteAssessor_Fail()
-//    {
-//        handlerAllfunction.sendEmptyMessage(208);
-//    }
-
-
-    public void addDefaultCriteria(ProjectInfo project, ArrayList<Criteria> criteriaList){
-
-        project.setCriteria(criteriaList);
-
-        //next remove the added criteria list
-
-
-    }
-
-    public void addNewCriteria(ProjectInfo project, Criteria criteria){
-
-       project.addSingleCriteria(criteria);
-
-    }
 
     public void projectCriteria(ProjectInfo project, ArrayList<Criteria> criteriaList,
                                 ArrayList<Criteria> commentList){
@@ -367,7 +334,7 @@ public class AllFunctions{
         }).start();
     }
 
-    private int searchStudent(ProjectInfo project, String number)
+    public int searchStudent(ProjectInfo project, String number)
     {
         ArrayList<StudentInfo> list = project.getStudentInfo();
 
