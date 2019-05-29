@@ -115,11 +115,11 @@ public class Activity_Realtime_Assessment extends Activity {
         public View getView(final int position, View convertView, ViewGroup parent) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.list_student_withbutton, parent, false);
 
-            TextView textView_groupNum = convertView.findViewById(R.id.textView_group_withButton);
+            TextView textView_groupNum = convertView.findViewById(R.id.textView_group_studentswithButton);
             if(studentList.get(position).getGroup() == -999)
                 textView_groupNum.setText("");
             else
-                textView_groupNum.setText(studentList.get(position).getGroup());
+                textView_groupNum.setText(String.valueOf(studentList.get(position).getGroup()));
             TextView textView_studentID = convertView.findViewById(R.id.textView_studentID_studentsWithButton);
             textView_studentID.setText(studentList.get(position).getNumber());
             TextView textView_studentName = convertView.findViewById(R.id.textView_fullname_studentsWithButton);
