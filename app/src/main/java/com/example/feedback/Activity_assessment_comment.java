@@ -41,7 +41,11 @@ public class Activity_assessment_comment extends Activity {
 
     static int subsectionIndex;
     static int shortTextIndex;
-    static int longTextnIndex;
+    static int longTextIndex;
+    private int subsectionIndexTemp = 3;
+    private int shortTextIndexTemp = 1;
+    private int longTextIndexTemp = 1;
+
 
 
 
@@ -74,6 +78,9 @@ public class Activity_assessment_comment extends Activity {
             List<TwoBean> twoBeans = new ArrayList<>();
             for (int j = 0; j < criteria.getSubsectionList().get(i).getShortTextList().size(); j++) {
                 twoBeans.add(new TwoBean(false, criteria.getSubsectionList().get(i).getShortTextList().get(j).getName()));
+                if(i == subsectionIndexTemp && j == shortTextIndexTemp){
+                    twoBeans.get(j).setChecked(true);
+                }
             }
             oneBeans.add(new OneBean(twoBeans, criteria.getSubsectionList().get(i).getName()));
         }
@@ -92,8 +99,13 @@ public class Activity_assessment_comment extends Activity {
             // 这里模拟请求第三级的数据
             for (int i = 0; i < criteria.getSubsectionList().get(groupId).getShortTextList().get(childId).getLongtext().size(); i++) {
                 threeBeans.add(new ThreeBean(false, criteria.getSubsectionList().get(groupId).getShortTextList().get(childId).getLongtext().get(i), i));
+                if(groupId == subsectionIndexTemp && childId == shortTextIndexTemp && i == longTextIndexTemp){
+                    threeBeans.get(i).setChecked(true);
+                }
             }
             threeListAdapter.notifyDataSetChanged(threeBeans, groupId, childId);
+
+
 
 
 
@@ -133,9 +145,9 @@ public class Activity_assessment_comment extends Activity {
 
                 subsectionIndex = threeListAdapter.getOneItemSelect();
                 shortTextIndex = threeListAdapter.getTwoItemSelect();
-                longTextnIndex = Integer.valueOf(TextUtils.join(", ", threeSelect));
+                longTextIndex = Integer.valueOf(TextUtils.join(", ", threeSelect));
 
-                Log.d("10000000000", subsectionIndex +" " + shortTextIndex + " " + longTextnIndex);
+                Log.d("10000000000", subsectionIndex +" " + shortTextIndex + " " + longTextIndex);
             }
             }
 
