@@ -185,7 +185,7 @@ public class AllFunctions{
             @Override
             public void run(){
 
-                communication.getMarks(projectName, studentID);
+//                communication.getMarks(projectName, studentID);
 
             }
         }).start();
