@@ -207,9 +207,9 @@
                         android:id="@+id/project_name_inpreparation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="16dp"
                         android:gravity="center"
-                        android:text="Project Name"
+                        android:text="Please select or add a project."
                         android:textSize="24dp"
                         android:textColor="#000000"
                         android:maxLines="2"/>
@@ -245,10 +245,10 @@
                         android:id="@+id/about_detail__inpreparation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="about details\n"
                         android:layout_marginLeft="16dp"
-                        android:textColor="#000000"
-                        android:paddingTop="8dp"/>
+                        android:paddingTop="8dp"
+                        android:text="About details"
+                        android:textColor="#000000" />
 
                     <Button
                         android:id="@+id/button_time_inpreparation"
@@ -280,7 +280,7 @@
                         android:id="@+id/time_detail__inpreparation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="time details\n"
+                        android:text="Time details"
                         android:layout_marginLeft="16dp"
                         android:textColor="#000000"
                         android:paddingTop="8dp" />
@@ -315,7 +315,7 @@
                         android:id="@+id/criteria_detail__inpreparation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="criteria details\n"
+                        android:text="Criteria details"
                         android:layout_marginLeft="16dp"
                         android:textColor="#000000"
                         android:paddingTop="8dp"/>
@@ -350,7 +350,7 @@
                         android:id="@+id/student_detail__inpreparation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Click Subtitle to Manage Students\n"
+                        android:text="Click Subtitle to Manage Students"
                         android:layout_marginLeft="16dp"
                         android:textColor="#000000"
                         android:paddingTop="8dp"/>

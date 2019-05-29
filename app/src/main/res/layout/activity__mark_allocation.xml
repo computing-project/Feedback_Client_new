@@ -128,8 +128,7 @@
                         android:layout_marginTop="25dp"
                         android:text="Customised Grading Criteria"
                         android:textColor="#dd000000"
-                        android:textSize="36dp"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
                     <View
                         android:id="@+id/divider8"
@@ -150,6 +149,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:numColumns="2"
+                        android:paddingBottom="16dp"
                         android:verticalSpacing="50dp" />
 
                 </RelativeLayout>
@@ -157,7 +157,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="4">
+                    android:layout_weight="5">
 
                     <Button
                         android:id="@+id/button_back_markAllocation"
