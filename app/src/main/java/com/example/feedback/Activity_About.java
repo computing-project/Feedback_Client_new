@@ -120,6 +120,6 @@ public class Activity_About extends Activity {
                 startActivity(intent);
             }
         }
-        
+
     }
 }
