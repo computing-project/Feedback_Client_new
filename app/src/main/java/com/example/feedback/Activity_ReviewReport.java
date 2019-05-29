@@ -135,7 +135,7 @@ public class Activity_ReviewReport extends Activity {
                     Intent intent = new Intent(Activity_ReviewReport.this, Activity_Reaper_Mark.class);
                     intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
                     intent.putExtra("indexOfStudent",String.valueOf(position));
-                    intent.putExtra("indexOfGroup",studentList.get(position).getGroup());
+                    intent.putExtra("indexOfGroup",String.valueOf(studentList.get(position).getGroup()));
                     startActivity(intent);
                 }
             });
