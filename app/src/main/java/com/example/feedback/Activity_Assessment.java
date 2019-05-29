@@ -25,7 +25,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import adapter.ThreeAdapter;
+import bean.ThreeBean;
 import showcomments.ChildEntity;
 import showcomments.ParentAdapter;
 import showcomments.ParentEntity;
@@ -311,94 +314,10 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
             btn_assessment_comment.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    LayoutInflater layoutInflater = LayoutInflater.from(Activity_Assessment.this);//获得layoutInflater对象
-                    final View view9 = layoutInflater.from(Activity_Assessment.this).inflate(R.layout.dialog_showcomments_markallocation, null);
-
-                    loadData(position);
-
-                    eList = (ExpandableListView) view9.findViewById(R.id.expandable_showComments_markAllocation);
-
-                    eList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-                        @Override
-                        public void onGroupExpand(int groupPosition) {
-                            for (int i = 0; i < parents.size(); i++) {
-                                if (i != groupPosition) {
-                                    eList.collapseGroup(i);
-                                }
-                            }
-                        }
-                    });
-
-                    adapter = new ParentAdapter(mContext, parents);
-
-                    eList.setAdapter(adapter);
-
-
-
-                    adapter.setOnChildTreeViewClickListener(new ParentAdapter.OnChildTreeViewClickListener() {
-                        @Override
-                        public void onClickPosition(int parentPosition, int groupPosition, int childPosition) {
-                            String childName = parents.get(parentPosition).getChilds()
-                                    .get(groupPosition).getChildNames().get(childPosition)
-                                    .toString();
-                            for(int i = 0; i < studentList.size(); i++){
-
-                                if(project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getLongtext().size() == 0){
-
-                                    project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getLongtext().add(childName);
-
-                                    if(project.getCriteria().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getGrade() == 1){
-                                        weightList.set(0, (weightList.get(0)+1));
-
-                                    }else if(project.getCriteria().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getGrade() == 2){
-                                        weightList.set(1, (weightList.get(1)+1));
-                                    }else if(project.getCriteria().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getGrade() == 3){
-                                        weightList.set(2, (weightList.get(2)+1));
-                                    }
-
-                                }else{
-
-                                    project.getStudentInfo().get(i).getMark().getCriteriaList().get(position).getSubsectionList().get(parentPosition).getShortTextList().get(groupPosition).getLongtext().set(0, childName);
-
-                                }
-
-
-                                Log.d("77777", String.valueOf(weightList.get(0)) + " " + String.valueOf(weightList.get(1)) + " " + String.valueOf(weightList.get(2)));
-
-
-
-                                LinearLayout.LayoutParams param1 = new LinearLayout.LayoutParams(
-                                        0, LinearLayout.LayoutParams.MATCH_PARENT, weightList.get(0));
-
-                                tv_red.setLayoutParams(param1);
-
-                                LinearLayout.LayoutParams param2 = new LinearLayout.LayoutParams(
-                                        0, LinearLayout.LayoutParams.MATCH_PARENT, weightList.get(1));
-
-                                tv_yellow.setLayoutParams(param2);
-
-                                LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(
-                                        0, LinearLayout.LayoutParams.MATCH_PARENT, weightList.get(2));
-
-                                tv_green.setLayoutParams(param3);
-
-                            }
-                            Toast.makeText(
-                                    mContext,
-                                    "点击的下标为： parentPosition=" + parentPosition
-                                            + "   groupPosition=" + groupPosition
-                                            + "   childPosition=" + childPosition + "\n点击的是："
-                                            + childName, Toast.LENGTH_SHORT).show();
-
-
-                        }
-                    });
-
-                    Dialog dialog = new android.app.AlertDialog.Builder(Activity_Assessment.this).setView(view9).create();
-
-                    dialog.show();
-                    dialog.getWindow().setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-
+                    Intent intent = new Intent(Activity_Assessment.this, Activity_assessment_comment.class);
+                    intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
+                    intent.putExtra("indexOfCriteria",String.valueOf(position));
+                    startActivity(intent);
                 }
             });
 
@@ -476,51 +395,9 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
 
     private void loadData(int indexOfCriteria) {
 
-        parents = new ArrayList<ParentEntity>();
         Criteria criteria = project.getCriteria().get(indexOfCriteria);
 
-        for (int i = 0; i < criteria.getSubsectionList().size(); i++) {
 
-            ParentEntity parent = new ParentEntity();
-
-            parent.setGroupName(criteria.getSubsectionList().get(i).getName());
-
-            parent.setGroupColor(getResources().getColor(
-                    android.R.color.black));
-
-            ArrayList<ChildEntity> childs = new ArrayList<ChildEntity>();
-
-            for (int j = 0; j < criteria.getSubsectionList().get(i).getShortTextList().size(); j++) {
-
-                ChildEntity child = new ChildEntity();
-
-                child.setGroupName(criteria.getSubsectionList().get(i).getShortTextList().get(j).getName());
-
-                child.setGroupColor(Color.parseColor("#000000"));
-
-                ArrayList<String> childNames = new ArrayList<String>();
-
-                ArrayList<Integer> childColors = new ArrayList<Integer>();
-
-                for (int k = 0; k < criteria.getSubsectionList().get(i).getShortTextList().get(j).getLongtext().size(); k++) {
-
-                    childNames.add(criteria.getSubsectionList().get(i).getShortTextList().get(j).getLongtext().get(k));
-
-                    childColors.add(Color.parseColor("#000000"));
-
-                }
-
-                child.setChildNames(childNames);
-
-                childs.add(child);
-
-            }
-
-            parent.setChilds(childs);
-
-            parents.add(parent);
-
-        }
     }
 
 

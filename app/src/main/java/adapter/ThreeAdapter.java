@@ -15,11 +15,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.yolanda.listcheck.R;
-import com.yolanda.listcheck.bean.ThreeBean;
+
+import com.example.feedback.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import bean.ThreeBean;
 
 /**
  * <p>三级目录的适配器。</p>
