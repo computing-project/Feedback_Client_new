@@ -62,6 +62,7 @@ public class Activity_Reaper_Mark extends Activity {
 
             AllFunctions.getObject().getMarks(AllFunctions.getObject().getProjectList().get(indexOfProject),
                     indexOfGroup, AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentInfo().get(indexOfStudent).getNumber());
+            System.out.println("Mark getMark被执行");
     }
 
     private void init()
@@ -77,6 +78,13 @@ public class Activity_Reaper_Mark extends Activity {
         GridView listView_gridGroup = findViewById(R.id.listView_markItem_markPage);
         listView_gridGroup.setAdapter(myAdapterForGridView);
 
+    }
+
+    public void refresh_MarkPage(View v)
+    {
+        AllFunctions.getObject().setHandler(handler);
+        AllFunctions.getObject().getMarks(AllFunctions.getObject().getProjectList().get(indexOfProject),
+                indexOfGroup, AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentInfo().get(indexOfStudent).getNumber());
     }
 
 
