@@ -32,14 +32,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:fontFamily="sans-serif-medium"
                 android:text="Projects "
                 android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textSize="20dp"
                 android:textColor="#ffffff"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -131,8 +128,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="24">
+                    android:layout_height="48dp">
 
                     <Button
                         android:id="@+id/button_edit_inpreparation"
@@ -149,7 +145,7 @@
                         android:onClick="edit_AssessmentPreparation"
                         android:text="Edit"
                         android:textAllCaps="true"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textSize="14dp"
                         android:textColor="#dd000000" />
 
                     <Button
@@ -159,16 +155,16 @@
                         android:layout_height="36dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginRight="16dp"
                         android:background="@drawable/ic_button_background"
-                        android:gravity="right|center_vertical"
+                        android:gravity="center_vertical"
                         android:onClick="plus_AssessmentPreparation"
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
-                        android:text="New Project"
+                        android:text="New Project "
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="#ffffff"
-                        android:textSize="14dp" />
+                        android:textSize="13dp" />
                 </RelativeLayout>
 
                 <View
@@ -212,29 +208,29 @@
                         android:id="@+id/project_name_inpreparation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:gravity="center"
                         android:text="Project Name"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                        android:textColor="#dd000000"
-                        android:textSize="28sp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="5dp"/>
+                        android:textSize="24dp"
+                        android:textColor="#000000"
+                        android:maxLines="2"/>
 
                     <Button
                         android:id="@+id/button_about_inpreparation"
                         style="@style/Widget.AppCompat.Button.Borderless"
-                        android:layout_width="68dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
                         android:layout_marginTop="20dp"
                         android:background="@android:color/transparent"
                         android:drawableRight="@drawable/ic_pencil"
                         android:fontFamily="sans-serif-medium"
+                        android:paddingRight="26dp"
                         android:gravity="left|center_vertical"
                         android:onClick="about_AssessmentPreparation"
                         android:text="About"
                         android:textAllCaps="false"
-                        android:textColor="#515151"
+                        android:textColor="#000000"
                         android:textSize="16sp" />
 
                     <View
@@ -242,7 +238,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:layout_below="@id/textView2"
-                        android:layout_marginTop="10dp"
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="15dp"
                         android:background="#dd014085" />
@@ -252,15 +247,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="about details\n"
-                        android:layout_marginLeft="15dp"
-                        android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
+                        android:layout_marginLeft="16dp"
+                        android:textColor="#000000"
+                        android:paddingTop="8dp"/>
 
                     <Button
                         android:id="@+id/button_time_inpreparation"
                         style="@style/Widget.AppCompat.Button.Borderless"
-                        android:layout_width="54dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:paddingRight="30dp"
                         android:background="@android:color/transparent"
                         android:drawableRight="@drawable/ic_pencil"
                         android:fontFamily="sans-serif-medium"
@@ -268,7 +265,7 @@
                         android:onClick="timer_AssessmentPreparation"
                         android:text="Time"
                         android:textAllCaps="false"
-                        android:textColor="#515151"
+                        android:textColor="#000000"
                         android:textSize="16sp" />
 
                     <View
@@ -276,7 +273,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:layout_below="@id/textView2"
-                        android:layout_marginTop="10dp"
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="15dp"
                         android:background="#dd014085" />
@@ -286,15 +282,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="time details\n"
-                        android:textAppearance="@android:style/TextAppearance.DeviceDefault"
-                        android:layout_marginLeft="15dp" />
+                        android:layout_marginLeft="16dp"
+                        android:textColor="#000000"
+                        android:paddingTop="8dp" />
 
                     <Button
                         android:id="@+id/button_criteria_inpreparation"
                         style="@style/Widget.AppCompat.Button.Borderless"
-                        android:layout_width="86dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:paddingRight="18dp"
                         android:background="@android:color/transparent"
                         android:drawableRight="@drawable/ic_pencil"
                         android:fontFamily="sans-serif-medium"
@@ -302,7 +300,7 @@
                         android:onClick="criteriaManagement_AssessmentPreparation"
                         android:text="Criteria"
                         android:textAllCaps="false"
-                        android:textColor="#515151"
+                        android:textColor="#000000"
                         android:textSize="16sp" />
 
                     <View
@@ -310,7 +308,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:layout_below="@id/textView2"
-                        android:layout_marginTop="10dp"
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="15dp"
                         android:background="#dd014085" />
@@ -320,23 +317,25 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="criteria details\n"
-                        android:textAppearance="@android:style/TextAppearance.DeviceDefault"
-                        android:layout_marginLeft="15dp"/>
+                        android:layout_marginLeft="16dp"
+                        android:textColor="#000000"
+                        android:paddingTop="8dp"/>
 
                     <Button
                         android:id="@+id/button_studentmanagement__inpreparation"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="15dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:paddingRight="26dp"
                         android:background="@android:color/transparent"
                         android:drawableRight="@drawable/ic_pencil"
                         android:fontFamily="sans-serif-medium"
                         android:gravity="left|center_vertical"
                         android:onClick="studentManagement_AssessmentPreparation"
-                        android:text="Student Management"
+                        android:text="Student Management  "
                         android:textAllCaps="false"
-                        android:textColor="#515151"
+                        android:textColor="#000000"
                         android:textSize="16sp" />
 
                     <View
@@ -344,7 +343,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:layout_below="@id/textView2"
-                        android:layout_marginTop="10dp"
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="15dp"
                         android:background="#dd014085" />
@@ -354,23 +352,25 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Click Subtitle to Manage Students\n"
-                        android:textAppearance="@android:style/TextAppearance.DeviceDefault"
-                        android:layout_marginLeft="15dp"/>
+                        android:layout_marginLeft="16dp"
+                        android:textColor="#000000"
+                        android:paddingTop="8dp"/>
 
                     <Button
                         android:id="@+id/button_asseccor__inpreparation"
                         style="@style/Widget.AppCompat.Button.Borderless"
-                        android:layout_width="106dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:paddingRight="10dp"
                         android:background="@android:color/transparent"
                         android:drawableRight="@drawable/ic_pencil"
                         android:fontFamily="sans-serif-medium"
                         android:gravity="left|center_vertical"
                         android:onClick="assessors_AssessmentPreparation"
-                        android:text="Asseccors"
+                        android:text="Asseccors  "
                         android:textAllCaps="false"
-                        android:textColor="#515151"
+                        android:textColor="#000000"
                         android:textSize="16sp" />
 
                     <View
@@ -378,7 +378,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:layout_below="@id/textView2"
-                        android:layout_marginTop="10dp"
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="15dp"
                         android:background="#dd014085"/>
@@ -388,9 +387,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="asseccor details"
-                        android:textAppearance="@android:style/TextAppearance.DeviceDefault"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginBottom="50dp"/>
+                        android:layout_marginLeft="16dp"
+                        android:textColor="#000000"
+                        android:paddingTop="8dp"
+                        android:layout_marginBottom="30dp"/>
 
                 </LinearLayout>
             </ScrollView>
