@@ -75,7 +75,17 @@ public class Activity_Login extends Activity {
         String email = editText_email.getText().toString();
         String password = editText_password.getText().toString();
 
-        allFunctions.login(email, password);
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+        if(email.matches(emailPattern))
+        {
+            allFunctions.login(email, password);
+        }
+
+        else
+        {
+            Toast.makeText(getApplicationContext(),"Invalid email address", Toast.LENGTH_SHORT).show();
+        }
 
     }
 }

@@ -44,14 +44,12 @@ public class Activity_Realtime_Assessment extends Activity {
     public void init()
     {
         projectList = AllFunctions.getObject().getProjectList();
-        ArrayList<String> projectNameList = new ArrayList<String>();
-        for(ProjectInfo p: projectList)
-            projectNameList.add(p.getProjectName());
-        ArrayAdapter<String> adpter = new ArrayAdapter<String>
-                (this, R.layout.list_item_projectlist_default, projectNameList);
+        MyAdapterDefaultlistView myAdapterDefaultlistView = new MyAdapterDefaultlistView
+                (Activity_Realtime_Assessment.this, projectList);
+
         listView_projects = findViewById(R.id.listView_projects_realtimeAssessment);
         listView_students = findViewById(R.id.listView_students_realtimeAssessment);
-        listView_projects.setAdapter(adpter);
+        listView_projects.setAdapter(myAdapterDefaultlistView);
         listView_projects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -187,6 +185,41 @@ public class Activity_Realtime_Assessment extends Activity {
             else
                 convertView.setBackgroundColor(Color.TRANSPARENT);
 
+            return convertView;
+        }
+    }
+
+    public class MyAdapterDefaultlistView extends BaseAdapter {
+
+        private ArrayList<ProjectInfo> mProjectList;
+        private Context mContext;
+
+        public MyAdapterDefaultlistView(Context context,ArrayList<ProjectInfo> projectList) {
+            this.mProjectList = projectList;
+            this.mContext = context;
+        }
+
+        @Override
+        public int getCount() {
+            return mProjectList.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.list_item_projectlist_default, parent, false);
+            TextView textView_listItem = (TextView) convertView.findViewById(R.id.textView_defaultView);
+            textView_listItem.setText(mProjectList.get(position).getProjectName());
             return convertView;
         }
     }
