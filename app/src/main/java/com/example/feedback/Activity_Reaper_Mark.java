@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class Activity_Reaper_Mark extends Activity {
     private int indexOfProject;
     private int indexOfStudent;
+    private int indexOfGroup;
     private ArrayList<Mark> marks;
     private Handler handler;
 
@@ -32,6 +33,7 @@ public class Activity_Reaper_Mark extends Activity {
         Intent intent = getIntent();
         indexOfProject = Integer.parseInt(intent.getStringExtra("indexOfProject"));
         indexOfStudent = Integer.parseInt(intent.getStringExtra("indexOfStudent"));
+        indexOfGroup = Integer.parseInt(intent.getStringExtra("indexOfGroup"));
 
         handler = new Handler(){
             public void handleMessage(Message msg)
@@ -57,8 +59,9 @@ public class Activity_Reaper_Mark extends Activity {
             }
         });
 
-        AllFunctions.getObject().getMarks(AllFunctions.getObject().getProjectList().get(indexOfProject).getProjectName(),
-                AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentInfo().get(indexOfStudent).getNumber());
+
+            AllFunctions.getObject().getMarks(AllFunctions.getObject().getProjectList().get(indexOfProject),
+                    indexOfGroup, AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentInfo().get(indexOfStudent).getNumber());
     }
 
     private void init()

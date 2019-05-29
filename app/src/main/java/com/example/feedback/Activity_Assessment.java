@@ -139,12 +139,12 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
         }else{
             tv_assessment_total_mark.setText("0%");
             for(int m = 0; m < studentList.size(); m++){
-                project.getStudentInfo().get(m).setMark(new Mark());
+                project.getStudentInfo().get(studentList.get(m)).setMark(new Mark());
                 for(int n = 0; n < project.getCriteria().size(); n++){
-                    project.getStudentInfo().get(m).getMark().getCriteriaList().add(new Criteria());
-                    project.getStudentInfo().get(m).getMark().getCriteriaList().get(n).setName(project.getCriteria().get(n).getName());
-                    project.getStudentInfo().get(m).getMark().getCriteriaList().get(n).setMaximunMark(project.getCriteria().get(n).getMaximunMark());
-                    project.getStudentInfo().get(m).getMark().getMarkList().add(0.0);
+                    project.getStudentInfo().get(studentList.get(m)).getMark().getCriteriaList().add(new Criteria());
+                    project.getStudentInfo().get(studentList.get(m)).getMark().getCriteriaList().get(n).setName(project.getCriteria().get(n).getName());
+                    project.getStudentInfo().get(studentList.get(m)).getMark().getCriteriaList().get(n).setMaximunMark(project.getCriteria().get(n).getMaximunMark());
+                    project.getStudentInfo().get(studentList.get(m)).getMark().getMarkList().add(0.0);
 
 //                    for(int l = 0; l < project.getCriteria().get(n).getSubsectionList().size(); l++){
 //                        project.getStudentInfo().get(m).getMark().getCriteriaList().get(n).getSubsectionList().add(new SubSection());
@@ -158,19 +158,19 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
 //                    }
                 }
                 for(int n = 0; n < project.getCommentList().size(); n++){
-                    project.getStudentInfo().get(m).getMark().getCommentList().add(new Criteria());
-                    project.getStudentInfo().get(m).getMark().getCommentList().get(n).setName(project.getCommentList().get(n).getName());
+                    project.getStudentInfo().get(studentList.get(m)).getMark().getCommentList().add(new Criteria());
+                    project.getStudentInfo().get(studentList.get(m)).getMark().getCommentList().get(n).setName(project.getCommentList().get(n).getName());
 
-                    for(int l = 0; l < project.getCommentList().get(n).getSubsectionList().size(); l++){
-                        project.getStudentInfo().get(m).getMark().getCommentList().get(n).getSubsectionList().add(new SubSection());
-                        project.getStudentInfo().get(m).getMark().getCommentList().get(n).getSubsectionList().get(l).setName(project.getCommentList().get(n).getSubsectionList().get(l).getName());
-
-                        for(int p = 0; p < project.getCommentList().get(n).getSubsectionList().get(l).getShortTextList().size(); p++){
-                            project.getStudentInfo().get(m).getMark().getCommentList().get(n).getSubsectionList().get(l).getShortTextList().add(new ShortText());
-                            project.getStudentInfo().get(m).getMark().getCommentList().get(n).getSubsectionList().get(l).getShortTextList().get(p).setName(project.getCommentList().get(n).getSubsectionList().get(l).getShortTextList().get(p).getName());
-
-                        }
-                    }
+//                    for(int l = 0; l < project.getCommentList().get(n).getSubsectionList().size(); l++){
+//                        project.getStudentInfo().get(m).getMark().getCommentList().get(n).getSubsectionList().add(new SubSection());
+//                        project.getStudentInfo().get(m).getMark().getCommentList().get(n).getSubsectionList().get(l).setName(project.getCommentList().get(n).getSubsectionList().get(l).getName());
+//
+//                        for(int p = 0; p < project.getCommentList().get(n).getSubsectionList().get(l).getShortTextList().size(); p++){
+//                            project.getStudentInfo().get(m).getMark().getCommentList().get(n).getSubsectionList().get(l).getShortTextList().add(new ShortText());
+//                            project.getStudentInfo().get(m).getMark().getCommentList().get(n).getSubsectionList().get(l).getShortTextList().get(p).setName(project.getCommentList().get(n).getSubsectionList().get(l).getShortTextList().get(p).getName());
+//
+//                        }
+//                    }
                 }
             }
 
@@ -575,6 +575,11 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
                     + project.getStudentInfo().get(studentList.get(position)).getSurname());
             Button btn_assessment_save = convertView.findViewById(R.id.btn_assessment_save);
             et_other_comment = convertView.findViewById(R.id.et_other_comment);
+
+            if(project.getStudentInfo().get(studentList.get(position)).getMark() != null){
+                et_other_comment.setText(project.getStudentInfo().get(position).getMark().getComment());
+
+            }
             final View view4 = convertView;
             btn_assessment_save.setOnClickListener(new View.OnClickListener() {
                 @Override

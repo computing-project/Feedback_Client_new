@@ -10,6 +10,7 @@ public class Mark {
     private String comment;
     private double totalMark;
     private String lecturerName;
+    private String lecturerEmail;
     
     
     public String getLecturerName() {
@@ -26,6 +27,14 @@ public class Mark {
 
     public void setTotalMark(double totalMark){
         this.totalMark = totalMark;
+    }
+
+    public String getLecturerEmail() {
+        return lecturerEmail;
+    }
+
+    public void setLecturerEmail(String lecturerEmail) {
+        this.lecturerEmail = lecturerEmail;
     }
 
     public ArrayList<Criteria> getCommentList() {
