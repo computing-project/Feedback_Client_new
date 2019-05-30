@@ -62,7 +62,19 @@ public class Activity_Reaper_Mark extends Activity {
 
             AllFunctions.getObject().getMarks(AllFunctions.getObject().getProjectList().get(indexOfProject),
                     indexOfGroup, AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentInfo().get(indexOfStudent).getNumber());
-            System.out.println("Mark界面的getMark被执行");
+        TextView textView_projectName = findViewById(R.id.textView_projectName_Title);
+        textView_projectName.setText(AllFunctions.getObject().getProjectList().get(indexOfProject).getProjectName());
+        TextView textView_helloUser = findViewById(R.id.textView_helloUser_Title);
+        textView_helloUser.setText("Hello, "+AllFunctions.getObject().getUsername());
+        TextView textView_logout = findViewById(R.id.textView_logout_Title);
+        textView_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_Reaper_Mark.this, Activity_Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void init()
@@ -137,6 +149,7 @@ public class Activity_Reaper_Mark extends Activity {
                     Intent intent = new Intent(Activity_Reaper_Mark.this, Activity_editable_individual_report.class);
                     intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
                     intent.putExtra("indexOfStudent",String.valueOf(indexOfStudent));
+                    intent.putExtra("indexOfMark",String.valueOf(position));
                     startActivity(intent);
                 }
             });

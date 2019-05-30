@@ -11,6 +11,7 @@ import android.widget.TextView;
 public class Activity_editable_individual_report extends Activity {
     private int indexOfProject;
     private int indexOfStudent;
+    private int indexOfMark;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -20,6 +21,7 @@ public class Activity_editable_individual_report extends Activity {
         Intent intent = getIntent();
         indexOfProject = Integer.parseInt(intent.getStringExtra("indexOfProject"));
         indexOfStudent = Integer.parseInt(intent.getStringExtra("indexOfStudent"));
+        indexOfMark = Integer.parseInt(intent.getStringExtra("indexOfMark"));
 
         Button button_back_title = findViewById(R.id.button_back_title);
         button_back_title.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +41,12 @@ public class Activity_editable_individual_report extends Activity {
                 finish();
             }
         });
+        Button button_finalReport = findViewById(R.id.button_finalReport_report);
+        if(!AllFunctions.getObject().getProjectList().get(indexOfProject).getAssistant().get(0).equals
+                (AllFunctions.getObject().getMyEmail()))
+        {
+            button_finalReport.setVisibility(View.INVISIBLE);
+        }
 
         init();
     }
@@ -48,6 +56,11 @@ public class Activity_editable_individual_report extends Activity {
         ProjectInfo project = AllFunctions.getObject().getProjectList().get(indexOfProject);
         StudentInfo student = AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentInfo().get(indexOfStudent);
         Mark mark = AllFunctions.getObject().getMarkListForMarkPage().get(0);
+        Button button_edit = findViewById(R.id.button_edit_report);
+        if(!mark.getLecturerEmail().equals(AllFunctions.getObject().getMyEmail()))
+        {
+            button_edit.setVisibility(View.INVISIBLE);
+        }
         TextView textView_totalMark = findViewById(R.id.textView_totalMark_report);
         textView_totalMark.setText("Mark:"+(int)mark.getTotalMark()+"%");
         TextView textView_assessorName = findViewById(R.id.textView_assessorName_report);
