@@ -16,45 +16,60 @@
         android:layout_height="wrap_content"
         android:hint="Student ID"
         android:gravity="center"
-        android:minHeight="45dp"
-        android:textSize="18dp" />
+        android:textSize="16dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        android:paddingRight="16dp"/>
 
     <EditText
         android:id="@+id/editText_firstName_addStudent"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        android:paddingRight="16dp"
         android:hint=" First Name"
         android:gravity="center"
         android:minHeight="45dp"
-        android:textSize="18dp" />
+        android:textSize="16dp" />
     <EditText
         android:id="@+id/editText_middleName_addStudent"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        android:paddingRight="16dp"
         android:hint=" Middle Name (optional)"
         android:gravity="center"
         android:minHeight="45dp"
-        android:textSize="18dp" />
+        android:textSize="16dp" />
     <EditText
         android:id="@+id/editText_surname_addStudent"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        android:paddingRight="16dp"
         android:hint=" Surname"
         android:gravity="center"
         android:minHeight="45dp"
-        android:textSize="18dp" />
+        android:textSize="16dp" />
     <EditText
         android:id="@+id/editText_email_addStudent"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        android:paddingRight="16dp"
         android:hint=" Email"
         android:gravity="center"
         android:minHeight="45dp"
-        android:textSize="18dp" />
+        android:textSize="16dp" />
 
 
 </LinearLayout>
