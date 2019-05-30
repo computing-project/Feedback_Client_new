@@ -55,7 +55,7 @@ public class Activity_editable_individual_report extends Activity {
     {
         ProjectInfo project = AllFunctions.getObject().getProjectList().get(indexOfProject);
         StudentInfo student = AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentInfo().get(indexOfStudent);
-        Mark mark = AllFunctions.getObject().getMarkListForMarkPage().get(0);
+        Mark mark = AllFunctions.getObject().getMarkListForMarkPage().get(indexOfMark);
         Button button_edit = findViewById(R.id.button_edit_report);
         if(!mark.getLecturerEmail().equals(AllFunctions.getObject().getMyEmail()))
         {
