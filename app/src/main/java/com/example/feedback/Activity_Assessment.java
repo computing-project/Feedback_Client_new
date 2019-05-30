@@ -883,6 +883,66 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
         return true;
     }
 
+    private void MarkObjectToMatrix(Mark mark)
+    {
+        initMatrix();
+        for(int i=0; i<mark.getCriteriaList().size(); i++)
+        {
+            //criteria layer
+            for(int j=0; j<project.getCriteria().get(i).getSubsectionList().size(); j++)
+            {
+                //subsection layer
+                OUT:
+                for(int k=0; k<project.getCriteria().get(i).getSubsectionList().get(j).getShortTextList().size(); k++)
+                {
+                    //shortText layer
+                    if(project.getCriteria().get(i).getSubsectionList().get(j).getShortTextList().get(k).getName().
+                            equals(mark.getCriteriaList().get(i).getSubsectionList().get(j).getShortTextList().get(0).getName()))
+                    {
+                        for(int p=0; p<project.getCriteria().get(i).getSubsectionList().get(j).getShortTextList().get(k).getLongtext().size(); p++)
+                        {
+                            if(project.getCriteria().get(i).getSubsectionList().get(j).getShortTextList().get(k).getLongtext().get(p).
+                                    equals(mark.getCriteriaList().get(i).getSubsectionList().get(j).getShortTextList().get(0).getLongtext().get(0)))
+                            {
+                                matrixOfMarkedCriteria[i][j] = k;
+                                matrixCriteriaLongtext[i][j] = p;
+                                break OUT;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        for(int i=0; i<mark.getCommentList().size(); i++)
+        {
+            //criteria layer
+            for(int j=0; j<project.getCommentList().get(i).getSubsectionList().size(); j++)
+            {
+                //subsection layer
+                OUT:
+                for(int k=0; k<project.getCommentList().get(i).getSubsectionList().get(j).getShortTextList().size(); k++)
+                {
+                    //shortText layer
+                    if(project.getCommentList().get(i).getSubsectionList().get(j).getShortTextList().get(k).getName().
+                            equals(mark.getCommentList().get(i).getSubsectionList().get(j).getShortTextList().get(0).getName()))
+                    {
+                        for(int p=0; p<project.getCommentList().get(i).getSubsectionList().get(j).getShortTextList().get(k).getLongtext().size(); p++)
+                        {
+                            if(project.getCommentList().get(i).getSubsectionList().get(j).getShortTextList().get(k).getLongtext().get(p).
+                                    equals(mark.getCommentList().get(i).getSubsectionList().get(j).getShortTextList().get(0).getLongtext().get(0)))
+                            {
+                                matrixOfCommentOnly[i][j] = k;
+                                matrixCommentLongText[i][j] = p;
+                                break OUT;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
 
 
 }
