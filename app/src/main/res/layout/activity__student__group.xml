@@ -171,12 +171,12 @@
 
                 <Button
                     android:id="@+id/button_editStudent_instudentgroup"
-                    android:layout_width="35dp"
-                    android:layout_height="33dp"
+                    android:layout_width="33dp"
+                    android:layout_height="30dp"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
                     android:layout_toLeftOf="@+id/button_deleteStudent_instudentgroup"
-                    android:background="@drawable/ic_edit_user"
+                    android:background="@drawable/ic_edit_student"
                     android:onClick="editStudent_inStudentManagement" />
 
                 <Button
