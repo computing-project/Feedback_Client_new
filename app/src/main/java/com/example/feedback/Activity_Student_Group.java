@@ -289,8 +289,23 @@ public class Activity_Student_Group extends Activity {
                     surname = editText_surname_addStudent.getText().toString();
                     email = editText_email_addStudent.getText().toString();
 
+                    String emailPattern = "[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.+[a-z]+";
+
                     if(studentID.equals("")) {
                         Toast.makeText(getApplicationContext(), "StudentID cannot be empty", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(firstName.equals(""))
+                    {
+                        Toast.makeText(getApplicationContext(), "FirstName cannot be empty", Toast.LENGTH_SHORT).show();
+
+                    }
+                    else if(surname.equals(""))
+                    {
+                        Toast.makeText(getApplicationContext(), "LastName cannot be empty", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(!email.matches(emailPattern))
+                    {
+                        Toast.makeText(getApplicationContext(), "Please input a valid Email", Toast.LENGTH_SHORT).show();
                     }
                     else
                     {
@@ -346,8 +361,28 @@ public class Activity_Student_Group extends Activity {
                     surname = editText_surname_addStudent.getText().toString();
                     email = editText_email_addStudent.getText().toString();
 
-                    AllFunctions.getObject().editStudent(project, studentID, firstName, middleName,surname,email);
-                    init();
+                    String emailPattern = "[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.+[a-z]+";
+
+                    if(studentID.equals("")) {
+                        Toast.makeText(getApplicationContext(), "StudentID cannot be empty", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(firstName.equals(""))
+                    {
+                        Toast.makeText(getApplicationContext(), "FirstName cannot be empty", Toast.LENGTH_SHORT).show();
+
+                    }
+                    else if(surname.equals(""))
+                    {
+                        Toast.makeText(getApplicationContext(), "LastName cannot be empty", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(!email.matches(emailPattern))
+                    {
+                        Toast.makeText(getApplicationContext(), "Please input a valid Email", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        AllFunctions.getObject().editStudent(project, studentID, firstName, middleName, surname, email);
+                        init();
+                    }
                 }
             }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 
