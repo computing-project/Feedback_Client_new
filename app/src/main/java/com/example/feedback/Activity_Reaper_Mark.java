@@ -62,7 +62,7 @@ public class Activity_Reaper_Mark extends Activity {
 
             AllFunctions.getObject().getMarks(AllFunctions.getObject().getProjectList().get(indexOfProject),
                     indexOfGroup, AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentInfo().get(indexOfStudent).getNumber());
-            System.out.println("Mark getMark被执行");
+            System.out.println("Mark界面的getMark被执行");
     }
 
     private void init()

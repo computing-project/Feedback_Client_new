@@ -459,6 +459,7 @@ public class CommunicationForClient {
 
 	public void getMarks(String projectName, ArrayList<String> studentIDList)
 	{
+		System.out.println("Communication的getMark方法被调用");
 		//construct JSONObject to send
 		JSONObject jsonSend = new JSONObject();
 		jsonSend.put("token", token);

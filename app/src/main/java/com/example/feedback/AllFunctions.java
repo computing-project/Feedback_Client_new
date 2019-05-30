@@ -180,6 +180,7 @@ public class AllFunctions{
     }
 
     public void getMarks(ProjectInfo project, int groupNum, String studentID){
+        System.out.println("Allfunction的getMark方法被执行");
         ArrayList<String> studentIDList = new ArrayList<String>();
         if(groupNum == -999)
             studentIDList.add(studentID);
@@ -193,14 +194,13 @@ public class AllFunctions{
         }
         new Thread(new Runnable(){
             @Override
-            public void run(){
-            if(groupNum == -999)
+            public void run() {
                 communication.getMarks(project.getProjectName(), studentIDList);
-
             }
         }).start();
 
     }
+
 
 
 
