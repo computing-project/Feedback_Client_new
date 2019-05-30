@@ -113,6 +113,8 @@ public class Activity_Editable_group_report extends Activity {
                 "<h2 style=\"font-weight: normal\">Assessment Date</h2>" +
                 "<p>"+"test date"+"</p ><br><br><br><hr>" +
                 "<div>";
+
+        htmlString +=  "<h2 style=\"font-weight: normal\">CommentOnlyCriteria</h2>" + "<p>";
         for(int i=0; i<mark.getCriteriaList().size(); i++)
         {
             htmlString += "<h3 style=\"font-weight: normal\"><span style=\"float:left\">" + mark.getCriteriaList().get(i).getName() + "</span>" +
@@ -121,6 +123,18 @@ public class Activity_Editable_group_report extends Activity {
             {
                 htmlString+= "<p>&lt;"+mark.getCriteriaList().get(i).getSubsectionList().get(j).getName()+
                         ":&gt;"+mark.getCriteriaList().get(i).getSubsectionList().get(j).getShortTextList().get(0).getLongtext()+"</p >";
+            }
+            htmlString += "<br>";
+        }
+
+        htmlString +=  "<h2 style=\"font-weight: normal\">CommentOnlyCriteria</h2>" + "<p>";
+        for(int i=0; i<mark.getCommentList().size(); i++)
+        {
+            htmlString += "<h3 style=\"font-weight: normal\"><span style=\"float:left\">" + mark.getCommentList().get(i).getName() + "</span></h3>";
+            for(int j=0; j<mark.getCommentList().get(i).getSubsectionList().size(); j++)
+            {
+                htmlString+= "<p>&lt;"+mark.getCommentList().get(i).getSubsectionList().get(j).getName()+
+                        ":&gt;"+mark.getCommentList().get(i).getSubsectionList().get(j).getShortTextList().get(0).getLongtext()+"</p >";
             }
             htmlString += "<br>";
         }
