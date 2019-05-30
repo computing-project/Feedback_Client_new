@@ -844,6 +844,21 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
         }
     }
 
+    private boolean checkAllCriteria()
+    {
+        for(int i=0; i<project.getCriteria().size(); i++)
+        {
+            if(matrixOfMarkedCriteria[i][0] == -999)
+                return false;
+        }
+        for (int i=0; i<project.getCommentList().size(); i++)
+        {
+            if(matrixOfCommentOnly[i][0] == -999)
+                return false;
+        }
+        return true;
+    }
+
 
 
 }
