@@ -18,6 +18,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -613,20 +614,24 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
 
     public void finish_assessment(View view){
 
-        addSubsectionToMarkObject();
+        if(checkAllCriteria()){
+            addSubsectionToMarkObject();
 
-        for(int i = 0; i < studentList.size(); i++){
-//            criteriaArrayList_reduce(project.getStudentInfo().get(i).getMark());
-            project.getStudentInfo().get(studentList.get(i)).setTotalMark(project.getStudentInfo().get(studentList.get(i)).getMark().getTotalMark());
-            AllFunctions.getObject().sendMark(project, project.getStudentInfo().get(studentList.get(i)).getNumber(), project.getStudentInfo().get(studentList.get(i)).getMark() );
+            for(int i = 0; i < studentList.size(); i++){
+        //            criteriaArrayList_reduce(project.getStudentInfo().get(i).getMark());
+                project.getStudentInfo().get(studentList.get(i)).setTotalMark(project.getStudentInfo().get(studentList.get(i)).getMark().getTotalMark());
+                AllFunctions.getObject().sendMark(project, project.getStudentInfo().get(studentList.get(i)).getNumber(), project.getStudentInfo().get(studentList.get(i)).getMark() );
+            }
+
+            Intent intent = new Intent(Activity_Assessment.this, Activity_Reaper_Mark.class);
+            intent.putExtra("indexOfProject", String.valueOf(indexOfProject));
+            intent.putExtra("indexOfStudent", String.valueOf(indexOfStudent));
+            intent.putExtra("indexOfGroup", String.valueOf(indexOfGroup));
+            startActivity(intent);
+            finish();
+        }else{
+            Toast.makeText(this, "You have one or more comments not selected", Toast.LENGTH_SHORT).show();
         }
-
-        Intent intent = new Intent(Activity_Assessment.this, Activity_Reaper_Mark.class);
-        intent.putExtra("indexOfProject", String.valueOf(indexOfProject));
-        intent.putExtra("indexOfStudent", String.valueOf(indexOfStudent));
-        intent.putExtra("indexOfGroup", String.valueOf(indexOfGroup));
-        startActivity(intent);
-        finish();
 
     }
 
