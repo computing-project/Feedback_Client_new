@@ -12,6 +12,7 @@
             android:layout_width="80dp"
             android:layout_height="35dp"
             android:gravity="left"
+            android:layout_weight="1"
             android:text="Group No."
             android:textColor="#000000"
             android:textSize="16dp"
@@ -31,6 +32,7 @@
         android:clickable="false"
         android:gravity="left"
         android:padding="5dp"
+        android:layout_weight="6"
         android:singleLine="true"
         android:text="Student ID"
         android:textColor="#000000"
@@ -47,9 +49,10 @@
             android:layout_width="200dp"
             android:layout_height="35dp"
             android:clickable="false"
+        android:layout_weight="12"
             android:text="Student Name"
             android:textSize="16dp"
-        android:singleLine="true"
+            android:singleLine="true"
             android:textColor="#000000"
             android:gravity="left"
             android:padding="5dp"/>
@@ -66,18 +69,23 @@
         android:layout_height="35dp"
         android:clickable="false"
         android:gravity="left"
+        android:layout_weight="20"
         android:padding="5dp"
         android:singleLine="true"
         android:text="Email"
         android:textColor="#000000"
         android:textSize="16dp" />
 
-        <Button
-            android:id="@+id/button_start_studentsWithButton"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="start"
-            android:background="@drawable/ic_start_button"/>
+    <Button
+        android:id="@+id/button_start_studentsWithButton"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:text="start"
+        android:layout_marginRight="16dp"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/ic_start_button"/>
 
 
 </LinearLayout>
