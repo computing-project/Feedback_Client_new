@@ -484,7 +484,7 @@ public class CommunicationForClient {
 			System.out.println("Receive: " + receive); //just for test
 
 			JSONObject jsonReceive = JSONObject.parseObject(receive);
-			String mark_ACK = jsonReceive.get("mark_ACK").toString();
+			String mark_ACK = jsonReceive.get("getMark_ACK").toString();
 			if (mark_ACK.equals("true")) {
 				String markListString = jsonReceive.get("markList").toString();
 				List<Mark> markList = JSONObject.parseArray(markListString, Mark.class);
@@ -539,13 +539,14 @@ public class CommunicationForClient {
 	}
 
 
-	public void sendPDF(String projectName, String studentID)
+	public void sendPDF(String projectName, String studentID, int sendBoth)
 	{
 		//construct JSONObject to send
 		JSONObject jsonSend = new JSONObject();
 		jsonSend.put("token", token);
 		jsonSend.put("projectName", projectName);
 		jsonSend.put("studentID", studentID);
+		jsonSend.put("sendBoth", sendBoth);
 
 		System.out.println("Send in method sendPDF: " + jsonSend.toJSONString()); //just for test
 

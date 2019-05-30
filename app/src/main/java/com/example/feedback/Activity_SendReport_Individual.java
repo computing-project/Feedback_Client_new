@@ -51,6 +51,21 @@ public class Activity_SendReport_Individual extends Activity {
         ProjectInfo project = AllFunctions.getObject().getProjectList().get(indexOfProject);
         StudentInfo student = AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentInfo().get(indexOfStudent);
         ArrayList<Mark> markList = AllFunctions.getObject().getMarkListForMarkPage();
+        Button button_sendSingle = findViewById(R.id.button_sendStudent_sendReportIndividual);
+        button_sendSingle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AllFunctions.getObject().sendPDF(project,student.getNumber(),1);
+            }
+        });
+        Button button_sendBoth = findViewById(R.id.button_sendBoth_sendReportIndividual);
+        button_sendBoth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AllFunctions.getObject().sendPDF(project,student.getNumber(),2);
+            }
+        });
+
         TextView textView_totalMark = findViewById(R.id.textView_totalMark_sendReportIndividual);
         textView_totalMark.setText("Mark:"+(int)markList.get(0).getTotalMark()+"%");
 

@@ -443,6 +443,22 @@ public class AllFunctions{
 
     }
 
+    public void sendPDF(ProjectInfo project, String studentID, int sendBoth){
+
+        new Thread(new Runnable(){
+            @Override
+            public void run(){
+
+                communication.sendPDF(project.getProjectName(),
+                        studentID, sendBoth);
+
+                Log.d("sendMark","success");
+
+            }
+        }).start();
+
+    }
+
 
     public void sortStudent(){
 
