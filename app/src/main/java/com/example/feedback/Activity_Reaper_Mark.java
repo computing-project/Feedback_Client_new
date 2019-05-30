@@ -146,11 +146,21 @@ public class Activity_Reaper_Mark extends Activity {
             button_viewReport.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Reaper_Mark.this, Activity_editable_individual_report.class);
-                    intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
-                    intent.putExtra("indexOfStudent",String.valueOf(indexOfStudent));
-                    intent.putExtra("indexOfMark",String.valueOf(position));
-                    startActivity(intent);
+                    if(indexOfGroup == -999) {
+                        Intent intent = new Intent(Activity_Reaper_Mark.this, Activity_editable_individual_report.class);
+                        intent.putExtra("indexOfProject", String.valueOf(indexOfProject));
+                        intent.putExtra("indexOfStudent", String.valueOf(indexOfStudent));
+                        intent.putExtra("indexOfMark", String.valueOf(position));
+                        startActivity(intent);
+                    }
+                    else
+                    {
+                        Intent intent = new Intent(Activity_Reaper_Mark.this, Activity_Editable_group_report.class);
+                        intent.putExtra("indexOfProject", String.valueOf(indexOfProject));
+                        intent.putExtra("indexOfGroup", String.valueOf(indexOfGroup));
+                        intent.putExtra("indexOfMark", String.valueOf(position));
+                        startActivity(intent);
+                    }
                 }
             });
 

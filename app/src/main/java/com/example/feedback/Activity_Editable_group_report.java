@@ -53,6 +53,16 @@ public class Activity_Editable_group_report extends Activity {
             }
         });
         Button button_finalReport = findViewById(R.id.button_finalReport_groupReport);
+        button_finalReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_Editable_group_report.this, Activity_SendReport_Group.class);
+                intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
+                intent.putExtra("indexOfGroup",String.valueOf(indexOfGroup));
+                intent.putExtra("indexMark",String.valueOf(indexOfMark));
+                startActivity(intent);
+            }
+        });
         if(!AllFunctions.getObject().getProjectList().get(indexOfProject).getAssistant().get(0).equals
                 (AllFunctions.getObject().getMyEmail()))
         {
@@ -96,7 +106,7 @@ public class Activity_Editable_group_report extends Activity {
 
         htmlString += "<h2 style=\"font-weight: normal\">Students</h2>" + "<p>";
         for(int i=0; i<studentInfoArrayList.size(); i++)
-            htmlString = htmlString + studentInfoArrayList.get(i).getNumber()+studentInfoArrayList.get(i).getFirstName()+" "+studentInfoArrayList.get(i).getMiddleName()+" "+studentInfoArrayList.get(i).getSurname()+"<br>";
+            htmlString = htmlString + studentInfoArrayList.get(i).getNumber()+"---"+studentInfoArrayList.get(i).getFirstName()+" "+studentInfoArrayList.get(i).getMiddleName()+" "+studentInfoArrayList.get(i).getSurname()+"<br>";
 
         htmlString = htmlString +
                 "</p >" +
@@ -122,12 +132,5 @@ public class Activity_Editable_group_report extends Activity {
         textView_pdfContent.setText(Html.fromHtml(htmlString));
     }
 
-    public void finalReport(View view)
-    {
-        Intent intent = new Intent(Activity_Editable_group_report.this, Activity_SendReport_Group.class);
-        intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
-        intent.putExtra("indexOfGroup",String.valueOf(indexOfGroup));
-        startActivity(intent);
-    }
 }
 

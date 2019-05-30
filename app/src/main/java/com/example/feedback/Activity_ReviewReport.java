@@ -112,6 +112,8 @@ public class Activity_ReviewReport extends Activity {
 
             TextView textView_studentID = convertView.findViewById(R.id.textView_studentID_studentsWithButton);
             textView_studentID.setText(studentList.get(position).getNumber());
+            TextView textView_studentGroup = convertView.findViewById(R.id.textView_group_studentswithButton);
+            textView_studentGroup.setText(String.valueOf(studentList.get(position).getGroup()));
             //test mark Num
             textView_studentID.setOnClickListener(new View.OnClickListener() {
                 @Override
