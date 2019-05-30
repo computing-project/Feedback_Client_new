@@ -25,6 +25,10 @@ public class Activity_Realtime_Assessment extends Activity {
     private ListView listView_students;
     private ArrayList<ProjectInfo> projectList;
     private int indexOfProject;
+    private MyAdapter myAdapter;
+    private TextView textView_duration_title;
+    private TextView textView_numCandicate;
+    private TextView textView_numAssessor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +71,7 @@ public class Activity_Realtime_Assessment extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 indexOfProject = position;
                 ProjectInfo project = projectList.get(position);
-                MyAdapter myAdapter = new MyAdapter(project.getStudentInfo(),Activity_Realtime_Assessment.this);
+                myAdapter = new MyAdapter(project.getStudentInfo(),Activity_Realtime_Assessment.this);
                 listView_students.setAdapter(myAdapter);
 //                listView_students.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //                    @Override
@@ -75,10 +79,10 @@ public class Activity_Realtime_Assessment extends Activity {
 //                        myAdapter.notifyDataSetChanged();
 //                    }
 //                });
-                TextView textView_duration_title = findViewById(R.id.textView_duration_realtimeAssessment);
+                textView_duration_title = findViewById(R.id.textView_duration_realtimeAssessment);
                 textView_duration_title.setText(""+projectList.get(indexOfProject).getDurationMin()+":"+
                         +projectList.get(indexOfProject).getDurationSec()+" Presentation");
-                TextView textView_numCandicate = findViewById(R.id.textView_numCandidates_realtimeAssessment);
+                textView_numCandicate = findViewById(R.id.textView_numCandidates_realtimeAssessment);
                 int numStudentHasMarked = 0;
                 for(int i=0; i<projectList.get(indexOfProject).getStudentInfo().size(); i++)
                 {
@@ -87,11 +91,20 @@ public class Activity_Realtime_Assessment extends Activity {
                 }
                 textView_numCandicate.setText(numStudentHasMarked+" of "+
                         projectList.get(indexOfProject).getStudentInfo().size()+" candidates marked");
-                TextView textView_numAssessor = findViewById(R.id.textView_numAssessors_realtimeAssessment);
+                textView_numAssessor = findViewById(R.id.textView_numAssessors_realtimeAssessment);
                 textView_numAssessor.setText(projectList.get(indexOfProject).getAssistant().size()+" elevators");
 
             }
         });
+
+    }
+
+    private void resetStudentListView()
+    {
+        listView_students.setAdapter(null);
+        textView_duration_title.setText("");
+        textView_numCandicate.setText("");
+        textView_numAssessor.setText("");
 
     }
 
@@ -148,6 +161,7 @@ public class Activity_Realtime_Assessment extends Activity {
                     intent.putExtra("indexOfGroup", String.valueOf(studentList.get(position).getGroup()));
                     System.out.println("project: "+indexOfProject);
                     System.out.println("student: "+position);
+                    resetStudentListView();
                     startActivity(intent);
                 }
             });
