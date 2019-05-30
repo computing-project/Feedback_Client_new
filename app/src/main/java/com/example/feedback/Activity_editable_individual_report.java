@@ -56,10 +56,21 @@ public class Activity_editable_individual_report extends Activity {
         ProjectInfo project = AllFunctions.getObject().getProjectList().get(indexOfProject);
         StudentInfo student = AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentInfo().get(indexOfStudent);
         Mark mark = AllFunctions.getObject().getMarkListForMarkPage().get(indexOfMark);
-        Button button_edit = findViewById(R.id.button_edit_report);
+        Button button_editReport_individual = findViewById(R.id.button_edit_report);
+        button_editReport_individual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_editable_individual_report.this, Activity_Assessment.class);
+                intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
+                intent.putExtra("indexOfGroup", "-999");
+                intent.putExtra("indexOfStudent",String.valueOf(indexOfStudent));
+                AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentInfo().get(indexOfStudent).setMark(mark);
+                startActivity(intent);
+            }
+        });
         if(!mark.getLecturerEmail().equals(AllFunctions.getObject().getMyEmail()))
         {
-            button_edit.setVisibility(View.INVISIBLE);
+            button_editReport_individual.setVisibility(View.INVISIBLE);
         }
         TextView textView_totalMark = findViewById(R.id.textView_totalMark_report);
         textView_totalMark.setText("Mark:"+(int)mark.getTotalMark()+"%");
@@ -112,4 +123,5 @@ public class Activity_editable_individual_report extends Activity {
         intent.putExtra("indexOfMark",String.valueOf(indexOfMark));
         startActivity(intent);
     }
+
 }
