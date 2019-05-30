@@ -842,6 +842,7 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
                     String longText_ls = project.getCriteria().get(j).getSubsectionList().get(k).getShortTextList().get(matrixOfMarkedCriteria[j][k]).getLongtext().get(matrixCriteriaLongtext[j][k]);
                     ShortText shortText_ls = new ShortText();
                     shortText_ls.setName(project.getCriteria().get(j).getSubsectionList().get(k).getShortTextList().get(matrixOfMarkedCriteria[j][k]).getName());
+                    shortText_ls.setGrade(project.getCriteria().get(j).getSubsectionList().get(k).getShortTextList().get(matrixOfMarkedCriteria[j][k]).getGrade());
                     shortText_ls.getLongtext().add(longText_ls);
                     SubSection subSection_ls = new SubSection();
                     subSection_ls.setName(project.getCriteria().get(j).getSubsectionList().get(k).getName());
@@ -858,11 +859,13 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
                     String longText_ls = project.getCommentList().get(j).getSubsectionList().get(k).getShortTextList().get(matrixOfCommentOnly[j][k]).getLongtext().get(matrixCommentLongText[j][k]);
                     ShortText shortText_ls = new ShortText();
                     shortText_ls.setName(project.getCommentList().get(j).getSubsectionList().get(k).getShortTextList().get(matrixOfCommentOnly[j][k]).getName());
+                    shortText_ls.setGrade(project.getCommentList().get(j).getSubsectionList().get(k).getShortTextList().get(matrixOfCommentOnly[j][k]).getGrade());
+
                     shortText_ls.getLongtext().add(longText_ls);
                     SubSection subSection_ls = new SubSection();
                     subSection_ls.setName(project.getCommentList().get(j).getSubsectionList().get(k).getName());
                     subSection_ls.getShortTextList().add(shortText_ls);
-                    criteriaArrayList.get(j).getSubsectionList().add(subSection_ls);
+                    commentOnlyList.get(j).getSubsectionList().add(subSection_ls);
                 }
             }
         }
