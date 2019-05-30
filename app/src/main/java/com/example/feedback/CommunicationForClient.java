@@ -457,16 +457,16 @@ public class CommunicationForClient {
 	}
 
 
-	public void getMarks(String projectName, ArrayList<String> studentIDList)
+	public void getMarks(ProjectInfo project, ArrayList<String> studentIDList)
 	{
 		System.out.println("Communication的getMark方法被调用");
 		//construct JSONObject to send
 		JSONObject jsonSend = new JSONObject();
 		jsonSend.put("token", token);
-		jsonSend.put("projectName", projectName);
+		jsonSend.put("projectName", project.getProjectName());
 		String studentIDListString = com.alibaba.fastjson.JSON.toJSONString(studentIDList);
 		jsonSend.put("studentNumberList", studentIDListString);
-		jsonSend.put("primaryEmail", AllFunctions.getObject().getMyEmail());
+		jsonSend.put("primaryEmail", project.getAssistant().get(0));
 
 
 		System.out.println("Send: " + jsonSend.toJSONString()); //just for test
@@ -501,16 +501,16 @@ public class CommunicationForClient {
 
 
 
-	public void sendMark(String projectName, String studentID, Mark mark)
+	public void sendMark(ProjectInfo project, String studentID, Mark mark)
 	{
 		//construct JSONObject to send
 		JSONObject jsonSend = new JSONObject();
 		jsonSend.put("token", token);
-		jsonSend.put("projectName", projectName);
+		jsonSend.put("projectName", project.getProjectName());
 		jsonSend.put("studentID", studentID);
 		String markString = com.alibaba.fastjson.JSON.toJSONString(mark);
 		jsonSend.put("mark", markString);
-		jsonSend.put("primaryEmail", AllFunctions.getObject().getMyEmail());
+		jsonSend.put("primaryEmail", project.getAssistant().get(0));
 
 		System.out.println("Send in method sendMark: " + jsonSend.toJSONString()); //just for test
 

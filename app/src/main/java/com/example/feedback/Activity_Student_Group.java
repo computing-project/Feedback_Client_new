@@ -88,10 +88,21 @@ public class Activity_Student_Group extends Activity {
     public void deleteStudent(View view)
     {
         if (listView.getCheckedItemCount() == 1) {
-            int studentIndex = listView.getCheckedItemPosition();
-            AllFunctions.getObject().deleteStudent(project,students.get(studentIndex).getNumber());
-            students.remove(studentIndex);
-            init();
+            SparseBooleanArray checkedItemsStudents = listView.getCheckedItemPositions();
+            int studentIndex = -1;
+            if (checkedItemsStudents != null) {
+                for(int i=0; i<project.getStudentInfo().size(); i++)
+                {
+                    if(checkedItemsStudents.get(i) == true)
+                    {
+                        studentIndex = i;
+                        break;
+                    }
+                }
+                AllFunctions.getObject().deleteStudent(project, students.get(studentIndex).getNumber());
+                students.remove(studentIndex);
+                init();
+            }
         }
         else
         {

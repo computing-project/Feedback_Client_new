@@ -195,7 +195,7 @@ public class AllFunctions{
         new Thread(new Runnable(){
             @Override
             public void run() {
-                communication.getMarks(project.getProjectName(), studentIDList);
+                communication.getMarks(project, studentIDList);
             }
         }).start();
 
@@ -433,7 +433,7 @@ public class AllFunctions{
             @Override
             public void run(){
 
-                communication.sendMark(project.getProjectName(),
+                communication.sendMark(project,
                       studentID, mark);
 
                 Log.d("sendMark","success");
