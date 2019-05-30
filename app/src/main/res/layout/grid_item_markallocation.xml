@@ -52,7 +52,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_toLeftOf="@id/button_minus_gridItem"
-            android:text="Maximun Mark"
+            android:text="Maximum Mark"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <Button

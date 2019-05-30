@@ -120,10 +120,6 @@ public class AllFunctions{
     }
 
     public void registerACK(boolean ack){
-
-        //for test
-        System.out.println("receive register_ACK in AllFunc: "+ack);
-
         if(ack)
         {
             handlerAllfunction.sendEmptyMessage(111);
