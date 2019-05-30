@@ -86,7 +86,7 @@ public class Activity_Editable_group_report extends Activity {
                 Intent intent = new Intent(Activity_Editable_group_report.this, Activity_Assessment.class);
                 intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
                 intent.putExtra("indexOfGroup", String.valueOf(indexOfGroup));
-                intent.putExtra("indexOfStudent","");
+                intent.putExtra("indexOfStudent","-1");
                 for(int i=0; i<project.getStudentInfo().size(); i++) {
                     if(project.getStudentInfo().get(i).getGroup() == indexOfGroup)
                         project.getStudentInfo().get(i).setMark(mark);
