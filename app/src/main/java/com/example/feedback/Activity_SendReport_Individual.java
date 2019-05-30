@@ -56,6 +56,10 @@ public class Activity_SendReport_Individual extends Activity {
             @Override
             public void onClick(View view) {
                 AllFunctions.getObject().sendPDF(project,student.getNumber(),1);
+                student.setSendEmail(true);
+                Intent intent = new Intent(Activity_SendReport_Individual.this, Activity_Reaper_Mark.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
             }
         });
         Button button_sendBoth = findViewById(R.id.button_sendBoth_sendReportIndividual);
@@ -63,6 +67,19 @@ public class Activity_SendReport_Individual extends Activity {
             @Override
             public void onClick(View view) {
                 AllFunctions.getObject().sendPDF(project,student.getNumber(),2);
+                student.setSendEmail(true);
+                Intent intent = new Intent(Activity_SendReport_Individual.this, Activity_Reaper_Mark.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
+        Button button_finish = findViewById(R.id.btn_finish_sendReportIndividual);
+        button_finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_SendReport_Individual.this, Activity_Reaper_Mark.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
             }
         });
 
