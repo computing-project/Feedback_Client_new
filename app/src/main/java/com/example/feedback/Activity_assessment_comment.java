@@ -174,13 +174,13 @@ public class Activity_assessment_comment extends Activity {
 
 
 
-            String message = "第一级选中的是第" + threeListAdapter.getOneItemSelect() + "，第二级选中的是第" + threeListAdapter.getTwoItemSelect();
-            Toast.makeText(Activity_assessment_comment.this, message, Toast.LENGTH_LONG).show();
-            // 拿到第三级选中的列表，这里可以这样拿，也可以直接从我们数据源中拿
+//            String message = "第一级选中的是第" + threeListAdapter.getOneItemSelect() + "，第二级选中的是第" + threeListAdapter.getTwoItemSelect();
+//            Toast.makeText(Activity_assessment_comment.this, message, Toast.LENGTH_LONG).show();
+//            // 拿到第三级选中的列表，这里可以这样拿，也可以直接从我们数据源中拿
             List<ThreeBean> threeSelect = threeListAdapter.getThreeSelect();
             if (threeSelect.size() > 0) {
-                String messageThree = "第三级选中了" + TextUtils.join(", ", threeSelect);
-                Toast.makeText(Activity_assessment_comment.this, messageThree, Toast.LENGTH_LONG).show();
+//                String messageThree = "第三级选中了" + TextUtils.join(", ", threeSelect);
+//                Toast.makeText(Activity_assessment_comment.this, messageThree, Toast.LENGTH_LONG).show();
 
                 subsectionIndex = threeListAdapter.getOneItemSelect();
                 shortTextIndex = threeListAdapter.getTwoItemSelect();

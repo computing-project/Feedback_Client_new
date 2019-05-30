@@ -124,8 +124,9 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
             }
 
             for(int k = 0; k < project.getCriteria().size(); k++){
-                totalMark = totalMark + project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().get(k) *
-                        (project.getCriteria().get(k).getMaximunMark() / totalWeighting);
+//                totalMark = totalMark + project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().get(k) *
+//                        (project.getCriteria().get(k).getMaximunMark() / totalWeighting);
+                totalMark = project.getStudentInfo().get(studentList.get(0)).getMark().getTotalMark();
                 Log.d("1115", String.valueOf(project.getCriteria().get(k).getMaximunMark()));
 
             }
@@ -281,21 +282,21 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
             weightList.add(1, 0);
             weightList.add(2, 0);
 
-            for(int n = 0; n < project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().size(); n++){
-                for(int l = 0; l < project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(n).getSubsectionList().size(); l++){
-                    for(int p = 0; p < project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(n).getSubsectionList().get(l).getShortTextList().size(); p++) {
-                        if(project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(n).getSubsectionList().get(l).getShortTextList().get(p).getLongtext().size() == 0){
-                        }else if(project.getCriteria().get(n).getSubsectionList().get(l).getShortTextList().get(p).getGrade() == 1){
-                            weightList.set(0, (weightList.get(0)+1));
-                        }else if(project.getCriteria().get(n).getSubsectionList().get(l).getShortTextList().get(p).getGrade() == 2){
-                            weightList.set(1, (weightList.get(0)+1));
-                        }else if(project.getCriteria().get(n).getSubsectionList().get(l).getShortTextList().get(p).getGrade() == 3){
-                            weightList.set(2, (weightList.get(0)+1));
-                        }
-                    }
-                }
-            }
-            Log.d("77777", String.valueOf(weightList.get(0)) + " " + String.valueOf(weightList.get(1)) + " " + String.valueOf(weightList.get(2)));
+//            for(int n = 0; n < project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().size(); n++){
+//                for(int l = 0; l < project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(n).getSubsectionList().size(); l++){
+//                    for(int p = 0; p < project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(n).getSubsectionList().get(l).getShortTextList().size(); p++) {
+//                        if(project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(n).getSubsectionList().get(l).getShortTextList().get(p).getLongtext().size() == 0){
+//                        }else if(project.getCriteria().get(n).getSubsectionList().get(l).getShortTextList().get(p).getGrade() == 1){
+//                            weightList.set(0, (weightList.get(0)+1));
+//                        }else if(project.getCriteria().get(n).getSubsectionList().get(l).getShortTextList().get(p).getGrade() == 2){
+//                            weightList.set(1, (weightList.get(0)+1));
+//                        }else if(project.getCriteria().get(n).getSubsectionList().get(l).getShortTextList().get(p).getGrade() == 3){
+//                            weightList.set(2, (weightList.get(0)+1));
+//                        }
+//                    }
+//                }
+//            }
+//            Log.d("77777", String.valueOf(weightList.get(0)) + " " + String.valueOf(weightList.get(1)) + " " + String.valueOf(weightList.get(2)));
 
             if(getMatrixMarkedCriteria(position).size() != 0){
                 for(int i = 0; i < getMatrixMarkedCriteria(position).size(); i ++){
