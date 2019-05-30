@@ -80,6 +80,21 @@ public class Activity_Editable_group_report extends Activity {
         ProjectInfo project = AllFunctions.getObject().getProjectList().get(indexOfProject);
         Mark mark = AllFunctions.getObject().getMarkListForMarkPage().get(indexOfMark);
         Button button_edit = findViewById(R.id.button_edit_groupReport);
+        button_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_Editable_group_report.this, Activity_Assessment.class);
+                intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
+                intent.putExtra("indexOfGroup", String.valueOf(indexOfGroup));
+                intent.putExtra("indexOfStudent","");
+                for(int i=0; i<project.getStudentInfo().size(); i++) {
+                    if(project.getStudentInfo().get(i).getGroup() == indexOfGroup)
+                        project.getStudentInfo().get(i).setMark(mark);
+                }
+                startActivity(intent);
+                finish();
+            }
+        });
         if(!mark.getLecturerEmail().equals(AllFunctions.getObject().getMyEmail()))
         {
             button_edit.setVisibility(View.INVISIBLE);
