@@ -92,7 +92,7 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
         indexOfGroup = Integer.parseInt(intent.getStringExtra("indexOfGroup"));
         project = AllFunctions.getObject().getProjectList().get(indexOfProject);
 
-        initMatrix();
+
 
         tv_assessment_student = (TextView) findViewById(R.id.tv_assessment_student);
         studentList = new ArrayList<Integer>();
@@ -118,7 +118,7 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
 
         if(project.getStudentInfo().get(studentList.get(0)).getMark() != null){
 
-
+            MarkObjectToMatrix(project.getStudentInfo().get(studentList.get(0)).getMark());
             for(int m = 0; m < studentList.size(); m++){
                 for(int n = 0; n < project.getCriteria().size(); n++){
                     project.getStudentInfo().get(studentList.get(m)).getMark().getCriteriaList().get(n).getSubsectionList().clear();
@@ -154,6 +154,8 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
             Log.d("1113", String.valueOf(totalMark));
 
         }else{
+
+            initMatrix();
             tv_assessment_total_mark.setText("0%");
             for(int m = 0; m < studentList.size(); m++){
                 project.getStudentInfo().get(studentList.get(m)).setMark(new Mark());
