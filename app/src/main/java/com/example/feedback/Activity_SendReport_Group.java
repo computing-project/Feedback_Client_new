@@ -67,6 +67,9 @@ public class Activity_SendReport_Group extends AppCompatActivity {
             public void onClick(View view) {
                 for(int i=0; i<studentInfoArrayList.size(); i++)
                     AllFunctions.getObject().sendPDF(project,studentInfoArrayList.get(i).getNumber(),1);
+                Intent intent = new Intent(Activity_SendReport_Group.this, Activity_Reaper_Mark.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
             }
         });
         Button button_sendBoth = findViewById(R.id.button_sendBoth_sendReportGroup);
@@ -75,6 +78,18 @@ public class Activity_SendReport_Group extends AppCompatActivity {
             public void onClick(View view) {
                 for(int i=0; i<studentInfoArrayList.size(); i++)
                     AllFunctions.getObject().sendPDF(project,studentInfoArrayList.get(i).getNumber(),2);
+                Intent intent = new Intent(Activity_SendReport_Group.this, Activity_Reaper_Mark.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
+        Button button_finish = findViewById(R.id.btn_finish_sendReportGroup);
+        button_finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_SendReport_Group.this, Activity_Reaper_Mark.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -106,6 +121,8 @@ public class Activity_SendReport_Group extends AppCompatActivity {
                 "<h2 style=\"font-weight: normal\">Assessment Date</h2>" +
                 "<p>"+"test date"+"</p ><br><br><br><hr>" +
                 "<div>";
+
+        htmlString += "<h2 style=\"font-weight: normal\">MarkedCriteria</h2>" + "<p>";
         for(int i=0; i<markList.get(0).getCriteriaList().size(); i++)
         {
             htmlString += "<h3 style=\"font-weight: normal\"><span style=\"float:left\">" + markList.get(0).getCriteriaList().get(i).getName() + "</span>" +
@@ -122,6 +139,25 @@ public class Activity_SendReport_Group extends AppCompatActivity {
             }
             htmlString += "<br>";
         }
+
+        htmlString +=  "<h2 style=\"font-weight: normal\">CommentOnlyCriteria</h2>" + "<p>";
+        for(int i=0; i<markList.get(0).getCommentList().size(); i++)
+        {
+            htmlString += "<h3 style=\"font-weight: normal\"><span style=\"float:left\">" + markList.get(0).getCommentList().get(i).getName() + "</span></h3>";
+            for(int j=0; j<markList.size(); j++)
+            {
+                htmlString += "<h4 style=\"font-weight: normal;color: #014085\">"+markList.get(j).getLecturerName()+":</h4>";
+                if(markList.get(j).getCommentList().size() > 0)
+                    for(int k=0; k<markList.get(j).getCommentList().get(i).getSubsectionList().size(); k++)
+                    {
+                        htmlString += "<p>&lt;" + markList.get(j).getCommentList().get(i).getSubsectionList().get(k).getName() + ":&gt;"
+                                + markList.get(j).getCommentList().get(i).getSubsectionList().get(k).getShortTextList().get(0).getLongtext() + "</p >";
+                    }
+            }
+            htmlString += "<br>";
+        }
+
+
         htmlString +=
                 "</div>" +
                         "</body>" +

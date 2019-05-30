@@ -113,7 +113,12 @@ public class Activity_ReviewReport extends Activity {
             TextView textView_studentID = convertView.findViewById(R.id.textView_studentID_studentsWithButton);
             textView_studentID.setText(studentList.get(position).getNumber());
             TextView textView_studentGroup = convertView.findViewById(R.id.textView_group_studentswithButton);
-            textView_studentGroup.setText(String.valueOf(studentList.get(position).getGroup()));
+            if(studentList.get(position).getGroup() == -999)
+                textView_studentGroup.setText("");
+            else
+                textView_studentGroup.setText(String.valueOf(studentList.get(position).getGroup()));
+            if(studentList.get(position).getSendEmail())
+                convertView.setBackgroundColor(Color.parseColor("#f2f2f2"));
             //test mark Num
             textView_studentID.setOnClickListener(new View.OnClickListener() {
                 @Override

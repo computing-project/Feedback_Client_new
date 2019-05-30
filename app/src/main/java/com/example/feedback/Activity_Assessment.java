@@ -92,7 +92,7 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
         indexOfGroup = Integer.parseInt(intent.getStringExtra("indexOfGroup"));
         project = AllFunctions.getObject().getProjectList().get(indexOfProject);
 
-        initMatrix();
+
 
         tv_assessment_student = (TextView) findViewById(R.id.tv_assessment_student);
         studentList = new ArrayList<Integer>();
@@ -118,7 +118,7 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
 
         if(project.getStudentInfo().get(studentList.get(0)).getMark() != null){
 
-
+            MarkObjectToMatrix(project.getStudentInfo().get(studentList.get(0)).getMark());
             for(int m = 0; m < studentList.size(); m++){
                 for(int n = 0; n < project.getCriteria().size(); n++){
                     project.getStudentInfo().get(studentList.get(m)).getMark().getCriteriaList().get(n).getSubsectionList().clear();
@@ -154,6 +154,8 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
             Log.d("1113", String.valueOf(totalMark));
 
         }else{
+
+            initMatrix();
             tv_assessment_total_mark.setText("0%");
             for(int m = 0; m < studentList.size(); m++){
                 project.getStudentInfo().get(studentList.get(m)).setMark(new Mark());
@@ -642,7 +644,7 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
                 AllFunctions.getObject().sendMark(project, project.getStudentInfo().get(studentList.get(i)).getNumber(), project.getStudentInfo().get(studentList.get(i)).getMark() );
             }
 
-            Intent intent = new Intent(Activity_Assessment.this, Activity_Reaper_Mark.class);
+            Intent intent = new Intent(Activity_Assessment.this, Activity_Reaper_Mark.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.putExtra("indexOfProject", String.valueOf(indexOfProject));
             intent.putExtra("indexOfStudent", String.valueOf(indexOfStudent));
             intent.putExtra("indexOfGroup", String.valueOf(indexOfGroup));
@@ -682,71 +684,6 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
         listView.setLayoutParams(params);
     }
 
-//    private void criteriaArrayList_reduce(Mark mark_before)
-//    {
-//        ArrayList<Criteria> criteria_before = mark_before.getCriteriaList();
-//        ArrayList<Criteria> criteria_project = project.getCriteria();
-//        String longTexts[][] = new String[criteria_before.size()][20];
-//        int matrix[][] = new int[criteria_before.size()][20];
-//
-//
-//        for(int i=0; i<criteria_before.size(); i++)
-//        {
-//            for(int q=0; q<20; q++)
-//                matrix[i][q] = -999;
-//
-//            //criteria layer
-//            for(int j=0; j<criteria_before.get(i).getSubsectionList().size(); j++)
-//            {
-//                //subsection layer
-//                OUT_ShortTextLayer:
-//                for(int k=0; k<criteria_before.get(i).getSubsectionList().get(j).getShortTextList().size(); k++)
-//                {
-//                    //shortText layer
-//                    if(criteria_before.get(i).getSubsectionList().get(j).getShortTextList().get(k).getLongtext().size() == 1)
-//                    {
-//                        longTexts[i][j] = criteria_before.get(i).getSubsectionList().get(j).getShortTextList().get(k).getLongtext().get(0);
-//                        matrix[i][j] = k;
-//                        break OUT_ShortTextLayer;
-//                    }
-//                }
-//            }
-//        }
-//        for(int i=0; i<mark_before.getCriteriaList().size(); i++)
-//        {
-//            mark_before.getCriteriaList().get(i).getSubsectionList().clear();
-//        }
-//
-//        for(int i=0; i<mark_before.getCriteriaList().size(); i++)
-//        {
-//            //criteria layer
-//            OUT_SubsectionLayer:
-//            for(int j=0; j<criteria_project.get(i).getSubsectionList().size(); j++)
-//            {
-//                if(matrix[i][j] == -999)
-//                    ;
-//                else
-//                {
-//                    SubSection subSection = new SubSection();
-//                    subSection.setName(criteria_project.get(i).getSubsectionList().get(j).getName());
-//                    ShortText shortText = new ShortText();
-//                    shortText.setName(criteria_project.get(i).getSubsectionList().get(j).getShortTextList().get(matrix[i][j]).getName());
-//                    shortText.getLongtext().add(longTexts[i][j]);
-//                    subSection.getShortTextList().add(shortText);
-//                    mark_before.getCriteriaList().get(i).getSubsectionList().add(subSection);
-//                }
-//            }
-//
-//        }
-//        System.out.println("接下来是Mark的信息：");
-//        for(int i=0; i<mark_before.getCriteriaList().size(); i++)
-//        {
-//            for(int j=0; j<mark_before.getCriteriaList().get(i).getSubsectionList().size(); j++)
-//                System.out.println("第"+i+"个Criteria的第"+j+"个Subsection的名字是"
-//                        +mark_before.getCriteriaList().get(i).getSubsectionList().get(j).getName()+"\n"+
-//                        "选择的shortText是"+mark_before.getCriteriaList().get(i).getSubsectionList().get(j).getShortTextList().get(0).getName());
-//        }
-//    }
 
     private void initMatrix()
     {
@@ -842,6 +779,7 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
                     String longText_ls = project.getCriteria().get(j).getSubsectionList().get(k).getShortTextList().get(matrixOfMarkedCriteria[j][k]).getLongtext().get(matrixCriteriaLongtext[j][k]);
                     ShortText shortText_ls = new ShortText();
                     shortText_ls.setName(project.getCriteria().get(j).getSubsectionList().get(k).getShortTextList().get(matrixOfMarkedCriteria[j][k]).getName());
+                    shortText_ls.setGrade(project.getCriteria().get(j).getSubsectionList().get(k).getShortTextList().get(matrixOfMarkedCriteria[j][k]).getGrade());
                     shortText_ls.getLongtext().add(longText_ls);
                     SubSection subSection_ls = new SubSection();
                     subSection_ls.setName(project.getCriteria().get(j).getSubsectionList().get(k).getName());
@@ -858,11 +796,13 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
                     String longText_ls = project.getCommentList().get(j).getSubsectionList().get(k).getShortTextList().get(matrixOfCommentOnly[j][k]).getLongtext().get(matrixCommentLongText[j][k]);
                     ShortText shortText_ls = new ShortText();
                     shortText_ls.setName(project.getCommentList().get(j).getSubsectionList().get(k).getShortTextList().get(matrixOfCommentOnly[j][k]).getName());
+                    shortText_ls.setGrade(project.getCommentList().get(j).getSubsectionList().get(k).getShortTextList().get(matrixOfCommentOnly[j][k]).getGrade());
+
                     shortText_ls.getLongtext().add(longText_ls);
                     SubSection subSection_ls = new SubSection();
                     subSection_ls.setName(project.getCommentList().get(j).getSubsectionList().get(k).getName());
                     subSection_ls.getShortTextList().add(shortText_ls);
-                    criteriaArrayList.get(j).getSubsectionList().add(subSection_ls);
+                    commentOnlyList.get(j).getSubsectionList().add(subSection_ls);
                 }
             }
         }

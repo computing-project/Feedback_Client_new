@@ -56,10 +56,22 @@ public class Activity_editable_individual_report extends Activity {
         ProjectInfo project = AllFunctions.getObject().getProjectList().get(indexOfProject);
         StudentInfo student = AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentInfo().get(indexOfStudent);
         Mark mark = AllFunctions.getObject().getMarkListForMarkPage().get(indexOfMark);
-        Button button_edit = findViewById(R.id.button_edit_report);
+        Button button_editReport_individual = findViewById(R.id.button_edit_report);
+        button_editReport_individual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_editable_individual_report.this, Activity_Assessment.class);
+                intent.putExtra("indexOfProject",String.valueOf(indexOfProject));
+                intent.putExtra("indexOfGroup", "-999");
+                intent.putExtra("indexOfStudent",String.valueOf(indexOfStudent));
+                AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentInfo().get(indexOfStudent).setMark(mark);
+                startActivity(intent);
+                finish();
+            }
+        });
         if(!mark.getLecturerEmail().equals(AllFunctions.getObject().getMyEmail()))
         {
-            button_edit.setVisibility(View.INVISIBLE);
+            button_editReport_individual.setVisibility(View.INVISIBLE);
         }
         TextView textView_totalMark = findViewById(R.id.textView_totalMark_report);
         textView_totalMark.setText("Mark:"+(int)mark.getTotalMark()+"%");
@@ -84,7 +96,8 @@ public class Activity_editable_individual_report extends Activity {
                 "</p >" +
                 "<h2 style=\"font-weight: normal\">Assessment Date</h2>" +
                 "<p>"+"test date"+"</p ><br><br><br><hr>" +
-                "<div>";
+                "<div>" +
+                "<h2 style=\"font-weight: normal\">MarkedCriteria</h2>" + "<p>";
         for(int i=0; i<mark.getCriteriaList().size(); i++)
         {
             htmlString += "<h3 style=\"font-weight: normal\"><span style=\"float:left\">" + mark.getCriteriaList().get(i).getName() + "</span>" +
@@ -96,6 +109,19 @@ public class Activity_editable_individual_report extends Activity {
             }
             htmlString += "<br>";
         }
+
+        htmlString +=  "<h2 style=\"font-weight: normal\">CommentOnlyCriteria</h2>" + "<p>";
+        for(int i=0; i<mark.getCommentList().size(); i++)
+        {
+            htmlString += "<h3 style=\"font-weight: normal\"><span style=\"float:left\">" + mark.getCommentList().get(i).getName() + "</span></h3>";
+            for(int j=0; j<mark.getCommentList().get(i).getSubsectionList().size(); j++)
+            {
+                htmlString+= "<p>&lt;"+mark.getCommentList().get(i).getSubsectionList().get(j).getName()+
+                        ":&gt;"+mark.getCommentList().get(i).getSubsectionList().get(j).getShortTextList().get(0).getLongtext()+"</p >";
+            }
+            htmlString += "<br>";
+        }
+
         htmlString +=
                 "</div>" +
                 "</body>" +
@@ -112,4 +138,5 @@ public class Activity_editable_individual_report extends Activity {
         intent.putExtra("indexOfMark",String.valueOf(indexOfMark));
         startActivity(intent);
     }
+
 }
