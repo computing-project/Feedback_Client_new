@@ -345,74 +345,74 @@ public class Activity_Student_Group extends Activity {
     public void editStudent_inStudentManagement(View v) {
 
         if (listView.getCheckedItemCount() == 1) {
-            indexOfStudent = listView.getCheckedItemPosition();
-
-
-            LayoutInflater layoutInflater = LayoutInflater.from(Activity_Student_Group.this);//获得layoutInflater对象
-            View view = layoutInflater.from(Activity_Student_Group.this).inflate(R.layout.dialog_add_student, null);//获得view对象
-
-            EditText editText_studentID_addStudent = (EditText) view.findViewById(R.id.editText_studentID_addStudent);//获取控件
-            editText_studentID_addStudent.setEnabled(false);
-            editText_studentID_addStudent.setText(students.get(indexOfStudent).getNumber());
-            EditText editText_firstName_addStudent = (EditText) view.findViewById(R.id.editText_firstName_addStudent);//获取控件
-            editText_firstName_addStudent.setText(students.get(indexOfStudent).getFirstName());
-            EditText editText_middleName_addStudent = (EditText) view.findViewById(R.id.editText_middleName_addStudent);//获取控件
-            editText_middleName_addStudent.setText(students.get(indexOfStudent).getMiddleName());
-            EditText editText_surname_addStudent = (EditText) view.findViewById(R.id.editText_surname_addStudent);//获取控件
-            editText_surname_addStudent.setText(students.get(indexOfStudent).getSurname());
-            EditText editText_email_addStudent = (EditText) view.findViewById(R.id.editText_email_addStudent);//获取控件
-            editText_email_addStudent.setText(students.get(indexOfStudent).getEmail());
-
-            Dialog dialog = new AlertDialog.Builder(Activity_Student_Group.this).setTitle("Edit Student").setView(view).setPositiveButton("Done", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-
-                    studentID = editText_studentID_addStudent.getText().toString();
-                    firstName = editText_firstName_addStudent.getText().toString();
-                    middleName = editText_middleName_addStudent.getText().toString();
-                    surname = editText_surname_addStudent.getText().toString();
-                    email = editText_email_addStudent.getText().toString();
-
-                    String emailPattern = "[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.+[a-z]+";
-
-                    if(studentID.equals("")) {
-                        Toast.makeText(getApplicationContext(), "StudentID cannot be empty", Toast.LENGTH_SHORT).show();
-                    }
-                    else if(firstName.equals(""))
-                    {
-                        Toast.makeText(getApplicationContext(), "FirstName cannot be empty", Toast.LENGTH_SHORT).show();
-
-                    }
-                    else if(surname.equals(""))
-                    {
-                        Toast.makeText(getApplicationContext(), "LastName cannot be empty", Toast.LENGTH_SHORT).show();
-                    }
-                    else if(!email.matches(emailPattern))
-                    {
-                        Toast.makeText(getApplicationContext(), "Please input a valid Email", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        AllFunctions.getObject().editStudent(project, studentID, firstName, middleName, surname, email);
-                        init();
+            SparseBooleanArray checkedItemsStudents = listView.getCheckedItemPositions();
+            if (checkedItemsStudents != null) {
+                for (int i = 0; i < project.getStudentInfo().size(); i++) {
+                    if (checkedItemsStudents.get(i) == true) {
+                        indexOfStudent = i;
+                        break;
                     }
                 }
-            }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // TODO Auto-generated method stub
+                LayoutInflater layoutInflater = LayoutInflater.from(Activity_Student_Group.this);//获得layoutInflater对象
+                View view = layoutInflater.from(Activity_Student_Group.this).inflate(R.layout.dialog_add_student, null);//获得view对象
 
-                }
-            }).create();
-            dialog.show();
+                EditText editText_studentID_addStudent = (EditText) view.findViewById(R.id.editText_studentID_addStudent);//获取控件
+                editText_studentID_addStudent.setEnabled(false);
+                editText_studentID_addStudent.setText(students.get(indexOfStudent).getNumber());
+                EditText editText_firstName_addStudent = (EditText) view.findViewById(R.id.editText_firstName_addStudent);//获取控件
+                editText_firstName_addStudent.setText(students.get(indexOfStudent).getFirstName());
+                EditText editText_middleName_addStudent = (EditText) view.findViewById(R.id.editText_middleName_addStudent);//获取控件
+                editText_middleName_addStudent.setText(students.get(indexOfStudent).getMiddleName());
+                EditText editText_surname_addStudent = (EditText) view.findViewById(R.id.editText_surname_addStudent);//获取控件
+                editText_surname_addStudent.setText(students.get(indexOfStudent).getSurname());
+                EditText editText_email_addStudent = (EditText) view.findViewById(R.id.editText_email_addStudent);//获取控件
+                editText_email_addStudent.setText(students.get(indexOfStudent).getEmail());
 
+                Dialog dialog = new AlertDialog.Builder(Activity_Student_Group.this).setTitle("Edit Student").setView(view).setPositiveButton("Done", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        studentID = editText_studentID_addStudent.getText().toString();
+                        firstName = editText_firstName_addStudent.getText().toString();
+                        middleName = editText_middleName_addStudent.getText().toString();
+                        surname = editText_surname_addStudent.getText().toString();
+                        email = editText_email_addStudent.getText().toString();
+
+                        String emailPattern = "[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.+[a-z]+";
+
+                        if (studentID.equals("")) {
+                            Toast.makeText(getApplicationContext(), "StudentID cannot be empty", Toast.LENGTH_SHORT).show();
+                        } else if (firstName.equals("")) {
+                            Toast.makeText(getApplicationContext(), "FirstName cannot be empty", Toast.LENGTH_SHORT).show();
+
+                        } else if (surname.equals("")) {
+                            Toast.makeText(getApplicationContext(), "LastName cannot be empty", Toast.LENGTH_SHORT).show();
+                        } else if (!email.matches(emailPattern)) {
+                            Toast.makeText(getApplicationContext(), "Please input a valid Email", Toast.LENGTH_SHORT).show();
+                        } else {
+                            AllFunctions.getObject().editStudent(project, studentID, firstName, middleName, surname, email);
+                            students.get(indexOfStudent).setStudentInfo(studentID, firstName,
+                                    middleName, surname, email);
+                            init();
+                        }
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO Auto-generated method stub
+
+                    }
+                }).create();
+                dialog.show();
+
+            }
         }
-        else
-        {
-            Toast.makeText(getApplicationContext(),
-                    "Please choose only 1 student to edit.",
-                    Toast.LENGTH_SHORT).show();
-        }
-
+            else {
+                Toast.makeText(getApplicationContext(),
+                        "Please choose only 1 student to edit.",
+                        Toast.LENGTH_SHORT).show();
+            }
     }
 
     public class SortByGroup implements Comparator {

@@ -362,10 +362,6 @@ public class AllFunctions{
     public void editStudent(ProjectInfo project, String number, String firstName,
                             String middleName, String surname, String email){
 
-        int i = searchStudent(project, number);
-        project.getStudentInfo().get(i).setStudentInfo(number, firstName,
-                middleName, surname, email);
-
         new Thread(new Runnable(){
             @Override
             public void run(){

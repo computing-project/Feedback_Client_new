@@ -92,6 +92,27 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
         indexOfGroup = Integer.parseInt(intent.getStringExtra("indexOfGroup"));
         project = AllFunctions.getObject().getProjectList().get(indexOfProject);
 
+        Button button_back_title = findViewById(R.id.btn_back_title);
+        button_back_title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        TextView textView_helloUser = findViewById(R.id.textView_helloUser_title);
+        textView_helloUser.setText("Hello, "+AllFunctions.getObject().getUsername());
+        TextView textView_projectName = findViewById(R.id.textView_projectName_title);
+        textView_projectName.setText(project.getProjectName());
+        TextView textView_logout = findViewById(R.id.textView_logout_title);
+        textView_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_Assessment.this, Activity_Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
 
         tv_assessment_student = (TextView) findViewById(R.id.tv_assessment_student);
