@@ -106,7 +106,7 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
         }else {
             tv_assessment_student.setText("Group " + indexOfGroup);
             for(int i = 0; i < project.getStudentInfo().size(); i++){
-                if(project.getStudentInfo().get(studentList.get(i)).getGroup() == indexOfGroup){
+                if(project.getStudentInfo().get(i).getGroup() == indexOfGroup){
                     studentList.add(i);
                 }
             }
