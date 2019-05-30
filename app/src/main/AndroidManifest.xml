@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity_showComment_markAllocation"></activity>
+        <activity android:name=".Activity_SendReport_Group"></activity>
+        <activity android:name=".Activity_Editable_group_report" />
+        <activity android:name=".Activity_showComment_markAllocation" />
         <activity android:name=".Activity_SendReport_Individual" />
         <activity android:name=".Activity_editable_individual_report" />
         <activity android:name=".Activity_ReviewReport" />
@@ -26,8 +28,9 @@
         <activity android:name=".Activity_CriteriaList" />
         <activity android:name=".Activity_Timer" />
         <activity android:name=".Activity_About" />
-        <activity android:name=".Activity_Assessment"
-            android:launchMode="singleTop"/>
+        <activity
+            android:name=".Activity_Assessment"
+            android:launchMode="singleTop" />
         <activity
             android:name=".Assessment_Preparation_Activity"
             android:launchMode="singleTask" />
@@ -43,7 +46,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Activity_assessment_comment"
             android:label="@string/app_name"

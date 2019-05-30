@@ -130,7 +130,7 @@ public class Activity_Reaper_Mark extends Activity {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.grid_item_mark_markpage, parent, false);
 
             TextView textView_totalMark = convertView.findViewById(R.id.textView_totalMark_gridItemMark);
-            textView_totalMark.setText(String.valueOf(markList.get(position).getTotalMark()));
+            textView_totalMark.setText(String.valueOf(markList.get(position).getTotalMark())+"%");
             TextView textView_assessorName = convertView.findViewById(R.id.textView_assessorName_gridItemMark);
             textView_assessorName.setText(markList.get(position).getLecturerName());
 

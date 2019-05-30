@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Assessment_Preparation_Activity"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="14"
+            android:background="@drawable/ic_header_background"
+            android:elevation="40dp">
+
+            <Button
+                android:id="@+id/button_back_title"
+                android:layout_width="34dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/ic_back" />
+
+            <TextView
+                android:id="@+id/textView_projectName_about"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="sans-serif-medium"
+                android:text="Projects "
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:singleLine="true"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="12dp"
+                app:autoSizeMaxTextSize="18dp"
+                app:autoSizeStepGranularity="2dp"
+                />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/textView_projectName_about"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
+
+                <TextView
+                    android:id="@+id/textView_helloUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="100"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Hello, Xxxxxx Xxxxxx"
+                    android:textColor="#ffffff"
+                    android:gravity="right|center_vertical"
+                    android:singleLine="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
+
+                <View
+                    android:id="@+id/divider13"
+                    android:layout_width="1dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"/>
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="right|center_vertical"
+                    android:text="Help"
+                    android:textColor="#ffffff"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
+
+                <View
+                    android:id="@+id/divider14"
+                    android:layout_width="1dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff" />
+
+                <TextView
+                    android:id="@+id/textView_logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Log Out"
+                    android:textColor="#ffffff"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="14dp"
+                    app:autoSizeStepGranularity="2dp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="#D7D7D7">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="10">
+
+                <TextView
+                    android:id="@+id/textView_totalMark_sendReportGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Mark:72%"
+                    android:gravity="left|center_vertical"
+                    android:paddingLeft="40dp"
+                    android:textColor="#000000"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10dp"
+                    app:autoSizeMaxTextSize="28dp"
+                    app:autoSizeStepGranularity="2dp"/>
+
+
+                <Button
+                    android:id="@+id/button_sendStudent_sendReportGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_margin="10dp"
+                    android:text="Send to student"
+                    android:gravity="center"
+                    android:textSize="13dp"
+                    android:paddingRight="16dp"
+                    android:paddingLeft="16dp"
+                    android:layout_gravity="center"
+                    android:textColor="#000000"
+                    android:background="@drawable/ic_edit_button"/>
+
+                <Button
+                    android:id="@+id/button_sendBoth_sendReportGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_margin="10dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:text="Send to both"
+                    android:singleLine="true"
+                    android:gravity="center"
+                    android:textSize="13dp"
+                    android:layout_gravity="center"
+                    android:textColor="#000000"
+                    android:background="@drawable/ic_edit_button"/>
+
+                <Button
+                    android:id="@+id/btn_finish_sendReportGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_margin="10dp"
+                    android:text="Finish"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:paddingRight="16dp"
+                    android:paddingLeft="16dp"
+                    android:layout_gravity="center"
+                    android:textColor="#ffffff"
+                    android:background="@drawable/ic_button_background"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ScrollView
+                    android:layout_width="1024dp"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:layout_centerHorizontal="true">
+
+                    <TextView
+                        android:id="@+id/textView_pdfContent_sendReportGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp"
+                        android:text="TextView" />
+                </ScrollView>
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
