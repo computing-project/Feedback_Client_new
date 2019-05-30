@@ -66,6 +66,7 @@ public class Activity_editable_individual_report extends Activity {
                 intent.putExtra("indexOfStudent",String.valueOf(indexOfStudent));
                 AllFunctions.getObject().getProjectList().get(indexOfProject).getStudentInfo().get(indexOfStudent).setMark(mark);
                 startActivity(intent);
+                finish();
             }
         });
         if(!mark.getLecturerEmail().equals(AllFunctions.getObject().getMyEmail()))

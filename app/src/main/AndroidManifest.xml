@@ -19,7 +19,8 @@
         <activity android:name=".Activity_SendReport_Individual" />
         <activity android:name=".Activity_editable_individual_report" />
         <activity android:name=".Activity_ReviewReport" />
-        <activity android:name=".Activity_Reaper_Mark" />
+        <activity android:name=".Activity_Reaper_Mark"
+            android:launchMode="singleTask"/>
         <activity android:name=".Activity_Realtime_Assessment" />
         <activity
             android:name=".Homepage"
