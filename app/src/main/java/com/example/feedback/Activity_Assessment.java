@@ -256,15 +256,17 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
             convertView = LayoutInflater.from(mContext).inflate(R.layout.list_individual_assessment, parent, false);
             final View view10 = convertView;
             TextView tv_criteria_name = convertView.findViewById(R.id.tv_criteria_name);
-            tv_criteria_name.setText(criteriaList.get(position).getName());
+            tv_criteria_name.setText(project.getCriteria().get(position).getName());
 
-            if(criteriaList.get(position).getMarkIncrement().equals("1")){
-                increment = 1.0;
-            }else if(criteriaList.get(position).getMarkIncrement().equals("1/2")){
-                increment = 0.5;
-            }else if(criteriaList.get(position).getMarkIncrement().equals("1/4")) {
-                increment = 0.25;
-            }
+                if(project.getCriteria().get(position).getMarkIncrement().equals("1")){
+                    increment = 1.0;
+                }else if(project.getCriteria().get(position).getMarkIncrement().equals("1/2")){
+                    increment = 0.5;
+                }else if(project.getCriteria().get(position).getMarkIncrement().equals("1/4")) {
+                    increment = 0.25;
+                }
+            Log.d("111115", project.getCriteria().get(position).getMarkIncrement());
+            Log.d("111116", String.valueOf(increment));
 
             TextView tv_red = view10.findViewById(R.id.tv_red);
             TextView tv_yellow = view10.findViewById(R.id.tv_yellow);
@@ -343,27 +345,31 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
             sb_mark = (SeekBar) convertView.findViewById(R.id.sb_mark);
             tv_mark = (TextView) convertView.findViewById(R.id.tv_mark);
             //tv_mark.setText("10");
-            sb_mark.setMax((int)(10.0/increment));
+            sb_mark.setMax((int)(project.getCriteria().get(position).getMaximunMark()/increment));
             final View view2 = convertView;
-            sb_mark.setProgress((int)(project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().get(position)*10 / project.getCriteria().get(position).getMaximunMark()/increment));
-            tv_mark.setText((project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().get(position)*10 / project.getCriteria().get(position).getMaximunMark()) + " / 10");
+            sb_mark.setProgress((int)(project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().get(position)/increment));
+            tv_mark.setText((project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().get(position) + " / " +project.getCriteria().get(position).getMaximunMark()));
+            Log.d("111117", String.valueOf(increment));
+
+
             sb_mark.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     Double progressDisplay = progress * increment;
                     tv_mark = (TextView) view2.findViewById(R.id.tv_mark);
-                    tv_mark.setText(String.valueOf(progressDisplay) + " / 10");
+                    tv_mark.setText(String.valueOf(progressDisplay) + " / " + project.getCriteria().get(position).getMaximunMark());
+                    Log.d("111118", String.valueOf(increment));
 
                     for(int i = 0; i < studentList.size(); i++){
                         if(project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList() == null){
-                            project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList().add(progressDisplay * project.getCriteria().get(position).getMaximunMark() / 10);
+                            project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList().add(position, progressDisplay);
 
                         }else{
-                            project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList().set(position, progressDisplay * project.getCriteria().get(position).getMaximunMark() / 10);
+                            project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList().set(position, progressDisplay);
 
                         }
-                        Log.d("1114", String.valueOf(project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList()));
+                        Log.d("1114", String.valueOf(increment) + " " + String.valueOf(progressDisplay) + " " + String.valueOf(progress));
 
                     }
 
@@ -400,7 +406,7 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
             Double sum = 0.0;
             for (int k = 0; k < project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList().size(); k++) {
 
-                sum = sum + 100 * project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList().get(k) / totalWeighting;
+                sum = sum + project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList().get(k) *( 100/totalWeighting);
 
                 project.getStudentInfo().get(studentList.get(i)).getMark().setTotalMark(sum);
             }
