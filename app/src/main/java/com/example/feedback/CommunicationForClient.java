@@ -60,8 +60,8 @@ public class CommunicationForClient {
 				functions.registerACK(true);
 			else
 				functions.registerACK(false);
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (Exception e1) {
+			AllFunctions.getObject().exceptionWithServer();
 		}
 
 	}
@@ -104,7 +104,7 @@ public class CommunicationForClient {
 				functions.loginFail();
 			}
 		} catch (Exception e1) {
-			System.out.println("连接服务器错误");
+			AllFunctions.getObject().exceptionWithServer();
 		}
 	}
 
@@ -133,8 +133,8 @@ public class CommunicationForClient {
 			} else {
 				;
 			}
-		} catch (IOException e1) {
-			System.out.println("updateProjectAbout: something wrong in receiving response from server.");
+		} catch (Exception e1) {
+			AllFunctions.getObject().exceptionWithServer();
 		}
 	}
 
@@ -167,7 +167,7 @@ public class CommunicationForClient {
 				//失败跳出
 			}
 		} catch (Exception e1) {
-			System.out.println("Exception in Delete Project!");
+			AllFunctions.getObject().exceptionWithServer();
 		}
 	}
 
@@ -199,8 +199,8 @@ public class CommunicationForClient {
 			} else {
 				//失败跳出
 			}
-		} catch (IOException e1) {
-			System.out.println("updateProjectAbout: something wrong in receiving response from server.");
+		} catch (Exception e1) {
+			AllFunctions.getObject().exceptionWithServer();
 		}
 	}
 
@@ -232,8 +232,8 @@ public class CommunicationForClient {
 			} else {
 				//失败跳出
 			}
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (Exception e1) {
+			AllFunctions.getObject().exceptionWithServer();
 		}
 	}
 
@@ -272,7 +272,7 @@ public class CommunicationForClient {
 				//失败跳出
 			}
 		} catch (Exception e1) {
-			System.out.println("Exception in addStudent communication");
+			AllFunctions.getObject().exceptionWithServer();
 		}
 	}
 
@@ -310,8 +310,8 @@ public class CommunicationForClient {
 			} else {
 				//失败跳出
 			}
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (Exception e1) {
+			AllFunctions.getObject().exceptionWithServer();
 		}
 	}
 
@@ -382,8 +382,8 @@ public class CommunicationForClient {
 			} else {
 				//失败跳出
 			}
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (Exception e1) {
+			AllFunctions.getObject().exceptionWithServer();
 		}
 	}
 
@@ -418,7 +418,7 @@ public class CommunicationForClient {
 				AllFunctions.getObject().inviteAssessor_Fail();
 			}
 		} catch (Exception e1) {
-			System.out.println("exception in invite_Assessor!");
+			AllFunctions.getObject().exceptionWithServer();
 		}
 	}
 
@@ -533,8 +533,8 @@ public class CommunicationForClient {
 			} else {
 				//失败跳出
 			}
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (Exception e1) {
+			AllFunctions.getObject().exceptionWithServer();
 		}
 	}
 
@@ -570,7 +570,7 @@ public class CommunicationForClient {
 				//失败跳出
 			}
 		} catch (Exception e1) {
-			e1.printStackTrace();
+			AllFunctions.getObject().exceptionWithServer();
 		}
 	}
 
@@ -607,7 +607,7 @@ public class CommunicationForClient {
 				//失败跳出
 			}
 		} catch (Exception e1) {
-			System.out.println("Exception in import student in communication!");
+			AllFunctions.getObject().exceptionWithServer();
 		}
 	}
 
