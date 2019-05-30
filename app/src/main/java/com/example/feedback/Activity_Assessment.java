@@ -118,6 +118,24 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
 
         if(project.getStudentInfo().get(studentList.get(0)).getMark() != null){
 
+
+            for(int m = 0; m < studentList.size(); m++){
+                for(int n = 0; n < project.getCriteria().size(); n++){
+                    project.getStudentInfo().get(studentList.get(m)).getMark().getCriteriaList().get(n).getSubsectionList().clear();
+
+
+                }
+                for(int n = 0; n < project.getCommentList().size(); n++){
+                    project.getStudentInfo().get(studentList.get(m)).getMark().getCommentList().get(n).getSubsectionList().clear();
+
+
+                }
+            }
+
+
+
+
+
             for(int j = 0; j < project.getCriteria().size(); j++){
                 totalWeighting = totalWeighting + project.getCriteria().get(j).getMaximunMark();
 
