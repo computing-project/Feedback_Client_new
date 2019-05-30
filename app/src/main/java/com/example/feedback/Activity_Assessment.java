@@ -64,6 +64,8 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
     TextView tv_other_comment;
     EditText et_other_comment;
 
+//    Double increment = 0.0;
+
     private long durationTime = 0;
     private long warningTime = 0;
     private boolean isPause = false;
@@ -356,6 +358,15 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
 
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+                    if(project.getCriteria().get(position).getMarkIncrement().equals("1")){
+                        increment = 1.0;
+                    }else if(project.getCriteria().get(position).getMarkIncrement().equals("1/2")){
+                        increment = 0.5;
+                    }else if(project.getCriteria().get(position).getMarkIncrement().equals("1/4")) {
+                        increment = 0.25;
+                    }
+
                     Double progressDisplay = progress * increment;
                     tv_mark = (TextView) view2.findViewById(R.id.tv_mark);
                     tv_mark.setText(String.valueOf(progressDisplay) + " / " + project.getCriteria().get(position).getMaximunMark());
@@ -406,11 +417,11 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
             Double sum = 0.0;
             for (int k = 0; k < project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList().size(); k++) {
 
-                sum = sum + project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList().get(k) *( 100/totalWeighting);
+                sum = sum + project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList().get(k) *( 100.0/totalWeighting);
 
                 project.getStudentInfo().get(studentList.get(i)).getMark().setTotalMark(sum);
             }
-
+            Log.d("11111119", String.valueOf(sum));
 
         }
     }
