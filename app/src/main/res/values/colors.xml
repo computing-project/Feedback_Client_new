@@ -13,6 +13,6 @@
     <color name="bg_two_selected">#D7D7D7D7</color>
 
     <color name="bg_three_normal">#FFFFFFFF</color>
-    <color name="bg_three_pressed">#F2F2F2F2</color>
-    <color name="bg_three_selected">#F2F2F2F2</color>
+    <color name="bg_three_pressed">#D7D7D7D7</color>
+    <color name="bg_three_selected">#D7D7D7D7</color>
 </resources>
