@@ -10,22 +10,13 @@ package bean;
 
 import android.widget.Checkable;
 
-/**
- * <p>二级Item的Bean。</p>
- * Created in 2016/3/22 18:16.
- *
- * @author Yolanda;
- */
+
 public class TwoBean implements Checkable {
 
-    /**
-     * 第二级Item显示的文字。
-     */
+
     private String title;
 
-    /**
-     * 第二级是否被选中。
-     */
+
     private boolean isChecked;
 
 

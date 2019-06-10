@@ -71,7 +71,6 @@ public class AllFunctions{
 
         this.projectList = projectList;
         if(projectList.size()>0)
-        System.out.println("在Allfunction中收到第一个project的criteriaList和commentList的数量分别为："+projectList.get(0).getCriteria().size()+"  "+projectList.get(0).getCommentList().size());
         sortStudent();
         handlerAllfunction.sendEmptyMessage(101);
     }
@@ -89,7 +88,7 @@ public class AllFunctions{
     }
 
     public void exceptionWithServer(){
-        System.out.println("通讯错误，最后此处要改成弹出并报错！");
+        System.out.println("Communication error.");
 
 
 
@@ -177,7 +176,7 @@ public class AllFunctions{
     }
 
     public void getMarks(ProjectInfo project, int groupNum, String studentID){
-        System.out.println("Allfunction的getMark方法被执行");
+        System.out.println("getMark");
         ArrayList<String> studentIDList = new ArrayList<String>();
         if(groupNum == -999)
             studentIDList.add(studentID);
@@ -513,25 +512,15 @@ public class AllFunctions{
         student7.setGroup(77);
         studentListForTest.add(student7);
 
-        //call sort
-//        ArrayList<StudentInfo> studentTemp = new ArrayList<StudentInfo>();
 
-//        for(StudentInfo ss: studentListForTest){
-//            if(ss.getGroup() == -999){
-//
-//                studentTemp.add(ss);
-//                studentListForTest.remove(ss);
-//            }
-//        }
 
 
         Collections.sort(studentListForTest, new SortByGroup());
-//        studentListForTest.addAll(studentTemp);
 
-        System.out.println("接下来是排序时间：");
+        System.out.println("sort starts：");
         for(StudentInfo s: studentListForTest)
             System.out.println(s.getGroup());
-        System.out.println("排序结束");
+        System.out.println("sort completed");
     }
 
 }

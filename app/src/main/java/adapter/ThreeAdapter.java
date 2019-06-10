@@ -23,24 +23,15 @@ import java.util.List;
 
 import bean.ThreeBean;
 
-/**
- * <p>三级目录的适配器。</p>
- * Created in 2016/3/22 18:06.
- *
- * @author Yolanda;
- */
+
 public class ThreeAdapter extends BaseAdapter {
 
     private Context mContext;
     private OnThreeItemClickListener itemClickListener;
     private List<ThreeBean> mThreeBeans = new ArrayList<>();
-    /**
-     * 一级id
-     */
+
     private int groupId = -1;
-    /**
-     * 二级id
-     */
+
     private int chilcId = -1;
 
     public ThreeAdapter(Context context, OnThreeItemClickListener itemClickListener) {
@@ -59,29 +50,17 @@ public class ThreeAdapter extends BaseAdapter {
         super.notifyDataSetChanged();
     }
 
-    /**
-     * 返回第一级选中的Item的Position，当没有选中时返回-1。
-     *
-     * @return Position。
-     */
+
     public int getOneItemSelect() {
         return groupId;
     }
 
-    /**
-     * 返回第二级选中的Item的Position，当没有选中时返回-1。
-     *
-     * @return Position。
-     */
+
     public int getTwoItemSelect() {
         return chilcId;
     }
 
-    /**
-     * 返回第三级选中的Item集合。
-     *
-     * @return {@code List<Three>}。
-     */
+
     public List<ThreeBean> getThreeSelect() {
         List<ThreeBean> threeBeans = new ArrayList<>();
         for (ThreeBean threeBean : mThreeBeans) {
@@ -125,9 +104,7 @@ public class ThreeAdapter extends BaseAdapter {
         return convertView;
     }
 
-    /**
-     * 一级的holder。
-     */
+
     class ThreeViewHolder implements View.OnClickListener {
         private TextView mTvTitle;
 
@@ -138,11 +115,7 @@ public class ThreeAdapter extends BaseAdapter {
             mTvTitle = (TextView) view.findViewById(R.id.tv_title_three);
         }
 
-        /**
-         * 设置Item的数据。
-         *
-         * @param position 第几个Item。
-         */
+
         public void setPosition(int position) {
             this.position = position;
             ThreeBean threeBean = getItem(position);
@@ -152,7 +125,6 @@ public class ThreeAdapter extends BaseAdapter {
 
         @Override
         public void onClick(View v) {
-            // 点击Item的时候选中或者反选当前Item，这里没有让其它item反选，说明就是多选
 
             for (ThreeBean threeBean : mThreeBeans) {
                 threeBean.setChecked(false);

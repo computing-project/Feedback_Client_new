@@ -24,12 +24,7 @@ import java.util.List;
 import bean.OneBean;
 import bean.TwoBean;
 
-/**
- * <p>一二级目录的适配器。</p>
- * Created in 2016/3/22 17:34.
- *
- * @author Yolanda;
- */
+
 public class OneTwoAdapter extends BaseExpandableListAdapter {
 
     private Context mContext;
@@ -76,9 +71,7 @@ public class OneTwoAdapter extends BaseExpandableListAdapter {
         return convertView;
     }
 
-    /**
-     * 一级的holder。
-     */
+
     class OneViewHolder {
         private TextView mTvTitle;
 
@@ -92,9 +85,7 @@ public class OneTwoAdapter extends BaseExpandableListAdapter {
         }
     }
 
-    /**
-     * 二级的holder。
-     */
+
     class TwoViewHolder implements View.OnClickListener {
         private TextView mTvTitle;
 
@@ -118,7 +109,7 @@ public class OneTwoAdapter extends BaseExpandableListAdapter {
         @Override
         public void onClick(View v) {
             {
-                // 这一段代码是选中当前点击的，反选其它选项，这就是单选
+                // single select
 
                 List<TwoBean> twoBeans = getGroup(position).getOperation();
                 for (TwoBean twoBean : twoBeans)
@@ -127,7 +118,7 @@ public class OneTwoAdapter extends BaseExpandableListAdapter {
                 getChild(position, childPosition).setChecked(true);
                 notifyDataSetChanged();
             }
-            // 通知外部刷新第三级
+            // refresh
             if (itemClickListener != null)
                 itemClickListener.onClick(position, childPosition);
         }

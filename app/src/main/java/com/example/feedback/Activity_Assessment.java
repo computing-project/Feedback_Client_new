@@ -45,27 +45,19 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
     TextView tv_time;
     Button btn_assessment_start;
     Button btn_assessment_refresh;
-    Button btn_assessment_save;
 
 
     TextView tv_assessment_student;
     TextView tv_assessment_total_mark;
-    Button btn_assessment_finish;
 
     SeekBar sb_mark;
     TextView tv_mark;
-    Double singleMark;
     Double totalMark = 0.0;
-    ArrayList<Double> markList;
     int totalWeighting = 0;
 
-    TextView tv_list_comment_only;
-    Button btn_comment_only_comment;
 
-    TextView tv_other_comment;
     EditText et_other_comment;
 
-//    Double increment = 0.0;
 
     private long durationTime = 0;
     private long warningTime = 0;
@@ -133,7 +125,6 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
             }
         }
 
-        //Log.d("1111111111", String.valueOf(studentList.size()));
 
         tv_assessment_total_mark = (TextView) findViewById(R.id.tv_assessment_total_mark);
 
@@ -163,16 +154,11 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
             }
 
             for(int k = 0; k < project.getCriteria().size(); k++){
-//                totalMark = totalMark + project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().get(k) *
-//                        (project.getCriteria().get(k).getMaximunMark() / totalWeighting);
                 totalMark = project.getStudentInfo().get(studentList.get(0)).getMark().getTotalMark();
-                Log.d("1115", String.valueOf(project.getCriteria().get(k).getMaximunMark()));
 
             }
 
             tv_assessment_total_mark.setText(String.format("%.2f", project.getStudentInfo().get(studentList.get(0)).getMark().getTotalMark()) + "%");
-            Log.d("1112", String.valueOf(totalWeighting));
-            Log.d("1113", String.valueOf(totalMark));
 
         }else{
 
@@ -186,37 +172,17 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
                     project.getStudentInfo().get(studentList.get(m)).getMark().getCriteriaList().get(n).setMaximunMark(project.getCriteria().get(n).getMaximunMark());
                     project.getStudentInfo().get(studentList.get(m)).getMark().getMarkList().add(0.0);
 
-//                    for(int l = 0; l < project.getCriteria().get(n).getSubsectionList().size(); l++){
-//                        project.getStudentInfo().get(m).getMark().getCriteriaList().get(n).getSubsectionList().add(new SubSection());
-//                        project.getStudentInfo().get(m).getMark().getCriteriaList().get(n).getSubsectionList().get(l).setName(project.getCriteria().get(n).getSubsectionList().get(l).getName());
 
-//                        for(int p = 0; p < project.getCriteria().get(n).getSubsectionList().get(l).getShortTextList().size(); p++){
-//                            project.getStudentInfo().get(m).getMark().getCriteriaList().get(n).getSubsectionList().get(l).getShortTextList().add(new ShortText());
-//                            project.getStudentInfo().get(m).getMark().getCriteriaList().get(n).getSubsectionList().get(l).getShortTextList().get(p).setName(project.getCriteria().get(n).getSubsectionList().get(l).getShortTextList().get(p).getName());
-//
-//                        }
-//                    }
                 }
                 for(int n = 0; n < project.getCommentList().size(); n++){
                     project.getStudentInfo().get(studentList.get(m)).getMark().getCommentList().add(new Criteria());
                     project.getStudentInfo().get(studentList.get(m)).getMark().getCommentList().get(n).setName(project.getCommentList().get(n).getName());
 
-//                    for(int l = 0; l < project.getCommentList().get(n).getSubsectionList().size(); l++){
-//                        project.getStudentInfo().get(m).getMark().getCommentList().get(n).getSubsectionList().add(new SubSection());
-//                        project.getStudentInfo().get(m).getMark().getCommentList().get(n).getSubsectionList().get(l).setName(project.getCommentList().get(n).getSubsectionList().get(l).getName());
-//
-//                        for(int p = 0; p < project.getCommentList().get(n).getSubsectionList().get(l).getShortTextList().size(); p++){
-//                            project.getStudentInfo().get(m).getMark().getCommentList().get(n).getSubsectionList().get(l).getShortTextList().add(new ShortText());
-//                            project.getStudentInfo().get(m).getMark().getCommentList().get(n).getSubsectionList().get(l).getShortTextList().get(p).setName(project.getCommentList().get(n).getSubsectionList().get(l).getShortTextList().get(p).getName());
-//
-//                        }
-//                    }
                 }
             }
 
             for(int j = 0; j < project.getCriteria().size(); j++){
                 totalWeighting = totalWeighting + project.getCriteria().get(j).getMaximunMark();
-                Log.d("22222", String.valueOf(project.getCriteria().get(j).getMaximunMark()));
             }
 
         }
@@ -310,8 +276,6 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
                 }else if(project.getCriteria().get(position).getMarkIncrement().equals("1/4")) {
                     increment = 0.25;
                 }
-            Log.d("111115", project.getCriteria().get(position).getMarkIncrement());
-            Log.d("111116", String.valueOf(increment));
 
             TextView tv_red = view10.findViewById(R.id.tv_red);
             TextView tv_yellow = view10.findViewById(R.id.tv_yellow);
@@ -323,21 +287,6 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
             weightList.add(1, 0);
             weightList.add(2, 0);
 
-//            for(int n = 0; n < project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().size(); n++){
-//                for(int l = 0; l < project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(n).getSubsectionList().size(); l++){
-//                    for(int p = 0; p < project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(n).getSubsectionList().get(l).getShortTextList().size(); p++) {
-//                        if(project.getStudentInfo().get(studentList.get(0)).getMark().getCriteriaList().get(n).getSubsectionList().get(l).getShortTextList().get(p).getLongtext().size() == 0){
-//                        }else if(project.getCriteria().get(n).getSubsectionList().get(l).getShortTextList().get(p).getGrade() == 1){
-//                            weightList.set(0, (weightList.get(0)+1));
-//                        }else if(project.getCriteria().get(n).getSubsectionList().get(l).getShortTextList().get(p).getGrade() == 2){
-//                            weightList.set(1, (weightList.get(0)+1));
-//                        }else if(project.getCriteria().get(n).getSubsectionList().get(l).getShortTextList().get(p).getGrade() == 3){
-//                            weightList.set(2, (weightList.get(0)+1));
-//                        }
-//                    }
-//                }
-//            }
-//            Log.d("77777", String.valueOf(weightList.get(0)) + " " + String.valueOf(weightList.get(1)) + " " + String.valueOf(weightList.get(2)));
 
             if(getMatrixMarkedCriteria(position).size() != 0){
                 for(int i = 0; i < getMatrixMarkedCriteria(position).size(); i ++){
@@ -389,12 +338,10 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
 
             sb_mark = (SeekBar) convertView.findViewById(R.id.sb_mark);
             tv_mark = (TextView) convertView.findViewById(R.id.tv_mark);
-            //tv_mark.setText("10");
             sb_mark.setMax((int)(project.getCriteria().get(position).getMaximunMark()/increment));
             final View view2 = convertView;
             sb_mark.setProgress((int)(project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().get(position)/increment));
             tv_mark.setText((project.getStudentInfo().get(studentList.get(0)).getMark().getMarkList().get(position) + " / " +project.getCriteria().get(position).getMaximunMark()));
-            Log.d("111117", String.valueOf(increment));
 
 
             sb_mark.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -413,7 +360,6 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
                     Double progressDisplay = progress * increment;
                     tv_mark = (TextView) view2.findViewById(R.id.tv_mark);
                     tv_mark.setText(String.valueOf(progressDisplay) + " / " + project.getCriteria().get(position).getMaximunMark());
-                    Log.d("111118", String.valueOf(increment));
 
                     for(int i = 0; i < studentList.size(); i++){
                         if(project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList() == null){
@@ -423,7 +369,6 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
                             project.getStudentInfo().get(studentList.get(i)).getMark().getMarkList().set(position, progressDisplay);
 
                         }
-                        Log.d("1114", String.valueOf(increment) + " " + String.valueOf(progressDisplay) + " " + String.valueOf(progress));
 
                     }
 
@@ -464,7 +409,6 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
 
                 project.getStudentInfo().get(studentList.get(i)).getMark().setTotalMark(sum);
             }
-            Log.d("11111119", String.valueOf(sum));
 
         }
     }
@@ -518,7 +462,6 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
 
                 }else{
                     if (leftTime != 0 && isPause) {
-                        //将上次当前剩余时间作为新的时长                        initTimer(leftTime);
                         countDownTimer.start();
                         isPause = false;
 
@@ -660,7 +603,6 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
             addSubsectionToMarkObject();
 
             for(int i = 0; i < studentList.size(); i++){
-        //            criteriaArrayList_reduce(project.getStudentInfo().get(i).getMark());
                 project.getStudentInfo().get(studentList.get(i)).setTotalMark(project.getStudentInfo().get(studentList.get(i)).getMark().getTotalMark());
                 AllFunctions.getObject().sendMark(project, project.getStudentInfo().get(studentList.get(i)).getNumber(), project.getStudentInfo().get(studentList.get(i)).getMark() );
             }
@@ -686,7 +628,6 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
     }
 
     public void setListViewHeightBasedOnChildren(ListView listView) {
-        // 获取ListView对应的Adapter
         ListAdapter listAdapter = listView.getAdapter();
         if (listAdapter == null) {
             return;
@@ -700,8 +641,6 @@ public class Activity_Assessment extends Activity implements View.OnClickListene
         ViewGroup.LayoutParams params = listView.getLayoutParams();
         params.height = totalHeight
                 + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
-        // listView.getDividerHeight()获取子项间分隔符占用的高度
-        // params.height最后得到整个ListView完整显示需要的高度
         listView.setLayoutParams(params);
     }
 

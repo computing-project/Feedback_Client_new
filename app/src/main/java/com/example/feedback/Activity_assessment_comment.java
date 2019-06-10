@@ -30,13 +30,9 @@ public class Activity_assessment_comment extends Activity {
     private int indexOfCriteria;
     private int indexOfComment;
 
-    /**
-     * 第三级适配器
-     */
+
     private ThreeAdapter threeListAdapter;
-    /**
-     * 第三级数据
-     */
+
     private List<ThreeBean> threeBeans;
 
 
@@ -80,7 +76,6 @@ public class Activity_assessment_comment extends Activity {
         }
 
 
-        // 第三级
         ListView listView = (ListView) findViewById(R.id.lv_main);
         threeListAdapter = new ThreeAdapter(this, onThreeItemClickListener);
         listView.setAdapter(threeListAdapter);
@@ -89,7 +84,7 @@ public class Activity_assessment_comment extends Activity {
         ExpandableListView expandableListView = (ExpandableListView) findViewById(R.id.elv_main);
         OneTwoAdapter expandCheckAdapter = new OneTwoAdapter(this, onTwoItemClickListener);
         expandableListView.setAdapter(expandCheckAdapter);
-        // 第一二级
+
         List<OneBean> oneBeans = new ArrayList<>();
         for (int i = 0; i < criteria.getSubsectionList().size(); i++) {
             List<TwoBean> twoBeans = new ArrayList<>();
@@ -115,7 +110,6 @@ public class Activity_assessment_comment extends Activity {
             oneBeans.add(new OneBean(twoBeans, criteria.getSubsectionList().get(i).getName()));
         }
 
-        // 这里刷新就数据，假设是从服务器拿来的数据
         expandCheckAdapter.notifyDataSetChanged(oneBeans);
     }
 
@@ -126,7 +120,6 @@ public class Activity_assessment_comment extends Activity {
                 threeBeans = new ArrayList<>();
             threeBeans.clear();
 
-            // 这里模拟请求第三级的数据
             for (int i = 0; i < criteria.getSubsectionList().get(groupId).getShortTextList().get(childId).getLongtext().size(); i++) {
                 threeBeans.add(new ThreeBean(false, criteria.getSubsectionList().get(groupId).getShortTextList().get(childId).getLongtext().get(i), i));
 
@@ -145,42 +138,15 @@ public class Activity_assessment_comment extends Activity {
             threeListAdapter.notifyDataSetChanged(threeBeans, groupId, childId);
 
 
-
-
-
-//            String message = "第一级选中的是第" + threeListAdapter.getOneItemSelect() + "，第二级选中的是第" + threeListAdapter.getTwoItemSelect();
-//            Toast.makeText(Activity_assessment_comment.this, message, Toast.LENGTH_LONG).show();
-//            // 拿到第三级选中的列表，这里可以这样拿，也可以直接从我们数据源中拿
-//            List<ThreeBean> threeSelect = threeListAdapter.getThreeSelect();
-//            if (threeSelect.size() > 0) {
-//                String messageThree = "第三级选中了" + TextUtils.join(", ", threeSelect);
-//                Toast.makeText(Activity_assessment_comment.this, messageThree, Toast.LENGTH_LONG).show();
-//            }
         }
     };
 
     private ThreeAdapter.OnThreeItemClickListener onThreeItemClickListener = new ThreeAdapter.OnThreeItemClickListener() {
         @Override
         public void onClick(int childId) {
-//            if (threeBeans == null)
-//                threeBeans = new ArrayList<>();
-//            threeBeans.clear();
-//
-//            // 这里模拟请求第三级的数据
-//            for (int i = 0; i < criteriaList.get(0).getSubsectionList().get(groupId).getShortTextList().get(childId).getLongtext().size(); i++) {
-//                threeBeans.add(new ThreeBean(false, criteriaList.get(0).getSubsectionList().get(groupId).getShortTextList().get(childId).getLongtext().get(i), i));
-//            }
-//            threeListAdapter.notifyDataSetChanged(threeBeans, groupId, childId);
 
-
-
-//            String message = "第一级选中的是第" + threeListAdapter.getOneItemSelect() + "，第二级选中的是第" + threeListAdapter.getTwoItemSelect();
-//            Toast.makeText(Activity_assessment_comment.this, message, Toast.LENGTH_LONG).show();
-//            // 拿到第三级选中的列表，这里可以这样拿，也可以直接从我们数据源中拿
             List<ThreeBean> threeSelect = threeListAdapter.getThreeSelect();
             if (threeSelect.size() > 0) {
-//                String messageThree = "第三级选中了" + TextUtils.join(", ", threeSelect);
-//                Toast.makeText(Activity_assessment_comment.this, messageThree, Toast.LENGTH_LONG).show();
 
                 subsectionIndex = threeListAdapter.getOneItemSelect();
                 shortTextIndex = threeListAdapter.getTwoItemSelect();

@@ -12,26 +12,14 @@ import android.widget.Checkable;
 
 import java.util.List;
 
-/**
- * <p>三级Item的bean。</p>
- * Created in 2016/3/23 9:03.
- *
- * @author Yolanda;
- */
+
 public class ThreeBean implements Checkable {
 
-    /**
-     * 三级的Item的文字。
-     */
     private String title;
 
-    /**
-     * 是否选中。
-     */
+
     private boolean isChecked;
-    /**
-     * 在List中的位置
-     */
+
     private int index;
 
     private List<ThreeBean> operation;

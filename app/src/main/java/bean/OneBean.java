@@ -10,22 +10,12 @@ package bean;
 
 import java.util.List;
 
-/**
- * <p>一级Item的Bean。</p>
- * Created in 2016/3/22 17:38.
- *
- * @author Yolanda;
- */
+
 public class OneBean {
 
-    /**
-     * 第一级Item显示的文字
-     */
     private String title;
 
-    /**
-     * 第一级标题对应的第二级内容
-     */
+
     private List<TwoBean> operation;
 
     public OneBean() {
