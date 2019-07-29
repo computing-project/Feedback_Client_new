@@ -37,10 +37,9 @@
             android:launchMode="singleTask" />
         <activity android:name=".Activity_signUp" />
         <activity android:name=".Activity_Student_Group" />
-        <activity
-            android:name=".Activity_Login"
-            android:launchMode="singleTask" />
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".Activity_Login">
+            android:launchMode="singleTask"
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
